@@ -10,11 +10,11 @@
  */
 
 return array(
-	'author'         => 'Low',
-	'author_url'     => 'http://gotolow.com/',
-	'docs_url'       => 'http://gotolow.com/addons/low-widont',
-	'name'           => 'Low Widon’t',
-	'description'    => 'Eliminates typographical widows.',
-	'version'        => '3.0.0',
-	'namespace'      => 'Low\Widont'
+    'author'         => 'Low',
+    'author_url'     => 'http://gotolow.com/',
+    'docs_url'       => 'http://gotolow.com/addons/low-widont',
+    'name'           => 'Low Widon’t',
+    'description'    => 'Eliminates typographical widows.',
+    'version'        => '3.0.0',
+    'namespace'      => 'Low\Widont'
 );
