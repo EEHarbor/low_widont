@@ -1,0 +1,14 @@
+{
+  "name": "Low Widon’t",
+  "shortname": "low_widont",
+  "version": "3.0.0",
+  "foundation_version": "",
+  "description": "Eliminates typographical widows.",
+  "license": "EEHarbor",
+  "namespace": "Low\\Widont",
+  "require": {
+    "php": ">=5.6.*",
+    "expressionengine/core": ">=3"
+  },
+  "resources": {}
+}
