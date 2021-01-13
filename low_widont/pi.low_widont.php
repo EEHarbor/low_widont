@@ -10,7 +10,11 @@
  * @link           http://gotolow.com/addons/low-widont
  * @license        http://creativecommons.org/licenses/by-sa/3.0/
  */
-class Low_widont
+
+include_once "addon.setup.php";
+use Low\Widont\FluxCapacitor\Base\Pi;
+
+class Low_widont extends Pi
 {
 
     // --------------------------------------------------------------------
@@ -36,6 +40,7 @@ class Low_widont
      */
     public function __construct($str = '')
     {
+        parent::__construct();
         // -------------------------------------------
         // Get string to work with
         // -------------------------------------------
