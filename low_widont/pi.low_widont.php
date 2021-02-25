@@ -1,4 +1,6 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (! defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
 
 /**
  * Low Widon't Plugin class (based on the WordPress Widon't plugin by Shaun Inman)
@@ -8,52 +10,57 @@
  * @link           http://gotolow.com/addons/low-widont
  * @license        http://creativecommons.org/licenses/by-sa/3.0/
  */
-class Low_widont {
 
-	// --------------------------------------------------------------------
-	// PROPERTIES
-	// --------------------------------------------------------------------
+include_once "addon.setup.php";
+use Low\Widont\FluxCapacitor\Base\Pi;
 
-	/**
-	 * Plugin return data
-	 *
-	 * @var        string
-	 */
-	public $return_data;
+class Low_widont extends Pi
+{
 
-	// --------------------------------------------------------------------
-	// METHODS
-	// --------------------------------------------------------------------
+    // --------------------------------------------------------------------
+    // PROPERTIES
+    // --------------------------------------------------------------------
 
-	/**
-	 * Constructor
-	 *
-	 * @param      string
-	 * @return     string
-	 */
-	public function __construct($str = '')
-	{
-		// -------------------------------------------
-		// Get string to work with
-		// -------------------------------------------
+    /**
+     * Plugin return data
+     *
+     * @var        string
+     */
+    public $return_data;
 
-		$this->return_data = ($str) ? $str : ee()->TMPL->tagdata;
+    // --------------------------------------------------------------------
+    // METHODS
+    // --------------------------------------------------------------------
 
-		// -------------------------------------------
-		// Apply widon't algorithm
-		// -------------------------------------------
+    /**
+     * Constructor
+     *
+     * @param      string
+     * @return     string
+     */
+    public function __construct($str = '')
+    {
+        parent::__construct();
+        // -------------------------------------------
+        // Get string to work with
+        // -------------------------------------------
 
-		$this->return_data = preg_replace('/\s+(\S+)$/', '&#160;$1', rtrim($this->return_data));
+        $this->return_data = ($str) ? $str : ee()->TMPL->tagdata;
 
-		// -------------------------------------------
-		// Return for good measure
-		// -------------------------------------------
+        // -------------------------------------------
+        // Apply widon't algorithm
+        // -------------------------------------------
 
-		return $this->return_data;
-	}
+        $this->return_data = preg_replace('/\s+(\S+)$/', '&#160;$1', rtrim($this->return_data));
 
-	// --------------------------------------------------------------------
+        // -------------------------------------------
+        // Return for good measure
+        // -------------------------------------------
 
+        return $this->return_data;
+    }
+
+    // --------------------------------------------------------------------
 }
 // END CLASS
 

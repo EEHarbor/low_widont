@@ -1,20 +1,15 @@
 <?php
 
-/**
- * Low Widont config file
- *
- * @package        low_widont
- * @author         Lodewijk Schutte <hi@gotolow.com>
- * @link           http://gotolow.com/
- * @copyright      Copyright (c) 2016, Low
- */
+require_once 'autoload.php';
+$addonJson = json_decode(file_get_contents(__DIR__ . '/addon.json'));
 
 return array(
-	'author'         => 'Low',
-	'author_url'     => 'http://gotolow.com/',
-	'docs_url'       => 'http://gotolow.com/addons/low-widont',
-	'name'           => 'Low Widon’t',
-	'description'    => 'Eliminates typographical widows.',
-	'version'        => '3.0.0',
-	'namespace'      => 'Low\Widont'
+    'name'              => $addonJson->name,
+    'description'       => $addonJson->description,
+    'version'           => $addonJson->version,
+    'namespace'         => $addonJson->namespace,
+    'author'            => 'EEHarbor',
+    'author_url'        => 'http://eeharbor.com/low_widont',
+    'docs_url'          => 'http://eeharbor.com/low_widont/documentation',
+    'settings_exist'    => false,
 );
