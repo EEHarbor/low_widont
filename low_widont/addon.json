@@ -1,8 +1,8 @@
 {
     "name": "Low Widon’t",
     "shortname": "low_widont",
-    "version": "4.0.0",
-    "foundation_version": "4.6.1",
+    "version": "4.0.1",
+    "foundation_version": "4.9.0",
     "description": "Eliminates typographical widows.",
     "license": "EEHarbor",
     "namespace": "Low\\Widont",
