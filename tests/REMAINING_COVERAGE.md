@@ -22,13 +22,22 @@ Coverage remains incomplete. `NATIVE_COVERAGE_CHECKPOINT.json` retains every dec
 - Legacy settings read/write with no cached table list preserves site-scoped rows. Unfinished queries expose the clone-filter source defect in separate intended-behavior red reads/writes; a native installed-EE query-compiler probe confirms clone state and records exact source hashes, with no SQL execution.
 - A preloaded original archive and an owned cache with verified original class bytes allow the actual loader to continue after removal of the PHAR wrapper. Success and cache miss run with both OPcache modes. The unavailable OPcache configuration API also runs with OPcache enabled and disabled. The wrapper is restored before evidence hashes are read. An actual unreadable cache file remains red at the source include warning. This does not grant coverage to cold extraction that still stops at mkdir diagnostics.
 
+## Feasible ordinary vectors queued after this checkpoint
+
+- Fresh normal plugin-file loading before PHPUnit discovery, with exact parent/source identity, can supply its remaining procedural initialization markers.
+- The physical archive HTTP dispatcher still needs actual GET/POST redirect, PHP include, index/front-controller, missing/traversal and directory requests, plus the HEAD method guard. Each HTTP context needs a fresh interpreter to avoid persistent PHAR state. Archive-fixed MIME alternatives remain separate from these ordinary request inputs.
+- Native temporary-directory fallback still needs plain, depth-prefixed and permissions-prefixed `session.save_path` forms, with configuration validity proved by real session startup.
+- The documented template-tag body containing the string zero is an independent semantic control even though the constructor's ordinary line graph is already invoked.
+
+These are feasible work, not blockers or completion evidence. They are indexed in `queued_feasible_vectors` in the strict remaining-work JSON and receive no current closure credit.
+
 ## Source and fixed-environment blockers
 
 | Source and outcomes | Evidence and boundary |
 | --- | --- |
 | `Base/Pi.php::info`, lines 31–36 | Static `$this` fails at line 30 in all three documented invocation forms. `PI_INFO_BLOCKER.json` retains the probes. |
-| `PersistentCache::set/checkPath`, failure logging and returns | Real filesystem failures emit strict `@fopen`/`@mkdir` diagnostics before these continuations. File/directory collisions and permission shapes stay red; a fabricated helper false return is not credited as IO proof. |
-| Autoload fallback and extraction `go/_removeTmpFiles` | The actual archive repeats `mkdir` on existing directories; nested cleanup calls `rmdir` before recursion. Cold extraction probes stop at those diagnostics. Later extraction operations cannot be reached through that failed path. Warmed loader continuation is tested separately after preloading the original archive; it does not imply successful extraction. |
+| `PersistentCache::set/checkPath`, failure logging and returns | Real filesystem failures emit strict `@fopen`/`@mkdir` diagnostics before these continuations. File/directory collisions and permission shapes stay red; a fabricated helper false return is not credited as IO proof. Separate source-only warning observations reach the original base/module guard logging and false returns after native warnings; their unhealthy counters cannot close strict methods. Helper/support diagnostics still throw. |
+| Autoload fallback and extraction `go/_removeTmpFiles` | The actual archive repeats `mkdir` on existing directories; nested cleanup calls `rmdir` before recursion and later uses relative directory names from inside those directories. Strict cold extraction probes stop at the warnings. Separate native observations emit every warning immediately and preserve red parent tests while verifying all 22 actual extracted member bytes, marker reuse and original cleanup effects. Cleanup deletes files but leaves five empty directories. These unhealthy graphs never merge into strict reports or establish diagnostic-free extraction. |
 | `Base/Mcp::save_license`, lines 106/116/137 | EE redirects terminate the request. Tests throw at the same terminal boundary, so later source `exit` statements are not credited. |
 | `Base/Upd::update`, catch continuation | A real global exception from an extension escapes the incorrectly namespaced catch and stays red. An invented exception class would not validate the actual EE boundary. |
 | `Bridge/EE2::getBaseURL`, 2.6–2.7.3 workaround | The invalid `=<` operator throws on PHP 8+ and misses the intended branch on PHP 7.4. Real version-selected contexts retain the failure. |
@@ -47,5 +56,6 @@ The source tests above do not waive raw counter gaps. In particular:
 - Native graphs can differ when classes are already loaded or OPcache is enabled. Each variant is retained separately; coverage from another variant does not close it.
 - Basic blocks and outgoing outcomes remain distinct. Observed path edges provide positive evidence only for the same source/runtime/compiled graph. Synthetic terminal edges, epilogue markers and zero-exit methods remain explicit unknowns.
 - Xdebug aliases the conditional `Bridge/EE.php` constructors to the first declaration despite reflection-proven later parent selection. Those observations are quarantined; later constructor metrics stay unknown.
+- Source-warning observations retain positive logging/return, extraction and recursive-cleanup counters under exact source/runtime/compiled graphs. `evidence/warning-observations/summary.json.gz` records their separate provenance and explicitly unhealthy mode. The 38-row strict remaining-work ledger does not consume these counters. Closing-brace/PHAR terminal markers remain instrumentation caveats, even when their raw line count becomes positive.
 
 Full EE request bootstraps, real SQL execution, permissions, race/IO integration and historical hosts remain integration gaps. This is an evidence-backed checkpoint, not a 100% coverage or repository-exhaustion claim. Further work must identify a concrete meaningful input or improved provenance before treating one of these unresolved edges as closed.

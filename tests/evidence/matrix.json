@@ -1,6 +1,6 @@
 {
   "command": "./tests/run-matrix.sh",
-  "run": "tests/reports/matrix.QySwsQ",
+  "run": "tests/reports/matrix.thtdCm",
   "results": [
     {
       "binary": "/Users/tomjaeger/Library/Application Support/Herd/bin/php74",
@@ -12,17 +12,17 @@
         "-c",
         "phpunit.xml",
         "--log-junit",
-        "tests/reports/matrix.QySwsQ/php74.xml"
+        "tests/reports/matrix.thtdCm/php74.xml"
       ],
       "counts": {
         "name": "",
-        "tests": "404",
-        "assertions": "1929",
+        "tests": "430",
+        "assertions": "2420",
         "errors": "44",
         "warnings": "0",
-        "failures": "35",
+        "failures": "45",
         "skipped": "0",
-        "time": "5.700227"
+        "time": "6.588074"
       },
       "exit": 2,
       "version_output": "PHP 7.4.33 (cli) (built: Dec 13 2023 21:52:05) ( NTS )\nCopyright (c) The PHP Group\nZend Engine v3.4.0, Copyright (c) Zend Technologies\n"
@@ -37,17 +37,17 @@
         "-c",
         "phpunit.xml",
         "--log-junit",
-        "tests/reports/matrix.QySwsQ/php80.xml"
+        "tests/reports/matrix.thtdCm/php80.xml"
       ],
       "counts": {
         "name": "",
-        "tests": "404",
-        "assertions": "1921",
+        "tests": "430",
+        "assertions": "2412",
         "errors": "46",
         "warnings": "0",
-        "failures": "36",
+        "failures": "46",
         "skipped": "0",
-        "time": "5.886149"
+        "time": "6.787030"
       },
       "exit": 2,
       "version_output": "PHP 8.0.30 (cli) (built: Dec 21 2023 08:22:38) ( NTS )\nCopyright (c) The PHP Group\nZend Engine v4.0.30, Copyright (c) Zend Technologies\n    with Zend OPcache v8.0.30, Copyright (c), by Zend Technologies\n"
@@ -62,17 +62,17 @@
         "-c",
         "phpunit.xml",
         "--log-junit",
-        "tests/reports/matrix.QySwsQ/php81.xml"
+        "tests/reports/matrix.thtdCm/php81.xml"
       ],
       "counts": {
         "name": "",
-        "tests": "404",
-        "assertions": "1921",
+        "tests": "430",
+        "assertions": "2412",
         "errors": "46",
         "warnings": "0",
-        "failures": "36",
+        "failures": "46",
         "skipped": "0",
-        "time": "6.394175"
+        "time": "7.875824"
       },
       "exit": 2,
       "version_output": "PHP 8.1.33 (cli) (built: Jul  4 2025 00:24:36) (NTS)\nCopyright (c) The PHP Group\nZend Engine v4.1.33, Copyright (c) Zend Technologies\n    with Zend OPcache v8.1.33, Copyright (c), by Zend Technologies\n"
@@ -87,17 +87,17 @@
         "-c",
         "phpunit.xml",
         "--log-junit",
-        "tests/reports/matrix.QySwsQ/php82.xml"
+        "tests/reports/matrix.thtdCm/php82.xml"
       ],
       "counts": {
         "name": "",
-        "tests": "404",
-        "assertions": "1915",
+        "tests": "430",
+        "assertions": "2406",
         "errors": "47",
         "warnings": "0",
-        "failures": "36",
+        "failures": "46",
         "skipped": "0",
-        "time": "6.683711"
+        "time": "8.280974"
       },
       "exit": 2,
       "version_output": "PHP 8.2.30 (cli) (built: Dec 19 2025 07:42:41) (NTS clang 15.0.0)\nCopyright (c) The PHP Group\nZend Engine v4.2.30, Copyright (c) Zend Technologies\n    with Zend OPcache v8.2.30, Copyright (c), by Zend Technologies\n"
@@ -112,17 +112,17 @@
         "-c",
         "phpunit.xml",
         "--log-junit",
-        "tests/reports/matrix.QySwsQ/php83.xml"
+        "tests/reports/matrix.thtdCm/php83.xml"
       ],
       "counts": {
         "name": "",
-        "tests": "404",
-        "assertions": "1915",
+        "tests": "430",
+        "assertions": "2406",
         "errors": "47",
         "warnings": "0",
-        "failures": "36",
+        "failures": "46",
         "skipped": "0",
-        "time": "6.392141"
+        "time": "8.086242"
       },
       "exit": 2,
       "version_output": "PHP 8.3.28 (cli) (built: Nov 20 2025 11:21:23) (NTS clang 15.0.0)\nCopyright (c) The PHP Group\nZend Engine v4.3.28, Copyright (c) Zend Technologies\n    with Zend OPcache v8.3.28, Copyright (c), by Zend Technologies\n"
@@ -137,17 +137,17 @@
         "-c",
         "phpunit.xml",
         "--log-junit",
-        "tests/reports/matrix.QySwsQ/php84.xml"
+        "tests/reports/matrix.thtdCm/php84.xml"
       ],
       "counts": {
         "name": "",
-        "tests": "404",
-        "assertions": "1915",
+        "tests": "430",
+        "assertions": "2406",
         "errors": "47",
         "warnings": "0",
-        "failures": "36",
+        "failures": "46",
         "skipped": "0",
-        "time": "7.356771"
+        "time": "9.194960"
       },
       "exit": 2,
       "version_output": "PHP 8.4.15 (cli) (built: Nov 20 2025 14:28:49) (NTS clang 15.0.0)\nCopyright (c) The PHP Group\nBuilt by Laravel Herd\nZend Engine v4.4.15, Copyright (c) Zend Technologies\n    with Zend OPcache v8.4.15, Copyright (c), by Zend Technologies\n"
@@ -162,17 +162,17 @@
         "-c",
         "phpunit.xml",
         "--log-junit",
-        "tests/reports/matrix.QySwsQ/php85.xml"
+        "tests/reports/matrix.thtdCm/php85.xml"
       ],
       "counts": {
         "name": "",
-        "tests": "404",
-        "assertions": "1915",
+        "tests": "430",
+        "assertions": "2406",
         "errors": "47",
         "warnings": "0",
-        "failures": "36",
+        "failures": "46",
         "skipped": "0",
-        "time": "7.418900"
+        "time": "9.275262"
       },
       "exit": 2,
       "version_output": "PHP 8.5.0 (cli) (built: Nov 20 2025 09:30:23) (NTS clang 15.0.0)\nCopyright (c) The PHP Group\nBuilt by Laravel Herd\nZend Engine v4.5.0, Copyright (c) Zend Technologies\n    with Zend OPcache v8.5.0, Copyright (c), by Zend Technologies\n"
