@@ -28,7 +28,7 @@ foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($sourceDir
     }
     $provenance[$relative] = $digest;
 }
-$withNav = $mode === 'navigation' || $mode === 'legacy-navigation';
+$withNav = in_array($mode, ['navigation', 'navigation-collections', 'legacy-navigation'], true);
 if ($withNav) {
     mkdir($mirror . 'low_widont/Conduit', 0700, true);
     copy($root . '/tests/fixtures/addon/McpNav.php', $mirror . 'low_widont/Conduit/McpNav.php');
@@ -116,8 +116,39 @@ $cases['runtime bridge dispatch matches the actual EE version'] = static functio
     $same('Low\\Widont\\FluxCapacitor\\Bridge\\' . $expected, $reflection->getParentClass()->getName(), 'selected bridge parent');
     $same(substr(APP_VER, 0, 1), $flux->getEEVersion(), 'runtime version');
 };
-if ($mode === 'navigation') {
+if ($mode === 'navigation' || $mode === 'navigation-collections') {
     require $mirror . 'low_widont/Conduit/McpNav.php';
+}
+if ($mode === 'navigation-collections') {
+    $cases['native addon collections preserve empty maps and nested buttons'] = static function () use ($same, $ee) {
+        Low\Widont\Conduit\McpNav::$items = new ArrayObject(['index' => 'Overview']);
+        Low\Widont\Conduit\McpNav::$buttons = new ArrayIterator(['index' => new ArrayIterator([])]);
+        Low\Widont\Conduit\McpNav::$map = new ArrayObject([]);
+        Low\Widont\Conduit\McpNav::$deferred = false;
+        $ee->uri->segments = ['cp', 'addons', 'settings', 'low_widont'];
+        $nav = new Low\Widont\Conduit\McpNav();
+        $same([], $nav->nav_items['index']->buttons, 'empty nested iterator creates no buttons');
+        $same('Overview', $nav->active_title, 'empty map retains the automatic index alias');
+        $same(true, $nav->getActiveItem()->active, 'automatic index header is selected');
+        $same('License', $nav->nav_items['license']->title, 'forced license survives ArrayObject items');
+        $same(['before', 'after'], $nav->events, 'collection lifecycle');
+
+        Low\Widont\Conduit\McpNav::$buttons = new ArrayIterator([]);
+        $nav = new Low\Widont\Conduit\McpNav();
+        $same([], $nav->nav_items['index']->buttons, 'empty outer iterator creates no buttons');
+        $same('Overview', $ee->view->cp_page_title, 'empty outer buttons preserve the breadcrumb title');
+
+        Low\Widont\Conduit\McpNav::$buttons = new ArrayIterator(['index' => new ArrayIterator(['create' => 'New'])]);
+        Low\Widont\Conduit\McpNav::$map = new ArrayObject(['edit' => '']);
+        $ee->uri->segments = ['cp', 'addons', 'settings', 'edit'];
+        $nav = new Low\Widont\Conduit\McpNav();
+        $same('Overview', $nav->active_title, 'empty-string map target normalizes to index');
+        $same(true, $nav->getActiveItem()->active, 'empty-string alias selects the index header');
+        $same('New', $nav->nav_items['index']->buttons[0][0], 'native nested collection button label');
+        $same('/addons/settings/low_widont/create', (string) $nav->nav_items['index']->buttons[0][1], 'native nested collection button destination');
+    };
+}
+if ($mode === 'navigation') {
     $cases['empty defaults and lifecycle'] = static function () use ($same, $sidebar) {
         $nav = new Low\Widont\Conduit\McpNav();
         $same(['before', 'after'], $nav->events, 'hook order');

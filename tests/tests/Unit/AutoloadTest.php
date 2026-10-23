@@ -110,6 +110,11 @@ final class AutoloadTest extends TestCase
             ['stream-permission-only', 'loaded', false],
             ['stream-no-permission-check', 'loaded', true],
             ['stream-no-opcache-api', 'loaded', false],
+            ['stream-no-opcache-api', 'loaded', true],
+            ['fallback-preloaded', 'fallback-preloaded:loaded', false],
+            ['fallback-preloaded', 'fallback-preloaded:loaded', true],
+            ['fallback-preloaded-missing', 'Class at location ', false],
+            ['fallback-preloaded-missing', 'Class at location ', true],
             ['namespace-guards', 'namespace-guards:passed', false],
             ['namespace-guards', 'namespace-guards:passed', true],
             ['missing-archive', 'Add-on PHAR file at location ', true],
@@ -125,6 +130,17 @@ final class AutoloadTest extends TestCase
     public function testFallbackExtractionIsDiagnosticFree(): void
     {
         $this->testNativeLoaderPaths('fallback', 'loaded', false);
+    }
+
+    /**
+     * Reject an unreadable warmed cache through the explicit loader error boundary.
+     *
+     * @group regression
+     * @return void
+     */
+    public function testUnreadableFallbackCacheIsDiagnosticFree(): void
+    {
+        $this->testNativeLoaderPaths('fallback-preloaded-unreadable', 'Class at location ', false);
     }
 
 }

@@ -13,7 +13,7 @@ class McpNav extends \Low\Widont\FluxCapacitor\Conduit\McpNav
     /**
      * Supply an addon navigation configuration or the real parent's empty default.
      *
-     * @return array
+     * @return array|\ArrayObject
      */
     protected function defaultItems()
     {
@@ -23,7 +23,7 @@ class McpNav extends \Low\Widont\FluxCapacitor\Conduit\McpNav
     /**
      * Supply addon buttons or the real parent's empty default.
      *
-     * @return array
+     * @return array|\Traversable
      */
     protected function defaultButtons()
     {
@@ -33,7 +33,7 @@ class McpNav extends \Low\Widont\FluxCapacitor\Conduit\McpNav
     /**
      * Supply addon aliases or the real parent's empty default.
      *
-     * @return array
+     * @return array|\ArrayObject
      */
     protected function defaultActiveMap()
     {

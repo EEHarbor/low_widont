@@ -15,13 +15,20 @@ Coverage remains incomplete. `NATIVE_COVERAGE_CHECKPOINT.json` retains every dec
 - Autoloading exercises namespace rejection, absent archive/class, stream loading, OPcache permission checks enabled/disabled, and an unavailable OPcache configuration API. Process-local flags leave Herd's configuration unchanged.
 - A namespaced observation function exists only in a selected-runtime child and delegates to real OpenSSL. Its plaintext assertions include every payload field, with and without Pro, alongside real ciphertext and footer idempotency. This archive uses a local Pro query result and passes those expectations.
 
+## Further ordinary inputs exercised in the fourth checkpoint
+
+- Add-on callbacks return native ArrayObject items/maps and empty/nonempty ArrayIterator button collections. Exact labels, links, forced licensing, active aliases and lifecycle hooks remain correct. Empty-string alias targets normalize to the index independently of slash aliases.
+- Legacy URL description with the public default selector uses ordinary populated request inputs. A real `D=cp` query now expects the semantic CP flag to be true and remains red because the source tests a copied path prefix instead. Queries without a CP directive are independent false controls; the separate missing-key diagnostic no longer masks this outcome.
+- Legacy settings read/write with no cached table list preserves site-scoped rows. Unfinished queries expose the clone-filter source defect in separate intended-behavior red reads/writes; a native installed-EE query-compiler probe confirms clone state and records exact source hashes, with no SQL execution.
+- A preloaded original archive and an owned cache with verified original class bytes allow the actual loader to continue after removal of the PHAR wrapper. Success and cache miss run with both OPcache modes. The unavailable OPcache configuration API also runs with OPcache enabled and disabled. The wrapper is restored before evidence hashes are read. An actual unreadable cache file remains red at the source include warning. This does not grant coverage to cold extraction that still stops at mkdir diagnostics.
+
 ## Source and fixed-environment blockers
 
 | Source and outcomes | Evidence and boundary |
 | --- | --- |
 | `Base/Pi.php::info`, lines 31–36 | Static `$this` fails at line 30 in all three documented invocation forms. `PI_INFO_BLOCKER.json` retains the probes. |
 | `PersistentCache::set/checkPath`, failure logging and returns | Real filesystem failures emit strict `@fopen`/`@mkdir` diagnostics before these continuations. File/directory collisions and permission shapes stay red; a fabricated helper false return is not credited as IO proof. |
-| Autoload fallback and extraction `go/_removeTmpFiles` | The actual archive repeats `mkdir` on existing directories; nested cleanup calls `rmdir` before recursion. Existing red extraction probes stop at those diagnostics. Later fallback includes, cleanup and return edges cannot be reached through that failed path. |
+| Autoload fallback and extraction `go/_removeTmpFiles` | The actual archive repeats `mkdir` on existing directories; nested cleanup calls `rmdir` before recursion. Cold extraction probes stop at those diagnostics. Later extraction operations cannot be reached through that failed path. Warmed loader continuation is tested separately after preloading the original archive; it does not imply successful extraction. |
 | `Base/Mcp::save_license`, lines 106/116/137 | EE redirects terminate the request. Tests throw at the same terminal boundary, so later source `exit` statements are not credited. |
 | `Base/Upd::update`, catch continuation | A real global exception from an extension escapes the incorrectly namespaced catch and stays red. An invented exception class would not validate the actual EE boundary. |
 | `Bridge/EE2::getBaseURL`, 2.6–2.7.3 workaround | The invalid `=<` operator throws on PHP 8+ and misses the intended branch on PHP 7.4. Real version-selected contexts retain the failure. |
@@ -36,6 +43,7 @@ The source tests above do not waive raw counter gaps. In particular:
 
 - An empty array alone does not establish every foreach outcome. A private direct probe found `Ext::activateExtension` takes `0,3,9` for empty arrays and `0,9` for a native empty ArrayIterator. The final hook vectors exercise both. Other loops consume arrays under actual EE collaborator contracts; a Traversable must not replace an EE result array solely to force a graph edge. Their remaining counters stay unresolved.
 - Bridge cache/CP switches retain direct jump-table edges with zero counters while the same source/runtime/graph has positive fallback-comparison paths for the actual case outcomes. These remain unresolved instrumentation outcomes rather than invented untested cache modes.
+- The warmed loader now hits all its ordinary source lines. Its `file_exists`-true / `stream_resolve_include_path`-false outcome remains unknown: ordinary unreadable files still resolve to their absolute path and then produce the retained include diagnostic. A race between the two native calls is an integration gap, not a fabricated resolver return.
 - Native graphs can differ when classes are already loaded or OPcache is enabled. Each variant is retained separately; coverage from another variant does not close it.
 - Basic blocks and outgoing outcomes remain distinct. Observed path edges provide positive evidence only for the same source/runtime/compiled graph. Synthetic terminal edges, epilogue markers and zero-exit methods remain explicit unknowns.
 - Xdebug aliases the conditional `Bridge/EE.php` constructors to the first declaration despite reflection-proven later parent selection. Those observations are quarantined; later constructor metrics stay unknown.

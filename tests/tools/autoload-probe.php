@@ -21,7 +21,39 @@ if ($mode === 'fallback') {
 require $root . '/low_widont/autoload.php';
 $loaders = spl_autoload_functions();
 $loader = end($loaders);
+$preloaded = strpos($mode, 'fallback-preloaded') === 0;
+if ($preloaded) {
+    $entry = 'FluxCapacitor/Base/Pi.php';
+    $bytes = file_get_contents('phar://' . $root . '/low_widont/low_widont.phar/' . $entry);
+    $cached = $temporaryRoot . '/pharextract/low_widont/' . $entry;
+    mkdir(dirname($cached), 0700, true);
+    if ($mode !== 'fallback-preloaded-missing') {
+        if (file_put_contents($cached, $bytes) !== strlen($bytes) || hash_file('sha256', $cached) !== hash('sha256', $bytes)) {
+            throw new RuntimeException('Preloaded fallback cache differs from the shipped archive.');
+        }
+    }
+    if ($mode === 'fallback-preloaded-unreadable') {
+        chmod($cached, 0000);
+        if (is_readable($cached)) {
+            throw new RuntimeException('The selected user cannot exercise an unreadable cache file.');
+        }
+    }
+    require $root . '/low_widont/low_widont.phar';
+    if (!stream_wrapper_unregister('phar')) {
+        throw new RuntimeException('Cannot select the warmed fallback loader.');
+    }
+}
 try {
+    if ($preloaded) {
+        if (in_array('phar', stream_get_wrappers(), true) || !class_exists('Low\\Widont\\FluxCapacitor\\Base\\Pi')) {
+            throw new RuntimeException('The warmed loader did not load from the owned extraction cache.');
+        }
+        $reflection = new ReflectionClass('Low\\Widont\\FluxCapacitor\\Base\\Pi');
+        if ($reflection->getFileName() !== $cached || hash_file('sha256', $reflection->getFileName()) !== hash('sha256', $bytes)) {
+            throw new RuntimeException('The warmed loader loaded a different class file.');
+        }
+        echo 'fallback-preloaded:loaded';
+    }
     if ($mode === 'namespace-guards') {
         if ($loader('Other\\FluxCapacitor\\ClassName') !== null || $loader('Low\\Widont\\AddonClass') !== null) {
             throw new RuntimeException('The namespace guard returned an unexpected result.');
@@ -59,4 +91,8 @@ try {
         throw $exception;
     }
     echo $exception->getMessage();
+} finally {
+    if ($preloaded && !stream_wrapper_restore('phar')) {
+        throw new RuntimeException('Cannot restore the native PHAR wrapper for evidence hashing.');
+    }
 }

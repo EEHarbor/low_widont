@@ -288,6 +288,117 @@ final class LegacyBridgeTest extends TestCase
     }
 
     /**
+     * Identify a normal legacy CP directive when no selector is requested.
+     *
+     * @group regression
+     * @return void
+     */
+    public function testLegacyQueryInformationWithDefaultSelector(): void
+    {
+        $_SERVER['QUERY_STRING'] = 'D=cp&module=low_widont';
+        $_GET = ['D' => 'cp', 'module' => 'low_widont'];
+        $this->assertSame([
+            'full' => $_SERVER['QUERY_STRING'],
+            'cp' => true,
+            'segments' => [$_SERVER['QUERY_STRING']],
+            'module' => 'low_widont',
+            'method' => 'index',
+        ], $this->bridge()->getCurrentUrlInfo());
+    }
+
+    /**
+     * Supply non-CP query strings while keeping the required module key.
+     *
+     * @return array
+     */
+    public function nonControlPanelQueries(): array
+    {
+        return [
+            ['module=low_widont', ['module' => 'low_widont']],
+            ['D=page&module=low_widont', ['D' => 'page', 'module' => 'low_widont']],
+        ];
+    }
+
+    /**
+     * Preserve the full default-selector description for ordinary non-CP query shapes.
+     *
+     * @dataProvider nonControlPanelQueries
+     * @param string $query
+     * @param array $parameters
+     * @return void
+     */
+    public function testLegacyQueryInformationOutsideControlPanel($query, array $parameters): void
+    {
+        $_SERVER['QUERY_STRING'] = $query;
+        $_GET = $parameters;
+        $this->assertSame([
+            'full' => $query,
+            'cp' => false,
+            'segments' => [$query],
+            'module' => 'low_widont',
+            'method' => 'index',
+        ], $this->bridge()->getCurrentUrlInfo());
+    }
+
+    /**
+     * Read and persist site settings when the connection has no cached table list.
+     *
+     * @return void
+     */
+    public function testLegacySettingsWithoutCachedTableNames(): void
+    {
+        $other = ['site_id' => 2, 'limit' => 99];
+        $database = new Database(['low_widont_settings' => [['site_id' => 1, 'limit' => 5], $other], 'fieldtypes' => []]);
+        $database->data_cache = [];
+        Environment::$ee->db = $database;
+        $bridge = $this->bridge();
+        $this->assertSame(5, $bridge->getConfig('limit'));
+        $bridge->setConfig('limit', 0);
+        $this->assertSame([['site_id' => 1, 'limit' => 0], $other], $database->tables['low_widont_settings']);
+        $this->assertSame([], $database->data_cache);
+    }
+
+    /**
+     * Read site settings independently of an unfinished query on the shared legacy builder.
+     *
+     * @group regression
+     * @return void
+     */
+    public function testLegacySettingsDoNotInheritPendingReadConditions(): void
+    {
+        $database = new Database(['low_widont_settings' => [['site_id' => 1, 'limit' => 5]],
+            'fieldtypes' => [], 'unrelated' => [['id' => 9, 'limit' => 9], ['id' => 10, 'limit' => 10]]]);
+        $database->data_cache = [];
+        $database->where('limit', 9);
+        Environment::$ee->db = $database;
+        $this->assertSame(5, $this->bridge()->getConfig('limit'));
+        $this->assertSame([['id' => 9, 'limit' => 9]], $database->get('unrelated')->result_array());
+    }
+
+    /**
+     * Update the existing site row without inheriting or consuming another query's predicates.
+     *
+     * @group regression
+     * @return void
+     */
+    public function testLegacySettingsDoNotInheritPendingWriteConditions(): void
+    {
+        $other = ['site_id' => 2, 'limit' => 99];
+        $database = new Database(['low_widont_settings' => [['site_id' => 1, 'limit' => 5], $other],
+            'fieldtypes' => [], 'unrelated' => [['id' => 9, 'limit' => 9], ['id' => 10, 'limit' => 10]]]);
+        $database->data_cache = [];
+        Environment::$ee->db = $database;
+        $bridge = $this->bridge();
+        $this->assertSame(5, $bridge->getConfig('limit'));
+        $database->where('limit', 9);
+        $pending = $database->calls;
+        $bridge->setConfig('limit', 0);
+        $this->assertSame($pending, $database->calls);
+        $this->assertSame([['id' => 9, 'limit' => 9]], $database->get('unrelated')->result_array());
+        $this->assertSame([['site_id' => 1, 'limit' => 0], $other], $database->tables['low_widont_settings']);
+    }
+
+    /**
      * Describe a request without optional legacy CP query keys without suppressed notices.
      *
      * @group regression

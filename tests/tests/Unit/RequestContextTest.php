@@ -28,6 +28,7 @@ final class RequestContextTest extends TestCase
     {
         return [
             ['navigation', '3.9.0'], ['navigation', '4.3.0'], ['navigation', '5.4.0'], ['navigation', '6.4.0'], ['navigation', '7.5.0'],
+            ['navigation-collections', '3.9.0'], ['navigation-collections', '7.5.0'],
             ['legacy', '2.5.5'], ['legacy-existing-directives', '2.5.5'], ['cp', '7.5.0'], ['site', '7.5.0'],
             ['fieldtype-legacy', '3.9.0'], ['fieldtype-installer', '7.5.0'], ['fieldtype-predefined', '7.5.0'],
             ['legacy-navigation', '2.5.5'], ['theme-root', '7.5.0'], ['updater-legacy', '2.5.5'], ['updater-legacy', '3.9.0'],

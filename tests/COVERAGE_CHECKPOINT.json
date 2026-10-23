@@ -4,7 +4,7 @@
   "xdebug": "3.5.3",
   "ee": "7.5.0",
   "archive_sha256": "7889aef835b80b783cf5585eae64c6c4ae88f739a90f141863e2c8e4ff15c986",
-  "report_directory": "/Users/tomjaeger/Sites/add-ons/low_widont/tests/reports/coverage.nfds7X",
+  "report_directory": "/Users/tomjaeger/Sites/add-ons/low_widont/tests/reports/coverage.917XQJ",
   "completion": "incomplete; source regressions and coverage gaps remain",
   "line_files": {
     "low_widont/addon.setup.php": {
@@ -12755,8 +12755,8 @@
       "basic_blocks_hit": 8,
       "basic_block_percent": 100,
       "exits": 10,
-      "exits_proven_hit": 8,
-      "exit_percent": 80,
+      "exits_proven_hit": 9,
+      "exit_percent": 90,
       "blocks": [
         {
           "id": 0,
@@ -12863,8 +12863,8 @@
           "from": 55,
           "to": 64,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 59,
@@ -13473,8 +13473,8 @@
       "basic_blocks_hit": 17,
       "basic_block_percent": 100,
       "exits": 24,
-      "exits_proven_hit": 21,
-      "exit_percent": 87.5,
+      "exits_proven_hit": 22,
+      "exit_percent": 91.67,
       "blocks": [
         {
           "id": 0,
@@ -13646,8 +13646,8 @@
           "from": 12,
           "to": 25,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 22,
@@ -15505,8 +15505,8 @@
       "basic_blocks_hit": 7,
       "basic_block_percent": 100,
       "exits": 10,
-      "exits_proven_hit": 8,
-      "exit_percent": 80,
+      "exits_proven_hit": 9,
+      "exit_percent": 90,
       "blocks": [
         {
           "id": 0,
@@ -15577,8 +15577,8 @@
           "from": 0,
           "to": 18,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 15,

@@ -1,0 +1,50 @@
+[
+  {
+    "command": [
+      "/Users/tomjaeger/Library/Application Support/Herd/bin/php74",
+      "/Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/ee-query-clone-probe.php",
+      "/Users/tomjaeger/Sites/ee_repo_2/system/ee/legacy/database"
+    ],
+    "observation": {
+      "php": "7.4.33",
+      "source_directory": "/Users/tomjaeger/Sites/ee_repo_2/system/ee/legacy/database",
+      "driver_sha256": "d3a9636fd146e67c4dccec5252ccded97bbf598d5b72ab23cce57bd687b149c6",
+      "active_record_sha256": "c81ddf1c3abf5865a6779948938325c08c8a461f65a50bc07a3f7895d789f92e",
+      "mysqli_driver_sha256": "f83c1e3424e930f532961a49fb43311d2dcc4ac6b02170912c4cc983b8a55ddd",
+      "clone_handler": false,
+      "original_conditions": [
+        "`limit` =  9"
+      ],
+      "cloned_conditions": [
+        "`limit` =  9",
+        "AND `site_id` =  1"
+      ],
+      "compiled_sql": "SELECT *\nFROM (low_widont_settings)\nWHERE `limit` =  9\nAND `site_id` =  1",
+      "boundary": "Native EE query compilation only; no connection or SQL execution."
+    }
+  },
+  {
+    "command": [
+      "/Users/tomjaeger/Library/Application Support/Herd/bin/php85",
+      "/Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/ee-query-clone-probe.php",
+      "/Users/tomjaeger/Sites/ee_repo_2/system/ee/legacy/database"
+    ],
+    "observation": {
+      "php": "8.5.0",
+      "source_directory": "/Users/tomjaeger/Sites/ee_repo_2/system/ee/legacy/database",
+      "driver_sha256": "d3a9636fd146e67c4dccec5252ccded97bbf598d5b72ab23cce57bd687b149c6",
+      "active_record_sha256": "c81ddf1c3abf5865a6779948938325c08c8a461f65a50bc07a3f7895d789f92e",
+      "mysqli_driver_sha256": "f83c1e3424e930f532961a49fb43311d2dcc4ac6b02170912c4cc983b8a55ddd",
+      "clone_handler": false,
+      "original_conditions": [
+        "`limit` =  9"
+      ],
+      "cloned_conditions": [
+        "`limit` =  9",
+        "AND `site_id` =  1"
+      ],
+      "compiled_sql": "SELECT *\nFROM (low_widont_settings)\nWHERE `limit` =  9\nAND `site_id` =  1",
+      "boundary": "Native EE query compilation only; no connection or SQL execution."
+    }
+  }
+]
