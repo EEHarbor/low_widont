@@ -38,12 +38,24 @@ putenv('LOW_WIDONT_THIRD_ROOT=' . $mirror);
 putenv('LOW_WIDONT_EE_VERSION=' . $eeVersion);
 if (strpos($mode, 'fieldtype-') === 0) {
     $layout = substr($mode, strlen('fieldtype-'));
-    $application = $temporaryRoot . ($layout === 'installer' ? '/installer/' : '/application/');
-    $actual = $layout === 'installer' ? str_replace('/installer/', '/expressionengine/', $application) : $application;
+    $installerLayout = strpos($layout, 'installer') !== false;
+    $application = $temporaryRoot . ($installerLayout ? '/installer/' : '/application/');
+    $actual = $installerLayout ? str_replace('/installer/', '/expressionengine/', $application) : $application;
     mkdir($actual . 'fieldtypes', 0700, true);
     copy($root . '/tests/fixtures/system/ee/legacy/fieldtypes/EE_Fieldtype.php', $actual . 'fieldtypes/EE_Fieldtype.php');
     putenv('LOW_WIDONT_SYSTEM_ROOT=' . $temporaryRoot . '/empty-system/');
     putenv('LOW_WIDONT_APP_ROOT=' . $application);
+    if ($layout === 'preloaded' || $layout === 'installer-missing') {
+        require $actual . 'fieldtypes/EE_Fieldtype.php';
+        unlink($actual . 'fieldtypes/EE_Fieldtype.php');
+    }
+    if ($layout === 'preloaded-legacy' || $layout === 'preloaded-installer') {
+        require $actual . 'fieldtypes/EE_Fieldtype.php';
+    }
+    if ($layout === 'preloaded-system') {
+        putenv('LOW_WIDONT_SYSTEM_ROOT=' . $root . '/tests/fixtures/system/');
+        require $root . '/tests/fixtures/system/ee/legacy/fieldtypes/EE_Fieldtype.php';
+    }
 }
 if ($mode === 'fieldtype-predefined') {
     putenv('LOW_WIDONT_SYSTEM_ROOT=' . $root . '/tests/fixtures/system/');
@@ -72,6 +84,9 @@ require $root . '/tests/support/Schema.php';
 require $root . '/tests/support/Navigation.php';
 require $root . '/tests/support/Context.php';
 require $root . '/tests/support/LegacyHelpers.php';
+if ($mode === 'license-payload') {
+    require $root . '/tests/support/LicensePayload.php';
+}
 set_error_handler(['LowWidontTests\\Environment', 'diagnostic'], E_ALL);
 $ee = (object) ['config' => new LowWidontTests\ContextConfig(), 'session' => new LowWidontTests\ContextSession(),
     'cp' => new LowWidontTests\ContextCp(), 'uri' => new LowWidontTests\ContextUri(), 'load' => new LowWidontTests\ContextLoader(),
@@ -143,8 +158,21 @@ if ($mode === 'navigation') {
         $mcp = new Low\Widont\FluxCapacitor\Base\Mcp();
         $same(true, $mcp->nav instanceof Low\Widont\Conduit\McpNav, 'CP constructs optional addon navigation');
     };
+    $cases['an empty button collection leaves its existing navigation item intact'] = static function () use ($same, $ee) {
+        Low\Widont\Conduit\McpNav::$items = ['index' => 'Overview'];
+        Low\Widont\Conduit\McpNav::$buttons = ['index' => []];
+        Low\Widont\Conduit\McpNav::$map = [];
+        Low\Widont\Conduit\McpNav::$deferred = false;
+        $ee->uri->segments = ['cp', 'addons', 'settings', 'low_widont'];
+        $nav = new Low\Widont\Conduit\McpNav();
+        $same([], $nav->nav_items['index']->buttons, 'empty collection creates no toolbar buttons');
+        $same('Overview', $nav->active_title, 'active item title survives');
+        $same(true, $nav->getActiveItem()->active, 'active item remains selected');
+        $same(['before', 'after'], $nav->events, 'empty button lifecycle');
+        $same('Overview', $ee->view->cp_page_title, 'breadcrumb title');
+    };
 }
-if (strpos($mode, 'legacy') === 0 && $mode !== 'legacy-cache') {
+if (strpos($mode, 'legacy') === 0 && !in_array($mode, ['legacy-cache', 'legacy-fallback-cache'], true)) {
     $cases['real version dispatch and legacy URL directives'] = static function () use ($same, $ee, $mode) {
         $flux = new Low\Widont\FluxCapacitor\FluxCapacitor();
         $ee->config->values['admin_session_type'] = 'cs';
@@ -261,6 +289,80 @@ if ($mode === 'legacy-cache') {
         $flux->cache('clear');
         $same(false, $ee->cache->get('/low_widont/entry'), 'cleared persistent namespace');
     };
+}
+if ($mode === 'legacy-fallback-cache') {
+    $cases['pre-2.8 default persistent selection uses isolated request storage'] = static function () use ($same, $ee) {
+        $flux = new Low\Widont\FluxCapacitor\FluxCapacitor();
+        $ee->session->cache['unrelated'] = ['keep' => 1];
+        $same(false, $flux->cache('get', 'missing'), 'missing fallback entry');
+        foreach ([0, false, null, '', ['nested' => ['zero' => 0, 'flag' => false]]] as $index => $value) {
+            $key = 'value-' . $index;
+            $same($value, $flux->cache('set', $key, $value), 'fallback set payload');
+            $same($value, $ee->session->cache['low_widont'][$key], 'stored fallback payload');
+            $same($value === null ? false : $value, $flux->cache('get', $key), 'fallback get sentinel');
+        }
+        $same(null, $flux->cache('delete', 'value-0'), 'delete result');
+        $same(false, $flux->cache('get', 'value-0'), 'deleted fallback entry');
+        $same(null, $flux->cache('delete', 'value-0'), 'repeated delete');
+        $same(null, $flux->cache('clear'), 'clear result');
+        $same(false, array_key_exists('low_widont', $ee->session->cache), 'only addon namespace is removed');
+        $same(['keep' => 1], $ee->session->cache['unrelated'], 'unrelated request cache survives');
+    };
+}
+if ($mode === 'script-pagination') {
+    require $root . '/tests/support/ModelQuery.php';
+    require $root . '/tests/support/PaginatingMcp.php';
+    $ee->input = new LowWidontTests\ContextInput();
+    $scriptResults = [];
+    $scriptPaginations = [];
+    LowWidontTests\Environment::$services['CP/Pagination'] = static function ($total) use (&$scriptPaginations) {
+        $pagination = new LowWidontTests\ContextPagination();
+        $scriptPaginations[] = [$total, $pagination];
+        return $pagination;
+    };
+    foreach ([null, ''] as $scriptUrl) {
+        $scriptController = new LowWidontTests\PaginatingMcp();
+        $scriptQuery = new LowWidontTests\ModelQuery(40);
+        // The call must remain at script scope so debug_backtrace has no caller frame.
+        $scriptResult = $scriptController->paginateModel($scriptQuery, $scriptUrl);
+        $scriptResults[] = [$scriptResult === $scriptQuery, $scriptQuery, $scriptController];
+    }
+    $cases['script pagination without a caller uses the empty URL and preserves query isolation'] = static function () use ($same, $scriptResults, $scriptPaginations) {
+        foreach ($scriptResults as $index => $result) {
+            list($identity, $query, $controller) = $result;
+            $same(true, $identity, 'original query identity');
+            $same(25, $query->limit, 'default page size');
+            $same(0, $query->offset, 'first page offset');
+            $same(0, $query->allCalls, 'only cloned query counted all rows');
+            $same('<nav>script</nav>', $controller->data['pagination'], 'rendered controls');
+            $same(40, $scriptPaginations[$index][0], 'total row count');
+            $same([['perPage', 25], ['currentPage', 1], ['displayPageLinks', 5], ['queryStringVariable', 'page'], ['render', '']],
+                $scriptPaginations[$index][1]->calls, 'pagination defaults and empty caller URL');
+        }
+    };
+}
+if ($mode === 'license-payload') {
+    foreach ([['modules' => [], 'pro' => 0], ['modules' => [['module_name' => 'Pro', 'module_version' => '2.0.0']], 'pro' => '2.0.0']] as $vector) {
+        $cases['encrypted licensing payload reports Pro version ' . $vector['pro']] = static function () use ($same, $ee, $vector) {
+            Low\Widont\FluxCapacitor\Conduit\StaticCache::delete('verifyLicenseTable');
+            LowWidontTests\LicensePayload::$captured = [];
+            $ee->db->tables['modules'] = $vector['modules'];
+            $ee->db->tables['eeharbor_licenses'] = [['site_id' => 1, 'addon' => 'Low\\Widont', 'license_key' => 'fixture-key', 'ignore_site' => '0']];
+            $ee->cp->footer_item = [];
+            $_GET = [];
+            $version = new Low\Widont\FluxCapacitor\Conduit\Version();
+            $same(null, $version->check(), 'first footer publication');
+            $same(2, count($ee->cp->footer_item), 'real encrypted pixel and script');
+            $same(1, preg_match('/\?[0-9a-f]{1024}/', $ee->cp->footer_item[0]), 'real OpenSSL ciphertext');
+            $same([
+                'api' => '1', 'l' => 'fixture-key', 'a' => 'low_widont', 'v' => '4.1.1', 'e' => APP_VER,
+                'p' => PHP_VERSION, 'd' => 'https://example.test', 'c' => false, 's' => 1, 'pi' => $vector['pro'],
+                'pl' => 0, 'lc' => Low\Widont\FluxCapacitor\FluxCapacitor::L,
+            ], LowWidontTests\LicensePayload::$captured[0], 'actual plaintext passed to OpenSSL');
+            $same(true, $version->check(), 'duplicate footer marker is retained');
+            $same(2, count($ee->cp->footer_item), 'footer stays idempotent');
+        };
+    }
 }
 if ($mode === 'legacy-navigation') {
     $cases['shared navigation delegates to the legacy right navigation API'] = static function () use ($same, $ee, $mirror) {

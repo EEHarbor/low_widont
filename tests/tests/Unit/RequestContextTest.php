@@ -31,6 +31,9 @@ final class RequestContextTest extends TestCase
             ['legacy', '2.5.5'], ['legacy-existing-directives', '2.5.5'], ['cp', '7.5.0'], ['site', '7.5.0'],
             ['fieldtype-legacy', '3.9.0'], ['fieldtype-installer', '7.5.0'], ['fieldtype-predefined', '7.5.0'],
             ['legacy-navigation', '2.5.5'], ['theme-root', '7.5.0'], ['updater-legacy', '2.5.5'], ['updater-legacy', '3.9.0'],
+            ['legacy-fallback-cache', '2.5.5'], ['script-pagination', '7.5.0'], ['license-payload', '7.5.0'],
+            ['fieldtype-preloaded', '7.5.0'], ['fieldtype-installer-missing', '7.5.0'],
+            ['fieldtype-preloaded-system', '7.5.0'], ['fieldtype-preloaded-legacy', '7.5.0'], ['fieldtype-preloaded-installer', '7.5.0'],
         ];
     }
 

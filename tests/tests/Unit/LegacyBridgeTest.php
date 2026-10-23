@@ -184,6 +184,22 @@ final class LegacyBridgeTest extends TestCase
     }
 
     /**
+     * Resolve the public default-options call without diagnostics when EE supplies an offset.
+     *
+     * @group regression
+     * @return void
+     */
+    public function testOffsetInputIsSafeWithDefaultPageOptions(): void
+    {
+        $input = $this->getMockBuilder(\stdClass::class)->addMethods(['get'])->getMock();
+        $input->method('get')->willReturnCallback(static function ($name, $clean) {
+            return $name === 'per_page' ? '50' : false;
+        });
+        Environment::$ee->input = $input;
+        $this->assertIsNumeric($this->bridge()->getCurrentPage());
+    }
+
+    /**
      * Merge and persist legacy settings through a cloned connection without losing writes.
      *
      * @return void

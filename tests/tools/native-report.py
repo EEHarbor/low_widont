@@ -30,7 +30,7 @@ for report in sorted(run.rglob('*.json')):
     if 'source' not in raw:
         continue
     report_id = str(report.relative_to(run))
-    if raw.get('flags') != 7:
+    if type(raw.get('flags')) is not int or raw['flags'] != 7:
         raise SystemExit('Missing or incompatible native instrumentation flags: ' + report_id)
     if raw.get('archive_sha256', inventory['archive_sha256']) != inventory['archive_sha256']:
         raise SystemExit('Archive provenance mismatch: ' + report_id)
@@ -57,7 +57,11 @@ for report in sorted(run.rglob('*.json')):
                 match = re.search(r':(\d+)-\d+}', function)
                 short_name = '{closure@' + match.group(1) + '}' if match else function
             declarations = inventory['files'][unit]['functions_including_magic_and_closures']
-            if unit.endswith('/Bridge/EE.php') and short_name == '__construct' and raw.get('dispatch'):
+            if unit.endswith('/Bridge/EE.php') and short_name == '__construct':
+                if not raw.get('dispatch'):
+                    ambiguous_graphs.append(dict(report=report_id, function=function, raw_start=start,
+                                                 reason='Conditional constructor lacks runtime dispatch provenance'))
+                    continue
                 actual_start = raw['dispatch']['constructor_start_line']
                 actual = [method for method in declarations if method['line'] == actual_start]
                 if len(actual) != 1 or not actual[0]['line'] <= start <= actual[0]['end_line']:

@@ -136,13 +136,15 @@ final class BaseClassesTest extends TestCase
     /**
      * Reset malformed settings, infer default hooks and update installed versions.
      *
+     * @dataProvider activationHookCollections
+     * @param array|\Traversable $hooks
      * @return void
      */
-    public function testExtensionActivationAndAliases(): void
+    public function testExtensionActivationAndAliases($hooks): void
     {
         $extension = new Ext();
         $extension->settings = null;
-        $extension->hooks = ['entry_saved', 'entry_deleted'];
+        $extension->hooks = $hooks;
         $this->assertTrue($extension->activate_extension());
         $this->assertSame([], $extension->settings);
         $this->assertCount(2, Environment::$ee->db->tables['extensions']);
@@ -153,6 +155,50 @@ final class BaseClassesTest extends TestCase
         $this->assertCount(2, Environment::$ee->db->tables['extensions']);
         $this->assertTrue($extension->disable_extension());
         $this->assertSame([], Environment::$ee->db->tables['extensions']);
+    }
+
+    /**
+     * Supply ordinary array and native iterator hook lists with stable registration order.
+     *
+     * @return array
+     */
+    public function activationHookCollections(): array
+    {
+        $hooks = ['entry_saved', 'entry_deleted'];
+        return [[$hooks], [new \ArrayIterator($hooks)]];
+    }
+
+    /**
+     * Update only this extension's version when it declares no registration hooks.
+     *
+     * @dataProvider emptyHookCollections
+     * @param array|\Traversable $hooks
+     * @return void
+     */
+    public function testEmptyHooksDoNotCreateRegistrations($hooks): void
+    {
+        $extension = new Ext();
+        $extension->hooks = $hooks;
+        Environment::$ee->db->tables['extensions'] = [
+            ['class' => Ext::class, 'version' => '1.0.0'],
+            ['class' => 'Other_ext', 'version' => '2.0.0'],
+        ];
+        $this->assertTrue($extension->activateExtension());
+        $this->assertSame([
+            ['class' => Ext::class, 'version' => '4.1.1'],
+            ['class' => 'Other_ext', 'version' => '2.0.0'],
+        ], Environment::$ee->db->tables['extensions']);
+        $this->assertSame(['update'], array_column(Environment::$ee->db->calls, 0));
+    }
+
+    /**
+     * Supply native empty collections accepted by the public hook iteration boundary.
+     *
+     * @return array
+     */
+    public function emptyHookCollections(): array
+    {
+        return [[[]], [new \ArrayIterator([])]];
     }
 
     /**

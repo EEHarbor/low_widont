@@ -347,6 +347,31 @@ final class ModernBridgeTest extends TestCase
     }
 
     /**
+     * Defer a closable success alert when callers omit all optional message arguments.
+     *
+     * @dataProvider bridges
+     * @param string $version
+     * @return void
+     */
+    public function testDefaultFlashAlertHasNoExtraCallbacks($version): void
+    {
+        $calls = [];
+        $methods = ['asSuccess', 'withTitle', 'addToBody', 'canClose', 'defer'];
+        $alert = $this->getMockBuilder(\stdClass::class)->addMethods($methods)->getMock();
+        foreach ($methods as $method) {
+            $alert->method($method)->willReturnCallback(static function (...$arguments) use (&$calls, $method, $alert) {
+                $calls[] = array_merge([$method], $arguments);
+                return $alert;
+            });
+        }
+        $service = $this->getMockBuilder(\stdClass::class)->addMethods(['make', 'makeInline'])->getMock();
+        $service->expects($this->once())->method($version === 'EE3' ? 'make' : 'makeInline')->with('')->willReturn($alert);
+        Environment::$services['CP/Alert'] = $service;
+        $this->bridge($version)->flashData();
+        $this->assertSame([['asSuccess'], ['withTitle', ''], ['addToBody', ''], ['canClose'], ['defer']], $calls);
+    }
+
+    /**
      * Supply bridges using the modern parser and formatting service contracts.
      *
      * @return array

@@ -45,3 +45,5 @@ The native runner preserves failed-test coverage and 22 separate EE2–EE7 reque
 ```
 
 `STATUS.md` records matrix results, confirmed source defects, incomplete coverage and publication evidence. This checkpoint is not a full-coverage milestone.
+
+`REMAINING_COVERAGE.md` records ordinary vectors exercised and the precise source, terminal, runtime/platform and instrumentation boundaries still open. `REMAINING_COVERAGE.json` indexes unresolved line/node-edge observations without granting completion. The isolated license-payload request observes plaintext at a namespaced seam and delegates to real OpenSSL; its payload and ciphertext assertions run only in the selected-runtime child. Preloaded fieldtype and OPcache capability/permission variations use owned mirrors and process-local settings.

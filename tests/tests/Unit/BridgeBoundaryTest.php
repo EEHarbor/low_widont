@@ -68,6 +68,30 @@ final class BridgeBoundaryTest extends TestCase
     }
 
     /**
+     * Load addon metadata when a Structure table contains no rows for the active site.
+     *
+     * @dataProvider settingsBridges
+     * @param string $version
+     * @return void
+     */
+    public function testStructureSettingsForAnEmptySite($version): void
+    {
+        $other = ['site_id' => 2, 'var' => 'limit', 'var_value' => '99'];
+        $database = new Database(['structure_settings' => [$other], 'fieldtypes' => []]);
+        Environment::$services['db'] = static function () use ($database) { return $database->newQuery(); };
+        Environment::$ee->db = $database;
+        Environment::$ee->config = $this->getMockBuilder(\stdClass::class)->addMethods(['item'])->getMock();
+        Environment::$ee->config->method('item')->with('site_id')->willReturn(1);
+        $settings = $this->bridge($version, 'structure')->getSettings(true);
+        $this->assertSame('4.1.1', $settings['version']);
+        $this->assertArrayNotHasKey('limit', $settings);
+        $this->assertSame([$other], $database->tables['structure_settings']);
+        $this->assertSame([], array_values(array_filter($database->calls, static function ($call) {
+            return in_array($call[0], ['insert', 'update', 'delete'], true);
+        })));
+    }
+
+    /**
      * Keep request settings isolated between separately identified bridge instances.
      *
      * @group regression

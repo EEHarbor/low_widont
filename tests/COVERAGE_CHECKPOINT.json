@@ -4,7 +4,7 @@
   "xdebug": "3.5.3",
   "ee": "7.5.0",
   "archive_sha256": "7889aef835b80b783cf5585eae64c6c4ae88f739a90f141863e2c8e4ff15c986",
-  "report_directory": "/Users/tomjaeger/Sites/add-ons/low_widont/tests/reports/coverage.Xu8uh3",
+  "report_directory": "/Users/tomjaeger/Sites/add-ons/low_widont/tests/reports/coverage.nfds7X",
   "completion": "incomplete; source regressions and coverage gaps remain",
   "line_files": {
     "low_widont/addon.setup.php": {
@@ -8914,8 +8914,8 @@
       "basic_blocks_hit": 4,
       "basic_block_percent": 100,
       "exits": 5,
-      "exits_proven_hit": 4,
-      "exit_percent": 80,
+      "exits_proven_hit": 5,
+      "exit_percent": 100,
       "blocks": [
         {
           "id": 0,
@@ -8962,8 +8962,8 @@
           "from": 0,
           "to": 9,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 3,
@@ -15814,8 +15814,8 @@
       "basic_blocks_hit": 13,
       "basic_block_percent": 100,
       "exits": 19,
-      "exits_proven_hit": 0,
-      "exit_percent": 0,
+      "exits_proven_hit": 7,
+      "exit_percent": 36.84,
       "blocks": [
         {
           "id": 0,
@@ -15927,8 +15927,8 @@
           "from": 0,
           "to": 15,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 0,
@@ -15941,8 +15941,8 @@
           "from": 15,
           "to": 17,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 17,
@@ -15955,8 +15955,8 @@
           "from": 17,
           "to": 22,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 18,
@@ -15976,8 +15976,8 @@
           "from": 22,
           "to": 29,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 25,
@@ -15990,15 +15990,15 @@
           "from": 29,
           "to": 32,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 32,
           "to": 44,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 32,
@@ -16018,8 +16018,8 @@
           "from": 44,
           "to": 55,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 45,
@@ -19827,8 +19827,8 @@
       "basic_blocks_hit": 13,
       "basic_block_percent": 100,
       "exits": 19,
-      "exits_proven_hit": 0,
-      "exit_percent": 0,
+      "exits_proven_hit": 7,
+      "exit_percent": 36.84,
       "blocks": [
         {
           "id": 0,
@@ -19940,8 +19940,8 @@
           "from": 0,
           "to": 15,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 0,
@@ -19954,8 +19954,8 @@
           "from": 15,
           "to": 17,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 17,
@@ -19968,8 +19968,8 @@
           "from": 17,
           "to": 22,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 18,
@@ -19989,8 +19989,8 @@
           "from": 22,
           "to": 29,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 25,
@@ -20003,15 +20003,15 @@
           "from": 29,
           "to": 32,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 32,
           "to": 44,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 32,
@@ -20031,8 +20031,8 @@
           "from": 44,
           "to": 55,
           "raw_out_hit": 0,
-          "observed_path_hit": false,
-          "proven_hit": false
+          "observed_path_hit": true,
+          "proven_hit": true
         },
         {
           "from": 45,

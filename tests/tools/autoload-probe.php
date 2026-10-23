@@ -22,6 +22,12 @@ require $root . '/low_widont/autoload.php';
 $loaders = spl_autoload_functions();
 $loader = end($loaders);
 try {
+    if ($mode === 'namespace-guards') {
+        if ($loader('Other\\FluxCapacitor\\ClassName') !== null || $loader('Low\\Widont\\AddonClass') !== null) {
+            throw new RuntimeException('The namespace guard returned an unexpected result.');
+        }
+        echo 'namespace-guards:passed';
+    }
     if ($mode === 'archive-loader') {
         require $root . '/low_widont/low_widont.phar';
         $found = false;
@@ -45,7 +51,7 @@ try {
     if ($mode === 'missing-class') {
         $loader('Low\\Widont\\FluxCapacitor\\MissingClass');
     }
-    if (in_array($mode, ['fallback', 'stream'], true)) {
+    if (in_array($mode, ['fallback', 'stream', 'stream-permission-only', 'stream-no-permission-check', 'stream-no-opcache-api'], true)) {
         echo class_exists('Low\\Widont\\FluxCapacitor\\Base\\Pi') ? 'loaded' : 'missing';
     }
 } catch (Exception $exception) {

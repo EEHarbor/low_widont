@@ -1,108 +1,178 @@
 {
   "command": "./tests/run-matrix.sh",
-  "run": "/Users/tomjaeger/Sites/add-ons/low_widont/tests/reports/matrix.DxrX8z",
+  "run": "tests/reports/matrix.tsZMzh",
   "results": [
     {
       "binary": "/Users/tomjaeger/Library/Application Support/Herd/bin/php74",
+      "command": [
+        "/Users/tomjaeger/Library/Application Support/Herd/bin/php74",
+        "-d",
+        "error_reporting=-1",
+        "/Users/tomjaeger/Sites/add-ons/low_widont/tests/.phpunit/phpunit-9.phar",
+        "-c",
+        "phpunit.xml",
+        "--log-junit",
+        "tests/reports/matrix.tsZMzh/php74.xml"
+      ],
       "counts": {
         "name": "",
-        "tests": "362",
-        "assertions": "1708",
-        "errors": "42",
+        "tests": "390",
+        "assertions": "1877",
+        "errors": "43",
         "warnings": "0",
         "failures": "32",
         "skipped": "0",
-        "time": "4.061089"
+        "time": "9.113156"
       },
       "exit": 2,
       "version_output": "PHP 7.4.33 (cli) (built: Dec 13 2023 21:52:05) ( NTS )\nCopyright (c) The PHP Group\nZend Engine v3.4.0, Copyright (c) Zend Technologies\n"
     },
     {
       "binary": "/Users/tomjaeger/Library/Application Support/Herd/bin/php80",
+      "command": [
+        "/Users/tomjaeger/Library/Application Support/Herd/bin/php80",
+        "-d",
+        "error_reporting=-1",
+        "/Users/tomjaeger/Sites/add-ons/low_widont/tests/.phpunit/phpunit-9.phar",
+        "-c",
+        "phpunit.xml",
+        "--log-junit",
+        "tests/reports/matrix.tsZMzh/php80.xml"
+      ],
       "counts": {
         "name": "",
-        "tests": "362",
-        "assertions": "1700",
-        "errors": "44",
+        "tests": "390",
+        "assertions": "1869",
+        "errors": "45",
         "warnings": "0",
         "failures": "33",
         "skipped": "0",
-        "time": "4.137867"
+        "time": "5.684319"
       },
       "exit": 2,
       "version_output": "PHP 8.0.30 (cli) (built: Dec 21 2023 08:22:38) ( NTS )\nCopyright (c) The PHP Group\nZend Engine v4.0.30, Copyright (c) Zend Technologies\n    with Zend OPcache v8.0.30, Copyright (c), by Zend Technologies\n"
     },
     {
       "binary": "/Users/tomjaeger/Library/Application Support/Herd/bin/php81",
+      "command": [
+        "/Users/tomjaeger/Library/Application Support/Herd/bin/php81",
+        "-d",
+        "error_reporting=-1",
+        "/Users/tomjaeger/Sites/add-ons/low_widont/tests/.phpunit/phpunit-9.phar",
+        "-c",
+        "phpunit.xml",
+        "--log-junit",
+        "tests/reports/matrix.tsZMzh/php81.xml"
+      ],
       "counts": {
         "name": "",
-        "tests": "362",
-        "assertions": "1700",
-        "errors": "44",
+        "tests": "390",
+        "assertions": "1869",
+        "errors": "45",
         "warnings": "0",
         "failures": "33",
         "skipped": "0",
-        "time": "4.894557"
+        "time": "6.109030"
       },
       "exit": 2,
       "version_output": "PHP 8.1.33 (cli) (built: Jul  4 2025 00:24:36) (NTS)\nCopyright (c) The PHP Group\nZend Engine v4.1.33, Copyright (c) Zend Technologies\n    with Zend OPcache v8.1.33, Copyright (c), by Zend Technologies\n"
     },
     {
       "binary": "/Users/tomjaeger/Library/Application Support/Herd/bin/php82",
+      "command": [
+        "/Users/tomjaeger/Library/Application Support/Herd/bin/php82",
+        "-d",
+        "error_reporting=-1",
+        "/Users/tomjaeger/Sites/add-ons/low_widont/tests/.phpunit/phpunit-9.phar",
+        "-c",
+        "phpunit.xml",
+        "--log-junit",
+        "tests/reports/matrix.tsZMzh/php82.xml"
+      ],
       "counts": {
         "name": "",
-        "tests": "362",
-        "assertions": "1694",
-        "errors": "45",
+        "tests": "390",
+        "assertions": "1863",
+        "errors": "46",
         "warnings": "0",
         "failures": "33",
         "skipped": "0",
-        "time": "4.846281"
+        "time": "6.031631"
       },
       "exit": 2,
       "version_output": "PHP 8.2.30 (cli) (built: Dec 19 2025 07:42:41) (NTS clang 15.0.0)\nCopyright (c) The PHP Group\nZend Engine v4.2.30, Copyright (c) Zend Technologies\n    with Zend OPcache v8.2.30, Copyright (c), by Zend Technologies\n"
     },
     {
       "binary": "/Users/tomjaeger/Library/Application Support/Herd/bin/php83",
+      "command": [
+        "/Users/tomjaeger/Library/Application Support/Herd/bin/php83",
+        "-d",
+        "error_reporting=-1",
+        "/Users/tomjaeger/Sites/add-ons/low_widont/tests/.phpunit/phpunit-9.phar",
+        "-c",
+        "phpunit.xml",
+        "--log-junit",
+        "tests/reports/matrix.tsZMzh/php83.xml"
+      ],
       "counts": {
         "name": "",
-        "tests": "362",
-        "assertions": "1694",
-        "errors": "45",
+        "tests": "390",
+        "assertions": "1863",
+        "errors": "46",
         "warnings": "0",
         "failures": "33",
         "skipped": "0",
-        "time": "4.677416"
+        "time": "5.963276"
       },
       "exit": 2,
       "version_output": "PHP 8.3.28 (cli) (built: Nov 20 2025 11:21:23) (NTS clang 15.0.0)\nCopyright (c) The PHP Group\nZend Engine v4.3.28, Copyright (c) Zend Technologies\n    with Zend OPcache v8.3.28, Copyright (c), by Zend Technologies\n"
     },
     {
       "binary": "/Users/tomjaeger/Library/Application Support/Herd/bin/php84",
+      "command": [
+        "/Users/tomjaeger/Library/Application Support/Herd/bin/php84",
+        "-d",
+        "error_reporting=-1",
+        "/Users/tomjaeger/Sites/add-ons/low_widont/tests/.phpunit/phpunit-9.phar",
+        "-c",
+        "phpunit.xml",
+        "--log-junit",
+        "tests/reports/matrix.tsZMzh/php84.xml"
+      ],
       "counts": {
         "name": "",
-        "tests": "362",
-        "assertions": "1694",
-        "errors": "45",
+        "tests": "390",
+        "assertions": "1863",
+        "errors": "46",
         "warnings": "0",
         "failures": "33",
         "skipped": "0",
-        "time": "5.299026"
+        "time": "6.788706"
       },
       "exit": 2,
       "version_output": "PHP 8.4.15 (cli) (built: Nov 20 2025 14:28:49) (NTS clang 15.0.0)\nCopyright (c) The PHP Group\nBuilt by Laravel Herd\nZend Engine v4.4.15, Copyright (c) Zend Technologies\n    with Zend OPcache v8.4.15, Copyright (c), by Zend Technologies\n"
     },
     {
       "binary": "/Users/tomjaeger/Library/Application Support/Herd/bin/php85",
+      "command": [
+        "/Users/tomjaeger/Library/Application Support/Herd/bin/php85",
+        "-d",
+        "error_reporting=-1",
+        "/Users/tomjaeger/Sites/add-ons/low_widont/tests/.phpunit/phpunit-9.phar",
+        "-c",
+        "phpunit.xml",
+        "--log-junit",
+        "tests/reports/matrix.tsZMzh/php85.xml"
+      ],
       "counts": {
         "name": "",
-        "tests": "362",
-        "assertions": "1694",
-        "errors": "45",
+        "tests": "390",
+        "assertions": "1863",
+        "errors": "46",
         "warnings": "0",
         "failures": "33",
         "skipped": "0",
-        "time": "5.415652"
+        "time": "6.513436"
       },
       "exit": 2,
       "version_output": "PHP 8.5.0 (cli) (built: Nov 20 2025 09:30:23) (NTS clang 15.0.0)\nCopyright (c) The PHP Group\nBuilt by Laravel Herd\nZend Engine v4.5.0, Copyright (c) Zend Technologies\n    with Zend OPcache v8.5.0, Copyright (c), by Zend Technologies\n"

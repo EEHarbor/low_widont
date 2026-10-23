@@ -4,6 +4,88 @@ declare(strict_types=1);
 
 namespace LowWidontTests;
 
+final class ContextInput
+{
+    public $query = [];
+
+    /**
+     * Return already-cleaned fixture input using EE's missing/null false sentinel.
+     *
+     * @param string $name
+     * @param bool $clean
+     * @return mixed
+     */
+    public function get($name, $clean = false)
+    {
+        return isset($this->query[$name]) ? $this->query[$name] : false;
+    }
+}
+
+final class ContextPagination
+{
+    public $calls = [];
+
+    /**
+     * Retain the page-size option at the fluent CP pagination boundary.
+     *
+     * @param int $size
+     * @return self
+     */
+    public function perPage($size)
+    {
+        $this->calls[] = ['perPage', $size];
+        return $this;
+    }
+
+    /**
+     * Retain the selected page without changing the caller's model query.
+     *
+     * @param int $page
+     * @return self
+     */
+    public function currentPage($page)
+    {
+        $this->calls[] = ['currentPage', $page];
+        return $this;
+    }
+
+    /**
+     * Retain the requested number of visible page links.
+     *
+     * @param int $count
+     * @return self
+     */
+    public function displayPageLinks($count)
+    {
+        $this->calls[] = ['displayPageLinks', $count];
+        return $this;
+    }
+
+    /**
+     * Retain the query parameter selected for generated page links.
+     *
+     * @param string $name
+     * @return self
+     */
+    public function queryStringVariable($name)
+    {
+        $this->calls[] = ['queryStringVariable', $name];
+        return $this;
+    }
+
+    /**
+     * Expose the rendering URL while leaving native HTML rendering outside this fixture.
+     *
+     * @param string $url
+     * @return string
+     */
+    public function render($url)
+    {
+        $this->calls[] = ['render', $url];
+        return '<nav>script</nav>';
+    }
+}
+
 final class ContextConfig
 {
     public $values = ['site_id' => 1, 'base_url' => 'https://example.test', 'theme_folder_url' => '/themes/', 'cp_session_type' => 's', 'admin_session_type' => 's'];

@@ -1,0 +1,3398 @@
+{
+  "native_checkpoint_sha256": "dc0e869e5cb60f745d0460d9956c8fceefffa639d824cb82762a7e813e98a6ff",
+  "completion": false,
+  "note": "Only compatible source/runtime/compiled-graph observations are compared. Raw records and counters remain unchanged. Terminal edges and graphs without invoked blocks remain unknown in the native checkpoint. This list is triage, not a coverage waiver.",
+  "graphs": [
+    {
+      "file": "low_widont/autoload.php",
+      "name": "{closure@19}",
+      "line": 19,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "d46aef3f44305fb07a8cdc4e15ac0ee4028eb3951553a3b90e7fa22332a681ba",
+      "reports": [
+        "children/autoload-fallback-opcache0-5d058ac9.json",
+        "children/autoload-missing-archive-opcache0-d7f917a8.json",
+        "children/autoload-missing-class-opcache0-6f6036c4.json",
+        "children/autoload-namespace-guards-opcache0-000ad00b.json",
+        "children/autoload-stream-no-opcache-api-opcache0-5d7bac73.json",
+        "children/autoload-stream-opcache0-c4f3fa6a.json",
+        "children/autoload-stream-permission-only-opcache0-5a4759b9.json",
+        "children/host-bootstrap-8c0c8d12.json",
+        "contexts/cp-7.5.0-ab7ff20f.json",
+        "contexts/fieldtype-installer-7.5.0-b7f8ea89.json",
+        "contexts/fieldtype-installer-missing-7.5.0-59619d8f.json",
+        "contexts/fieldtype-legacy-3.9.0-397f7784.json",
+        "contexts/fieldtype-predefined-7.5.0-dbfedd82.json",
+        "contexts/fieldtype-preloaded-7.5.0-515a1c49.json",
+        "contexts/fieldtype-preloaded-installer-7.5.0-b17acc87.json",
+        "contexts/fieldtype-preloaded-legacy-7.5.0-4147b355.json",
+        "contexts/fieldtype-preloaded-system-7.5.0-b7fa8331.json",
+        "contexts/legacy-2.5.5-6b2615be.json",
+        "contexts/legacy-2.6.0-5f342c1a.json",
+        "contexts/legacy-2.7.3-ac41d3f6.json",
+        "contexts/legacy-2.9.0-3148b1c1.json",
+        "contexts/legacy-cache-2.9.0-5fd7a91f.json",
+        "contexts/legacy-existing-directives-2.5.5-2e955b14.json",
+        "contexts/legacy-fallback-cache-2.5.5-a4cbbcb2.json",
+        "contexts/legacy-navigation-2.5.5-c63fe8c5.json",
+        "contexts/license-payload-7.5.0-4b9c3379.json",
+        "contexts/missing-navigation-base-7.5.0-64e90b34.json",
+        "contexts/navigation-3.9.0-cdc15b6f.json",
+        "contexts/navigation-4.3.0-984fc0d7.json",
+        "contexts/navigation-5.4.0-66d8752a.json",
+        "contexts/navigation-6.4.0-615a69a4.json",
+        "contexts/navigation-7.5.0-dbc11cf4.json",
+        "contexts/script-pagination-7.5.0-28a50ee9.json",
+        "contexts/site-7.5.0-c91ed928.json",
+        "contexts/theme-root-7.5.0-3888fa86.json",
+        "contexts/updater-7.5.0-aad5a394.json",
+        "contexts/updater-legacy-2.5.5-936ee94c.json",
+        "contexts/updater-legacy-3.9.0-f77df8e1.json",
+        "main.json"
+      ],
+      "remaining_lines": [
+        66
+      ],
+      "unobserved_node_edges": [
+        {
+          "source": 73,
+          "target": 79,
+          "source_lines": [
+            57,
+            70
+          ],
+          "target_lines": [
+            70,
+            73
+          ]
+        },
+        {
+          "source": 89,
+          "target": 91,
+          "source_lines": [
+            73,
+            73
+          ],
+          "target_lines": [
+            73,
+            73
+          ]
+        },
+        {
+          "source": 91,
+          "target": 93,
+          "source_lines": [
+            73,
+            73
+          ],
+          "target_lines": [
+            73,
+            73
+          ]
+        },
+        {
+          "source": 91,
+          "target": 97,
+          "source_lines": [
+            73,
+            73
+          ],
+          "target_lines": [
+            73,
+            73
+          ]
+        },
+        {
+          "source": 93,
+          "target": 97,
+          "source_lines": [
+            73,
+            73
+          ],
+          "target_lines": [
+            73,
+            73
+          ]
+        },
+        {
+          "source": 97,
+          "target": 99,
+          "source_lines": [
+            73,
+            73
+          ],
+          "target_lines": [
+            73,
+            73
+          ]
+        },
+        {
+          "source": 114,
+          "target": 120,
+          "source_lines": [
+            81,
+            81
+          ],
+          "target_lines": [
+            81,
+            81
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 25,
+          "target": 2147483645
+        },
+        {
+          "source": 142,
+          "target": 2147483645
+        },
+        {
+          "source": 150,
+          "target": 2147483645
+        },
+        {
+          "source": 157,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/autoload.php",
+      "name": "{closure@19}",
+      "line": 19,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "9993c94c8fc627bae102b56684bec2370cea8a5d03da23c23701817228807bd7",
+      "reports": [
+        "children/autoload-missing-archive-opcache1-92f29ea9.json",
+        "children/autoload-missing-class-opcache1-c37a8655.json",
+        "children/autoload-namespace-guards-opcache1-192299cd.json",
+        "children/autoload-stream-no-permission-check-opcache1-a7ae6895.json",
+        "children/autoload-stream-opcache1-50a5b4bb.json"
+      ],
+      "remaining_lines": [
+        57,
+        63,
+        66
+      ],
+      "unobserved_node_edges": [
+        {
+          "source": 54,
+          "target": 67,
+          "source_lines": [
+            48,
+            48
+          ],
+          "target_lines": [
+            48,
+            48
+          ]
+        },
+        {
+          "source": 67,
+          "target": 75,
+          "source_lines": [
+            48,
+            48
+          ],
+          "target_lines": [
+            57,
+            70
+          ]
+        },
+        {
+          "source": 75,
+          "target": 81,
+          "source_lines": [
+            57,
+            70
+          ],
+          "target_lines": [
+            70,
+            73
+          ]
+        },
+        {
+          "source": 91,
+          "target": 93,
+          "source_lines": [
+            73,
+            73
+          ],
+          "target_lines": [
+            73,
+            73
+          ]
+        },
+        {
+          "source": 93,
+          "target": 95,
+          "source_lines": [
+            73,
+            73
+          ],
+          "target_lines": [
+            73,
+            73
+          ]
+        },
+        {
+          "source": 93,
+          "target": 99,
+          "source_lines": [
+            73,
+            73
+          ],
+          "target_lines": [
+            73,
+            73
+          ]
+        },
+        {
+          "source": 95,
+          "target": 99,
+          "source_lines": [
+            73,
+            73
+          ],
+          "target_lines": [
+            73,
+            73
+          ]
+        },
+        {
+          "source": 99,
+          "target": 101,
+          "source_lines": [
+            73,
+            73
+          ],
+          "target_lines": [
+            73,
+            73
+          ]
+        },
+        {
+          "source": 103,
+          "target": 116,
+          "source_lines": [
+            74,
+            76
+          ],
+          "target_lines": [
+            81,
+            81
+          ]
+        },
+        {
+          "source": 116,
+          "target": 122,
+          "source_lines": [
+            81,
+            81
+          ],
+          "target_lines": [
+            81,
+            81
+          ]
+        },
+        {
+          "source": 122,
+          "target": 127,
+          "source_lines": [
+            81,
+            81
+          ],
+          "target_lines": [
+            81,
+            81
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 27,
+          "target": 2147483645
+        },
+        {
+          "source": 144,
+          "target": 2147483645
+        },
+        {
+          "source": 152,
+          "target": 2147483645
+        },
+        {
+          "source": 159,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Base/Ft.php",
+      "name": "{procedural}",
+      "line": 1,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "272afca796bad0c606160cc2e3598ea29449fe71e6ad483fd1d853d3b8d0bed9",
+      "reports": [
+        "contexts/cp-7.5.0-ab7ff20f.json",
+        "contexts/fieldtype-installer-7.5.0-b7f8ea89.json",
+        "contexts/fieldtype-legacy-3.9.0-397f7784.json",
+        "contexts/fieldtype-predefined-7.5.0-dbfedd82.json",
+        "contexts/legacy-2.5.5-6b2615be.json",
+        "contexts/legacy-2.6.0-5f342c1a.json",
+        "contexts/legacy-2.7.3-ac41d3f6.json",
+        "contexts/legacy-2.9.0-3148b1c1.json",
+        "contexts/legacy-existing-directives-2.5.5-2e955b14.json",
+        "contexts/legacy-navigation-2.5.5-c63fe8c5.json",
+        "contexts/site-7.5.0-c91ed928.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 32,
+          "target": 44,
+          "source_lines": [
+            12,
+            12
+          ],
+          "target_lines": [
+            12,
+            12
+          ]
+        },
+        {
+          "source": 44,
+          "target": 64,
+          "source_lines": [
+            12,
+            12
+          ],
+          "target_lines": [
+            20,
+            20
+          ]
+        },
+        {
+          "source": 45,
+          "target": 64,
+          "source_lines": [
+            13,
+            15
+          ],
+          "target_lines": [
+            20,
+            20
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 87,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Base/Ft.php",
+      "name": "{procedural}",
+      "line": 1,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "7911909c80e99c4c2da9e876c423c4dd68029d7f61c36e0e6c82f0a10b212793",
+      "reports": [
+        "contexts/fieldtype-installer-missing-7.5.0-59619d8f.json",
+        "contexts/fieldtype-preloaded-7.5.0-515a1c49.json",
+        "contexts/fieldtype-preloaded-installer-7.5.0-b17acc87.json",
+        "contexts/fieldtype-preloaded-legacy-7.5.0-4147b355.json",
+        "contexts/fieldtype-preloaded-system-7.5.0-b7fa8331.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 32,
+          "target": 44,
+          "source_lines": [
+            12,
+            12
+          ],
+          "target_lines": [
+            12,
+            12
+          ]
+        },
+        {
+          "source": 64,
+          "target": 87,
+          "source_lines": [
+            20,
+            20
+          ],
+          "target_lines": [
+            37,
+            159
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 87,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Base/Mcp.php",
+      "name": "save_license",
+      "line": 68,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "94263bb8118e7eae0167775911fcfd9eccbe253e92601b696a6e1b10b6941537",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [
+        106,
+        116,
+        137
+      ],
+      "unobserved_node_edges": [
+        {
+          "source": 71,
+          "target": 88,
+          "source_lines": [
+            83,
+            88
+          ],
+          "target_lines": [
+            88,
+            92
+          ]
+        },
+        {
+          "source": 167,
+          "target": 208,
+          "source_lines": [
+            110,
+            110
+          ],
+          "target_lines": [
+            120,
+            120
+          ]
+        },
+        {
+          "source": 212,
+          "target": 222,
+          "source_lines": [
+            121,
+            124
+          ],
+          "target_lines": [
+            124,
+            124
+          ]
+        },
+        {
+          "source": 230,
+          "target": 250,
+          "source_lines": [
+            125,
+            133
+          ],
+          "target_lines": [
+            133,
+            138
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 147,
+          "target": 2147483645
+        },
+        {
+          "source": 171,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Base/Mcp.php",
+      "name": "paginateModel",
+      "line": 140,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "e650f25def704032705f164d435d80f6ccbf0c2dbb4e60171d17aafd560e731d",
+      "reports": [
+        "contexts/script-pagination-7.5.0-28a50ee9.json",
+        "main.json"
+      ],
+      "remaining_lines": [
+        147
+      ],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 20,
+          "source_lines": [
+            140,
+            146
+          ],
+          "target_lines": [
+            147,
+            146
+          ]
+        },
+        {
+          "source": 20,
+          "target": 32,
+          "source_lines": [
+            147,
+            146
+          ],
+          "target_lines": [
+            152,
+            154
+          ]
+        },
+        {
+          "source": 32,
+          "target": 42,
+          "source_lines": [
+            152,
+            154
+          ],
+          "target_lines": [
+            154,
+            154
+          ]
+        },
+        {
+          "source": 42,
+          "target": 46,
+          "source_lines": [
+            154,
+            154
+          ],
+          "target_lines": [
+            154,
+            154
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Base/Pi.php",
+      "name": "info",
+      "line": 27,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "5458d1497fb5a1bce6da27e27cc8ff0573704163098867ca685592692f862bb4",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [
+        31,
+        32,
+        33,
+        34,
+        36
+      ],
+      "unobserved_node_edges": [],
+      "unobserved_terminal_edges": [
+        {
+          "source": 0,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Base/Upd.php",
+      "name": "update",
+      "line": 56,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "d8f7f6c92cc100a8108ab997981856cdf0943dfcbfe06e75d9e4cb9bcd78ed2a",
+      "reports": [
+        "contexts/updater-7.5.0-aad5a394.json",
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 42,
+          "target": 43,
+          "source_lines": [
+            72,
+            72
+          ],
+          "target_lines": [
+            75,
+            76
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 13,
+          "target": 2147483645
+        },
+        {
+          "source": 42,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE2.php",
+      "name": "getBaseURL",
+      "line": 37,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "aff1328f32cebfda1c31ed52bec849c416639def68990e8f772199cc6bac87b3",
+      "reports": [
+        "contexts/legacy-2.5.5-6b2615be.json",
+        "contexts/legacy-2.6.0-5f342c1a.json",
+        "contexts/legacy-2.7.3-ac41d3f6.json",
+        "contexts/legacy-2.9.0-3148b1c1.json",
+        "contexts/legacy-existing-directives-2.5.5-2e955b14.json",
+        "contexts/legacy-navigation-2.5.5-c63fe8c5.json",
+        "main.json"
+      ],
+      "remaining_lines": [
+        49
+      ],
+      "unobserved_node_edges": [
+        {
+          "source": 39,
+          "target": 46,
+          "source_lines": [
+            47,
+            47
+          ],
+          "target_lines": [
+            47,
+            47
+          ]
+        },
+        {
+          "source": 46,
+          "target": 47,
+          "source_lines": [
+            47,
+            47
+          ],
+          "target_lines": [
+            49,
+            47
+          ]
+        },
+        {
+          "source": 47,
+          "target": 52,
+          "source_lines": [
+            49,
+            47
+          ],
+          "target_lines": [
+            54,
+            55
+          ]
+        },
+        {
+          "source": 52,
+          "target": 67,
+          "source_lines": [
+            54,
+            55
+          ],
+          "target_lines": [
+            57,
+            58
+          ]
+        },
+        {
+          "source": 52,
+          "target": 78,
+          "source_lines": [
+            54,
+            55
+          ],
+          "target_lines": [
+            60,
+            61
+          ]
+        },
+        {
+          "source": 52,
+          "target": 89,
+          "source_lines": [
+            54,
+            55
+          ],
+          "target_lines": [
+            61,
+            67
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE2.php",
+      "name": "getNav",
+      "line": 78,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "bce052f95c24612480a7a4cb80b25c6d74f98e53a05d01cf2b0bd63b6b7e3929",
+      "reports": [
+        "contexts/legacy-2.5.5-6b2615be.json",
+        "contexts/legacy-existing-directives-2.5.5-2e955b14.json",
+        "contexts/legacy-navigation-2.5.5-c63fe8c5.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 25,
+          "source_lines": [
+            78,
+            81
+          ],
+          "target_lines": [
+            81,
+            90
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 25,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE2.php",
+      "name": "cpURL",
+      "line": 92,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "dc5b4ec534016fcdf86f4444e6399ddab5c62a64069a1be6dec76d79669f0a7c",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 16,
+          "source_lines": [
+            92,
+            94
+          ],
+          "target_lines": [
+            96,
+            98
+          ]
+        },
+        {
+          "source": 0,
+          "target": 31,
+          "source_lines": [
+            92,
+            94
+          ],
+          "target_lines": [
+            105,
+            106
+          ]
+        },
+        {
+          "source": 0,
+          "target": 43,
+          "source_lines": [
+            92,
+            94
+          ],
+          "target_lines": [
+            112,
+            112
+          ]
+        },
+        {
+          "source": 0,
+          "target": 50,
+          "source_lines": [
+            92,
+            94
+          ],
+          "target_lines": [
+            118,
+            119
+          ]
+        },
+        {
+          "source": 0,
+          "target": 59,
+          "source_lines": [
+            92,
+            94
+          ],
+          "target_lines": [
+            125,
+            126
+          ]
+        },
+        {
+          "source": 0,
+          "target": 63,
+          "source_lines": [
+            92,
+            94
+          ],
+          "target_lines": [
+            129,
+            131
+          ]
+        },
+        {
+          "source": 80,
+          "target": 91,
+          "source_lines": [
+            135,
+            135
+          ],
+          "target_lines": [
+            135,
+            140
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE2.php",
+      "name": "moduleURL",
+      "line": 142,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "405177b8fcbf55d519c71862c16fededf773b8ed350ad9f979a211d0ddd5e595",
+      "reports": [
+        "contexts/legacy-2.5.5-6b2615be.json",
+        "contexts/legacy-existing-directives-2.5.5-2e955b14.json",
+        "contexts/legacy-navigation-2.5.5-c63fe8c5.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 17,
+          "target": 28,
+          "source_lines": [
+            150,
+            150
+          ],
+          "target_lines": [
+            150,
+            155
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE2.php",
+      "name": "setConfig",
+      "line": 221,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "4e72631bf3ae31046e78ed26a0f275a58a2fbd1075a300d65e0cd4540db3a62d",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 18,
+          "source_lines": [
+            221,
+            229
+          ],
+          "target_lines": [
+            234,
+            234
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 83,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE2.php",
+      "name": "cache",
+      "line": 255,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "909af5efb3172afb6db203b27f5d44784a5d77ebb1dcccb747ecf2e41c032ca4",
+      "reports": [
+        "contexts/legacy-cache-2.9.0-5fd7a91f.json",
+        "contexts/legacy-fallback-cache-2.5.5-a4cbbcb2.json",
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 22,
+          "target": 33,
+          "source_lines": [
+            262,
+            262
+          ],
+          "target_lines": [
+            264,
+            264
+          ]
+        },
+        {
+          "source": 22,
+          "target": 79,
+          "source_lines": [
+            262,
+            262
+          ],
+          "target_lines": [
+            274,
+            274
+          ]
+        },
+        {
+          "source": 22,
+          "target": 116,
+          "source_lines": [
+            262,
+            262
+          ],
+          "target_lines": [
+            283,
+            283
+          ]
+        },
+        {
+          "source": 22,
+          "target": 138,
+          "source_lines": [
+            262,
+            262
+          ],
+          "target_lines": [
+            291,
+            291
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 43,
+          "target": 2147483645
+        },
+        {
+          "source": 65,
+          "target": 2147483645
+        },
+        {
+          "source": 75,
+          "target": 2147483645
+        },
+        {
+          "source": 89,
+          "target": 2147483645
+        },
+        {
+          "source": 103,
+          "target": 2147483645
+        },
+        {
+          "source": 138,
+          "target": 2147483645
+        },
+        {
+          "source": 140,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE2.php",
+      "name": "getCurrentUrlInfo",
+      "line": 365,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "d2dab51b9be53b4bad89e82a9e9f80c9d725705fc0d53c05015ce1213dde9864",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 55,
+          "target": 64,
+          "source_lines": [
+            373,
+            375
+          ],
+          "target_lines": [
+            375,
+            375
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 65,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE2.php",
+      "name": "initiateSettings",
+      "line": 420,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "d589ac1fc2722bbbb1475e48fad21f50ed78d2555609f42d4dfe38fc0d49d719",
+      "reports": [
+        "contexts/legacy-2.5.5-6b2615be.json",
+        "contexts/legacy-2.6.0-5f342c1a.json",
+        "contexts/legacy-2.7.3-ac41d3f6.json",
+        "contexts/legacy-2.9.0-3148b1c1.json",
+        "contexts/legacy-existing-directives-2.5.5-2e955b14.json",
+        "contexts/legacy-navigation-2.5.5-c63fe8c5.json",
+        "contexts/updater-legacy-2.5.5-936ee94c.json",
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 12,
+          "target": 25,
+          "source_lines": [
+            430,
+            434
+          ],
+          "target_lines": [
+            438,
+            440
+          ]
+        },
+        {
+          "source": 55,
+          "target": 66,
+          "source_lines": [
+            444,
+            444
+          ],
+          "target_lines": [
+            444,
+            443
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 10,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE3.php",
+      "name": "getNav",
+      "line": 62,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "d1bfeb08bff3ae8fee575b05ea31d55671c47a47db28905519df6bd3289bf961",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 94,
+          "source_lines": [
+            62,
+            69
+          ],
+          "target_lines": [
+            69,
+            95
+          ]
+        },
+        {
+          "source": 61,
+          "target": 76,
+          "source_lines": [
+            84,
+            84
+          ],
+          "target_lines": [
+            84,
+            89
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 133,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE3.php",
+      "name": "cache",
+      "line": 256,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "81aaf12f591b3b298cf784297c1cb6105c6b6e59b60693284b57b2df698d18be",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 15,
+          "source_lines": [
+            256,
+            259
+          ],
+          "target_lines": [
+            261,
+            261
+          ]
+        },
+        {
+          "source": 0,
+          "target": 44,
+          "source_lines": [
+            256,
+            259
+          ],
+          "target_lines": [
+            269,
+            269
+          ]
+        },
+        {
+          "source": 0,
+          "target": 74,
+          "source_lines": [
+            256,
+            259
+          ],
+          "target_lines": [
+            278,
+            278
+          ]
+        },
+        {
+          "source": 0,
+          "target": 88,
+          "source_lines": [
+            256,
+            259
+          ],
+          "target_lines": [
+            282,
+            284
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 17,
+          "target": 2147483645
+        },
+        {
+          "source": 30,
+          "target": 2147483645
+        },
+        {
+          "source": 46,
+          "target": 2147483645
+        },
+        {
+          "source": 60,
+          "target": 2147483645
+        },
+        {
+          "source": 74,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE3.php",
+      "name": "flashData",
+      "line": 293,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "67b0e074fd34915c00396ea4b3d03459280b3e9465d24ebf76286d4dbbc8c76a",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 32,
+          "target": 55,
+          "source_lines": [
+            307,
+            314
+          ],
+          "target_lines": [
+            314,
+            323
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 55,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE3.php",
+      "name": "initiateSettings",
+      "line": 456,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "d4d50118ab7432103a364bbb921f04afce9cb5382d9b34ec600db74d54788835",
+      "reports": [
+        "contexts/fieldtype-legacy-3.9.0-397f7784.json",
+        "contexts/navigation-3.9.0-cdc15b6f.json",
+        "contexts/updater-legacy-3.9.0-f77df8e1.json",
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 54,
+          "target": 65,
+          "source_lines": [
+            481,
+            481
+          ],
+          "target_lines": [
+            481,
+            480
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 10,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE4.php",
+      "name": "getNav",
+      "line": 62,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "d1bfeb08bff3ae8fee575b05ea31d55671c47a47db28905519df6bd3289bf961",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 94,
+          "source_lines": [
+            62,
+            69
+          ],
+          "target_lines": [
+            69,
+            95
+          ]
+        },
+        {
+          "source": 61,
+          "target": 76,
+          "source_lines": [
+            84,
+            84
+          ],
+          "target_lines": [
+            84,
+            89
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 133,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE4.php",
+      "name": "cache",
+      "line": 256,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "81aaf12f591b3b298cf784297c1cb6105c6b6e59b60693284b57b2df698d18be",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 15,
+          "source_lines": [
+            256,
+            259
+          ],
+          "target_lines": [
+            261,
+            261
+          ]
+        },
+        {
+          "source": 0,
+          "target": 44,
+          "source_lines": [
+            256,
+            259
+          ],
+          "target_lines": [
+            269,
+            269
+          ]
+        },
+        {
+          "source": 0,
+          "target": 74,
+          "source_lines": [
+            256,
+            259
+          ],
+          "target_lines": [
+            278,
+            278
+          ]
+        },
+        {
+          "source": 0,
+          "target": 88,
+          "source_lines": [
+            256,
+            259
+          ],
+          "target_lines": [
+            282,
+            284
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 17,
+          "target": 2147483645
+        },
+        {
+          "source": 30,
+          "target": 2147483645
+        },
+        {
+          "source": 46,
+          "target": 2147483645
+        },
+        {
+          "source": 60,
+          "target": 2147483645
+        },
+        {
+          "source": 74,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE4.php",
+      "name": "flashData",
+      "line": 293,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "67b0e074fd34915c00396ea4b3d03459280b3e9465d24ebf76286d4dbbc8c76a",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 32,
+          "target": 55,
+          "source_lines": [
+            307,
+            314
+          ],
+          "target_lines": [
+            314,
+            323
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 55,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE4.php",
+      "name": "initiateSettings",
+      "line": 456,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "d4d50118ab7432103a364bbb921f04afce9cb5382d9b34ec600db74d54788835",
+      "reports": [
+        "contexts/navigation-4.3.0-984fc0d7.json",
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 54,
+          "target": 65,
+          "source_lines": [
+            481,
+            481
+          ],
+          "target_lines": [
+            481,
+            480
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 10,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE5.php",
+      "name": "getNav",
+      "line": 62,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "d1bfeb08bff3ae8fee575b05ea31d55671c47a47db28905519df6bd3289bf961",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 94,
+          "source_lines": [
+            62,
+            69
+          ],
+          "target_lines": [
+            69,
+            95
+          ]
+        },
+        {
+          "source": 61,
+          "target": 76,
+          "source_lines": [
+            84,
+            84
+          ],
+          "target_lines": [
+            84,
+            89
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 133,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE5.php",
+      "name": "cache",
+      "line": 256,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "81aaf12f591b3b298cf784297c1cb6105c6b6e59b60693284b57b2df698d18be",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 15,
+          "source_lines": [
+            256,
+            259
+          ],
+          "target_lines": [
+            261,
+            261
+          ]
+        },
+        {
+          "source": 0,
+          "target": 44,
+          "source_lines": [
+            256,
+            259
+          ],
+          "target_lines": [
+            269,
+            269
+          ]
+        },
+        {
+          "source": 0,
+          "target": 74,
+          "source_lines": [
+            256,
+            259
+          ],
+          "target_lines": [
+            278,
+            278
+          ]
+        },
+        {
+          "source": 0,
+          "target": 88,
+          "source_lines": [
+            256,
+            259
+          ],
+          "target_lines": [
+            282,
+            284
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 17,
+          "target": 2147483645
+        },
+        {
+          "source": 30,
+          "target": 2147483645
+        },
+        {
+          "source": 46,
+          "target": 2147483645
+        },
+        {
+          "source": 60,
+          "target": 2147483645
+        },
+        {
+          "source": 74,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE5.php",
+      "name": "flashData",
+      "line": 293,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "67b0e074fd34915c00396ea4b3d03459280b3e9465d24ebf76286d4dbbc8c76a",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 32,
+          "target": 55,
+          "source_lines": [
+            307,
+            314
+          ],
+          "target_lines": [
+            314,
+            323
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 55,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE5.php",
+      "name": "initiateSettings",
+      "line": 456,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "d4d50118ab7432103a364bbb921f04afce9cb5382d9b34ec600db74d54788835",
+      "reports": [
+        "contexts/cp-7.5.0-ab7ff20f.json",
+        "contexts/fieldtype-installer-7.5.0-b7f8ea89.json",
+        "contexts/fieldtype-installer-missing-7.5.0-59619d8f.json",
+        "contexts/fieldtype-predefined-7.5.0-dbfedd82.json",
+        "contexts/fieldtype-preloaded-7.5.0-515a1c49.json",
+        "contexts/fieldtype-preloaded-installer-7.5.0-b17acc87.json",
+        "contexts/fieldtype-preloaded-legacy-7.5.0-4147b355.json",
+        "contexts/fieldtype-preloaded-system-7.5.0-b7fa8331.json",
+        "contexts/license-payload-7.5.0-4b9c3379.json",
+        "contexts/navigation-5.4.0-66d8752a.json",
+        "contexts/navigation-6.4.0-615a69a4.json",
+        "contexts/navigation-7.5.0-dbc11cf4.json",
+        "contexts/script-pagination-7.5.0-28a50ee9.json",
+        "contexts/site-7.5.0-c91ed928.json",
+        "contexts/updater-7.5.0-aad5a394.json",
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 54,
+          "target": 65,
+          "source_lines": [
+            481,
+            481
+          ],
+          "target_lines": [
+            481,
+            480
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 10,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Conduit/McpNav.php",
+      "name": "__construct",
+      "line": 31,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "88d30e8924f7ad9641a922c6036de4c3818edf347e1388a4181d9fadde9cf166",
+      "reports": [
+        "contexts/legacy-navigation-2.5.5-c63fe8c5.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 48,
+          "source_lines": [
+            33,
+            46
+          ],
+          "target_lines": [
+            46,
+            46
+          ]
+        },
+        {
+          "source": 48,
+          "target": 53,
+          "source_lines": [
+            46,
+            46
+          ],
+          "target_lines": [
+            51,
+            54
+          ]
+        },
+        {
+          "source": 53,
+          "target": 67,
+          "source_lines": [
+            51,
+            54
+          ],
+          "target_lines": [
+            58,
+            58
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 67,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Conduit/McpNav.php",
+      "name": "formatItems",
+      "line": 77,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "3c0c4c9074ce9c507afb6a50ce0747ddd4fb4fac5aaeacbd5a1331b84ff201dd",
+      "reports": [
+        "contexts/legacy-navigation-2.5.5-c63fe8c5.json",
+        "contexts/navigation-3.9.0-cdc15b6f.json",
+        "contexts/navigation-4.3.0-984fc0d7.json",
+        "contexts/navigation-5.4.0-66d8752a.json",
+        "contexts/navigation-6.4.0-615a69a4.json",
+        "contexts/navigation-7.5.0-dbc11cf4.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 21,
+          "source_lines": [
+            80,
+            81
+          ],
+          "target_lines": [
+            81,
+            92
+          ]
+        },
+        {
+          "source": 21,
+          "target": 46,
+          "source_lines": [
+            81,
+            92
+          ],
+          "target_lines": [
+            92,
+            106
+          ]
+        },
+        {
+          "source": 31,
+          "target": 37,
+          "source_lines": [
+            92,
+            93
+          ],
+          "target_lines": [
+            93,
+            93
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 71,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Conduit/McpNav.php",
+      "name": "itemsToNav",
+      "line": 111,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "619e80908d28f086454e48b493a053778ec7ef5b7daa56f672ce034dee2c3f8d",
+      "reports": [
+        "contexts/navigation-3.9.0-cdc15b6f.json",
+        "contexts/navigation-4.3.0-984fc0d7.json",
+        "contexts/navigation-5.4.0-66d8752a.json",
+        "contexts/navigation-6.4.0-615a69a4.json",
+        "contexts/navigation-7.5.0-dbc11cf4.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 36,
+          "source_lines": [
+            114,
+            117
+          ],
+          "target_lines": [
+            117,
+            125
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 36,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Conduit/McpNav.php",
+      "name": "buttonsToItems",
+      "line": 127,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "3f8602c0968d340aaeb53341930b756c2a0172cfec12c76e960ebee4c533e1f1",
+      "reports": [
+        "contexts/navigation-3.9.0-cdc15b6f.json",
+        "contexts/navigation-4.3.0-984fc0d7.json",
+        "contexts/navigation-5.4.0-66d8752a.json",
+        "contexts/navigation-6.4.0-615a69a4.json",
+        "contexts/navigation-7.5.0-dbc11cf4.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 23,
+          "source_lines": [
+            130,
+            130
+          ],
+          "target_lines": [
+            130,
+            135
+          ]
+        },
+        {
+          "source": 4,
+          "target": 21,
+          "source_lines": [
+            130,
+            131
+          ],
+          "target_lines": [
+            131,
+            130
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 23,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Conduit/PersistentCache.php",
+      "name": "set",
+      "line": 55,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "2c9fa9c8ba322a57efdc0cc476657f02b454e70c16a23263182551154d77bd2a",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [
+        67,
+        68,
+        70
+      ],
+      "unobserved_node_edges": [
+        {
+          "source": 9,
+          "target": 35,
+          "source_lines": [
+            61,
+            66
+          ],
+          "target_lines": [
+            67,
+            70
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 7,
+          "target": 2147483645
+        },
+        {
+          "source": 35,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Conduit/PersistentCache.php",
+      "name": "clear",
+      "line": 122,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "f3a5ec6b0e6d2ee4410a166f62aac941d8aea6f777ca8edf02a862bb4173bd8c",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 7,
+          "target": 37,
+          "source_lines": [
+            128,
+            128
+          ],
+          "target_lines": [
+            128,
+            141
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 5,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Conduit/PersistentCache.php",
+      "name": "checkPath",
+      "line": 189,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "a6398e48cd954ab20dfa5b94dec694ced4b531a933725bf24db753deaf40141d",
+      "reports": [
+        "main.json"
+      ],
+      "remaining_lines": [
+        197,
+        198,
+        199,
+        216,
+        217,
+        218
+      ],
+      "unobserved_node_edges": [
+        {
+          "source": 20,
+          "target": 32,
+          "source_lines": [
+            196,
+            196
+          ],
+          "target_lines": [
+            197,
+            199
+          ]
+        },
+        {
+          "source": 96,
+          "target": 108,
+          "source_lines": [
+            215,
+            215
+          ],
+          "target_lines": [
+            216,
+            218
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 32,
+          "target": 2147483645
+        },
+        {
+          "source": 68,
+          "target": 2147483645
+        },
+        {
+          "source": 108,
+          "target": 2147483645
+        },
+        {
+          "source": 144,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/FluxCapacitor/Conduit/Version.php",
+      "name": "check",
+      "line": 129,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "c338a36a23d3f55e6a9afaf39ba0a912c1a81933538a7209b75a0bcd8ebf6f74",
+      "reports": [
+        "contexts/cp-7.5.0-ab7ff20f.json",
+        "contexts/fieldtype-installer-7.5.0-b7f8ea89.json",
+        "contexts/fieldtype-installer-missing-7.5.0-59619d8f.json",
+        "contexts/fieldtype-legacy-3.9.0-397f7784.json",
+        "contexts/fieldtype-predefined-7.5.0-dbfedd82.json",
+        "contexts/fieldtype-preloaded-7.5.0-515a1c49.json",
+        "contexts/fieldtype-preloaded-installer-7.5.0-b17acc87.json",
+        "contexts/fieldtype-preloaded-legacy-7.5.0-4147b355.json",
+        "contexts/fieldtype-preloaded-system-7.5.0-b7fa8331.json",
+        "contexts/legacy-2.5.5-6b2615be.json",
+        "contexts/legacy-2.6.0-5f342c1a.json",
+        "contexts/legacy-2.7.3-ac41d3f6.json",
+        "contexts/legacy-2.9.0-3148b1c1.json",
+        "contexts/legacy-existing-directives-2.5.5-2e955b14.json",
+        "contexts/legacy-navigation-2.5.5-c63fe8c5.json",
+        "contexts/license-payload-7.5.0-4b9c3379.json",
+        "contexts/updater-7.5.0-aad5a394.json",
+        "contexts/updater-legacy-2.5.5-936ee94c.json",
+        "contexts/updater-legacy-3.9.0-f77df8e1.json",
+        "main.json"
+      ],
+      "remaining_lines": [],
+      "unobserved_node_edges": [
+        {
+          "source": 79,
+          "target": 135,
+          "source_lines": [
+            151,
+            167
+          ],
+          "target_lines": [
+            167,
+            180
+          ]
+        },
+        {
+          "source": 135,
+          "target": 152,
+          "source_lines": [
+            167,
+            180
+          ],
+          "target_lines": [
+            183,
+            183
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 131,
+          "target": 2147483645
+        },
+        {
+          "source": 152,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/{stub}",
+      "name": "go",
+      "line": 113,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "36522e617846a2a5afabbd77b796dec61bf854d3056c97612d75cb4f2beaeeb0",
+      "reports": [
+        "children/autoload-fallback-opcache0-5d058ac9.json"
+      ],
+      "remaining_lines": [
+        131,
+        132,
+        139,
+        141,
+        146,
+        148,
+        155,
+        156,
+        157,
+        158,
+        159,
+        161,
+        178,
+        180,
+        181,
+        183,
+        184,
+        189,
+        191,
+        192,
+        194
+      ],
+      "unobserved_node_edges": [
+        {
+          "source": 26,
+          "target": 39,
+          "source_lines": [
+            121,
+            122
+          ],
+          "target_lines": [
+            125,
+            127
+          ]
+        },
+        {
+          "source": 39,
+          "target": 53,
+          "source_lines": [
+            125,
+            127
+          ],
+          "target_lines": [
+            127,
+            127
+          ]
+        },
+        {
+          "source": 53,
+          "target": 26,
+          "source_lines": [
+            127,
+            127
+          ],
+          "target_lines": [
+            121,
+            122
+          ]
+        },
+        {
+          "source": 54,
+          "target": 59,
+          "source_lines": [
+            129,
+            129
+          ],
+          "target_lines": [
+            131,
+            132
+          ]
+        },
+        {
+          "source": 67,
+          "target": 78,
+          "source_lines": [
+            135,
+            138
+          ],
+          "target_lines": [
+            139,
+            139
+          ]
+        },
+        {
+          "source": 78,
+          "target": 84,
+          "source_lines": [
+            139,
+            139
+          ],
+          "target_lines": [
+            141,
+            141
+          ]
+        },
+        {
+          "source": 78,
+          "target": 86,
+          "source_lines": [
+            139,
+            139
+          ],
+          "target_lines": [
+            145,
+            145
+          ]
+        },
+        {
+          "source": 86,
+          "target": 89,
+          "source_lines": [
+            145,
+            145
+          ],
+          "target_lines": [
+            146,
+            146
+          ]
+        },
+        {
+          "source": 89,
+          "target": 95,
+          "source_lines": [
+            146,
+            146
+          ],
+          "target_lines": [
+            148,
+            148
+          ]
+        },
+        {
+          "source": 89,
+          "target": 97,
+          "source_lines": [
+            146,
+            146
+          ],
+          "target_lines": [
+            152,
+            154
+          ]
+        },
+        {
+          "source": 97,
+          "target": 109,
+          "source_lines": [
+            152,
+            154
+          ],
+          "target_lines": [
+            154,
+            154
+          ]
+        },
+        {
+          "source": 109,
+          "target": 110,
+          "source_lines": [
+            154,
+            154
+          ],
+          "target_lines": [
+            155,
+            156
+          ]
+        },
+        {
+          "source": 110,
+          "target": 121,
+          "source_lines": [
+            155,
+            156
+          ],
+          "target_lines": [
+            157,
+            158
+          ]
+        },
+        {
+          "source": 110,
+          "target": 132,
+          "source_lines": [
+            155,
+            156
+          ],
+          "target_lines": [
+            158,
+            158
+          ]
+        },
+        {
+          "source": 121,
+          "target": 132,
+          "source_lines": [
+            157,
+            158
+          ],
+          "target_lines": [
+            158,
+            158
+          ]
+        },
+        {
+          "source": 132,
+          "target": 138,
+          "source_lines": [
+            158,
+            158
+          ],
+          "target_lines": [
+            158,
+            158
+          ]
+        },
+        {
+          "source": 132,
+          "target": 143,
+          "source_lines": [
+            158,
+            158
+          ],
+          "target_lines": [
+            158,
+            158
+          ]
+        },
+        {
+          "source": 138,
+          "target": 143,
+          "source_lines": [
+            158,
+            158
+          ],
+          "target_lines": [
+            158,
+            158
+          ]
+        },
+        {
+          "source": 143,
+          "target": 144,
+          "source_lines": [
+            158,
+            158
+          ],
+          "target_lines": [
+            159,
+            159
+          ]
+        },
+        {
+          "source": 143,
+          "target": 146,
+          "source_lines": [
+            158,
+            158
+          ],
+          "target_lines": [
+            161,
+            164
+          ]
+        },
+        {
+          "source": 146,
+          "target": 148,
+          "source_lines": [
+            161,
+            164
+          ],
+          "target_lines": [
+            164,
+            170
+          ]
+        },
+        {
+          "source": 148,
+          "target": 285,
+          "source_lines": [
+            164,
+            170
+          ],
+          "target_lines": [
+            189,
+            191
+          ]
+        },
+        {
+          "source": 187,
+          "target": 284,
+          "source_lines": [
+            171,
+            175
+          ],
+          "target_lines": [
+            175,
+            189
+          ]
+        },
+        {
+          "source": 217,
+          "target": 284,
+          "source_lines": [
+            175,
+            175
+          ],
+          "target_lines": [
+            175,
+            189
+          ]
+        },
+        {
+          "source": 218,
+          "target": 252,
+          "source_lines": [
+            175,
+            180
+          ],
+          "target_lines": [
+            181,
+            180
+          ]
+        },
+        {
+          "source": 218,
+          "target": 262,
+          "source_lines": [
+            175,
+            180
+          ],
+          "target_lines": [
+            183,
+            175
+          ]
+        },
+        {
+          "source": 252,
+          "target": 283,
+          "source_lines": [
+            181,
+            180
+          ],
+          "target_lines": [
+            175,
+            175
+          ]
+        },
+        {
+          "source": 262,
+          "target": 283,
+          "source_lines": [
+            183,
+            175
+          ],
+          "target_lines": [
+            175,
+            175
+          ]
+        },
+        {
+          "source": 283,
+          "target": 217,
+          "source_lines": [
+            175,
+            175
+          ],
+          "target_lines": [
+            175,
+            175
+          ]
+        },
+        {
+          "source": 284,
+          "target": 285,
+          "source_lines": [
+            175,
+            189
+          ],
+          "target_lines": [
+            189,
+            191
+          ]
+        },
+        {
+          "source": 285,
+          "target": 292,
+          "source_lines": [
+            189,
+            191
+          ],
+          "target_lines": [
+            192,
+            194
+          ]
+        },
+        {
+          "source": 285,
+          "target": 294,
+          "source_lines": [
+            189,
+            191
+          ],
+          "target_lines": [
+            194,
+            194
+          ]
+        },
+        {
+          "source": 292,
+          "target": 294,
+          "source_lines": [
+            192,
+            194
+          ],
+          "target_lines": [
+            194,
+            194
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 59,
+          "target": 2147483645
+        },
+        {
+          "source": 84,
+          "target": 2147483645
+        },
+        {
+          "source": 95,
+          "target": 2147483645
+        },
+        {
+          "source": 144,
+          "target": 2147483645
+        },
+        {
+          "source": 294,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/{stub}",
+      "name": "tmpdir",
+      "line": 196,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "a67aac5b64d35667f2e69801eaf59a75c8e146af01c9300c0c8f4ae4a7817e9f",
+      "reports": [
+        "children/autoload-fallback-opcache0-5d058ac9.json",
+        "main.json"
+      ],
+      "remaining_lines": [
+        199,
+        200,
+        202,
+        203,
+        205
+      ],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 7,
+          "source_lines": [
+            198,
+            198
+          ],
+          "target_lines": [
+            199,
+            199
+          ]
+        },
+        {
+          "source": 7,
+          "target": 12,
+          "source_lines": [
+            199,
+            199
+          ],
+          "target_lines": [
+            199,
+            199
+          ]
+        },
+        {
+          "source": 7,
+          "target": 17,
+          "source_lines": [
+            199,
+            199
+          ],
+          "target_lines": [
+            199,
+            199
+          ]
+        },
+        {
+          "source": 12,
+          "target": 21,
+          "source_lines": [
+            199,
+            199
+          ],
+          "target_lines": [
+            199,
+            199
+          ]
+        },
+        {
+          "source": 17,
+          "target": 21,
+          "source_lines": [
+            199,
+            199
+          ],
+          "target_lines": [
+            199,
+            199
+          ]
+        },
+        {
+          "source": 21,
+          "target": 23,
+          "source_lines": [
+            199,
+            199
+          ],
+          "target_lines": [
+            200,
+            200
+          ]
+        },
+        {
+          "source": 21,
+          "target": 25,
+          "source_lines": [
+            199,
+            199
+          ],
+          "target_lines": [
+            202,
+            202
+          ]
+        },
+        {
+          "source": 25,
+          "target": 30,
+          "source_lines": [
+            202,
+            202
+          ],
+          "target_lines": [
+            202,
+            202
+          ]
+        },
+        {
+          "source": 25,
+          "target": 34,
+          "source_lines": [
+            202,
+            202
+          ],
+          "target_lines": [
+            202,
+            202
+          ]
+        },
+        {
+          "source": 30,
+          "target": 34,
+          "source_lines": [
+            202,
+            202
+          ],
+          "target_lines": [
+            202,
+            202
+          ]
+        },
+        {
+          "source": 34,
+          "target": 35,
+          "source_lines": [
+            202,
+            202
+          ],
+          "target_lines": [
+            203,
+            203
+          ]
+        },
+        {
+          "source": 34,
+          "target": 40,
+          "source_lines": [
+            202,
+            202
+          ],
+          "target_lines": [
+            205,
+            205
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 23,
+          "target": 2147483645
+        },
+        {
+          "source": 35,
+          "target": 2147483645
+        },
+        {
+          "source": 40,
+          "target": 2147483645
+        },
+        {
+          "source": 48,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/{stub}",
+      "name": "_removeTmpFiles",
+      "line": 272,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "54f435c3e4f6e0472aba472a5f42ff7784c6c28d0a00f4cafabcbf004cd4865a",
+      "reports": [
+        "children/autoload-fallback-opcache0-5d058ac9.json",
+        "main.json"
+      ],
+      "remaining_lines": [
+        280
+      ],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 54,
+          "source_lines": [
+            272,
+            276
+          ],
+          "target_lines": [
+            276,
+            288
+          ]
+        },
+        {
+          "source": 12,
+          "target": 53,
+          "source_lines": [
+            277,
+            277
+          ],
+          "target_lines": [
+            276,
+            276
+          ]
+        },
+        {
+          "source": 35,
+          "target": 41,
+          "source_lines": [
+            278,
+            279
+          ],
+          "target_lines": [
+            279,
+            279
+          ]
+        },
+        {
+          "source": 41,
+          "target": 45,
+          "source_lines": [
+            279,
+            279
+          ],
+          "target_lines": [
+            279,
+            279
+          ]
+        },
+        {
+          "source": 45,
+          "target": 46,
+          "source_lines": [
+            279,
+            279
+          ],
+          "target_lines": [
+            280,
+            276
+          ]
+        },
+        {
+          "source": 46,
+          "target": 53,
+          "source_lines": [
+            280,
+            276
+          ],
+          "target_lines": [
+            276,
+            276
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 54,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/low_widont.phar!/{stub}",
+      "name": "{procedural}",
+      "line": 1,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "34ec013b7027a18fc100b4621b6d283f907cf7bf044acaf80dd365dcfb4ae2f6",
+      "reports": [
+        "children/archive-checksum-9df59737.json",
+        "children/archive-size-82d9a995.json",
+        "children/autoload-archive-loader-opcache0-f6b05324.json",
+        "children/autoload-fallback-opcache0-5d058ac9.json",
+        "children/autoload-missing-class-opcache0-6f6036c4.json",
+        "children/autoload-missing-class-opcache1-c37a8655.json",
+        "children/autoload-stream-no-opcache-api-opcache0-5d7bac73.json",
+        "children/autoload-stream-no-permission-check-opcache1-a7ae6895.json",
+        "children/autoload-stream-opcache0-c4f3fa6a.json",
+        "children/autoload-stream-opcache1-50a5b4bb.json",
+        "children/autoload-stream-permission-only-opcache0-5a4759b9.json",
+        "children/host-bootstrap-8c0c8d12.json",
+        "contexts/cp-7.5.0-ab7ff20f.json",
+        "contexts/fieldtype-installer-7.5.0-b7f8ea89.json",
+        "contexts/fieldtype-installer-missing-7.5.0-59619d8f.json",
+        "contexts/fieldtype-legacy-3.9.0-397f7784.json",
+        "contexts/fieldtype-predefined-7.5.0-dbfedd82.json",
+        "contexts/fieldtype-preloaded-7.5.0-515a1c49.json",
+        "contexts/fieldtype-preloaded-installer-7.5.0-b17acc87.json",
+        "contexts/fieldtype-preloaded-legacy-7.5.0-4147b355.json",
+        "contexts/fieldtype-preloaded-system-7.5.0-b7fa8331.json",
+        "contexts/legacy-2.5.5-6b2615be.json",
+        "contexts/legacy-2.6.0-5f342c1a.json",
+        "contexts/legacy-2.7.3-ac41d3f6.json",
+        "contexts/legacy-2.9.0-3148b1c1.json",
+        "contexts/legacy-cache-2.9.0-5fd7a91f.json",
+        "contexts/legacy-existing-directives-2.5.5-2e955b14.json",
+        "contexts/legacy-fallback-cache-2.5.5-a4cbbcb2.json",
+        "contexts/legacy-navigation-2.5.5-c63fe8c5.json",
+        "contexts/license-payload-7.5.0-4b9c3379.json",
+        "contexts/missing-navigation-base-7.5.0-64e90b34.json",
+        "contexts/navigation-3.9.0-cdc15b6f.json",
+        "contexts/navigation-4.3.0-984fc0d7.json",
+        "contexts/navigation-5.4.0-66d8752a.json",
+        "contexts/navigation-6.4.0-615a69a4.json",
+        "contexts/navigation-7.5.0-dbc11cf4.json",
+        "contexts/script-pagination-7.5.0-28a50ee9.json",
+        "contexts/site-7.5.0-c91ed928.json",
+        "contexts/theme-root-7.5.0-3888fa86.json",
+        "contexts/updater-7.5.0-aad5a394.json",
+        "contexts/updater-legacy-2.5.5-936ee94c.json",
+        "contexts/updater-legacy-3.9.0-f77df8e1.json"
+      ],
+      "remaining_lines": [
+        14,
+        15,
+        58,
+        59,
+        61,
+        62,
+        63,
+        64,
+        65,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        74,
+        75,
+        76,
+        77,
+        78,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        87,
+        88,
+        89,
+        90,
+        92,
+        93,
+        94,
+        96,
+        97,
+        98,
+        99,
+        292
+      ],
+      "unobserved_node_edges": [
+        {
+          "source": 42,
+          "target": 47,
+          "source_lines": [
+            13,
+            13
+          ],
+          "target_lines": [
+            13,
+            13
+          ]
+        },
+        {
+          "source": 47,
+          "target": 50,
+          "source_lines": [
+            13,
+            13
+          ],
+          "target_lines": [
+            13,
+            13
+          ]
+        },
+        {
+          "source": 50,
+          "target": 51,
+          "source_lines": [
+            13,
+            13
+          ],
+          "target_lines": [
+            13,
+            13
+          ]
+        },
+        {
+          "source": 51,
+          "target": 55,
+          "source_lines": [
+            13,
+            13
+          ],
+          "target_lines": [
+            13,
+            13
+          ]
+        },
+        {
+          "source": 51,
+          "target": 59,
+          "source_lines": [
+            13,
+            13
+          ],
+          "target_lines": [
+            13,
+            13
+          ]
+        },
+        {
+          "source": 55,
+          "target": 59,
+          "source_lines": [
+            13,
+            13
+          ],
+          "target_lines": [
+            13,
+            13
+          ]
+        },
+        {
+          "source": 59,
+          "target": 60,
+          "source_lines": [
+            13,
+            13
+          ],
+          "target_lines": [
+            13,
+            13
+          ]
+        },
+        {
+          "source": 60,
+          "target": 62,
+          "source_lines": [
+            13,
+            13
+          ],
+          "target_lines": [
+            14,
+            62
+          ]
+        },
+        {
+          "source": 62,
+          "target": 90,
+          "source_lines": [
+            14,
+            62
+          ],
+          "target_lines": [
+            63,
+            65
+          ]
+        },
+        {
+          "source": 62,
+          "target": 99,
+          "source_lines": [
+            14,
+            62
+          ],
+          "target_lines": [
+            67,
+            68
+          ]
+        },
+        {
+          "source": 99,
+          "target": 118,
+          "source_lines": [
+            67,
+            68
+          ],
+          "target_lines": [
+            68,
+            68
+          ]
+        },
+        {
+          "source": 99,
+          "target": 120,
+          "source_lines": [
+            67,
+            68
+          ],
+          "target_lines": [
+            68,
+            68
+          ]
+        },
+        {
+          "source": 118,
+          "target": 120,
+          "source_lines": [
+            68,
+            68
+          ],
+          "target_lines": [
+            68,
+            68
+          ]
+        },
+        {
+          "source": 120,
+          "target": 121,
+          "source_lines": [
+            68,
+            68
+          ],
+          "target_lines": [
+            69,
+            72
+          ]
+        },
+        {
+          "source": 120,
+          "target": 138,
+          "source_lines": [
+            68,
+            68
+          ],
+          "target_lines": [
+            74,
+            75
+          ]
+        },
+        {
+          "source": 138,
+          "target": 149,
+          "source_lines": [
+            74,
+            75
+          ],
+          "target_lines": [
+            75,
+            75
+          ]
+        },
+        {
+          "source": 138,
+          "target": 157,
+          "source_lines": [
+            74,
+            75
+          ],
+          "target_lines": [
+            75,
+            75
+          ]
+        },
+        {
+          "source": 149,
+          "target": 157,
+          "source_lines": [
+            75,
+            75
+          ],
+          "target_lines": [
+            75,
+            75
+          ]
+        },
+        {
+          "source": 157,
+          "target": 158,
+          "source_lines": [
+            75,
+            75
+          ],
+          "target_lines": [
+            76,
+            78
+          ]
+        },
+        {
+          "source": 157,
+          "target": 166,
+          "source_lines": [
+            75,
+            75
+          ],
+          "target_lines": [
+            80,
+            81
+          ]
+        },
+        {
+          "source": 166,
+          "target": 175,
+          "source_lines": [
+            80,
+            81
+          ],
+          "target_lines": [
+            82,
+            85
+          ]
+        },
+        {
+          "source": 166,
+          "target": 193,
+          "source_lines": [
+            80,
+            81
+          ],
+          "target_lines": [
+            87,
+            87
+          ]
+        },
+        {
+          "source": 193,
+          "target": 197,
+          "source_lines": [
+            87,
+            87
+          ],
+          "target_lines": [
+            88,
+            88
+          ]
+        },
+        {
+          "source": 193,
+          "target": 238,
+          "source_lines": [
+            87,
+            87
+          ],
+          "target_lines": [
+            105,
+            292
+          ]
+        },
+        {
+          "source": 197,
+          "target": 202,
+          "source_lines": [
+            88,
+            88
+          ],
+          "target_lines": [
+            89,
+            90
+          ]
+        },
+        {
+          "source": 197,
+          "target": 206,
+          "source_lines": [
+            88,
+            88
+          ],
+          "target_lines": [
+            92,
+            92
+          ]
+        },
+        {
+          "source": 206,
+          "target": 211,
+          "source_lines": [
+            92,
+            92
+          ],
+          "target_lines": [
+            93,
+            94
+          ]
+        },
+        {
+          "source": 206,
+          "target": 217,
+          "source_lines": [
+            92,
+            92
+          ],
+          "target_lines": [
+            96,
+            99
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 16,
+          "target": 2147483645
+        },
+        {
+          "source": 90,
+          "target": 2147483645
+        },
+        {
+          "source": 121,
+          "target": 2147483645
+        },
+        {
+          "source": 158,
+          "target": 2147483645
+        },
+        {
+          "source": 175,
+          "target": 2147483645
+        },
+        {
+          "source": 202,
+          "target": 2147483645
+        },
+        {
+          "source": 211,
+          "target": 2147483645
+        },
+        {
+          "source": 217,
+          "target": 2147483645
+        },
+        {
+          "source": 238,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/pi.low_widont.php",
+      "name": "{procedural}",
+      "line": 1,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "1e45c617a1aaaf5ed710d236c4cb8dcc299dea76ce33c206e9974f938d824469",
+      "reports": [
+        "children/autoload-direct-access-opcache0-f68f74cc.json"
+      ],
+      "remaining_lines": [
+        16,
+        19,
+        70
+      ],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 6,
+          "source_lines": [
+            3,
+            3
+          ],
+          "target_lines": [
+            16,
+            70
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 4,
+          "target": 2147483645
+        },
+        {
+          "source": 6,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    }
+  ]
+}

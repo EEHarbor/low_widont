@@ -68,7 +68,13 @@ final class AutoloadTest extends TestCase
         $environment['TMPDIR'] = $temporaryRoot;
         $command = [PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=1'];
         if ($opcache) {
-            $command = array_merge($command, ['-d', 'opcache.enable_cli=1', '-d', 'opcache.validate_permission=1']);
+            $command = array_merge($command, ['-d', 'opcache.enable_cli=1', '-d', 'opcache.validate_permission=' . ($mode === 'stream-no-permission-check' ? '0' : '1')]);
+        }
+        if ($mode === 'stream-permission-only') {
+            $command = array_merge($command, ['-d', 'opcache.enable_cli=0', '-d', 'opcache.validate_permission=1']);
+        }
+        if ($mode === 'stream-no-opcache-api') {
+            $command = array_merge($command, ['-d', 'disable_functions=opcache_get_configuration']);
         }
         $command = array_merge($command, [$root . '/tests/tools/autoload-probe.php', $mode, $temporaryRoot]);
         try {
@@ -101,6 +107,13 @@ final class AutoloadTest extends TestCase
             ['missing-class', 'Class at location ', false],
             ['stream', 'loaded', false],
             ['stream', 'loaded', true],
+            ['stream-permission-only', 'loaded', false],
+            ['stream-no-permission-check', 'loaded', true],
+            ['stream-no-opcache-api', 'loaded', false],
+            ['namespace-guards', 'namespace-guards:passed', false],
+            ['namespace-guards', 'namespace-guards:passed', true],
+            ['missing-archive', 'Add-on PHAR file at location ', true],
+            ['missing-class', 'Class at location ', true],
         ];
     }
     /**
