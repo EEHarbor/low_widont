@@ -2,6 +2,11 @@
 
 declare(strict_types=1);
 
+error_reporting(E_ALL);
+set_error_handler(static function ($severity, $message, $file, $line) {
+    throw new ErrorException($message, 0, $severity, $file, $line);
+}, E_ALL);
+
 $root = dirname(__DIR__, 2);
 $mode = $argv[1];
 $temporaryRoot = $argv[2];
@@ -15,7 +20,45 @@ if ($mode === 'direct-access') {
     require $root . '/low_widont/pi.low_widont.php';
     exit(1);
 }
-if ($mode === 'fallback') {
+if ($mode === 'plugin-bootstrap') {
+    define('BASEPATH', $root . '/tests/');
+    require $root . '/low_widont/pi.low_widont.php';
+    $plugin = new ReflectionClass('Low_widont');
+    if ($plugin->getFileName() !== $root . '/low_widont/pi.low_widont.php'
+        || $plugin->getParentClass()->getName() !== 'Low\\Widont\\FluxCapacitor\\Base\\Pi'
+        || !class_exists('Low\\Widont\\FluxCapacitor\\Base\\Pi', false)) {
+        throw new RuntimeException('The original plugin did not bootstrap its shipped parent.');
+    }
+    echo 'plugin-bootstrap:loaded';
+    exit(0);
+}
+$sessionFallback = strpos($mode, 'session-fallback-') === 0;
+if ($sessionFallback) {
+    $sessionDirectory = $temporaryRoot . '/sessions';
+    mkdir($sessionDirectory, 0700);
+    $kind = substr($mode, strlen('session-fallback-'));
+    $configured = $sessionDirectory;
+    if ($kind === 'depth') {
+        $configured = '0;' . $sessionDirectory;
+    }
+    if ($kind === 'permissions') {
+        $configured = '0;0600;' . $sessionDirectory;
+    }
+    ini_set('session.save_handler', 'files');
+    ini_set('session.use_cookies', '0');
+    session_cache_limiter('');
+    session_save_path($configured);
+    session_id('low-widont-native-session');
+    if (!session_start() || !session_write_close() || !is_file($sessionDirectory . '/sess_low-widont-native-session')) {
+        throw new RuntimeException('The selected native session save path is not usable.');
+    }
+    LowWidontTests\Evidence::write($temporaryRoot . '/session-native.json', [
+        'kind' => $kind, 'configured' => session_save_path(), 'native_session_file' => true,
+        'temporary_fallback' => $temporaryRoot . '/missing', 'session_directory' => $sessionDirectory,
+    ]);
+    putenv('TMPDIR=' . $temporaryRoot . '/missing');
+}
+if ($mode === 'fallback' || $sessionFallback) {
     stream_wrapper_unregister('phar');
 }
 require $root . '/low_widont/autoload.php';
@@ -83,7 +126,7 @@ try {
     if ($mode === 'missing-class') {
         $loader('Low\\Widont\\FluxCapacitor\\MissingClass');
     }
-    if (in_array($mode, ['fallback', 'stream', 'stream-permission-only', 'stream-no-permission-check', 'stream-no-opcache-api'], true)) {
+    if ($sessionFallback || in_array($mode, ['fallback', 'stream', 'stream-permission-only', 'stream-no-permission-check', 'stream-no-opcache-api'], true)) {
         echo class_exists('Low\\Widont\\FluxCapacitor\\Base\\Pi') ? 'loaded' : 'missing';
     }
 } catch (Exception $exception) {

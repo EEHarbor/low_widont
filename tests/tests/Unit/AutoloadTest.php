@@ -34,6 +34,16 @@ final class AutoloadTest extends TestCase
     }
 
     /**
+     * Load the original plugin before any addon class exists in the selected child runtime.
+     *
+     * @return void
+     */
+    public function testFreshPluginBootstrap(): void
+    {
+        $this->testNativeLoaderPaths('plugin-bootstrap', 'plugin-bootstrap:loaded', false);
+    }
+
+    /**
      * Bootstrap the bridge before APP_VER and ee() exist in a fresh selected runtime.
      *
      * @return void
@@ -82,6 +92,23 @@ final class AutoloadTest extends TestCase
             $output = stream_get_contents($pipes[1]);
             fclose($pipes[1]);
             $exit = proc_close($process);
+            if (strpos($mode, 'session-fallback-') === 0) {
+                $record = json_decode(file_get_contents($temporaryRoot . '/session-native.json'), true, 512, JSON_THROW_ON_ERROR);
+                $kind = substr($mode, strlen('session-fallback-'));
+                $configured = $temporaryRoot . '/sessions';
+                if ($kind === 'depth') {
+                    $configured = '0;' . $configured;
+                }
+                if ($kind === 'permissions') {
+                    $configured = '0;0600;' . $configured;
+                }
+                $this->assertSame([
+                    'kind' => $kind, 'configured' => $configured, 'native_session_file' => true,
+                    'temporary_fallback' => $temporaryRoot . '/missing', 'session_directory' => $temporaryRoot . '/sessions',
+                ], $record);
+                $this->assertFileExists($temporaryRoot . '/sessions/sess_low-widont-native-session');
+                $this->assertDirectoryDoesNotExist($temporaryRoot . '/missing');
+            }
             $this->assertSame(0, $exit, $output);
             $this->assertStringContainsString($expected, $output);
             $this->assertDoesNotMatchRegularExpression('/(?:Deprecated|Warning|Notice|Fatal error):/', $output);
@@ -141,6 +168,29 @@ final class AutoloadTest extends TestCase
     public function testUnreadableFallbackCacheIsDiagnosticFree(): void
     {
         $this->testNativeLoaderPaths('fallback-preloaded-unreadable', 'Class at location ', false);
+    }
+
+    /**
+     * Supply native file-session directory, depth and permission configurations.
+     *
+     * @return array
+     */
+    public function sessionFallbacks(): array
+    {
+        return [['plain'], ['depth'], ['permissions']];
+    }
+
+    /**
+     * Load through every usable native session path when TMPDIR cannot supply a directory.
+     *
+     * @group regression
+     * @dataProvider sessionFallbacks
+     * @param string $kind
+     * @return void
+     */
+    public function testNativeSessionFallbackIsDiagnosticFree($kind): void
+    {
+        $this->testNativeLoaderPaths('session-fallback-' . $kind, 'loaded', false);
     }
 
 }

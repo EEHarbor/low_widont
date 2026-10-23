@@ -1,6 +1,6 @@
 # Low Widont PHPUnit campaign
 
-Status: **incomplete; fifth source-red checkpoint awaiting independent exact-diff review**. Production is immutable, and this checkpoint is not 100% method line/outcome coverage.
+Status: **incomplete; sixth source-red checkpoint awaiting independent exact-diff review**. Production is immutable, and this checkpoint is not 100% method line/outcome coverage.
 
 ## Baseline and scope
 
@@ -12,7 +12,7 @@ git diff --exit-code 3a38b1fb9146daa87ed9f1a83699521ea03091da -- low_widont
 
 `SOURCE_INVENTORY.json` includes four loose PHP files, 22 archive PHP entries and the physical extraction stub: 27 scopes and 260 function/method/closure declarations. Twenty-six declarations are abstract and have no executable body. The inventory now records exact source ranges. Ordinary tests use shipped source/archive bytes; measurement copies and private request mirrors are verified byte-for-byte. Archives are never rebuilt.
 
-The first published checkpoint is `56c52715c7c783dc3afb1c7658a415f6d9097706`, independently approved under exact patch SHA256 `2bd73f71e915fc99b42d592ba8b5aa4256fe4ba839ac0db8aaa0fc53099b91a8`. Its final local/origin parity was `0 0`, with clean status. That approval applies only to the first checkpoint. The current fifth-checkpoint review base is the published fourth-checkpoint audit `c34c5b4ebb232bc05283dcd0c1bccf18ff31aba8`.
+The first published checkpoint is `56c52715c7c783dc3afb1c7658a415f6d9097706`, independently approved under exact patch SHA256 `2bd73f71e915fc99b42d592ba8b5aa4256fe4ba839ac0db8aaa0fc53099b91a8`. Its final local/origin parity was `0 0`, with clean status. That approval applies only to the first checkpoint. The current sixth-checkpoint review base is the published fifth-checkpoint audit `5edca6fa9f050a8ae7a951e6c3678189e50fc96f`.
 
 ## Tooling and EE contracts
 
@@ -24,21 +24,21 @@ Doubles were checked against installed EE in `/Users/tomjaeger/Sites/ee_repo_2`:
 
 ## Complete configured matrix
 
-Command: `./tests/run-matrix.sh`. Fresh reports: `tests/reports/matrix.thtdCm/`. Portable complete logs/JUnit, versions, commands and SHA256 hashes are retained in `tests/evidence/`.
+Command: `./tests/run-matrix.sh`. Fresh reports: `tests/reports/matrix.0j0Icv/`. Portable complete logs/JUnit, versions, commands and SHA256 hashes are retained in `tests/evidence/`.
 
 | PHP | Tests | Assertions | Errors | Failures | Warnings | Skipped | Risky / incomplete |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 7.4.33 | 430 | 2420 | 44 | 45 | 0 | 0 | 0 / 0 |
-| 8.0.30 | 430 | 2412 | 46 | 46 | 0 | 0 | 0 / 0 |
-| 8.1.33 | 430 | 2412 | 46 | 46 | 0 | 0 | 0 / 0 |
-| 8.2.30 | 430 | 2406 | 47 | 46 | 0 | 0 | 0 / 0 |
-| 8.3.28 | 430 | 2406 | 47 | 46 | 0 | 0 | 0 / 0 |
-| 8.4.15 | 430 | 2406 | 47 | 46 | 0 | 0 | 0 / 0 |
-| 8.5.0 | 430 | 2406 | 47 | 46 | 0 | 0 | 0 / 0 |
+| 7.4.33 | 450 | 2584 | 44 | 48 | 0 | 0 | 0 / 0 |
+| 8.0.30 | 450 | 2576 | 46 | 49 | 0 | 0 | 0 / 0 |
+| 8.1.33 | 450 | 2576 | 46 | 49 | 0 | 0 | 0 / 0 |
+| 8.2.30 | 450 | 2570 | 47 | 49 | 0 | 0 | 0 / 0 |
+| 8.3.28 | 450 | 2570 | 47 | 49 | 0 | 0 | 0 / 0 |
+| 8.4.15 | 450 | 2570 | 47 | 49 | 0 | 0 | 0 / 0 |
+| 8.5.0 | 450 | 2570 | 47 | 49 | 0 | 0 | 0 / 0 |
 
-All complete suites exit 2 because unchanged source is red. PHP differences reflect the invalid legacy comparison operator and dynamic property diagnostic, not skipped cases. The full randomized PHP 8.3 run (seed 20261028) reproduces 430 / 2406 / 47 errors / 46 failures. The preceding second checkpoint also had a diagnostic-only non-regression run; it is not a final full-matrix gate. Zero-test selections are rejected.
+All complete suites exit 2 because unchanged source is red. PHP differences reflect the invalid legacy comparison operator and dynamic property diagnostic, not skipped cases. The full randomized PHP 8.3 run (seed 20261029) reproduces 450 / 2570 / 47 errors / 49 failures. The preceding second checkpoint also had a diagnostic-only non-regression run; it is not a final full-matrix gate. Zero-test selections are rejected.
 
-All 20 configured test files were also run individually on PHP 7.4 and 8.5 (40 fresh runs). Their case outcome kinds and exception types match the complete suite with no discovery-order differences. Commands and results are in `evidence/individual-files.json.gz`.
+All 21 configured test files were also run individually on PHP 7.4 and 8.5 (42 fresh runs). Their case outcome kinds and exception types match the complete suite with no discovery-order differences. Commands and results are in `evidence/individual-files.json.gz`.
 
 The published second checkpoint added archive manifest extraction for every actual entry, compression/read-chunk boundaries, all licensing schema/read/write/pixel methods, MCP license forms/saves, updater install/uninstall, fieldtype/channel resolution, modern/legacy navigation and bridge boundaries. Twenty-two native contexts cover EE2–EE7 selection, CP/site requests, optional navigation and extension availability, legacy permissions/cache, theme constants and alternate fieldtype parent layouts. Context failures remain ordinary red assertions while independent cases continue running.
 
@@ -66,14 +66,15 @@ The published second checkpoint added archive manifest extraction for every actu
 18. EE2 settings builders inherit pending predicates when cloned. A pending valid setting-column filter causes a read miss and an attempted extra insert rather than updating the current site. Separate red vectors preserve the unrelated pending query and other-site records. Actual installed EE driver/query-compiler observations retain source hashes and the inherited protected SQL predicates in `evidence/ee-query-clone.json`; no live SQL was executed.
 19. A real unreadable warmed fallback cache file reaches the source include warning at `autoload.php:84` instead of the explicit loader rejection boundary. The red subprocess vector retains the strict diagnostic.
 20. EE2 URL information treats a normal `D=cp&module=low_widont` request as non-CP because it tests the first slash-delimited query segment against `cp`. The full-map intended `cp=true` oracle remains red; absent-D and non-CP query controls pass.
+21. The extraction stub strips only one semicolon prefix from native `session.save_path`. A real files session proves `0;0600;<owned-directory>` usable before source execution, but original fallback reports no temporary directory. Plain and `0;<owned-directory>` controls instead reach the independently retained strict mkdir warning.
 
 ## Coverage and evidence boundaries
 
-Parent measurement command: `./tests/coverage.sh`, explicit Herd PHP 8.2.30 / Xdebug 3.5.3 / EE 7.5.0. Fresh report: `tests/reports/coverage.JuBiNR/`. `COVERAGE_CHECKPOINT.json` contains 27 line scopes, 223 skill method rows and 233 measured method/procedural graphs.
+Parent measurement command: `./tests/coverage.sh`, explicit Herd PHP 8.2.30 / Xdebug 3.5.3 / EE 7.5.0. Fresh report: `tests/reports/coverage.1kILH9/`. `COVERAGE_CHECKPOINT.json` contains 27 line scopes, 223 skill method rows and 233 measured method/procedural graphs.
 
 - Parent Clover: 1685 / 2039 measured lines; 180 / 223 skill rows have 100% lines. These are progress only. The denominator is compiled-graph dependent and differs from the first checkpoint; aggregate totals are not closure proof.
 - Skill branch_percent=null remains unknown even when its helper labels a row at_target.
-- Native command: `./tests/native-coverage.sh`; report `tests/reports/native.g41Na5/`. It executes the complete 430-case suite without PHPUnit's coverage reset/discard behavior and retains 56 separate main/context/terminal-child reports. Extra assertions (2783) validate child coverage units against original source hashes. Every context must retain actual archive graphs; autoload-only or missing reports fail validation.
+- Native command: `./tests/native-coverage.sh`; report `tests/reports/native.ogDHmV/`. It executes the complete 450-case suite without PHPUnit's coverage reset/discard behavior and retains 60 separate main/context/terminal-child reports. Extra assertions (2947) validate child coverage units against original source hashes. Every context must retain actual archive graphs; autoload-only or missing reports fail validation.
 - `NATIVE_COVERAGE_CHECKPOINT.json` has all 260 declarations plus 27 procedural rows. It validates every raw unit/hash/flag and retains each runtime/compiled-graph observation separately. Raw native counters are never merged across incompatible graphs. All 234 executable declarations are behavior-invoked across the normal suite and isolated contexts; this does not establish every exit or line.
 - Xdebug aliases the conditional Bridge/EE.php constructor graphs to the EE2 declaration at line 42 even when ReflectionMethod and actual parent selection prove later source declarations at lines 50/58/66/74/82. Twenty-five such observations are quarantined in ambiguous_graphs, leaving those five constructor metrics unknown. Raw reports preserve both facts.
 - Strict source errors block Pi info continuation, mkdir guard/log return paths, recursive nonempty cleanup and cold fallback extraction continuation. Separate source-warning observations below retain native continuation after recoverable warnings without changing those strict errors or merging their counters. A separately preloaded immutable archive and verified owned cache exercise the loader continuation after the PHAR wrapper is removed, without crediting cold extraction. An actual unreadable cache file remains red at the source include warning. Historical PHP_VERSION_ID < 50306, Windows-only tmpdir logic and archive-global compression/manifest choices cannot change under the mandated runtimes/platform and immutable shipped archive. Failed extraction vectors remain red; unreachable later code is not credited.
@@ -128,3 +129,12 @@ Current gates: `tests/reports/matrix.thtdCm/` across all seven runtimes; full ra
 The Low Variables reviewer independently approved exact fifth-checkpoint replacement SHA256 `6732e6428b6d955687d15813e93d7158f4a3e9dc4fc6c1cddc7a1dfed4e82375` against `c34c5b4ebb232bc05283dcd0c1bccf18ff31aba8`. Its private reconstruction verified all 219 path/deletion hashes, 154 portable artifact hashes, pinned PHPUnit and every original production byte. It reproduced all seven 430-case counts and per-case outcome/type sets, randomized PHP 8.3 seed 20261028, all 40 individual-file PHP 7.4/8.5 outcomes, fresh strict native 430/2783/47 errors/46 failures with 56 records, and all 287 compiled-graph identity sets. A separate observational replay reproduced 26/511/10 failures, ten unhealthy records with 57 immediate source diagnostics and fourteen bootstrap/pin controls. Eight warning-report and two strict native guards passed. The bootstrap-first handler and inventory-before-execution fixes resolve both review findings; no actionable test/harness issue remained in this bounded review. The 38-row strict ledger and full EE/SQL/IO/permissions/platform/conditional/outgoing gaps remain incomplete. Unhealthy observations grant no strict closure. Factual metadata-only review/publication additions were explicitly permitted.
 
 Reviewed implementation/evidence commit `1bdba3c0f3dfe6bc9d3aac069b64171b44571fec` was pushed only to `origin/unit-tests-2026`. Live `git ls-remote --heads origin unit-tests-2026` returned that exact SHA; local/origin parity was `0 0`, status was clean and the production comparison remained empty. This subsequent STATUS-only audit records publication. Feasible vectors remain queued and full assigned coverage work continues.
+
+
+The sixth checkpoint adds twenty cases (450 total): fresh original plugin bootstrap with exact source/parent identity; four template body boundaries including nonempty string zero; twelve suppressed warning/deprecation controls across six older first-require entry paths; and three original-extractor session fallbacks. Every authored standalone PHP tool and the PHPUnit bootstrap now installs a strict inline E_ALL handler before loading support, fixtures or pinned dependencies. Controls use only owned support copies and verify every copied production byte; original production remains unchanged. The earlier observation scripts retain their already-reviewed bootstrap-first handlers and inventory pins.
+
+Native session setup actually starts and closes PHP's files handler and proves its output file exists before addon execution. Plain, depth-prefixed and permissions-prefixed save paths are asserted exactly. The first two remain red at original mkdir warnings; the valid permissions-prefixed path remains red at the original temporary-directory failure. No session API is mocked, and no source warning continues in these strict vectors.
+
+Fresh gates are the full seven-runtime matrix `tests/reports/matrix.0j0Icv/`, random PHP 8.3 seed 20261029, all 42 individual-file runs `tests/reports/individual.kdlyzx_f/`, strict native `tests/reports/native.ogDHmV/` (450/2947 assertions/47 errors/49 failures; 60 records), and Clover/skill `tests/reports/coverage.1kILH9/`. Native inventory remains 256/287 known rows with 25 conditional-constructor quarantines. Clover remains 1685/2039 lines and 180/223 line-only skill rows. A fresh separate observational run `tests/reports/warning-observations.s4Smk4/` again records 26/511/10 failures, ten unhealthy contexts/57 immediate diagnostics and fourteen bootstrap/pin controls; those graphs never merge into strict metrics.
+
+Fresh plugin loading supplies positive procedural lines 16/19/70. Its graph differs from the existing direct-access denial graph; their complementary counters are not merged. The strict remaining-work ledger consequently retains 39 graph rows, rather than hiding the newly observed variant. The ledger now distinguishes these exercised plugin/template/session inputs from still-feasible actual HTTP redirect/index/PHP-file/missing/traversal/front-controller/directory requests and the HEAD guard. Completed owned raw JSON is losslessly compressed only after consumption, with restoration hashes and byte counts; portable evidence retains all original raw bytes. Independent review and publication of this sixth checkpoint are pending. Full scope remains incomplete.

@@ -1,5 +1,10 @@
 <?php
 
+error_reporting(E_ALL);
+set_error_handler(static function ($severity, $message, $file, $line) {
+    throw new ErrorException($message, 0, $severity, $file, $line);
+}, E_ALL);
+
 $root = dirname(__DIR__, 2);
 $sources = [];
 foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root . '/low_widont', FilesystemIterator::SKIP_DOTS)) as $file) {

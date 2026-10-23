@@ -1,5 +1,5 @@
 {
-  "native_checkpoint_sha256": "4e7fd6f313558783275d6ade11f61c0118a979ef1de9253f1a483beb0cab945c",
+  "native_checkpoint_sha256": "d387a87af494ec13a726ad89271726d0fbde73b781504d14d03104b326377da2",
   "completion": false,
   "note": "Only compatible source/runtime/compiled-graph observations are compared. Raw records and counters remain unchanged. Terminal edges and graphs without invoked blocks remain unknown in the native checkpoint. This list is triage, not a coverage waiver.",
   "graphs": [
@@ -11,49 +11,53 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "d46aef3f44305fb07a8cdc4e15ac0ee4028eb3951553a3b90e7fa22332a681ba",
       "reports": [
-        "children/autoload-fallback-opcache0-60efe7a6.json",
-        "children/autoload-fallback-preloaded-missing-opcache0-7d816680.json",
-        "children/autoload-fallback-preloaded-opcache0-1bce34e2.json",
-        "children/autoload-fallback-preloaded-unreadable-opcache0-b54ad002.json",
-        "children/autoload-missing-archive-opcache0-268ed5af.json",
-        "children/autoload-missing-class-opcache0-293a13d2.json",
-        "children/autoload-namespace-guards-opcache0-ec8d1a16.json",
-        "children/autoload-stream-no-opcache-api-opcache0-20ce5cd4.json",
-        "children/autoload-stream-opcache0-03a3744c.json",
-        "children/autoload-stream-permission-only-opcache0-1c424c53.json",
-        "children/host-bootstrap-65b4bb6e.json",
-        "contexts/cp-7.5.0-2478f306.json",
-        "contexts/fieldtype-installer-7.5.0-112eedde.json",
-        "contexts/fieldtype-installer-missing-7.5.0-647b90b4.json",
-        "contexts/fieldtype-legacy-3.9.0-a8503de1.json",
-        "contexts/fieldtype-predefined-7.5.0-5722d86e.json",
-        "contexts/fieldtype-preloaded-7.5.0-a3aa1c3c.json",
-        "contexts/fieldtype-preloaded-installer-7.5.0-fe9bfea7.json",
-        "contexts/fieldtype-preloaded-legacy-7.5.0-e171c887.json",
-        "contexts/fieldtype-preloaded-system-7.5.0-bb3801c0.json",
-        "contexts/legacy-2.5.5-341c973a.json",
-        "contexts/legacy-2.6.0-43338990.json",
-        "contexts/legacy-2.7.3-0755ef05.json",
-        "contexts/legacy-2.9.0-a993fd7a.json",
-        "contexts/legacy-cache-2.9.0-ca029e57.json",
-        "contexts/legacy-existing-directives-2.5.5-230cbe68.json",
-        "contexts/legacy-fallback-cache-2.5.5-4543c50c.json",
-        "contexts/legacy-navigation-2.5.5-e0673d7e.json",
-        "contexts/license-payload-7.5.0-99484c54.json",
-        "contexts/missing-navigation-base-7.5.0-6d2e2e4a.json",
-        "contexts/navigation-3.9.0-f56251b7.json",
-        "contexts/navigation-4.3.0-a03f4a89.json",
-        "contexts/navigation-5.4.0-0cf2ff5d.json",
-        "contexts/navigation-6.4.0-c91fcdda.json",
-        "contexts/navigation-7.5.0-eb251c6b.json",
-        "contexts/navigation-collections-3.9.0-a777d339.json",
-        "contexts/navigation-collections-7.5.0-372fd6e0.json",
-        "contexts/script-pagination-7.5.0-a3cfeea6.json",
-        "contexts/site-7.5.0-98e652e8.json",
-        "contexts/theme-root-7.5.0-de1703c8.json",
-        "contexts/updater-7.5.0-19d59bda.json",
-        "contexts/updater-legacy-2.5.5-a8a2b70b.json",
-        "contexts/updater-legacy-3.9.0-b3c863e9.json",
+        "children/autoload-fallback-opcache0-43df76dc.json",
+        "children/autoload-fallback-preloaded-missing-opcache0-22724a82.json",
+        "children/autoload-fallback-preloaded-opcache0-f934aec0.json",
+        "children/autoload-fallback-preloaded-unreadable-opcache0-65d0d7e5.json",
+        "children/autoload-missing-archive-opcache0-7f9a04f8.json",
+        "children/autoload-missing-class-opcache0-bfea5fb0.json",
+        "children/autoload-namespace-guards-opcache0-ddf3c0c3.json",
+        "children/autoload-plugin-bootstrap-opcache0-50f92b56.json",
+        "children/autoload-session-fallback-depth-opcache0-62c7c15b.json",
+        "children/autoload-session-fallback-permissions-opcache0-73fa13ff.json",
+        "children/autoload-session-fallback-plain-opcache0-d6b5549f.json",
+        "children/autoload-stream-no-opcache-api-opcache0-5805fb0f.json",
+        "children/autoload-stream-opcache0-6c0ec29a.json",
+        "children/autoload-stream-permission-only-opcache0-997dfa0d.json",
+        "children/host-bootstrap-b3d54876.json",
+        "contexts/cp-7.5.0-c139c2ae.json",
+        "contexts/fieldtype-installer-7.5.0-f608199e.json",
+        "contexts/fieldtype-installer-missing-7.5.0-52b2493f.json",
+        "contexts/fieldtype-legacy-3.9.0-8db4ad95.json",
+        "contexts/fieldtype-predefined-7.5.0-514670de.json",
+        "contexts/fieldtype-preloaded-7.5.0-b123ade1.json",
+        "contexts/fieldtype-preloaded-installer-7.5.0-cebd6e52.json",
+        "contexts/fieldtype-preloaded-legacy-7.5.0-8e84ffb1.json",
+        "contexts/fieldtype-preloaded-system-7.5.0-64839634.json",
+        "contexts/legacy-2.5.5-78baefe7.json",
+        "contexts/legacy-2.6.0-2b501779.json",
+        "contexts/legacy-2.7.3-0c8671a2.json",
+        "contexts/legacy-2.9.0-5a003aa7.json",
+        "contexts/legacy-cache-2.9.0-f28aed41.json",
+        "contexts/legacy-existing-directives-2.5.5-17f79ee5.json",
+        "contexts/legacy-fallback-cache-2.5.5-bbacdb25.json",
+        "contexts/legacy-navigation-2.5.5-aba3f97c.json",
+        "contexts/license-payload-7.5.0-c966a525.json",
+        "contexts/missing-navigation-base-7.5.0-a15b1841.json",
+        "contexts/navigation-3.9.0-05f41576.json",
+        "contexts/navigation-4.3.0-f1ed7e99.json",
+        "contexts/navigation-5.4.0-6ca40609.json",
+        "contexts/navigation-6.4.0-6e7613e8.json",
+        "contexts/navigation-7.5.0-7bbbf90b.json",
+        "contexts/navigation-collections-3.9.0-b993a90f.json",
+        "contexts/navigation-collections-7.5.0-fb5fe15d.json",
+        "contexts/script-pagination-7.5.0-1f919165.json",
+        "contexts/site-7.5.0-d06a8a45.json",
+        "contexts/theme-root-7.5.0-58cf8dc6.json",
+        "contexts/updater-7.5.0-d181f8cb.json",
+        "contexts/updater-legacy-2.5.5-96ff1a4e.json",
+        "contexts/updater-legacy-3.9.0-fc5e396f.json",
         "main.json"
       ],
       "remaining_lines": [],
@@ -99,14 +103,14 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "9993c94c8fc627bae102b56684bec2370cea8a5d03da23c23701817228807bd7",
       "reports": [
-        "children/autoload-fallback-preloaded-missing-opcache1-b7f4d33d.json",
-        "children/autoload-fallback-preloaded-opcache1-15c43fc8.json",
-        "children/autoload-missing-archive-opcache1-6ec16f96.json",
-        "children/autoload-missing-class-opcache1-82e0811e.json",
-        "children/autoload-namespace-guards-opcache1-71357146.json",
-        "children/autoload-stream-no-opcache-api-opcache1-868665da.json",
-        "children/autoload-stream-no-permission-check-opcache1-d974a330.json",
-        "children/autoload-stream-opcache1-1e0ab657.json"
+        "children/autoload-fallback-preloaded-missing-opcache1-d030a937.json",
+        "children/autoload-fallback-preloaded-opcache1-6674e4e7.json",
+        "children/autoload-missing-archive-opcache1-e46370d5.json",
+        "children/autoload-missing-class-opcache1-26cd8542.json",
+        "children/autoload-namespace-guards-opcache1-081eafe5.json",
+        "children/autoload-stream-no-opcache-api-opcache1-50fe80d1.json",
+        "children/autoload-stream-no-permission-check-opcache1-d9079f85.json",
+        "children/autoload-stream-opcache1-7fca9666.json"
       ],
       "remaining_lines": [],
       "unobserved_node_edges": [
@@ -151,17 +155,17 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "272afca796bad0c606160cc2e3598ea29449fe71e6ad483fd1d853d3b8d0bed9",
       "reports": [
-        "contexts/cp-7.5.0-2478f306.json",
-        "contexts/fieldtype-installer-7.5.0-112eedde.json",
-        "contexts/fieldtype-legacy-3.9.0-a8503de1.json",
-        "contexts/fieldtype-predefined-7.5.0-5722d86e.json",
-        "contexts/legacy-2.5.5-341c973a.json",
-        "contexts/legacy-2.6.0-43338990.json",
-        "contexts/legacy-2.7.3-0755ef05.json",
-        "contexts/legacy-2.9.0-a993fd7a.json",
-        "contexts/legacy-existing-directives-2.5.5-230cbe68.json",
-        "contexts/legacy-navigation-2.5.5-e0673d7e.json",
-        "contexts/site-7.5.0-98e652e8.json"
+        "contexts/cp-7.5.0-c139c2ae.json",
+        "contexts/fieldtype-installer-7.5.0-f608199e.json",
+        "contexts/fieldtype-legacy-3.9.0-8db4ad95.json",
+        "contexts/fieldtype-predefined-7.5.0-514670de.json",
+        "contexts/legacy-2.5.5-78baefe7.json",
+        "contexts/legacy-2.6.0-2b501779.json",
+        "contexts/legacy-2.7.3-0c8671a2.json",
+        "contexts/legacy-2.9.0-5a003aa7.json",
+        "contexts/legacy-existing-directives-2.5.5-17f79ee5.json",
+        "contexts/legacy-navigation-2.5.5-aba3f97c.json",
+        "contexts/site-7.5.0-d06a8a45.json"
       ],
       "remaining_lines": [],
       "unobserved_node_edges": [
@@ -218,11 +222,11 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "7911909c80e99c4c2da9e876c423c4dd68029d7f61c36e0e6c82f0a10b212793",
       "reports": [
-        "contexts/fieldtype-installer-missing-7.5.0-647b90b4.json",
-        "contexts/fieldtype-preloaded-7.5.0-a3aa1c3c.json",
-        "contexts/fieldtype-preloaded-installer-7.5.0-fe9bfea7.json",
-        "contexts/fieldtype-preloaded-legacy-7.5.0-e171c887.json",
-        "contexts/fieldtype-preloaded-system-7.5.0-bb3801c0.json"
+        "contexts/fieldtype-installer-missing-7.5.0-52b2493f.json",
+        "contexts/fieldtype-preloaded-7.5.0-b123ade1.json",
+        "contexts/fieldtype-preloaded-installer-7.5.0-cebd6e52.json",
+        "contexts/fieldtype-preloaded-legacy-7.5.0-8e84ffb1.json",
+        "contexts/fieldtype-preloaded-system-7.5.0-64839634.json"
       ],
       "remaining_lines": [],
       "unobserved_node_edges": [
@@ -344,7 +348,7 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "e650f25def704032705f164d435d80f6ccbf0c2dbb4e60171d17aafd560e731d",
       "reports": [
-        "contexts/script-pagination-7.5.0-a3cfeea6.json",
+        "contexts/script-pagination-7.5.0-1f919165.json",
         "main.json"
       ],
       "remaining_lines": [
@@ -437,7 +441,7 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "d8f7f6c92cc100a8108ab997981856cdf0943dfcbfe06e75d9e4cb9bcd78ed2a",
       "reports": [
-        "contexts/updater-7.5.0-19d59bda.json",
+        "contexts/updater-7.5.0-d181f8cb.json",
         "main.json"
       ],
       "remaining_lines": [],
@@ -475,12 +479,12 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "aff1328f32cebfda1c31ed52bec849c416639def68990e8f772199cc6bac87b3",
       "reports": [
-        "contexts/legacy-2.5.5-341c973a.json",
-        "contexts/legacy-2.6.0-43338990.json",
-        "contexts/legacy-2.7.3-0755ef05.json",
-        "contexts/legacy-2.9.0-a993fd7a.json",
-        "contexts/legacy-existing-directives-2.5.5-230cbe68.json",
-        "contexts/legacy-navigation-2.5.5-e0673d7e.json",
+        "contexts/legacy-2.5.5-78baefe7.json",
+        "contexts/legacy-2.6.0-2b501779.json",
+        "contexts/legacy-2.7.3-0c8671a2.json",
+        "contexts/legacy-2.9.0-5a003aa7.json",
+        "contexts/legacy-existing-directives-2.5.5-17f79ee5.json",
+        "contexts/legacy-navigation-2.5.5-aba3f97c.json",
         "main.json"
       ],
       "remaining_lines": [
@@ -571,9 +575,9 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "bce052f95c24612480a7a4cb80b25c6d74f98e53a05d01cf2b0bd63b6b7e3929",
       "reports": [
-        "contexts/legacy-2.5.5-341c973a.json",
-        "contexts/legacy-existing-directives-2.5.5-230cbe68.json",
-        "contexts/legacy-navigation-2.5.5-e0673d7e.json"
+        "contexts/legacy-2.5.5-78baefe7.json",
+        "contexts/legacy-existing-directives-2.5.5-17f79ee5.json",
+        "contexts/legacy-navigation-2.5.5-aba3f97c.json"
       ],
       "remaining_lines": [],
       "unobserved_node_edges": [
@@ -706,9 +710,9 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "405177b8fcbf55d519c71862c16fededf773b8ed350ad9f979a211d0ddd5e595",
       "reports": [
-        "contexts/legacy-2.5.5-341c973a.json",
-        "contexts/legacy-existing-directives-2.5.5-230cbe68.json",
-        "contexts/legacy-navigation-2.5.5-e0673d7e.json"
+        "contexts/legacy-2.5.5-78baefe7.json",
+        "contexts/legacy-existing-directives-2.5.5-17f79ee5.json",
+        "contexts/legacy-navigation-2.5.5-aba3f97c.json"
       ],
       "remaining_lines": [],
       "unobserved_node_edges": [
@@ -736,8 +740,8 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "909af5efb3172afb6db203b27f5d44784a5d77ebb1dcccb747ecf2e41c032ca4",
       "reports": [
-        "contexts/legacy-cache-2.9.0-ca029e57.json",
-        "contexts/legacy-fallback-cache-2.5.5-4543c50c.json",
+        "contexts/legacy-cache-2.9.0-f28aed41.json",
+        "contexts/legacy-fallback-cache-2.5.5-bbacdb25.json",
         "main.json"
       ],
       "remaining_lines": [],
@@ -831,13 +835,13 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "d589ac1fc2722bbbb1475e48fad21f50ed78d2555609f42d4dfe38fc0d49d719",
       "reports": [
-        "contexts/legacy-2.5.5-341c973a.json",
-        "contexts/legacy-2.6.0-43338990.json",
-        "contexts/legacy-2.7.3-0755ef05.json",
-        "contexts/legacy-2.9.0-a993fd7a.json",
-        "contexts/legacy-existing-directives-2.5.5-230cbe68.json",
-        "contexts/legacy-navigation-2.5.5-e0673d7e.json",
-        "contexts/updater-legacy-2.5.5-a8a2b70b.json",
+        "contexts/legacy-2.5.5-78baefe7.json",
+        "contexts/legacy-2.6.0-2b501779.json",
+        "contexts/legacy-2.7.3-0c8671a2.json",
+        "contexts/legacy-2.9.0-5a003aa7.json",
+        "contexts/legacy-existing-directives-2.5.5-17f79ee5.json",
+        "contexts/legacy-navigation-2.5.5-aba3f97c.json",
+        "contexts/updater-legacy-2.5.5-96ff1a4e.json",
         "main.json"
       ],
       "remaining_lines": [],
@@ -1034,10 +1038,10 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "d4d50118ab7432103a364bbb921f04afce9cb5382d9b34ec600db74d54788835",
       "reports": [
-        "contexts/fieldtype-legacy-3.9.0-a8503de1.json",
-        "contexts/navigation-3.9.0-f56251b7.json",
-        "contexts/navigation-collections-3.9.0-a777d339.json",
-        "contexts/updater-legacy-3.9.0-b3c863e9.json",
+        "contexts/fieldtype-legacy-3.9.0-8db4ad95.json",
+        "contexts/navigation-3.9.0-05f41576.json",
+        "contexts/navigation-collections-3.9.0-b993a90f.json",
+        "contexts/updater-legacy-3.9.0-fc5e396f.json",
         "main.json"
       ],
       "remaining_lines": [],
@@ -1234,7 +1238,7 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "d4d50118ab7432103a364bbb921f04afce9cb5382d9b34ec600db74d54788835",
       "reports": [
-        "contexts/navigation-4.3.0-a03f4a89.json",
+        "contexts/navigation-4.3.0-f1ed7e99.json",
         "main.json"
       ],
       "remaining_lines": [],
@@ -1431,22 +1435,22 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "d4d50118ab7432103a364bbb921f04afce9cb5382d9b34ec600db74d54788835",
       "reports": [
-        "contexts/cp-7.5.0-2478f306.json",
-        "contexts/fieldtype-installer-7.5.0-112eedde.json",
-        "contexts/fieldtype-installer-missing-7.5.0-647b90b4.json",
-        "contexts/fieldtype-predefined-7.5.0-5722d86e.json",
-        "contexts/fieldtype-preloaded-7.5.0-a3aa1c3c.json",
-        "contexts/fieldtype-preloaded-installer-7.5.0-fe9bfea7.json",
-        "contexts/fieldtype-preloaded-legacy-7.5.0-e171c887.json",
-        "contexts/fieldtype-preloaded-system-7.5.0-bb3801c0.json",
-        "contexts/license-payload-7.5.0-99484c54.json",
-        "contexts/navigation-5.4.0-0cf2ff5d.json",
-        "contexts/navigation-6.4.0-c91fcdda.json",
-        "contexts/navigation-7.5.0-eb251c6b.json",
-        "contexts/navigation-collections-7.5.0-372fd6e0.json",
-        "contexts/script-pagination-7.5.0-a3cfeea6.json",
-        "contexts/site-7.5.0-98e652e8.json",
-        "contexts/updater-7.5.0-19d59bda.json",
+        "contexts/cp-7.5.0-c139c2ae.json",
+        "contexts/fieldtype-installer-7.5.0-f608199e.json",
+        "contexts/fieldtype-installer-missing-7.5.0-52b2493f.json",
+        "contexts/fieldtype-predefined-7.5.0-514670de.json",
+        "contexts/fieldtype-preloaded-7.5.0-b123ade1.json",
+        "contexts/fieldtype-preloaded-installer-7.5.0-cebd6e52.json",
+        "contexts/fieldtype-preloaded-legacy-7.5.0-8e84ffb1.json",
+        "contexts/fieldtype-preloaded-system-7.5.0-64839634.json",
+        "contexts/license-payload-7.5.0-c966a525.json",
+        "contexts/navigation-5.4.0-6ca40609.json",
+        "contexts/navigation-6.4.0-6e7613e8.json",
+        "contexts/navigation-7.5.0-7bbbf90b.json",
+        "contexts/navigation-collections-7.5.0-fb5fe15d.json",
+        "contexts/script-pagination-7.5.0-1f919165.json",
+        "contexts/site-7.5.0-d06a8a45.json",
+        "contexts/updater-7.5.0-d181f8cb.json",
         "main.json"
       ],
       "remaining_lines": [],
@@ -1480,7 +1484,7 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "88d30e8924f7ad9641a922c6036de4c3818edf347e1388a4181d9fadde9cf166",
       "reports": [
-        "contexts/legacy-navigation-2.5.5-e0673d7e.json"
+        "contexts/legacy-navigation-2.5.5-aba3f97c.json"
       ],
       "remaining_lines": [],
       "unobserved_node_edges": [
@@ -1537,14 +1541,14 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "3c0c4c9074ce9c507afb6a50ce0747ddd4fb4fac5aaeacbd5a1331b84ff201dd",
       "reports": [
-        "contexts/legacy-navigation-2.5.5-e0673d7e.json",
-        "contexts/navigation-3.9.0-f56251b7.json",
-        "contexts/navigation-4.3.0-a03f4a89.json",
-        "contexts/navigation-5.4.0-0cf2ff5d.json",
-        "contexts/navigation-6.4.0-c91fcdda.json",
-        "contexts/navigation-7.5.0-eb251c6b.json",
-        "contexts/navigation-collections-3.9.0-a777d339.json",
-        "contexts/navigation-collections-7.5.0-372fd6e0.json"
+        "contexts/legacy-navigation-2.5.5-aba3f97c.json",
+        "contexts/navigation-3.9.0-05f41576.json",
+        "contexts/navigation-4.3.0-f1ed7e99.json",
+        "contexts/navigation-5.4.0-6ca40609.json",
+        "contexts/navigation-6.4.0-6e7613e8.json",
+        "contexts/navigation-7.5.0-7bbbf90b.json",
+        "contexts/navigation-collections-3.9.0-b993a90f.json",
+        "contexts/navigation-collections-7.5.0-fb5fe15d.json"
       ],
       "remaining_lines": [],
       "unobserved_node_edges": [
@@ -1577,13 +1581,13 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "619e80908d28f086454e48b493a053778ec7ef5b7daa56f672ce034dee2c3f8d",
       "reports": [
-        "contexts/navigation-3.9.0-f56251b7.json",
-        "contexts/navigation-4.3.0-a03f4a89.json",
-        "contexts/navigation-5.4.0-0cf2ff5d.json",
-        "contexts/navigation-6.4.0-c91fcdda.json",
-        "contexts/navigation-7.5.0-eb251c6b.json",
-        "contexts/navigation-collections-3.9.0-a777d339.json",
-        "contexts/navigation-collections-7.5.0-372fd6e0.json"
+        "contexts/navigation-3.9.0-05f41576.json",
+        "contexts/navigation-4.3.0-f1ed7e99.json",
+        "contexts/navigation-5.4.0-6ca40609.json",
+        "contexts/navigation-6.4.0-6e7613e8.json",
+        "contexts/navigation-7.5.0-7bbbf90b.json",
+        "contexts/navigation-collections-3.9.0-b993a90f.json",
+        "contexts/navigation-collections-7.5.0-fb5fe15d.json"
       ],
       "remaining_lines": [],
       "unobserved_node_edges": [
@@ -1754,25 +1758,25 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "c338a36a23d3f55e6a9afaf39ba0a912c1a81933538a7209b75a0bcd8ebf6f74",
       "reports": [
-        "contexts/cp-7.5.0-2478f306.json",
-        "contexts/fieldtype-installer-7.5.0-112eedde.json",
-        "contexts/fieldtype-installer-missing-7.5.0-647b90b4.json",
-        "contexts/fieldtype-legacy-3.9.0-a8503de1.json",
-        "contexts/fieldtype-predefined-7.5.0-5722d86e.json",
-        "contexts/fieldtype-preloaded-7.5.0-a3aa1c3c.json",
-        "contexts/fieldtype-preloaded-installer-7.5.0-fe9bfea7.json",
-        "contexts/fieldtype-preloaded-legacy-7.5.0-e171c887.json",
-        "contexts/fieldtype-preloaded-system-7.5.0-bb3801c0.json",
-        "contexts/legacy-2.5.5-341c973a.json",
-        "contexts/legacy-2.6.0-43338990.json",
-        "contexts/legacy-2.7.3-0755ef05.json",
-        "contexts/legacy-2.9.0-a993fd7a.json",
-        "contexts/legacy-existing-directives-2.5.5-230cbe68.json",
-        "contexts/legacy-navigation-2.5.5-e0673d7e.json",
-        "contexts/license-payload-7.5.0-99484c54.json",
-        "contexts/updater-7.5.0-19d59bda.json",
-        "contexts/updater-legacy-2.5.5-a8a2b70b.json",
-        "contexts/updater-legacy-3.9.0-b3c863e9.json",
+        "contexts/cp-7.5.0-c139c2ae.json",
+        "contexts/fieldtype-installer-7.5.0-f608199e.json",
+        "contexts/fieldtype-installer-missing-7.5.0-52b2493f.json",
+        "contexts/fieldtype-legacy-3.9.0-8db4ad95.json",
+        "contexts/fieldtype-predefined-7.5.0-514670de.json",
+        "contexts/fieldtype-preloaded-7.5.0-b123ade1.json",
+        "contexts/fieldtype-preloaded-installer-7.5.0-cebd6e52.json",
+        "contexts/fieldtype-preloaded-legacy-7.5.0-8e84ffb1.json",
+        "contexts/fieldtype-preloaded-system-7.5.0-64839634.json",
+        "contexts/legacy-2.5.5-78baefe7.json",
+        "contexts/legacy-2.6.0-2b501779.json",
+        "contexts/legacy-2.7.3-0c8671a2.json",
+        "contexts/legacy-2.9.0-5a003aa7.json",
+        "contexts/legacy-existing-directives-2.5.5-17f79ee5.json",
+        "contexts/legacy-navigation-2.5.5-aba3f97c.json",
+        "contexts/license-payload-7.5.0-c966a525.json",
+        "contexts/updater-7.5.0-d181f8cb.json",
+        "contexts/updater-legacy-2.5.5-96ff1a4e.json",
+        "contexts/updater-legacy-3.9.0-fc5e396f.json",
         "main.json"
       ],
       "remaining_lines": [],
@@ -1822,7 +1826,10 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "36522e617846a2a5afabbd77b796dec61bf854d3056c97612d75cb4f2beaeeb0",
       "reports": [
-        "children/autoload-fallback-opcache0-60efe7a6.json"
+        "children/autoload-fallback-opcache0-43df76dc.json",
+        "children/autoload-session-fallback-depth-opcache0-62c7c15b.json",
+        "children/autoload-session-fallback-permissions-opcache0-73fa13ff.json",
+        "children/autoload-session-fallback-plain-opcache0-d6b5549f.json"
       ],
       "remaining_lines": [
         131,
@@ -1831,12 +1838,6 @@
         141,
         146,
         148,
-        155,
-        156,
-        157,
-        158,
-        159,
-        161,
         178,
         180,
         181,
@@ -1978,126 +1979,6 @@
           "target_lines": [
             154,
             154
-          ]
-        },
-        {
-          "source": 109,
-          "target": 110,
-          "source_lines": [
-            154,
-            154
-          ],
-          "target_lines": [
-            155,
-            156
-          ]
-        },
-        {
-          "source": 110,
-          "target": 121,
-          "source_lines": [
-            155,
-            156
-          ],
-          "target_lines": [
-            157,
-            158
-          ]
-        },
-        {
-          "source": 110,
-          "target": 132,
-          "source_lines": [
-            155,
-            156
-          ],
-          "target_lines": [
-            158,
-            158
-          ]
-        },
-        {
-          "source": 121,
-          "target": 132,
-          "source_lines": [
-            157,
-            158
-          ],
-          "target_lines": [
-            158,
-            158
-          ]
-        },
-        {
-          "source": 132,
-          "target": 138,
-          "source_lines": [
-            158,
-            158
-          ],
-          "target_lines": [
-            158,
-            158
-          ]
-        },
-        {
-          "source": 132,
-          "target": 143,
-          "source_lines": [
-            158,
-            158
-          ],
-          "target_lines": [
-            158,
-            158
-          ]
-        },
-        {
-          "source": 138,
-          "target": 143,
-          "source_lines": [
-            158,
-            158
-          ],
-          "target_lines": [
-            158,
-            158
-          ]
-        },
-        {
-          "source": 143,
-          "target": 144,
-          "source_lines": [
-            158,
-            158
-          ],
-          "target_lines": [
-            159,
-            159
-          ]
-        },
-        {
-          "source": 143,
-          "target": 146,
-          "source_lines": [
-            158,
-            158
-          ],
-          "target_lines": [
-            161,
-            164
-          ]
-        },
-        {
-          "source": 146,
-          "target": 148,
-          "source_lines": [
-            161,
-            164
-          ],
-          "target_lines": [
-            164,
-            170
           ]
         },
         {
@@ -2277,7 +2158,10 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "a67aac5b64d35667f2e69801eaf59a75c8e146af01c9300c0c8f4ae4a7817e9f",
       "reports": [
-        "children/autoload-fallback-opcache0-60efe7a6.json",
+        "children/autoload-fallback-opcache0-43df76dc.json",
+        "children/autoload-session-fallback-depth-opcache0-62c7c15b.json",
+        "children/autoload-session-fallback-permissions-opcache0-73fa13ff.json",
+        "children/autoload-session-fallback-plain-opcache0-d6b5549f.json",
         "main.json"
       ],
       "remaining_lines": [
@@ -2461,7 +2345,9 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "54f435c3e4f6e0472aba472a5f42ff7784c6c28d0a00f4cafabcbf004cd4865a",
       "reports": [
-        "children/autoload-fallback-opcache0-60efe7a6.json",
+        "children/autoload-fallback-opcache0-43df76dc.json",
+        "children/autoload-session-fallback-depth-opcache0-62c7c15b.json",
+        "children/autoload-session-fallback-plain-opcache0-d6b5549f.json",
         "main.json"
       ],
       "remaining_lines": [
@@ -2557,56 +2443,60 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "34ec013b7027a18fc100b4621b6d283f907cf7bf044acaf80dd365dcfb4ae2f6",
       "reports": [
-        "children/archive-checksum-d47e96f1.json",
-        "children/archive-size-a1917bcb.json",
-        "children/autoload-archive-loader-opcache0-0763422f.json",
-        "children/autoload-fallback-opcache0-60efe7a6.json",
-        "children/autoload-fallback-preloaded-missing-opcache0-7d816680.json",
-        "children/autoload-fallback-preloaded-missing-opcache1-b7f4d33d.json",
-        "children/autoload-fallback-preloaded-opcache0-1bce34e2.json",
-        "children/autoload-fallback-preloaded-opcache1-15c43fc8.json",
-        "children/autoload-fallback-preloaded-unreadable-opcache0-b54ad002.json",
-        "children/autoload-missing-class-opcache0-293a13d2.json",
-        "children/autoload-missing-class-opcache1-82e0811e.json",
-        "children/autoload-stream-no-opcache-api-opcache0-20ce5cd4.json",
-        "children/autoload-stream-no-opcache-api-opcache1-868665da.json",
-        "children/autoload-stream-no-permission-check-opcache1-d974a330.json",
-        "children/autoload-stream-opcache0-03a3744c.json",
-        "children/autoload-stream-opcache1-1e0ab657.json",
-        "children/autoload-stream-permission-only-opcache0-1c424c53.json",
-        "children/host-bootstrap-65b4bb6e.json",
-        "contexts/cp-7.5.0-2478f306.json",
-        "contexts/fieldtype-installer-7.5.0-112eedde.json",
-        "contexts/fieldtype-installer-missing-7.5.0-647b90b4.json",
-        "contexts/fieldtype-legacy-3.9.0-a8503de1.json",
-        "contexts/fieldtype-predefined-7.5.0-5722d86e.json",
-        "contexts/fieldtype-preloaded-7.5.0-a3aa1c3c.json",
-        "contexts/fieldtype-preloaded-installer-7.5.0-fe9bfea7.json",
-        "contexts/fieldtype-preloaded-legacy-7.5.0-e171c887.json",
-        "contexts/fieldtype-preloaded-system-7.5.0-bb3801c0.json",
-        "contexts/legacy-2.5.5-341c973a.json",
-        "contexts/legacy-2.6.0-43338990.json",
-        "contexts/legacy-2.7.3-0755ef05.json",
-        "contexts/legacy-2.9.0-a993fd7a.json",
-        "contexts/legacy-cache-2.9.0-ca029e57.json",
-        "contexts/legacy-existing-directives-2.5.5-230cbe68.json",
-        "contexts/legacy-fallback-cache-2.5.5-4543c50c.json",
-        "contexts/legacy-navigation-2.5.5-e0673d7e.json",
-        "contexts/license-payload-7.5.0-99484c54.json",
-        "contexts/missing-navigation-base-7.5.0-6d2e2e4a.json",
-        "contexts/navigation-3.9.0-f56251b7.json",
-        "contexts/navigation-4.3.0-a03f4a89.json",
-        "contexts/navigation-5.4.0-0cf2ff5d.json",
-        "contexts/navigation-6.4.0-c91fcdda.json",
-        "contexts/navigation-7.5.0-eb251c6b.json",
-        "contexts/navigation-collections-3.9.0-a777d339.json",
-        "contexts/navigation-collections-7.5.0-372fd6e0.json",
-        "contexts/script-pagination-7.5.0-a3cfeea6.json",
-        "contexts/site-7.5.0-98e652e8.json",
-        "contexts/theme-root-7.5.0-de1703c8.json",
-        "contexts/updater-7.5.0-19d59bda.json",
-        "contexts/updater-legacy-2.5.5-a8a2b70b.json",
-        "contexts/updater-legacy-3.9.0-b3c863e9.json"
+        "children/archive-checksum-efc74c18.json",
+        "children/archive-size-0a0fdfa1.json",
+        "children/autoload-archive-loader-opcache0-3df1efd4.json",
+        "children/autoload-fallback-opcache0-43df76dc.json",
+        "children/autoload-fallback-preloaded-missing-opcache0-22724a82.json",
+        "children/autoload-fallback-preloaded-missing-opcache1-d030a937.json",
+        "children/autoload-fallback-preloaded-opcache0-f934aec0.json",
+        "children/autoload-fallback-preloaded-opcache1-6674e4e7.json",
+        "children/autoload-fallback-preloaded-unreadable-opcache0-65d0d7e5.json",
+        "children/autoload-missing-class-opcache0-bfea5fb0.json",
+        "children/autoload-missing-class-opcache1-26cd8542.json",
+        "children/autoload-plugin-bootstrap-opcache0-50f92b56.json",
+        "children/autoload-session-fallback-depth-opcache0-62c7c15b.json",
+        "children/autoload-session-fallback-permissions-opcache0-73fa13ff.json",
+        "children/autoload-session-fallback-plain-opcache0-d6b5549f.json",
+        "children/autoload-stream-no-opcache-api-opcache0-5805fb0f.json",
+        "children/autoload-stream-no-opcache-api-opcache1-50fe80d1.json",
+        "children/autoload-stream-no-permission-check-opcache1-d9079f85.json",
+        "children/autoload-stream-opcache0-6c0ec29a.json",
+        "children/autoload-stream-opcache1-7fca9666.json",
+        "children/autoload-stream-permission-only-opcache0-997dfa0d.json",
+        "children/host-bootstrap-b3d54876.json",
+        "contexts/cp-7.5.0-c139c2ae.json",
+        "contexts/fieldtype-installer-7.5.0-f608199e.json",
+        "contexts/fieldtype-installer-missing-7.5.0-52b2493f.json",
+        "contexts/fieldtype-legacy-3.9.0-8db4ad95.json",
+        "contexts/fieldtype-predefined-7.5.0-514670de.json",
+        "contexts/fieldtype-preloaded-7.5.0-b123ade1.json",
+        "contexts/fieldtype-preloaded-installer-7.5.0-cebd6e52.json",
+        "contexts/fieldtype-preloaded-legacy-7.5.0-8e84ffb1.json",
+        "contexts/fieldtype-preloaded-system-7.5.0-64839634.json",
+        "contexts/legacy-2.5.5-78baefe7.json",
+        "contexts/legacy-2.6.0-2b501779.json",
+        "contexts/legacy-2.7.3-0c8671a2.json",
+        "contexts/legacy-2.9.0-5a003aa7.json",
+        "contexts/legacy-cache-2.9.0-f28aed41.json",
+        "contexts/legacy-existing-directives-2.5.5-17f79ee5.json",
+        "contexts/legacy-fallback-cache-2.5.5-bbacdb25.json",
+        "contexts/legacy-navigation-2.5.5-aba3f97c.json",
+        "contexts/license-payload-7.5.0-c966a525.json",
+        "contexts/missing-navigation-base-7.5.0-a15b1841.json",
+        "contexts/navigation-3.9.0-05f41576.json",
+        "contexts/navigation-4.3.0-f1ed7e99.json",
+        "contexts/navigation-5.4.0-6ca40609.json",
+        "contexts/navigation-6.4.0-6e7613e8.json",
+        "contexts/navigation-7.5.0-7bbbf90b.json",
+        "contexts/navigation-collections-3.9.0-b993a90f.json",
+        "contexts/navigation-collections-7.5.0-fb5fe15d.json",
+        "contexts/script-pagination-7.5.0-1f919165.json",
+        "contexts/site-7.5.0-d06a8a45.json",
+        "contexts/theme-root-7.5.0-58cf8dc6.json",
+        "contexts/updater-7.5.0-d181f8cb.json",
+        "contexts/updater-legacy-2.5.5-96ff1a4e.json",
+        "contexts/updater-legacy-3.9.0-fc5e396f.json"
       ],
       "remaining_lines": [
         14,
@@ -3034,7 +2924,7 @@
       "xdebug": "3.5.3",
       "compiled_graph_sha256": "1e45c617a1aaaf5ed710d236c4cb8dcc299dea76ce33c206e9974f938d824469",
       "reports": [
-        "children/autoload-direct-access-opcache0-2e676da9.json"
+        "children/autoload-direct-access-opcache0-e55db7d0.json"
       ],
       "remaining_lines": [
         16,
@@ -3066,16 +2956,48 @@
         }
       ],
       "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
+    },
+    {
+      "file": "low_widont/pi.low_widont.php",
+      "name": "{procedural}",
+      "line": 1,
+      "php": "8.2.30",
+      "xdebug": "3.5.3",
+      "compiled_graph_sha256": "be72c34df306b50896c2b1244c257dab3c77f4d81a00f1e7118b5eabd31f59a0",
+      "reports": [
+        "children/autoload-plugin-bootstrap-opcache0-50f92b56.json"
+      ],
+      "remaining_lines": [
+        4
+      ],
+      "unobserved_node_edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "source_lines": [
+            3,
+            3
+          ],
+          "target_lines": [
+            4,
+            4
+          ]
+        }
+      ],
+      "unobserved_terminal_edges": [
+        {
+          "source": 2,
+          "target": 2147483645
+        },
+        {
+          "source": 4,
+          "target": 2147483645
+        }
+      ],
+      "assessment": "unresolved; see tests/REMAINING_COVERAGE.md; no closure or impossibility claim"
     }
   ],
   "queued_feasible_vectors": [
-    {
-      "unit": "low_widont/pi.low_widont.php",
-      "scope": "{procedural}",
-      "vectors": [
-        "Fresh normal plugin require before PHPUnit discovery; exact parent/source identity and procedural lines16/19/70"
-      ]
-    },
     {
       "unit": "low_widont/low_widont.phar!/{stub}",
       "scope": "{procedural}",
@@ -3083,19 +3005,20 @@
         "Actual GET/POST redirect,index,PHP-file,missing,traversal,front-controller and directory URLs; native response headers/body/status",
         "HEAD method guard in a fresh interpreter; source-only observational diagnostics remain red"
       ]
-    },
+    }
+  ],
+  "exercised_sixth_checkpoint_vectors": [
     {
-      "unit": "low_widont/low_widont.phar!/{stub}",
-      "scope": "go",
+      "unit": "low_widont/pi.low_widont.php",
       "vectors": [
-        "Native session fallback with plain,depth-prefixed and permissions-prefixed session.save_path forms, each verified by actual session_start"
+        "Fresh original plugin require with exact class/source/parent identity",
+        "Template bodies zero, trimmed zero, single word and multiple words"
       ]
     },
     {
-      "unit": "low_widont/pi.low_widont.php",
-      "scope": "__construct",
+      "unit": "low_widont/low_widont.phar!/{stub}",
       "vectors": [
-        "Documented template-tag body containing the string zero"
+        "Native files session startup/write proves plain, depth and permissions-prefixed save paths before original fallback; all three strict source regressions retained"
       ]
     }
   ]

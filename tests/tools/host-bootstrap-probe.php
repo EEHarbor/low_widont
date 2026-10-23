@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-$root = dirname(__DIR__, 2);
-require $root . '/tests/support/Evidence.php';
-LowWidontTests\Evidence::nativeChild($root, 'host-bootstrap');
 error_reporting(E_ALL);
 set_error_handler(static function ($severity, $message, $file, $line) {
     throw new ErrorException($message, 0, $severity, $file, $line);
 }, E_ALL);
+
+$root = dirname(__DIR__, 2);
+require $root . '/tests/support/Evidence.php';
+LowWidontTests\Evidence::nativeChild($root, 'host-bootstrap');
 define('PATH_THIRD', $root . '/');
 define('BASEPATH', $root . '/tests/');
 $GLOBALS['lowWidontHost'] = (object) ['config' => new class {

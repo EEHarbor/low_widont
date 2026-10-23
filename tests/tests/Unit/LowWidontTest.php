@@ -82,6 +82,35 @@ final class LowWidontTest extends TestCase
     }
 
     /**
+     * Preserve valid template string bodies through the ordinary tag-pair invocation.
+     *
+     * @dataProvider templateBodies
+     * @param string $body
+     * @param string $expected
+     * @return void
+     */
+    public function testFormatsTemplateBodies($body, $expected): void
+    {
+        Environment::$ee->TMPL->tagdata = $body;
+        $this->assertSame($expected, (new \Low_widont())->return_data);
+    }
+
+    /**
+     * Supply zero, trimming, one-word and final-word template boundaries.
+     *
+     * @return array
+     */
+    public function templateBodies(): array
+    {
+        return [
+            'zero body' => ['0', '0'],
+            'trimmed zero body' => ["0 \t\n", '0'],
+            'one word body' => ['Solo', 'Solo'],
+            'final word body' => ['Template final words', 'Template final&#160;words'],
+        ];
+    }
+
+    /**
      * Reject structured text through the native string function contract.
      *
      * @return void

@@ -1,5 +1,10 @@
 <?php
 
+error_reporting(E_ALL);
+set_error_handler(static function ($severity, $message, $file, $line) {
+    throw new ErrorException($message, 0, $severity, $file, $line);
+}, E_ALL);
+
 if (!function_exists('xdebug_start_code_coverage')) {
     throw new RuntimeException('Xdebug coverage must be enabled for instrumentation validation.');
 }
