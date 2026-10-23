@@ -1,6 +1,6 @@
 # Low Widont PHPUnit campaign
 
-Status: **incomplete; second source-red checkpoint awaiting independent exact-diff review**. The first checkpoint is published. Production is immutable, and this checkpoint is not 100% method line/outcome coverage.
+Status: **incomplete; second source-red checkpoint independently reviewed and published**. Production is immutable, and this checkpoint is not 100% method line/outcome coverage.
 
 ## Baseline and scope
 
@@ -85,4 +85,8 @@ Independent review found the invalid-instrumentation guard referenced its report
 
 Full completion remains blocked/incomplete: remaining actual outgoing outcomes, synthetic/conditional-class provenance limitations, platform/runtime/archive-fixed paths and confirmed source errors are unwaived. Real database execution, full EE request bootstrap/permissions, race/IO failures and all historical host versions remain integration gaps. Independent feasible work continues after this checkpoint; this is not a per-repository exhaustion claim.
 
-The first checkpoint's independently reviewed implementation commits are e1ec539, 62897cd, f76d87d, 61daa3a, 00214df, 29d25a7, 59c92d1, 77a94b9, 5ea540e and a4a8a3e, with evidence/publication metadata at 1eaf019 and 56c5271. The current second-checkpoint source/tool/tests/docs diff must receive separate exact review before scoped commits or origin publication. Red regression publication is expressly authorized by the campaign; no production repair is included.
+Ordinary remaining vectors include empty extension-hook and navigation-button collections, pagination from native script scope with no caller-frame URL, EE2 pre-2.8 default persistent cache selection, EE3/EE4 flash-message default extras, and EE2 pagination's default options with a real per_page query value. Footer payload semantics also need direct observation: an installed Pro version is assigned to the instance while the encrypted payload reads a separate local variable. These are feasible tests to investigate, rather than platform or source-continuation blockers. Per-graph unobserved outcomes in the native checkpoint remain independent evidence; some switch-routing and synthetic edges need runtime interpretation before assigning ordinary input vectors.
+
+The first checkpoint's independently reviewed implementation commits are e1ec539, 62897cd, f76d87d, 61daa3a, 00214df, 29d25a7, 59c92d1, 77a94b9, 5ea540e and a4a8a3e, with evidence/publication metadata at 1eaf019 and 56c5271.
+
+The second checkpoint was independently approved by the Low Variables owner under exact patch SHA256 `0bcbd55121b92071b22463475a26985c9bd847e17d0b635337d90802e7c1f547` (105 tests-only paths, base `56c52715c7c783dc3afb1c7658a415f6d9097706`). Its private reconstruction reproduced the full seven-runtime counts, all 38 individual-file runs, all 58 retained evidence hashes and the 33-record native report. The invalid-flags guard finding was corrected and both malformed-input probes passed; no actionable test/harness finding remained. Residual integration and coverage gaps were expressly retained. Reviewed implementation/evidence commit `02f4bdec6719f96ee36abfd2ca57afb796d19954` was pushed to `origin/unit-tests-2026`, with local/origin parity `0 0`, clean status and unchanged production source verified afterward. This later STATUS-only publication note is permitted factual review metadata. Red regression publication is expressly authorized by the campaign; no production repair is included.
