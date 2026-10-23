@@ -154,14 +154,14 @@ final class ModernBridgeTest extends TestCase
         Environment::$ee->cache = $cache;
         $session = $this->getMockBuilder(\stdClass::class)->addMethods(['cache', 'set_cache'])->getMock();
         $session->expects($this->once())->method('cache')->with('low_widont', 'key', false)->willReturn('request');
-        $session->expects($this->once())->method('set_cache')->with('low_widont', 'key', null)->willReturn(null);
+        $session->expects($this->once())->method('set_cache')->with('low_widont', 'key', null)->willReturnSelf();
         Environment::$ee->session = $session;
         $this->assertSame(['id' => 1], $bridge->cache('get', 'key'));
         $this->assertTrue($bridge->cache('set', 'key', ['id' => 2]));
         $this->assertTrue($bridge->cache('delete', 'key'));
         $this->assertTrue($bridge->cache('clear', 'key'));
         $this->assertSame('request', $bridge->cache('get', 'key', false, false));
-        $this->assertNull($bridge->cache('set', 'key', null, false));
+        $this->assertSame($session, $bridge->cache('set', 'key', null, false));
         $this->assertFalse($bridge->cache('unknown', 'key'));
     }
 
@@ -179,7 +179,11 @@ final class ModernBridgeTest extends TestCase
             'low_widont_settings' => [['site_id' => 1, 'limit' => 5, 'version' => 'stale']],
             'fieldtypes' => [['name' => 'low_widont', 'settings' => base64_encode(serialize(['limit' => 2, 'field_option' => false]))]],
         ]);
-        Environment::$services['db'] = $database;
+        $queries = [];
+        Environment::$services['db'] = static function () use ($database, &$queries) {
+            $queries[] = $database->newQuery();
+            return $queries[count($queries) - 1];
+        };
         Environment::$ee->config = $this->getMockBuilder(\stdClass::class)->addMethods(['item'])->getMock();
         Environment::$ee->config->method('item')->with('site_id')->willReturn(1);
         $settings = $bridge->getSettings(true);
@@ -188,8 +192,9 @@ final class ModernBridgeTest extends TestCase
         $this->assertSame('4.1.1', $settings['version']);
         $this->assertSame($settings, (array) $bridge->getSettings());
         $this->assertSame(5, $bridge->getConfig('limit'));
-        $this->assertArrayNotHasKey('table_names', $database->data_cache);
-        $this->assertCount(2, array_filter($database->calls, static function ($call) { return $call[0] === 'get'; }));
+        $this->assertCount(1, $queries);
+        $this->assertArrayNotHasKey('table_names', $queries[0]->data_cache);
+        $this->assertCount(2, array_filter($queries[0]->calls, static function ($call) { return $call[0] === 'get'; }));
     }
 
     /**
@@ -202,19 +207,20 @@ final class ModernBridgeTest extends TestCase
     public function testSettingsInsertAndUpdate($version): void
     {
         $bridge = $this->bridge($version);
-        $database = new Database(['low_widont_settings' => [], 'fieldtypes' => []]);
-        Environment::$services['db'] = $database;
-        Environment::$ee->db = new Database(['unrelated' => [['id' => 9]]]);
+        $database = new Database(['low_widont_settings' => [['site_id' => 2, 'limit' => 99]], 'fieldtypes' => [], 'unrelated' => [['id' => 9], ['id' => 10]]]);
+        Environment::$services['db'] = static function () use ($database) { return $database->newQuery(); };
+        Environment::$ee->db = $database;
         Environment::$ee->db->where('id', 9);
         $pending = Environment::$ee->db->calls;
         Environment::$ee->config = $this->getMockBuilder(\stdClass::class)->addMethods(['item'])->getMock();
         Environment::$ee->config->method('item')->willReturn(1);
         $bridge->setConfig('limit', 0);
-        $this->assertSame([['site_id' => 1, 'limit' => 0]], $database->tables['low_widont_settings']);
+        $this->assertSame([['site_id' => 2, 'limit' => 99], ['site_id' => 1, 'limit' => 0]], $database->tables['low_widont_settings']);
         $bridge->setConfig('limit', 10);
-        $this->assertSame([['site_id' => 1, 'limit' => 10]], $database->tables['low_widont_settings']);
+        $this->assertSame([['site_id' => 2, 'limit' => 99], ['site_id' => 1, 'limit' => 10]], $database->tables['low_widont_settings']);
         $this->assertSame(10, $bridge->getConfig('limit'));
         $this->assertSame($pending, Environment::$ee->db->calls);
+        $this->assertSame([['id' => 9]], Environment::$ee->db->get('unrelated')->result_array());
         unset($database->tables['low_widont_settings']);
         $bridge->setConfig('limit', null);
         $this->assertNull($bridge->getConfig('limit'));
@@ -230,7 +236,7 @@ final class ModernBridgeTest extends TestCase
     public function testEmptyFieldtypeSerialization($version): void
     {
         $database = new Database(['fieldtypes' => [['name' => 'low_widont', 'settings' => base64_encode(serialize(false))]]]);
-        Environment::$services['db'] = $database;
+        Environment::$services['db'] = static function () use ($database) { return $database->newQuery(); };
         $this->assertSame('4.1.1', $this->bridge($version)->getConfig('version'));
     }
 

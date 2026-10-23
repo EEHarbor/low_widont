@@ -23,6 +23,9 @@ Produce actual Xdebug block/exit evidence and Clover method-line reports:
 ```sh
 ./tests/coverage.sh
 python3 tests/tools/write-checkpoint.py /absolute/path/printed/as/REPORT_DIR
+./tests/native-coverage.sh
+python3 tests/tools/native-report.py /absolute/path/printed/as/NATIVE_REPORT_DIR > tests/NATIVE_COVERAGE_CHECKPOINT.json
+python3 -B tests/tools/test_native_report.py
 ```
 
 Coverage runs use new report directories. The archive measurement copies are extracted byte-for-byte, hashed against the original entries, and never rebuilt into a PHAR. Ordinary execution uses the actual archive. The measurement config retains every source file, including unexecuted files and the archive stub. `processUncoveredFiles=false` prevents PHPUnit from executing unrelated procedural views without their caller variables while building a report; unexecuted source stays in the filter and inventory. Missing branch graphs remain unknown.
@@ -30,6 +33,10 @@ Coverage runs use new report directories. The archive measurement copies are ext
 The skill's Clover report gives method **line** coverage. Its `branch_percent=null` values and `at_target` labels do not establish branch coverage. `branches.json` separately records basic blocks, every outgoing edge, raw exit counters, positive observed-path evidence, runtime/source hashes, and compiled graph hashes. PHPUnit 9's merged outgoing counters can lose positive hits; a zero is not evidence that a path is unreachable. Hit paths prove only consecutive edges in the same compiled graph. Synthetic and exceptional exits are retained without waivers. Full path coverage is not required.
 
 The instrumentation fixture independently proves the block/exit distinction with a do/while that breaks on its second iteration: all blocks can execute while the loop's false condition exit is absent. Direct native Xdebug data and PHPUnit's merged export are compared under one PHP/Xdebug/source/compiled graph. `INSTRUMENTATION_EVIDENCE.json` preserves the observed discrepancy.
+
+The native runner preserves failed-test coverage and 22 separate EE2–EE7 request contexts, plus terminal loader/extractor/bootstrap children. Every context validates original archive-entry hashes and requires actual archive graphs. Native JSON records retain source bytes, runtime, EE version, instrumentation flags and independent compiled graphs. Conditional duplicate EE constructor locations can be aliased by Xdebug; reflection dispatch evidence quarantines those observations instead of assigning them to the first declaration. Synthetic exits remain unknown. `NATIVE_COVERAGE_CHECKPOINT.json` includes every declaration and procedural scope without claiming completion.
+
+`evidence/SHA256.json` pins portable full-matrix logs/JUnit, randomized order, individual-file outcome comparisons, Clover/instrumentation and raw native JSON. Native reports are gzip-compressed under `evidence/native/`; decompress to a private directory preserving relative names before running `native-report.py`. These reports contain test fixture data and source provenance, not a live EE application or database execution.
 
 `SOURCE_INVENTORY.json` includes procedural scopes, constructors, magic methods, closures, abstract declarations and extraction-stub functions. Generate it with:
 

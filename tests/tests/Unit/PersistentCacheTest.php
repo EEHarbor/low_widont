@@ -99,7 +99,7 @@ final class PersistentCacheTest extends TestCase
      */
     public function storedValues(): array
     {
-        return [[['id' => 1, 'empty' => null]], [(object) ['id' => 2]], ['text'], [0], [false], [null], [[]]];
+        return [[['id' => 1, 'empty' => null]], [(object) ['id' => 2]], ['text'], ['0'], [''], [0], [1.25], [false], [null], [[]]];
     }
 
     /**
@@ -240,6 +240,99 @@ final class PersistentCacheTest extends TestCase
         } finally {
             chmod($this->root . '/low_widont', 0700);
         }
+    }
+
+    /**
+     * Exercise every guard return against genuine filesystem permissions.
+     *
+     * @dataProvider guardedReads
+     * @param string $operation
+     * @param array $arguments
+     * @param bool $moduleOnly
+     * @return void
+     */
+    public function testReadDeleteAndClearPermissionGuards($operation, array $arguments, $moduleOnly): void
+    {
+        mkdir($this->root, 0700);
+        mkdir($this->root . '/low_widont', 0700);
+        $path = $moduleOnly ? $this->root . '/low_widont' : $this->root;
+        chmod($path, 0500);
+        Environment::$ee->logger->expects($this->once())->method('developer')->with($this->stringContains($moduleOnly ? 'module cache path not writable' : 'cache path not writable'));
+        try {
+            $this->assertFalse(PersistentCache::$operation(...$arguments));
+        } finally {
+            chmod($path, 0700);
+        }
+    }
+
+    /**
+     * Cover both generic and module permission guards through all read/delete APIs.
+     *
+     * @return array
+     */
+    public function guardedReads(): array
+    {
+        return [['get', ['entry'], false], ['delete', ['entry'], false], ['clear', [], false],
+            ['get', ['entry'], true], ['delete', ['entry'], true], ['clear', [], true]];
+    }
+
+    /**
+     * Keep directories and unrelated static values while removing cache files.
+     *
+     * @return void
+     */
+    public function testClearIgnoresChildDirectories(): void
+    {
+        PersistentCache::set('entry', 'cached');
+        mkdir($this->root . '/low_widont/child', 0700);
+        try {
+            $this->assertTrue(PersistentCache::clear());
+            $this->assertDirectoryExists($this->root . '/low_widont/child');
+            $this->assertFalse(PersistentCache::has('entry'));
+        } finally {
+            rmdir($this->root . '/low_widont/child');
+        }
+    }
+
+    /**
+     * Honor the public processed-key argument without hashing an already hashed key again.
+     *
+     * @group regression
+     * @return void
+     */
+    public function testHasHonorsProcessedKeys(): void
+    {
+        PersistentCache::set('entry', 'cached');
+        $this->assertTrue(PersistentCache::has(sha1('entry'), true));
+    }
+
+    /**
+     * Preserve a meaningful zero component in a documented composite filesystem key.
+     *
+     * @group regression
+     * @return void
+     */
+    public function testCompositeZeroKeyDoesNotOverwriteItsParent(): void
+    {
+        PersistentCache::set(['entry'], 'parent');
+        PersistentCache::set(['entry', 0], 'zero');
+        StaticCache::clear();
+        $this->assertSame('parent', PersistentCache::get('entry'));
+        $this->assertFileExists($this->root . '/low_widont/' . sha1('entry:0'));
+    }
+
+    /**
+     * Reject damaged cache serialization without uncaught PHP diagnostics.
+     *
+     * @group regression
+     * @return void
+     */
+    public function testMalformedCacheIsDiagnosticFree(): void
+    {
+        PersistentCache::set('entry', 'cached');
+        file_put_contents($this->root . '/low_widont/' . sha1('entry'), 'broken serialized data');
+        StaticCache::clear();
+        $this->assertFalse(PersistentCache::get('entry'));
     }
 
 }

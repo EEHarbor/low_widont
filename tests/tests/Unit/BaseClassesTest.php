@@ -172,6 +172,21 @@ final class BaseClassesTest extends TestCase
     }
 
     /**
+     * Remove the explicitly selected custom hook through the legacy unregister alias.
+     *
+     * @group regression
+     * @return void
+     */
+    public function testLegacyUnregisterPreservesTheCustomHook(): void
+    {
+        $extension = new Ext();
+        $extension->registerExtension('handler', 'custom_hook');
+        $extension->registerExtension('handler', 'handler');
+        $this->assertTrue($this->invoke($extension, 'unregister_extension', ['handler', 'custom_hook']));
+        $this->assertSame(['handler'], array_column(Environment::$ee->db->tables['extensions'], 'hook'));
+    }
+
+    /**
      * Return plugin metadata from the documented static info entry point.
      *
      * @group regression

@@ -40,7 +40,8 @@ namespace {
         }
 
         \LowWidontTests\Environment::$calls[] = func_get_args();
-        return \LowWidontTests\Environment::$services[$service];
+        $resolver = \LowWidontTests\Environment::$services[$service];
+        return $resolver instanceof \Closure ? call_user_func_array($resolver, array_slice(func_get_args(), 1)) : $resolver;
     }
 
     /**
@@ -51,7 +52,7 @@ namespace {
      */
     function read_file($path)
     {
-        return is_file($path) ? file_get_contents($path) : false;
+        return file_exists($path) ? file_get_contents($path) : false;
     }
 
     /**
@@ -59,11 +60,20 @@ namespace {
      *
      * @param string $path
      * @param string $data
+     * @param string $mode
      * @return bool
      */
-    function write_file($path, $data)
+    function write_file($path, $data, $mode = 'wb')
     {
-        return file_put_contents($path, $data) !== false;
+        $stream = @fopen($path, $mode);
+        if (!$stream) {
+            return false;
+        }
+        flock($stream, LOCK_EX);
+        fwrite($stream, $data);
+        flock($stream, LOCK_UN);
+        fclose($stream);
+        return true;
     }
 
     /**

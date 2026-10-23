@@ -5,6 +5,8 @@ declare(strict_types=1);
 $root = dirname(__DIR__, 2);
 $mode = $argv[1];
 $temporaryRoot = $argv[2];
+require $root . '/tests/support/Evidence.php';
+LowWidontTests\Evidence::nativeChild($root, 'autoload-' . $mode . '-opcache' . (int) ini_get('opcache.enable_cli'));
 require $root . '/tests/support/Environment.php';
 set_error_handler(['LowWidontTests\\Environment', 'diagnostic']);
 error_reporting(E_ALL);
@@ -20,6 +22,23 @@ require $root . '/low_widont/autoload.php';
 $loaders = spl_autoload_functions();
 $loader = end($loaders);
 try {
+    if ($mode === 'archive-loader') {
+        require $root . '/low_widont/low_widont.phar';
+        $found = false;
+        foreach (spl_autoload_functions() as $archiveLoader) {
+            if (!$archiveLoader instanceof Closure || substr((new ReflectionFunction($archiveLoader))->getFileName(), -10) !== '/index.php') {
+                continue;
+            }
+            if ($archiveLoader('Foreign\\Namespace') !== null || $archiveLoader('Low\\Widont\\MissingClass') !== null || $archiveLoader('Low\\Widont\\FluxCapacitor\\Base\\Pi') !== null) {
+                throw new RuntimeException('Unexpected archive loader return value.');
+            }
+            $found = class_exists('Low\\Widont\\FluxCapacitor\\Base\\Pi', false);
+        }
+        if (!$found) {
+            throw new RuntimeException('The original archive loader did not load the existing class.');
+        }
+        echo 'archive-loader:loaded';
+    }
     if ($mode === 'missing-archive') {
         $loader('Low\\Widont\\FluxCapacitor\\Base\\Pi');
     }

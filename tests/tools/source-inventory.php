@@ -20,6 +20,12 @@ $inventory = [];
 foreach ($sources as $path => $contents) {
     $methods = [];
     $tokens = token_get_all($contents);
+    $tokenLines = [];
+    $currentLine = 1;
+    foreach ($tokens as $tokenIndex => $sourceToken) {
+        $tokenLines[$tokenIndex] = is_array($sourceToken) ? $sourceToken[2] : $currentLine;
+        $currentLine = $tokenLines[$tokenIndex] + substr_count(is_array($sourceToken) ? $sourceToken[1] : $sourceToken, "\n");
+    }
     foreach ($tokens as $index => $token) {
         if (!is_array($token) || $token[0] !== T_FUNCTION) {
             continue;
@@ -37,7 +43,33 @@ foreach ($sources as $path => $contents) {
             }
             break;
         }
-        $methods[] = ['name' => $name, 'line' => $token[2]];
+        $depth = 0;
+        $hasBody = false;
+        $endLine = $token[2];
+        for ($cursor = $index + 1; $cursor < count($tokens); $cursor++) {
+            if (is_array($tokens[$cursor])) {
+                if ($hasBody && in_array($tokens[$cursor][0], [T_CURLY_OPEN, T_DOLLAR_OPEN_CURLY_BRACES], true)) {
+                    $depth++;
+                }
+                continue;
+            }
+            if (!$hasBody && $tokens[$cursor] === ';') {
+                $endLine = $tokenLines[$cursor];
+                break;
+            }
+            if ($tokens[$cursor] === '{') {
+                $depth++;
+                $hasBody = true;
+            }
+            if ($tokens[$cursor] === '}') {
+                $depth--;
+                if ($hasBody && $depth === 0) {
+                    $endLine = $tokenLines[$cursor];
+                    break;
+                }
+            }
+        }
+        $methods[] = ['name' => $name, 'line' => $token[2], 'end_line' => $endLine, 'abstract_declaration' => !$hasBody];
     }
     $inventory[$path] = ['sha256' => hash('sha256', $contents), 'bytes' => strlen($contents), 'lines' => substr_count($contents, "\n") + 1,
         'functions_including_magic_and_closures' => $methods, 'procedural_scope_included' => true];

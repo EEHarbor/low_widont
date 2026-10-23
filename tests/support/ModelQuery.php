@@ -8,6 +8,7 @@ final class ModelQuery
 {
     public $limit;
     public $offset;
+    public $allCalls = 0;
     private $total;
 
     /**
@@ -28,6 +29,7 @@ final class ModelQuery
      */
     public function all()
     {
+        $this->allCalls++;
         return new \ArrayObject(array_fill(0, $this->total, null));
     }
 

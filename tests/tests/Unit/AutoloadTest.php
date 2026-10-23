@@ -24,6 +24,32 @@ final class AutoloadTest extends TestCase
     }
 
     /**
+     * Invoke the archive's own autoloader for foreign, missing and existing class files.
+     *
+     * @return void
+     */
+    public function testArchiveLoaderPaths(): void
+    {
+        $this->testNativeLoaderPaths('archive-loader', 'archive-loader:loaded', false);
+    }
+
+    /**
+     * Bootstrap the bridge before APP_VER and ee() exist in a fresh selected runtime.
+     *
+     * @return void
+     */
+    public function testLegacySuperObjectBootstrap(): void
+    {
+        $command = [PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=1', '-d', 'log_errors=0', dirname(__DIR__, 2) . '/tools/host-bootstrap-probe.php'];
+        $process = proc_open($command, [1 => ['pipe', 'w'], 2 => ['redirect', 1]], $pipes);
+        $this->assertIsResource($process);
+        $output = stream_get_contents($pipes[1]);
+        fclose($pipes[1]);
+        $this->assertSame(0, proc_close($process), $output);
+        $this->assertSame(['version' => '7.5.0', 'major' => '7', 'same_host' => true], json_decode($output, true, 512, JSON_THROW_ON_ERROR));
+    }
+
+    /**
      * Exercise actual loader failure and native/fallback archive paths in fresh processes.
      *
      * @dataProvider loaderModes
@@ -37,6 +63,7 @@ final class AutoloadTest extends TestCase
         $root = dirname(__DIR__, 3);
         $temporaryRoot = sys_get_temp_dir() . '/low-widont-loader-' . bin2hex(random_bytes(8));
         mkdir($temporaryRoot, 0700);
+        $temporaryRoot = realpath($temporaryRoot);
         $environment = getenv();
         $environment['TMPDIR'] = $temporaryRoot;
         $command = [PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=1'];

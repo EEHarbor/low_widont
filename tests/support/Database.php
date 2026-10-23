@@ -9,7 +9,12 @@ final class Database
     public $data_cache = ['table_names' => ['stale']];
     public $calls = [];
     public $tables;
+    public $columns = [];
+    public $primaryKeys = [['Column_name' => 'license_key', 'Non_unique' => '0']];
+    public $dbprefix = 'exp_';
     private $conditions = [];
+    private $selectedTable;
+    private $storage;
 
     /**
      * Seed isolated records keyed by unprefixed EE table name.
@@ -19,7 +24,23 @@ final class Database
      */
     public function __construct(array $tables = [])
     {
-        $this->tables = $tables;
+        $this->storage = (object) ['tables' => $tables];
+        $this->tables = &$this->storage->tables;
+    }
+
+    /**
+     * Create a fresh DI query builder sharing this fixture's database connection.
+     *
+     * @return self
+     */
+    public function newQuery()
+    {
+        $query = clone $this;
+        $query->conditions = [];
+        $query->selectedTable = null;
+        $query->calls = [];
+        $query->data_cache = [];
+        return $query;
     }
 
     /**
@@ -56,8 +77,10 @@ final class Database
      * @param int|null $limit
      * @return Result
      */
-    public function get($table, $limit = null)
+    public function get($table = null, $limit = null)
     {
+        $table = $table === null ? $this->selectedTable : $table;
+        $this->selectedTable = null;
         $this->calls[] = ['get', $table, $limit];
         $conditions = $this->conditions;
         $this->conditions = [];
@@ -73,18 +96,61 @@ final class Database
     }
 
     /**
+     * Select the table consumed by a subsequent argument-free query.
+     *
+     * @param string $table
+     * @return self
+     */
+    public function from($table)
+    {
+        $this->selectedTable = $table;
+        $this->calls[] = ['from', $table];
+        return $this;
+    }
+
+    /**
+     * Check the explicit fixture schema rather than assuming a populated record.
+     *
+     * @param string $field
+     * @param string $table
+     * @return bool
+     */
+    public function field_exists($field, $table)
+    {
+        $this->calls[] = ['field_exists', $field, $table];
+        return in_array($field, $this->columns[$table] ?? [], true);
+    }
+
+    /**
+     * Return SHOW KEYS metadata only for a table with the configured EE prefix.
+     *
+     * @param string $sql
+     * @return Result
+     * @throws \RuntimeException
+     */
+    public function query($sql)
+    {
+        $this->calls[] = ['query', $sql];
+        if ($sql !== "SHOW KEYS FROM " . $this->dbprefix . "eeharbor_licenses WHERE Key_name = 'PRIMARY'") {
+            throw new \RuntimeException('Unexpected physical database table in query: ' . $sql);
+        }
+        return new Result($this->primaryKeys);
+    }
+
+    /**
      * Fetch rows with an explicit equality map.
      *
      * @param string $table
      * @param array $conditions
+     * @param int|null $limit
      * @return Result
      */
-    public function get_where($table, array $conditions)
+    public function get_where($table, array $conditions, $limit = null)
     {
         foreach ($conditions as $column => $value) {
             $this->where($column, $value);
         }
-        return $this->get($table);
+        return $this->get($table, $limit);
     }
 
     /**
@@ -96,6 +162,9 @@ final class Database
     public function table_exists($table)
     {
         $this->calls[] = ['table_exists', $table];
+        if (isset($this->data_cache['table_names'])) {
+            return in_array($table, $this->data_cache['table_names'], true);
+        }
         return array_key_exists($table, $this->tables);
     }
 
@@ -224,5 +293,15 @@ final class Result
     public function result()
     {
         return array_map(static function ($row) { return (object) $row; }, $this->rows);
+    }
+
+    /**
+     * Retrieve all selected records as associative rows.
+     *
+     * @return array
+     */
+    public function result_array()
+    {
+        return $this->rows;
     }
 }

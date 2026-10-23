@@ -1,0 +1,474 @@
+{
+  "suite": "362 cases; source-red checkpoint, not completion",
+  "runtime": "8.2.30",
+  "failures": [
+    {
+      "case": "LowWidontTests\\ArchiveRuntimeTest::testNestedTemporaryCleanupIsDiagnosticFree",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\ArchiveRuntimeTest::testNestedTemporaryCleanupIsDiagnosticFree\nErrorException: rmdir(nested): Directory not empty\n\n/Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar:278\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/ArchiveRuntimeTest.php:160"
+    },
+    {
+      "case": "LowWidontTests\\ArchiveRuntimeTest::testSizeMismatchIsReportedWithoutPhpDiagnostics",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\ArchiveRuntimeTest::testSizeMismatchIsReportedWithoutPhpDiagnostics\nFatal error: Uncaught ErrorException: Undefined variable $stat in /Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar:262\nStack trace:\n#0 /Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar(262): LowWidontTests\\Environment::diagnostic(2, 'Undefined varia...', '/Users/tomjaege...', 262)\n#1 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/archive-probe.php(21): Extract_low_widont::extractFile('fixture.txt', Array, Resource id #14)\n#2 {main}\n  thrown in /Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar on line 262\n\nFailed asserting that 255 is identical to 0.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/ArchiveRuntimeTest.php:205\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/ArchiveRuntimeTest.php:187"
+    },
+    {
+      "case": "LowWidontTests\\AutoloadTest::testFallbackExtractionIsDiagnosticFree",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\AutoloadTest::testFallbackExtractionIsDiagnosticFree\nFatal error: Uncaught ErrorException: mkdir(): File exists in /Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar:177\nStack trace:\n#0 [internal function]: LowWidontTests\\Environment::diagnostic(2, 'mkdir(): File e...', '/Users/tomjaege...', 177)\n#1 /Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar(177): mkdir('/private/var/fo...', 511, true)\n#2 /Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar(291): Extract_low_widont::go()\n#3 /Users/tomjaeger/Sites/add-ons/low_widont/low_widont/autoload.php(63): include_once('/Users/tomjaege...')\n#4 [internal function]: {closure}('FluxCapacitor/B...')\n#5 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/autoload-probe.php(49): class_exists('Low\\\\Widont\\\\Flux...')\n#6 {main}\n  thrown in /Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar on line 177\n\nFailed asserting that 255 is identical to 0.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/AutoloadTest.php:79\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/AutoloadTest.php:114"
+    },
+    {
+      "case": "LowWidontTests\\BaseClassesTest::testLegacyRegistrationPreservesCustomArguments",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\BaseClassesTest::testLegacyRegistrationPreservesCustomArguments\nFailed asserting that two strings are identical.\n--- Expected\n+++ Actual\n@@ @@\n-'custom_hook'\n+'handler'\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BaseClassesTest.php:169"
+    },
+    {
+      "case": "LowWidontTests\\BaseClassesTest::testLegacyUnregisterPreservesTheCustomHook",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\BaseClassesTest::testLegacyUnregisterPreservesTheCustomHook\nFailed asserting that two arrays are identical.\n--- Expected\n+++ Actual\n@@ @@\n Array &0 (\n-    0 => 'handler'\n+    0 => 'custom_hook'\n )\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BaseClassesTest.php:186"
+    },
+    {
+      "case": "LowWidontTests\\BaseClassesTest::testStaticPluginInfoReturnsMetadata",
+      "kind": "error",
+      "type": "Error",
+      "message": "LowWidontTests\\BaseClassesTest::testStaticPluginInfoReturnsMetadata\nError: Using $this when not in object context\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Base/Pi.php:30\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BaseClassesTest.php:197"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testSettingsCacheIsScopedToTheAddon with data set #0",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testSettingsCacheIsScopedToTheAddon with data set #0 ('EE2')\nFailed asserting that 5 is identical to 12.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:87"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testSettingsCacheIsScopedToTheAddon with data set #1",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testSettingsCacheIsScopedToTheAddon with data set #1 ('EE3')\nFailed asserting that 5 is identical to 12.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:87"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testSettingsCacheIsScopedToTheAddon with data set #2",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testSettingsCacheIsScopedToTheAddon with data set #2 ('EE4')\nFailed asserting that 5 is identical to 12.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:87"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testSettingsCacheIsScopedToTheAddon with data set #3",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testSettingsCacheIsScopedToTheAddon with data set #3 ('EE5')\nFailed asserting that 5 is identical to 12.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:87"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testSettingsCacheIsScopedToTheAddon with data set #4",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testSettingsCacheIsScopedToTheAddon with data set #4 ('EE6')\nFailed asserting that 5 is identical to 12.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:87"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #0",
+      "kind": "error",
+      "type": "RuntimeException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #0 ('EE3', array(true))\nRuntimeException: Cannot overwrite fixture on the loader.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/support/Facade.php:22\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE3.php:344\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:185"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #1",
+      "kind": "error",
+      "type": "RuntimeException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #1 ('EE3', null)\nRuntimeException: Cannot overwrite fixture on the loader.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/support/Facade.php:22\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE3.php:344\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:185"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #2",
+      "kind": "error",
+      "type": "RuntimeException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #2 ('EE4', array(true))\nRuntimeException: Cannot overwrite fixture on the loader.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/support/Facade.php:22\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE4.php:344\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:185"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #3",
+      "kind": "error",
+      "type": "RuntimeException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #3 ('EE4', null)\nRuntimeException: Cannot overwrite fixture on the loader.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/support/Facade.php:22\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE4.php:344\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:185"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #4",
+      "kind": "error",
+      "type": "RuntimeException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #4 ('EE5', array(true))\nRuntimeException: Cannot overwrite fixture on the loader.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/support/Facade.php:22\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE5.php:344\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:185"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #5",
+      "kind": "error",
+      "type": "RuntimeException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #5 ('EE5', null)\nRuntimeException: Cannot overwrite fixture on the loader.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/support/Facade.php:22\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE5.php:344\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:185"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #6",
+      "kind": "error",
+      "type": "RuntimeException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #6 ('EE6', array(true))\nRuntimeException: Cannot overwrite fixture on the loader.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/support/Facade.php:22\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE5.php:344\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:185"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #7",
+      "kind": "error",
+      "type": "RuntimeException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testLoadedFacadeServicesCanBeOverwritten with data set #7 ('EE6', null)\nRuntimeException: Cannot overwrite fixture on the loader.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/support/Facade.php:22\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE5.php:344\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:185"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testShortRequestUrlIsDiagnosticFree with data set #0",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testShortRequestUrlIsDiagnosticFree with data set #0 ('EE3')\nErrorException: Undefined array key 3\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE3.php:412\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:215"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testShortRequestUrlIsDiagnosticFree with data set #1",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testShortRequestUrlIsDiagnosticFree with data set #1 ('EE4')\nErrorException: Undefined array key 3\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE4.php:412\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:215"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testShortRequestUrlIsDiagnosticFree with data set #2",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testShortRequestUrlIsDiagnosticFree with data set #2 ('EE5')\nErrorException: Undefined array key 3\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE5.php:412\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:215"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testShortRequestUrlIsDiagnosticFree with data set #3",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testShortRequestUrlIsDiagnosticFree with data set #3 ('EE6')\nErrorException: Undefined array key 3\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE5.php:412\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:215"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testMalformedFieldtypeSettingsAreDiagnosticFree with data set #0",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testMalformedFieldtypeSettingsAreDiagnosticFree with data set #0 ('EE2')\nErrorException: unserialize(): Error at offset 0 of 26 bytes\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php:458\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php:216\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:234"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testMalformedFieldtypeSettingsAreDiagnosticFree with data set #1",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testMalformedFieldtypeSettingsAreDiagnosticFree with data set #1 ('EE3')\nErrorException: unserialize(): Error at offset 0 of 26 bytes\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE3.php:495\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE3.php:216\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:234"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testMalformedFieldtypeSettingsAreDiagnosticFree with data set #2",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testMalformedFieldtypeSettingsAreDiagnosticFree with data set #2 ('EE4')\nErrorException: unserialize(): Error at offset 0 of 26 bytes\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE4.php:495\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE4.php:216\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:234"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testMalformedFieldtypeSettingsAreDiagnosticFree with data set #3",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testMalformedFieldtypeSettingsAreDiagnosticFree with data set #3 ('EE5')\nErrorException: unserialize(): Error at offset 0 of 26 bytes\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE5.php:495\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE5.php:216\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:234"
+    },
+    {
+      "case": "LowWidontTests\\BridgeBoundaryTest::testMalformedFieldtypeSettingsAreDiagnosticFree with data set #4",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\BridgeBoundaryTest::testMalformedFieldtypeSettingsAreDiagnosticFree with data set #4 ('EE6')\nErrorException: unserialize(): Error at offset 0 of 26 bytes\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE5.php:495\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE5.php:216\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeBoundaryTest.php:234"
+    },
+    {
+      "case": "LowWidontTests\\BridgeNavigationTest::testActiveMapRetainsAStringPageTitle with data set #0",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\BridgeNavigationTest::testActiveMapRetainsAStringPageTitle with data set #0 ('EE3')\nFailed asserting that LowWidontTests\\Header Object &00000000000006280000000000000000 (\n    'title' => 'License'\n    'url' => LowWidontTests\\Url Object &00000000000006290000000000000000 (\n        'path' => '/addons/settings/low_widont/license'\n        'variables' => Array &0 ()\n    )\n    'buttons' => Array &1 ()\n    'active' => true\n) is identical to 'License'.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeNavigationTest.php:127"
+    },
+    {
+      "case": "LowWidontTests\\BridgeNavigationTest::testActiveMapRetainsAStringPageTitle with data set #1",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\BridgeNavigationTest::testActiveMapRetainsAStringPageTitle with data set #1 ('EE4')\nFailed asserting that LowWidontTests\\Header Object &000000000000060c0000000000000000 (\n    'title' => 'License'\n    'url' => LowWidontTests\\Url Object &000000000000060d0000000000000000 (\n        'path' => '/addons/settings/low_widont/license'\n        'variables' => Array &0 ()\n    )\n    'buttons' => Array &1 ()\n    'active' => true\n) is identical to 'License'.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeNavigationTest.php:127"
+    },
+    {
+      "case": "LowWidontTests\\BridgeNavigationTest::testActiveMapRetainsAStringPageTitle with data set #2",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\BridgeNavigationTest::testActiveMapRetainsAStringPageTitle with data set #2 ('EE5')\nFailed asserting that LowWidontTests\\Header Object &00000000000005f00000000000000000 (\n    'title' => 'License'\n    'url' => LowWidontTests\\Url Object &00000000000005f10000000000000000 (\n        'path' => '/addons/settings/low_widont/license'\n        'variables' => Array &0 ()\n    )\n    'buttons' => Array &1 ()\n    'active' => true\n) is identical to 'License'.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeNavigationTest.php:127"
+    },
+    {
+      "case": "LowWidontTests\\BridgeNavigationTest::testActiveMapRetainsAStringPageTitle with data set #3",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\BridgeNavigationTest::testActiveMapRetainsAStringPageTitle with data set #3 ('EE6')\nFailed asserting that LowWidontTests\\Header Object &000000000000055e0000000000000000 (\n    'title' => 'License'\n    'url' => LowWidontTests\\Url Object &000000000000055f0000000000000000 (\n        'path' => '/addons/settings/low_widont/license'\n        'variables' => Array &0 ()\n    )\n    'buttons' => Array &1 ()\n    'active' => true\n) is identical to 'License'.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/BridgeNavigationTest.php:127"
+    },
+    {
+      "case": "LowWidontTests\\FieldtypeTest::testMissingEntryDoesNotEmitAPropertyDiagnostic",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\FieldtypeTest::testMissingEntryDoesNotEmitAPropertyDiagnostic\nErrorException: Attempt to read property \"channel_id\" on null\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Base/Ft.php:88\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/FieldtypeTest.php:123"
+    },
+    {
+      "case": "LowWidontTests\\GlobalFieldSettingsTest::testMissingNamedSettingIsDiagnosticFree",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\GlobalFieldSettingsTest::testMissingNamedSettingIsDiagnosticFree\nErrorException: Undefined array key \"missing\"\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/GlobalFieldSettings.php:21\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/GlobalFieldSettingsTest.php:110"
+    },
+    {
+      "case": "LowWidontTests\\GlobalFieldSettingsTest::testMalformedPersistedSettingsAreDiagnosticFree",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\GlobalFieldSettingsTest::testMalformedPersistedSettingsAreDiagnosticFree\nErrorException: unserialize(): Error at offset 0 of 14 bytes\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/GlobalFieldSettings.php:33\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/GlobalFieldSettingsTest.php:122"
+    },
+    {
+      "case": "LowWidontTests\\LegacyBridgeTest::testLegacyAddonUrls",
+      "kind": "error",
+      "type": "ValueError",
+      "message": "LowWidontTests\\LegacyBridgeTest::testLegacyAddonUrls\nValueError: version_compare(): Argument #3 ($operator) must be a valid comparison operator\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php:47\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/LegacyBridgeTest.php:80"
+    },
+    {
+      "case": "LowWidontTests\\LegacyBridgeTest::testLegacyNavigation",
+      "kind": "error",
+      "type": "ValueError",
+      "message": "LowWidontTests\\LegacyBridgeTest::testLegacyNavigation\nValueError: version_compare(): Argument #3 ($operator) must be a valid comparison operator\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php:47\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/LegacyBridgeTest.php:122"
+    },
+    {
+      "case": "LowWidontTests\\LegacyBridgeTest::testMissingLegacyQueryKeysAreDiagnosticFree",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\LegacyBridgeTest::testMissingLegacyQueryKeysAreDiagnosticFree\nErrorException: Undefined array key \"module\"\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php:372\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/LegacyBridgeTest.php:284"
+    },
+    {
+      "case": "LowWidontTests\\McpLicenseTest::testStructuredLicenseInputIsRejectedWithoutDiagnostics",
+      "kind": "error",
+      "type": "TypeError",
+      "message": "LowWidontTests\\McpLicenseTest::testStructuredLicenseInputIsRejectedWithoutDiagnostics\nTypeError: strlen(): Argument #1 ($string) must be of type string, array given\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Base/Mcp.php:82\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/McpLicenseTest.php:73\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/McpLicenseTest.php:89"
+    },
+    {
+      "case": "LowWidontTests\\McpLicenseTest::testNumericStringSiteIdDoesNotBecomeAnMsmConflict",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\McpLicenseTest::testNumericStringSiteIdDoesNotBecomeAnMsmConflict\nFailed asserting that two arrays are identical.\n--- Expected\n+++ Actual\n@@ @@\n Array &0 (\n-    0 => 'asSuccess'\n+    0 => 'asIssue'\n )\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/McpLicenseTest.php:273"
+    },
+    {
+      "case": "LowWidontTests\\McpTest::testPaginationRetainsTheModelAndStoresRenderedControls",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\McpTest::testPaginationRetainsTheModelAndStoresRenderedControls\nErrorException: Creation of dynamic property Low\\Widont\\FluxCapacitor\\Base\\Mcp::$data is deprecated\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Base/Mcp.php:165\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/McpTest.php:74"
+    },
+    {
+      "case": "LowWidontTests\\PaginationBoundaryTest::testNegativePageUsesTheFirstPage",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\PaginationBoundaryTest::testNegativePageUsesTheFirstPage\nExpectation failed for method name is \"currentPage\" when invoked 1 time(s)\nParameter 0 for invocation stdClass::currentPage(-2) does not match expected value.\nFailed asserting that -2 matches expected 1.\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE5.php:188\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Base/Mcp.php:165\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/support/PaginatingMcp.php:20\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PaginationBoundaryTest.php:75\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PaginationBoundaryTest.php:46"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #0",
+      "kind": "error",
+      "type": "TypeError",
+      "message": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #0 (array(1, null))\nTypeError: Illegal offset type in isset or empty\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/StaticCache.php:18\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:21\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:75"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #1",
+      "kind": "error",
+      "type": "TypeError",
+      "message": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #1 (stdClass Object (...))\nTypeError: Illegal offset type in isset or empty\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/StaticCache.php:18\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:21\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:75"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #2",
+      "kind": "error",
+      "type": "TypeError",
+      "message": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #2 ('text')\nTypeError: Illegal offset type in isset or empty\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/StaticCache.php:18\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:21\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:75"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #3",
+      "kind": "error",
+      "type": "TypeError",
+      "message": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #3 ('0')\nTypeError: Illegal offset type in isset or empty\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/StaticCache.php:18\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:21\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:75"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #4",
+      "kind": "error",
+      "type": "TypeError",
+      "message": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #4 ('')\nTypeError: Illegal offset type in isset or empty\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/StaticCache.php:18\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:21\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:75"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #5",
+      "kind": "error",
+      "type": "TypeError",
+      "message": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #5 (0)\nTypeError: Illegal offset type in isset or empty\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/StaticCache.php:18\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:21\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:75"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #6",
+      "kind": "error",
+      "type": "TypeError",
+      "message": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #6 (1.25)\nTypeError: Illegal offset type in isset or empty\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/StaticCache.php:18\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:21\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:75"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #7",
+      "kind": "error",
+      "type": "TypeError",
+      "message": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #7 (false)\nTypeError: Illegal offset type in isset or empty\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/StaticCache.php:18\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:21\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:75"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #8",
+      "kind": "error",
+      "type": "TypeError",
+      "message": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #8 (null)\nTypeError: Illegal offset type in isset or empty\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/StaticCache.php:18\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:21\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:75"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #9",
+      "kind": "error",
+      "type": "TypeError",
+      "message": "LowWidontTests\\PersistentCacheTest::testCompositeKeyRoundTrip with data set #9 (array())\nTypeError: Illegal offset type in isset or empty\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/StaticCache.php:18\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:21\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:75"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testSetAndGetUseTheSameStaticCacheKey",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\PersistentCacheTest::testSetAndGetUseTheSameStaticCacheKey\nFailed asserting that false is identical to Array &0 (\n    'id' => 9\n).\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:158"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCachePathCreationFailure with data set #0",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\PersistentCacheTest::testCachePathCreationFailure with data set #0 ('get', array('key'))\nErrorException: mkdir(): Not a directory\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:196\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:27\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:177"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCachePathCreationFailure with data set #1",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\PersistentCacheTest::testCachePathCreationFailure with data set #1 ('set', array('key', 'value'))\nErrorException: mkdir(): Not a directory\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:196\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:57\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:177"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCachePathCreationFailure with data set #2",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\PersistentCacheTest::testCachePathCreationFailure with data set #2 ('delete', array('key'))\nErrorException: mkdir(): Not a directory\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:196\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:90\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:177"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCachePathCreationFailure with data set #3",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\PersistentCacheTest::testCachePathCreationFailure with data set #3 ('clear', array())\nErrorException: mkdir(): Not a directory\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:196\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:124\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:177"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testModuleCachePathCreationFailure",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\PersistentCacheTest::testModuleCachePathCreationFailure\nErrorException: mkdir(): Not a directory\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:215\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:57\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:222"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testHasHonorsProcessedKeys",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\PersistentCacheTest::testHasHonorsProcessedKeys\nFailed asserting that false is true.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:306"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testCompositeZeroKeyDoesNotOverwriteItsParent",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\PersistentCacheTest::testCompositeZeroKeyDoesNotOverwriteItsParent\nFailed asserting that two strings are identical.\n--- Expected\n+++ Actual\n@@ @@\n-'parent'\n+'zero'\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:320"
+    },
+    {
+      "case": "LowWidontTests\\PersistentCacheTest::testMalformedCacheIsDiagnosticFree",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\PersistentCacheTest::testMalformedCacheIsDiagnosticFree\nErrorException: unserialize(): Error at offset 0 of 22 bytes\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:181\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/PersistentCache.php:45\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/PersistentCacheTest.php:335"
+    },
+    {
+      "case": "LowWidontTests\\RequestContextTest::testIsolatedSourceRegressions with data set #0",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\RequestContextTest::testIsolatedSourceRegressions with data set #0 ('legacy', '2.6.0')\n[\n    {\n        \"case\": \"real version dispatch and legacy URL directives\",\n        \"exception\": \"ValueError\",\n        \"message\": \"version_compare(): Argument #3 ($operator) must be a valid comparison operator\",\n        \"file\": \"phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-e0ed8f9237bdd55f/third/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php\",\n        \"line\": 47,\n        \"trace\": \"#0 phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-e0ed8f9237bdd55f/third/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php(47): version_compare('2.6.0', '2.7.3', '=<')\\n#1 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(152): Low\\\\Widont\\\\FluxCapacitor\\\\Bridge\\\\EE2->getBaseURL('')\\n#2 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n#3 {main}\"\n    }\n]\nFailed asserting that two arrays are identical.\n--- Expected\n+++ Actual\n@@ @@\n-Array &0 ()\n+Array &0 (\n+    0 => Array &1 (\n+        'case' => 'real version dispatch and legacy URL directives'\n+        'exception' => 'ValueError'\n+        'message' => 'version_compare(): Argument #3 ($operator) must be a valid comparison operator'\n+        'file' => 'phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-e0ed8f9237bdd55f/third/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php'\n+        'line' => 47\n+        'trace' => '#0 phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-e0ed8f9237bdd55f/third/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php(47): version_compare('2.6.0', '2.7.3', '=<')\\n\n+#1 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(152): Low\\Widont\\FluxCapacitor\\Bridge\\EE2->getBaseURL('')\\n\n+#2 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n\n+#3 {main}'\n+    )\n+)\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/RequestContextTest.php:107\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/RequestContextTest.php:48"
+    },
+    {
+      "case": "LowWidontTests\\RequestContextTest::testIsolatedSourceRegressions with data set #1",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\RequestContextTest::testIsolatedSourceRegressions with data set #1 ('legacy', '2.7.3')\n[\n    {\n        \"case\": \"real version dispatch and legacy URL directives\",\n        \"exception\": \"ValueError\",\n        \"message\": \"version_compare(): Argument #3 ($operator) must be a valid comparison operator\",\n        \"file\": \"phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-04415965050769e8/third/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php\",\n        \"line\": 47,\n        \"trace\": \"#0 phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-04415965050769e8/third/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php(47): version_compare('2.7.3', '2.7.3', '=<')\\n#1 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(152): Low\\\\Widont\\\\FluxCapacitor\\\\Bridge\\\\EE2->getBaseURL('')\\n#2 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n#3 {main}\"\n    }\n]\nFailed asserting that two arrays are identical.\n--- Expected\n+++ Actual\n@@ @@\n-Array &0 ()\n+Array &0 (\n+    0 => Array &1 (\n+        'case' => 'real version dispatch and legacy URL directives'\n+        'exception' => 'ValueError'\n+        'message' => 'version_compare(): Argument #3 ($operator) must be a valid comparison operator'\n+        'file' => 'phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-04415965050769e8/third/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php'\n+        'line' => 47\n+        'trace' => '#0 phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-04415965050769e8/third/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php(47): version_compare('2.7.3', '2.7.3', '=<')\\n\n+#1 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(152): Low\\Widont\\FluxCapacitor\\Bridge\\EE2->getBaseURL('')\\n\n+#2 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n\n+#3 {main}'\n+    )\n+)\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/RequestContextTest.php:107\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/RequestContextTest.php:48"
+    },
+    {
+      "case": "LowWidontTests\\RequestContextTest::testIsolatedSourceRegressions with data set #2",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\RequestContextTest::testIsolatedSourceRegressions with data set #2 ('legacy', '2.9.0')\n[\n    {\n        \"case\": \"real version dispatch and legacy URL directives\",\n        \"exception\": \"ValueError\",\n        \"message\": \"version_compare(): Argument #3 ($operator) must be a valid comparison operator\",\n        \"file\": \"phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-b069e8363039178c/third/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php\",\n        \"line\": 47,\n        \"trace\": \"#0 phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-b069e8363039178c/third/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php(47): version_compare('2.9.0', '2.7.3', '=<')\\n#1 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(152): Low\\\\Widont\\\\FluxCapacitor\\\\Bridge\\\\EE2->getBaseURL('')\\n#2 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n#3 {main}\"\n    }\n]\nFailed asserting that two arrays are identical.\n--- Expected\n+++ Actual\n@@ @@\n-Array &0 ()\n+Array &0 (\n+    0 => Array &1 (\n+        'case' => 'real version dispatch and legacy URL directives'\n+        'exception' => 'ValueError'\n+        'message' => 'version_compare(): Argument #3 ($operator) must be a valid comparison operator'\n+        'file' => 'phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-b069e8363039178c/third/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php'\n+        'line' => 47\n+        'trace' => '#0 phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-b069e8363039178c/third/low_widont/low_widont.phar/FluxCapacitor/Bridge/EE2.php(47): version_compare('2.9.0', '2.7.3', '=<')\\n\n+#1 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(152): Low\\Widont\\FluxCapacitor\\Bridge\\EE2->getBaseURL('')\\n\n+#2 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n\n+#3 {main}'\n+    )\n+)\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/RequestContextTest.php:107\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/RequestContextTest.php:48"
+    },
+    {
+      "case": "LowWidontTests\\RequestContextTest::testIsolatedSourceRegressions with data set #3",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\RequestContextTest::testIsolatedSourceRegressions with data set #3 ('legacy-cache', '2.9.0')\n[\n    {\n        \"case\": \"legacy persistent delete invalidates the native cache\",\n        \"exception\": \"RuntimeException\",\n        \"message\": \"deleted persistent entry: expected false, got 'cached'\",\n        \"file\": \"/Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php\",\n        \"line\": 94,\n        \"trace\": \"#0 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(256): {closure}(false, 'cached', 'deleted persist...')\\n#1 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n#2 {main}\"\n    },\n    {\n        \"case\": \"legacy persistent clear invalidates the native cache namespace\",\n        \"exception\": \"RuntimeException\",\n        \"message\": \"cleared persistent namespace: expected false, got 'cached'\",\n        \"file\": \"/Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php\",\n        \"line\": 94,\n        \"trace\": \"#0 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(262): {closure}(false, 'cached', 'cleared persist...')\\n#1 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n#2 {main}\"\n    }\n]\nFailed asserting that two arrays are identical.\n--- Expected\n+++ Actual\n@@ @@\n-Array &0 ()\n+Array &0 (\n+    0 => Array &1 (\n+        'case' => 'legacy persistent delete invalidates the native cache'\n+        'exception' => 'RuntimeException'\n+        'message' => 'deleted persistent entry: expected false, got 'cached''\n+        'file' => '/Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php'\n+        'line' => 94\n+        'trace' => '#0 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(256): {closure}(false, 'cached', 'deleted persist...')\\n\n+#1 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n\n+#2 {main}'\n+    )\n+    1 => Array &2 (\n+        'case' => 'legacy persistent clear invalidates the native cache namespace'\n+        'exception' => 'RuntimeException'\n+        'message' => 'cleared persistent namespace: expected false, got 'cached''\n+        'file' => '/Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php'\n+        'line' => 94\n+        'trace' => '#0 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(262): {closure}(false, 'cached', 'cleared persist...')\\n\n+#1 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n\n+#2 {main}'\n+    )\n+)\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/RequestContextTest.php:107\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/RequestContextTest.php:48"
+    },
+    {
+      "case": "LowWidontTests\\RequestContextTest::testIsolatedSourceRegressions with data set #4",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\RequestContextTest::testIsolatedSourceRegressions with data set #4 ('updater', '7.5.0')\n[\n    {\n        \"case\": \"extension exceptions do not escape the updater catch\",\n        \"exception\": \"RuntimeException\",\n        \"message\": \"Extension update failed\",\n        \"file\": \"/private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-c8a6a111afef19d0/third/low_widont/ext.low_widont.php\",\n        \"line\": 18,\n        \"trace\": \"#0 phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-c8a6a111afef19d0/third/low_widont/low_widont.phar/FluxCapacitor/Base/Upd.php(70): Low_widont_fixture_ext->updateExtension('4.0.0')\\n#1 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(346): Low\\\\Widont\\\\FluxCapacitor\\\\Base\\\\Upd->update('4.0.0')\\n#2 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n#3 {main}\"\n    }\n]\nFailed asserting that two arrays are identical.\n--- Expected\n+++ Actual\n@@ @@\n-Array &0 ()\n+Array &0 (\n+    0 => Array &1 (\n+        'case' => 'extension exceptions do not escape the updater catch'\n+        'exception' => 'RuntimeException'\n+        'message' => 'Extension update failed'\n+        'file' => '/private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-c8a6a111afef19d0/third/low_widont/ext.low_widont.php'\n+        'line' => 18\n+        'trace' => '#0 phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-c8a6a111afef19d0/third/low_widont/low_widont.phar/FluxCapacitor/Base/Upd.php(70): Low_widont_fixture_ext->updateExtension('4.0.0')\\n\n+#1 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(346): Low\\Widont\\FluxCapacitor\\Base\\Upd->update('4.0.0')\\n\n+#2 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n\n+#3 {main}'\n+    )\n+)\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/RequestContextTest.php:107\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/RequestContextTest.php:48"
+    },
+    {
+      "case": "LowWidontTests\\RequestContextTest::testIsolatedSourceRegressions with data set #5",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\RequestContextTest::testIsolatedSourceRegressions with data set #5 ('missing-navigation-base', '7.5.0')\n[\n    {\n        \"case\": \"optional addon file is not required to load the shared navigation base\",\n        \"exception\": \"ErrorException\",\n        \"message\": \"include_once(/private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-afd6b3a6ace8bfd6/third/low_widont/Conduit/McpNav.php): Failed to open stream: No such file or directory\",\n        \"file\": \"phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-afd6b3a6ace8bfd6/third/low_widont/low_widont.phar/FluxCapacitor/Conduit/McpNav.php\",\n        \"line\": 7,\n        \"trace\": \"#0 phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-afd6b3a6ace8bfd6/third/low_widont/low_widont.phar/FluxCapacitor/Conduit/McpNav.php(7): LowWidontTests\\\\Environment::diagnostic(2, 'include_once(/p...', 'phar:///private...', 7)\\n#1 phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-afd6b3a6ace8bfd6/third/low_widont/low_widont.phar/FluxCapacitor/Conduit/McpNav.php(7): include_once()\\n#2 /Users/tomjaeger/Sites/add-ons/low_widont/low_widont/autoload.php(84): include('phar:///private...')\\n#3 [internal function]: {closure}('FluxCapacitor/C...')\\n#4 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(351): class_exists('Low\\\\\\\\Widont\\\\\\\\Flux...')\\n#5 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n#6 {main}\"\n    }\n]\nFailed asserting that two arrays are identical.\n--- Expected\n+++ Actual\n@@ @@\n-Array &0 ()\n+Array &0 (\n+    0 => Array &1 (\n+        'case' => 'optional addon file is not required to load the shared navigation base'\n+        'exception' => 'ErrorException'\n+        'message' => 'include_once(/private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-afd6b3a6ace8bfd6/third/low_widont/Conduit/McpNav.php): Failed to open stream: No such file or directory'\n+        'file' => 'phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-afd6b3a6ace8bfd6/third/low_widont/low_widont.phar/FluxCapacitor/Conduit/McpNav.php'\n+        'line' => 7\n+        'trace' => '#0 phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-afd6b3a6ace8bfd6/third/low_widont/low_widont.phar/FluxCapacitor/Conduit/McpNav.php(7): LowWidontTests\\Environment::diagnostic(2, 'include_once(/p...', 'phar:///private...', 7)\\n\n+#1 phar:///private/var/folders/07/g6ql86ns3m75y257j7nb6pv00000gn/T/low-widont-request-afd6b3a6ace8bfd6/third/low_widont/low_widont.phar/FluxCapacitor/Conduit/McpNav.php(7): include_once()\\n\n+#2 /Users/tomjaeger/Sites/add-ons/low_widont/low_widont/autoload.php(84): include('phar:///private...')\\n\n+#3 [internal function]: {closure}('FluxCapacitor/C...')\\n\n+#4 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(351): class_exists('Low\\\\Widont\\\\Flux...')\\n\n+#5 /Users/tomjaeger/Sites/add-ons/low_widont/tests/tools/request-context.php(356): {closure}()\\n\n+#6 {main}'\n+    )\n+)\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/RequestContextTest.php:107\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/RequestContextTest.php:48"
+    },
+    {
+      "case": "LowWidontTests\\StaticCacheTest::testSuccessfulDeletionReportsSuccess",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\StaticCacheTest::testSuccessfulDeletionReportsSuccess\nFailed asserting that false is true.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/StaticCacheTest.php:78"
+    },
+    {
+      "case": "LowWidontTests\\StaticCacheTest::testStoredFalseyPayloadsRemainRetrievable with data set #0",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\StaticCacheTest::testStoredFalseyPayloadsRemainRetrievable with data set #0 (array())\nFailed asserting that false is identical to Array &0 ().\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/StaticCacheTest.php:92"
+    },
+    {
+      "case": "LowWidontTests\\StaticCacheTest::testStoredFalseyPayloadsRemainRetrievable with data set #1",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\StaticCacheTest::testStoredFalseyPayloadsRemainRetrievable with data set #1 (0)\nFailed asserting that false is identical to 0.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/StaticCacheTest.php:92"
+    },
+    {
+      "case": "LowWidontTests\\StaticCacheTest::testStoredFalseyPayloadsRemainRetrievable with data set #2",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\StaticCacheTest::testStoredFalseyPayloadsRemainRetrievable with data set #2 ('0')\nFailed asserting that false is identical to '0'.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/StaticCacheTest.php:92"
+    },
+    {
+      "case": "LowWidontTests\\StaticCacheTest::testStoredFalseyPayloadsRemainRetrievable with data set #3",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\StaticCacheTest::testStoredFalseyPayloadsRemainRetrievable with data set #3 ('')\nFailed asserting that false is identical to ''.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/StaticCacheTest.php:92"
+    },
+    {
+      "case": "LowWidontTests\\StaticCacheTest::testZeroKeyComponentDoesNotCollide",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\StaticCacheTest::testZeroKeyComponentDoesNotCollide\nFailed asserting that two arrays are identical.\n--- Expected\n+++ Actual\n@@ @@\n Array &0 (\n-    'value' => 'zero'\n+    'value' => 'ordinary'\n )\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/StaticCacheTest.php:115"
+    },
+    {
+      "case": "LowWidontTests\\UpdaterTest::testUpdateWithoutAnExtensionFileIsDiagnosticFree",
+      "kind": "error",
+      "type": "ErrorException",
+      "message": "LowWidontTests\\UpdaterTest::testUpdateWithoutAnExtensionFileIsDiagnosticFree\nErrorException: include_once(/Users/tomjaeger/Sites/add-ons/low_widont/low_widont/ext.low_widont.php): Failed to open stream: No such file or directory\n\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Base/Upd.php:64\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Base/Upd.php:64\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/UpdaterTest.php:126"
+    },
+    {
+      "case": "LowWidontTests\\VersionTest::testCachedVerificationRestoresInstanceState",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\VersionTest::testCachedVerificationRestoresInstanceState\nFailed asserting that true is false.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/VersionTest.php:247"
+    },
+    {
+      "case": "LowWidontTests\\VersionTest::testSchemaQueryHonorsConfiguredDatabasePrefix",
+      "kind": "error",
+      "type": "RuntimeException",
+      "message": "LowWidontTests\\VersionTest::testSchemaQueryHonorsConfiguredDatabasePrefix\nRuntimeException: Unexpected physical database table in query: SHOW KEYS FROM exp_eeharbor_licenses WHERE Key_name = 'PRIMARY'\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/support/Database.php:135\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/Version.php:113\nphar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Conduit/Version.php:27\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/VersionTest.php:259"
+    },
+    {
+      "case": "LowWidontTests\\VersionTest::testInsertedLicenseBecomesVisibleToExistenceChecks",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\VersionTest::testInsertedLicenseBecomesVisibleToExistenceChecks\nFailed asserting that false is true.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/VersionTest.php:273"
+    },
+    {
+      "case": "LowWidontTests\\VersionTest::testDeletedLicenseNoLongerExistsInTheRequestCache",
+      "kind": "failure",
+      "type": "PHPUnit\\Framework\\ExpectationFailedException",
+      "message": "LowWidontTests\\VersionTest::testDeletedLicenseNoLongerExistsInTheRequestCache\nFailed asserting that true is false.\n\n/Users/tomjaeger/Sites/add-ons/low_widont/tests/tests/Unit/VersionTest.php:288"
+    }
+  ]
+}
