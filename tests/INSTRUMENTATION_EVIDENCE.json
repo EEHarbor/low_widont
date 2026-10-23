@@ -1,0 +1,271 @@
+{
+  "php": "8.2.30",
+  "xdebug": "3.5.3",
+  "source_sha256": "f6e4cbe34ad300148e16af55862713286d905f491f3df9ed5bcb1e3d04617019",
+  "graph_sha256": "41cf689c60bfb98476d8b0e49f46eacebed99711b0af3b69671ed0ea7ef167a2",
+  "all_basic_blocks_hit_with_missed_real_exits": [
+    [
+      11,
+      13
+    ]
+  ],
+  "native_positive_but_merged_zero_exits": [
+    [
+      11,
+      13
+    ]
+  ],
+  "merged_paths": [
+    {
+      "path": [
+        0,
+        4,
+        9,
+        13
+      ],
+      "hit": []
+    },
+    {
+      "path": [
+        0,
+        4,
+        11,
+        13
+      ],
+      "hit": [
+        "BranchOutcomesTest::testControlFlow with data set #1"
+      ]
+    },
+    {
+      "path": [
+        0,
+        4,
+        11,
+        4,
+        9,
+        13
+      ],
+      "hit": [
+        "BranchOutcomesTest::testControlFlow with data set #0"
+      ]
+    }
+  ],
+  "native_complete": {
+    "branches": {
+      "0": {
+        "op_start": 0,
+        "op_end": 3,
+        "line_start": 9,
+        "line_end": 13,
+        "hit": 1,
+        "out": [
+          4
+        ],
+        "out_hit": [
+          1
+        ]
+      },
+      "4": {
+        "op_start": 4,
+        "op_end": 8,
+        "line_start": 13,
+        "line_end": 14,
+        "hit": 1,
+        "out": [
+          9,
+          11
+        ],
+        "out_hit": [
+          1,
+          1
+        ]
+      },
+      "9": {
+        "op_start": 9,
+        "op_end": 10,
+        "line_start": 15,
+        "line_end": 15,
+        "hit": 1,
+        "out": [
+          13
+        ],
+        "out_hit": [
+          1
+        ]
+      },
+      "11": {
+        "op_start": 11,
+        "op_end": 12,
+        "line_start": 17,
+        "line_end": 17,
+        "hit": 1,
+        "out": [
+          13,
+          4
+        ],
+        "out_hit": [
+          1,
+          1
+        ]
+      },
+      "13": {
+        "op_start": 13,
+        "op_end": 16,
+        "line_start": 18,
+        "line_end": 19,
+        "hit": 1,
+        "out": [],
+        "out_hit": []
+      }
+    },
+    "paths": [
+      {
+        "path": [
+          0,
+          4,
+          9,
+          13
+        ],
+        "hit": 0
+      },
+      {
+        "path": [
+          0,
+          4,
+          11,
+          13
+        ],
+        "hit": 1
+      },
+      {
+        "path": [
+          0,
+          4,
+          11,
+          4,
+          9,
+          13
+        ],
+        "hit": 1
+      }
+    ]
+  },
+  "phpunit_merged": {
+    "branches": {
+      "0": {
+        "op_start": 0,
+        "op_end": 3,
+        "line_start": 9,
+        "line_end": 13,
+        "hit": [
+          "BranchOutcomesTest::testControlFlow with data set #0",
+          "BranchOutcomesTest::testControlFlow with data set #1"
+        ],
+        "out": [
+          4
+        ],
+        "out_hit": [
+          1
+        ]
+      },
+      "4": {
+        "op_start": 4,
+        "op_end": 8,
+        "line_start": 13,
+        "line_end": 14,
+        "hit": [
+          "BranchOutcomesTest::testControlFlow with data set #0",
+          "BranchOutcomesTest::testControlFlow with data set #1"
+        ],
+        "out": [
+          9,
+          11
+        ],
+        "out_hit": [
+          1,
+          1
+        ]
+      },
+      "9": {
+        "op_start": 9,
+        "op_end": 10,
+        "line_start": 15,
+        "line_end": 15,
+        "hit": [
+          "BranchOutcomesTest::testControlFlow with data set #0"
+        ],
+        "out": [
+          13
+        ],
+        "out_hit": [
+          1
+        ]
+      },
+      "11": {
+        "op_start": 11,
+        "op_end": 12,
+        "line_start": 17,
+        "line_end": 17,
+        "hit": [
+          "BranchOutcomesTest::testControlFlow with data set #0",
+          "BranchOutcomesTest::testControlFlow with data set #1"
+        ],
+        "out": [
+          13,
+          4
+        ],
+        "out_hit": [
+          0,
+          1
+        ]
+      },
+      "13": {
+        "op_start": 13,
+        "op_end": 16,
+        "line_start": 18,
+        "line_end": 19,
+        "hit": [
+          "BranchOutcomesTest::testControlFlow with data set #0",
+          "BranchOutcomesTest::testControlFlow with data set #1"
+        ],
+        "out": [],
+        "out_hit": []
+      }
+    },
+    "paths": [
+      {
+        "path": [
+          0,
+          4,
+          9,
+          13
+        ],
+        "hit": []
+      },
+      {
+        "path": [
+          0,
+          4,
+          11,
+          13
+        ],
+        "hit": [
+          "BranchOutcomesTest::testControlFlow with data set #1"
+        ]
+      },
+      {
+        "path": [
+          0,
+          4,
+          11,
+          4,
+          9,
+          13
+        ],
+        "hit": [
+          "BranchOutcomesTest::testControlFlow with data set #0"
+        ]
+      }
+    ]
+  }
+}
