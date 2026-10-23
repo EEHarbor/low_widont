@@ -1,6 +1,6 @@
 # Low Widont PHPUnit campaign
 
-Status: **blocked from full completion; independently reviewed; scoped publication in progress**. This is useful test coverage and red-regression work, not a full-coverage milestone. Production changes are not authorized.
+Status: **blocked from full completion; independently reviewed checkpoint published**. This is useful test coverage and red-regression work, not a full-coverage milestone. Production changes are not authorized.
 
 ## Baseline and scope
 
@@ -78,7 +78,7 @@ Exact reproduction: `./tests/coverage.sh`. The report directory contains `native
 
 ## Review and publication
 
-Independent reviewer `/root/tests_low_variables` approved exact replacement SHA-256 `2bd73f71e915fc99b42d592ba8b5aa4256fe4ba839ac0db8aaa0fc53099b91a8` after both actionable harness/vector findings were fixed. Its separate baseline-plus-patch rebuild reproduced all seven matrix results and the coverage/instrumentation runner. No actionable test/harness finding remains. The reviewer approved this red-regression checkpoint, not full completion. No publication occurs before actionable test/harness findings are resolved. Scoped implementation commits separate reusable tooling, main plugin/packaging behavior, base classes, modern bridges, field settings, filesystem cache and source regressions. Each is explicitly a test/regression checkpoint, without a 100% milestone claim. Intended red regression commits are authorized by the campaign. Review, commit SHAs, pushed origin head and parity are recorded after completion.
+Independent reviewer `/root/tests_low_variables` approved exact replacement SHA-256 `2bd73f71e915fc99b42d592ba8b5aa4256fe4ba839ac0db8aaa0fc53099b91a8` after both actionable harness/vector findings were fixed. Its separate baseline-plus-patch rebuild reproduced all seven matrix results and the coverage/instrumentation runner. No actionable test/harness finding remains. The reviewer approved this red-regression checkpoint, not full completion. No publication occurs before actionable test/harness findings are resolved. Scoped implementation commits separate reusable tooling, main plugin/packaging behavior, base classes, modern bridges, field settings, filesystem cache and source regressions. Each is explicitly a test/regression checkpoint, without a 100% milestone claim. Intended red regression commits are authorized by the campaign. The implementation/evidence checkpoint is committed and published; verification is recorded below.
 
 Reviewed implementation commits:
 
@@ -95,4 +95,4 @@ f76d87d tests(low-widont): verify metadata license views and native compilation
 a4a8a3e tests(low-widont): exercise filesystem cache and retain guard regressions
 ```
 
-Publication: only `origin/unit-tests-2026`; final remote HEAD and local/remote parity will be verified after the push and reported in the campaign checkpoint.
+Publication verified: `origin/unit-tests-2026` at implementation/evidence checkpoint `1eaf01993a8f50258fa8a2431cae46936833e062`. `git ls-remote origin refs/heads/unit-tests-2026` matched local HEAD and `origin/unit-tests-2026`; `git rev-list --left-right --count HEAD...origin/unit-tests-2026` returned `0 0`. Checkout was clean, and production source still matched the pinned baseline. This metadata-only follow-up records that verified push; final branch parity is checked again after publishing it.
