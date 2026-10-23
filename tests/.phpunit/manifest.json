@@ -1,0 +1,5 @@
+{
+  "phpunit-9.phar": {"version": "9.6.38", "url": "https://phar.phpunit.de/phpunit-9.6.38.phar", "sha256": "6b5235f282c6ccab3674ac27c5b1ddbd1da838e74bf07002ddcfd030d31298d7"},
+  "phpunit-10.phar": {"version": "10.5.66", "url": "https://phar.phpunit.de/phpunit-10.5.66.phar", "sha256": "42bcac97bbf9fb1aecf5a7d6a1b37123a11e7e295458978f0e268999f6d9e50f"},
+  "phpunit-11.phar": {"version": "11.5.57", "url": "https://phar.phpunit.de/phpunit-11.5.57.phar", "sha256": "c704fdd37c6c6ab7adb386f31b4e186cd51156801fa9028b5ea8099a2cd7f106"}
+}
