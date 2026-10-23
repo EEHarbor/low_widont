@@ -67,3 +67,14 @@ The dedicated 26-case run contains ten red observation contexts and sixteen pass
 Raw source graphs, diagnostics, stderr/stdout, exit statuses, bootstrap/pin control metadata/output and JUnit are separately retained under `evidence/warning-observations/` with gzip compression. Decompress files preserving names before invoking `warning-report.py`. Records explicitly set `mode=observational-warning-continuation`, `diagnostic_free=false` and `strict_suite_graphs_mergeable=false`. Their positive counters describe unhealthy source execution only. They are never merged into strict main/context reports or used to claim healthy EE flow, method closure or a coverage percentage gain. Synthetic epilogues remain raw instrumentation markers. Eight real-data guard tests reject missing records/graphs, wrong flags, lost diagnostics/red statuses, healthy/mergeable relabeling and mismatched source/tool hashes.
 
 Completed owned local raw JSON may be losslessly compressed after consumers finish. `RESTORATION.json.gz` records original names, byte lengths and SHA-256 hashes; restore those names before replaying a consumer that accepts plain JSON. This operational compression changes no raw counters or portable evidence bytes.
+
+Supplemental destination guards run separately from the 450-case source suite:
+
+```sh
+"/Users/tomjaeger/Library/Application Support/Herd/bin/php74" tests/.phpunit/phpunit-9.phar -c phpunit.xml tests/tooling/EvidenceDestinationTest.php
+"/Users/tomjaeger/Library/Application Support/Herd/bin/php85" tests/.phpunit/phpunit-9.phar -c phpunit.xml tests/tooling/EvidenceDestinationTest.php
+```
+
+The public JSON publisher and native collector require fresh absolute destinations without dot segments. They reject existing files and symlinks, including dangling links, before writes. Existing parent aliases are resolved so output cannot enter shipped source; unresolved/non-directory parents also fail. Nine cases / 106 assertions on each endpoint runtime retain quiet nested publication and exact link/file/directory preservation for rejected paths. These controls use owned source-shaped mirrors and never target original production files. `evidence/output-boundary.json` pins commands, authored files and results; `output-boundary-old-control.json` retains the inherited failure proof. These supplemental authored-harness controls grant no add-on source coverage or full-suite compatibility claim beyond the separately retained 450-case matrix.
+
+`HANDOFF.md` and `HANDOFF.json` with pinned checkpoint hashes preserve the complete pending source/branch/runtime obligation before ownership rotation. The 39-row triage ledger is not exhaustive: counterless variants, ambiguous constructors, synthetic/terminal outcomes, real integration and feasible HTTP inputs remain open. No full-coverage milestone is claimed.

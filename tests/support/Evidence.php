@@ -7,6 +7,48 @@ namespace LowWidontTests;
 final class Evidence
 {
     /**
+     * Reject occupied outputs and aliases into shipped source before filesystem writes.
+     *
+     * @param string $path
+     * @return void
+     * @throws \RuntimeException
+     */
+    public static function assertFreshOutput($path)
+    {
+        if (!is_string($path) || $path === '' || $path[0] !== '/'
+            || preg_match('~(?:^|/)\.\.?(?:/|$)~', $path)) {
+            throw new \RuntimeException('Evidence requires an absolute path without dot segments.');
+        }
+        if (is_link($path) || file_exists($path)) {
+            throw new \RuntimeException('Refusing to replace evidence: ' . $path);
+        }
+        $directory = dirname($path);
+        while (!is_dir($directory)) {
+            if (is_link($directory) || file_exists($directory)) {
+                throw new \RuntimeException('Evidence parent is not a usable directory: ' . $directory);
+            }
+            $directory = dirname($directory);
+        }
+        $resolved = realpath($directory);
+        $source = realpath(dirname(__DIR__, 2) . '/low_widont');
+        if ($source === false || $resolved === false) {
+            throw new \RuntimeException('Cannot resolve the evidence/source boundary.');
+        }
+        $sourceIdentity = stat($source);
+        while (true) {
+            $identity = stat($resolved);
+            if ($identity['dev'] === $sourceIdentity['dev'] && $identity['ino'] === $sourceIdentity['ino']) {
+                throw new \RuntimeException('Refusing to publish evidence within shipped source: ' . $path);
+            }
+            $parent = dirname($resolved);
+            if ($parent === $resolved) {
+                return;
+            }
+            $resolved = $parent;
+        }
+    }
+
+    /**
      * Publish complete JSON atomically inside a newly allocated report directory.
      *
      * @param string $path
@@ -16,9 +58,7 @@ final class Evidence
      */
     public static function write($path, array $data)
     {
-        if (file_exists($path)) {
-            throw new \RuntimeException('Refusing to replace evidence: ' . $path);
-        }
+        self::assertFreshOutput($path);
         if (!is_dir(dirname($path))) {
             mkdir(dirname($path), 0700, true);
         }

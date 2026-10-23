@@ -8,12 +8,13 @@ set_error_handler(static function ($severity, $message, $file, $line) {
 $root = dirname(__DIR__, 2);
 require $root . '/tests/tools/verify-tool.php';
 require $root . '/tests/support/Evidence.php';
+$output = $argv[1] ?? null;
+if (!$output) {
+    throw new RuntimeException('Provide a fresh absolute native coverage report path.');
+}
+LowWidontTests\Evidence::assertFreshOutput($output);
 if (!function_exists('xdebug_start_code_coverage')) {
     throw new RuntimeException('Native Xdebug branch instrumentation is required.');
-}
-$output = $argv[1] ?? null;
-if (!$output || file_exists($output)) {
-    throw new RuntimeException('Provide a fresh absolute native coverage report path.');
 }
 if (!is_dir(dirname($output))) {
     mkdir(dirname($output), 0700, true);

@@ -1,0 +1,63 @@
+{
+  "scope": "Supplemental authored output-boundary controls; not a new source-coverage/full-suite claim",
+  "source_checkpoint": "e494df88f32f3e01c0d12e7b7a52cb47b05d2d30",
+  "source_inventory_sha256": "2fe6a3ab62e7b6530806884f4537e845ba1d5412e480a2a4a648ffe40d657b8f",
+  "archive_sha256": "7889aef835b80b783cf5585eae64c6c4ae88f739a90f141863e2c8e4ff15c986",
+  "authored_sha256": {
+    "tests/support/Evidence.php": "0ae4c8377bf3f4b8abd8f336f78537af3e85fdf62591cc5e21c5a94cccd78577",
+    "tests/tools/raw-coverage.php": "5e3392d7675e848d0e88a6ae04edc1272fb4d9f6a697a415f0129171c00772fd",
+    "tests/tooling/EvidenceDestinationTest.php": "5102bcab523009391001853bbb827f8d53740ec6f777c2f52107e6b46798a377"
+  },
+  "results": [
+    {
+      "binary": "/Users/tomjaeger/Library/Application Support/Herd/bin/php74",
+      "version": "PHP 7.4.33 (cli) (built: Dec 13 2023 21:52:05) ( NTS )\nCopyright (c) The PHP Group\nZend Engine v3.4.0, Copyright (c) Zend Technologies\n",
+      "command": [
+        "/Users/tomjaeger/Library/Application Support/Herd/bin/php74",
+        "tests/.phpunit/phpunit-9.phar",
+        "-c",
+        "phpunit.xml",
+        "tests/tooling/EvidenceDestinationTest.php",
+        "--log-junit",
+        "/private/tmp/low-widont-output-boundary-final-php74.xml"
+      ],
+      "counts": {
+        "name": "LowWidontTests\\EvidenceDestinationTest",
+        "file": "/Users/tomjaeger/Sites/add-ons/low_widont/tests/tooling/EvidenceDestinationTest.php",
+        "tests": "9",
+        "assertions": "106",
+        "errors": "0",
+        "warnings": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "0.583394"
+      },
+      "exit": 0
+    },
+    {
+      "binary": "/Users/tomjaeger/Library/Application Support/Herd/bin/php85",
+      "version": "PHP 8.5.0 (cli) (built: Nov 20 2025 09:30:23) (NTS clang 15.0.0)\nCopyright (c) The PHP Group\nBuilt by Laravel Herd\nZend Engine v4.5.0, Copyright (c) Zend Technologies\n    with Zend OPcache v8.5.0, Copyright (c), by Zend Technologies\n",
+      "command": [
+        "/Users/tomjaeger/Library/Application Support/Herd/bin/php85",
+        "tests/.phpunit/phpunit-9.phar",
+        "-c",
+        "phpunit.xml",
+        "tests/tooling/EvidenceDestinationTest.php",
+        "--log-junit",
+        "/private/tmp/low-widont-output-boundary-final-php85.xml"
+      ],
+      "counts": {
+        "name": "LowWidontTests\\EvidenceDestinationTest",
+        "file": "/Users/tomjaeger/Sites/add-ons/low_widont/tests/tooling/EvidenceDestinationTest.php",
+        "tests": "9",
+        "assertions": "106",
+        "errors": "0",
+        "warnings": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "0.735834"
+      },
+      "exit": 0
+    }
+  ]
+}
