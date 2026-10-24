@@ -22,7 +22,7 @@ final class FieldtypeTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        StaticCache::put('app_settings', ['version' => '4.1.1']);
+        StaticCache::put(['app_settings', 'low_widont'], ['version' => '4.1.1']);
         $this->postedChannel = false;
         $this->uri = 'cp/publish/edit/entry/5';
         $input = $this->getMockBuilder(\stdClass::class)->addMethods(['get_post'])->getMock();

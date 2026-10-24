@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-error_reporting(E_ALL);
-set_error_handler(static function ($severity, $message, $file, $line) {
-    throw new ErrorException($message, 0, $severity, $file, $line);
-}, E_ALL);
+if (!class_exists('LowWidontTests\\Diagnostics', false)) {
+    require_once dirname(__DIR__) . '/support/Diagnostics.php';
+}
+error_reporting(-1);
+set_error_handler(\LowWidontTests\Diagnostics::handler(), E_ALL);
 $directory = realpath($argv[1] ?? '');
 if ($directory === false || !is_file($directory . '/DB_active_rec.php')) {
     throw new RuntimeException('Provide an installed EE legacy database source directory.');

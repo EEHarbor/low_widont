@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-error_reporting(E_ALL);
-set_error_handler(static function ($severity, $message, $file, $line) {
-    throw new ErrorException($message, 0, $severity, $file, $line);
-}, E_ALL);
+if (!class_exists('LowWidontTests\\Diagnostics', false)) {
+    require_once dirname(__DIR__) . '/support/Diagnostics.php';
+}
+error_reporting(-1);
+set_error_handler(\LowWidontTests\Diagnostics::handler(), E_ALL);
 
 $root = dirname(__DIR__, 2);
 $mode = $argv[1];
@@ -104,7 +105,7 @@ LowWidontTests\Environment::$ee = $ee;
 $urls = new LowWidontTests\UrlFactory();
 $sidebar = new LowWidontTests\Sidebar();
 LowWidontTests\Environment::$services = ['CP/Sidebar' => $sidebar, 'CP/URL' => static function ($path = null) use ($urls) { return $path === null ? $urls : $urls->make($path); }];
-Low\Widont\FluxCapacitor\Conduit\StaticCache::put('app_settings', ['name' => 'Low Widon’t', 'description' => 'Eliminates widows', 'docs_url' => '/docs', 'version' => '4.1.1']);
+Low\Widont\FluxCapacitor\Conduit\StaticCache::put(['app_settings', 'low_widont'], ['name' => 'Low Widon’t', 'description' => 'Eliminates widows', 'docs_url' => '/docs', 'version' => '4.1.1']);
 $assertions = 0;
 $failures = [];
 $cases = [];

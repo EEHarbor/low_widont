@@ -35,10 +35,11 @@ class Low_widont extends Pi
     // --------------------------------------------------------------------
 
     /**
-     * Constructor
+     * Format explicit text or the current template body.
      *
-     * @param      string
-     * @return     string
+     * @param mixed $str Text, native scalar coercion or a falsey template fallback.
+     * @return string
+     * @throws \TypeError When the selected value cannot represent text.
      */
     public function __construct($str = '')
     {
@@ -48,12 +49,16 @@ class Low_widont extends Pi
         // -------------------------------------------
 
         $this->return_data = ($str) ? $str : ee()->TMPL->tagdata;
+        if (is_array($this->return_data) || is_resource($this->return_data)
+            || (is_object($this->return_data) && !method_exists($this->return_data, '__toString'))) {
+            throw new \TypeError('rtrim() requires a value that can represent text.');
+        }
 
         // -------------------------------------------
         // Apply widon't algorithm
         // -------------------------------------------
 
-        $this->return_data = preg_replace('/\s+(\S+)$/', '&#160;$1', rtrim($this->return_data));
+        $this->return_data = preg_replace('/\s+(\S+)$/', '&#160;$1', rtrim((string) $this->return_data));
 
         // -------------------------------------------
         // Return for good measure

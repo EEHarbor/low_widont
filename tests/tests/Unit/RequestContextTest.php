@@ -79,14 +79,12 @@ final class RequestContextTest extends TestCase
         $environment['TMPDIR'] = $temporary;
         $environment['TMP'] = $temporary;
         $environment['TEMP'] = $temporary;
-        $command = [PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=1', '-d', 'log_errors=0',
+        $command = [PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=stderr', '-d', 'log_errors=0',
             $root . '/tests/tools/request-context.php', $mode, $version, $temporary];
         try {
-            $process = proc_open($command, [1 => ['pipe', 'w'], 2 => ['redirect', 1]], $pipes, $root, $environment);
-            $this->assertIsResource($process);
-            $output = stream_get_contents($pipes[1]);
-            fclose($pipes[1]);
-            $exit = proc_close($process);
+            $native = NativeProcess::runCommand($command, $root, $environment);
+            $output = $native[1] . $native[2];
+            $exit = $native[0];
             $this->assertSame(0, $exit, $output);
             $result = json_decode($output, true, 512, JSON_THROW_ON_ERROR);
             $this->assertSame($mode, $result['mode']);

@@ -133,13 +133,12 @@ final class PackagingTest extends TestCase
                 $files[] = $target;
             }
         }
-        $this->assertCount(27, $files);
+        $this->assertCount(28, $files);
         try {
             foreach ($files as $file) {
-                $process = proc_open([PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=1', '-l', $file], [1 => ['pipe', 'w'], 2 => ['redirect', 1]], $pipes);
-                $output = stream_get_contents($pipes[1]);
-                fclose($pipes[1]);
-                $exit = proc_close($process);
+                $native = NativeProcess::runCommand([PHP_BINARY, '-l', $file]);
+                $output = $native[1] . $native[2];
+                $exit = $native[0];
                 $this->assertSame(0, $exit, $file . ': ' . $output);
                 $this->assertStringContainsString('No syntax errors detected', $output, $file);
                 $this->assertDoesNotMatchRegularExpression('/(?:Deprecated|Warning|Notice|Fatal error):/', $output, $file . ': ' . $output);

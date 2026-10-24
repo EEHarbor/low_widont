@@ -22,7 +22,7 @@ final class BaseClassesTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        StaticCache::put('app_settings', ['version' => '4.1.1', 'name' => 'Low Widon’t', 'description' => 'Eliminates widows', 'docs_url' => 'https://eeharbor.com/low_widont']);
+        StaticCache::put(['app_settings', 'low_widont'], ['version' => '4.1.1', 'name' => 'Low Widon’t', 'description' => 'Eliminates widows', 'docs_url' => 'https://eeharbor.com/low_widont']);
         Environment::$ee->db = new Database(['extensions' => [], 'menu_items' => []]);
     }
 

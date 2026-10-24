@@ -21,7 +21,7 @@ namespace LowWidontTests {
          */
         public static function diagnostic($severity, $message, $file, $line)
         {
-            throw new \ErrorException($message, 0, $severity, $file, $line);
+            return call_user_func_array(Diagnostics::handler(), func_get_args());
         }
     }
 }

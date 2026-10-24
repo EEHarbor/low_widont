@@ -50,12 +50,10 @@ final class AutoloadTest extends TestCase
      */
     public function testLegacySuperObjectBootstrap(): void
     {
-        $command = [PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=1', '-d', 'log_errors=0', dirname(__DIR__, 2) . '/tools/host-bootstrap-probe.php'];
-        $process = proc_open($command, [1 => ['pipe', 'w'], 2 => ['redirect', 1]], $pipes);
-        $this->assertIsResource($process);
-        $output = stream_get_contents($pipes[1]);
-        fclose($pipes[1]);
-        $this->assertSame(0, proc_close($process), $output);
+        $command = [PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=stderr', '-d', 'log_errors=0', dirname(__DIR__, 2) . '/tools/host-bootstrap-probe.php'];
+        $native = NativeProcess::runCommand($command);
+        $output = $native[1] . $native[2];
+        $this->assertSame(0, $native[0], $output);
         $this->assertSame(['version' => '7.5.0', 'major' => '7', 'same_host' => true], json_decode($output, true, 512, JSON_THROW_ON_ERROR));
     }
 
@@ -76,7 +74,7 @@ final class AutoloadTest extends TestCase
         $temporaryRoot = realpath($temporaryRoot);
         $environment = getenv();
         $environment['TMPDIR'] = $temporaryRoot;
-        $command = [PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=1'];
+        $command = [PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=stderr'];
         if ($opcache) {
             $command = array_merge($command, ['-d', 'opcache.enable_cli=1', '-d', 'opcache.validate_permission=' . ($mode === 'stream-no-permission-check' ? '0' : '1')]);
         }
@@ -88,10 +86,9 @@ final class AutoloadTest extends TestCase
         }
         $command = array_merge($command, [$root . '/tests/tools/autoload-probe.php', $mode, $temporaryRoot]);
         try {
-            $process = proc_open($command, [1 => ['pipe', 'w'], 2 => ['redirect', 1]], $pipes, $root, $environment);
-            $output = stream_get_contents($pipes[1]);
-            fclose($pipes[1]);
-            $exit = proc_close($process);
+            $native = NativeProcess::runCommand($command, $root, $environment);
+            $output = $native[1] . $native[2];
+            $exit = $native[0];
             if (strpos($mode, 'session-fallback-') === 0) {
                 $record = json_decode(file_get_contents($temporaryRoot . '/session-native.json'), true, 512, JSON_THROW_ON_ERROR);
                 $kind = substr($mode, strlen('session-fallback-'));

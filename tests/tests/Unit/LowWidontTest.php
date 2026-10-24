@@ -17,7 +17,7 @@ final class LowWidontTest extends TestCase
     {
         parent::setUp();
         require_once dirname(__DIR__, 3) . '/low_widont/pi.low_widont.php';
-        StaticCache::put('app_settings', ['version' => '4.1.1', 'name' => 'Low Widon’t']);
+        StaticCache::put(['app_settings', 'low_widont'], ['version' => '4.1.1', 'name' => 'Low Widon’t']);
     }
 
     /**
@@ -117,8 +117,28 @@ final class LowWidontTest extends TestCase
      */
     public function testStructuredTextIsRejected(): void
     {
-        $this->expectException(PHP_VERSION_ID < 80000 ? \ErrorException::class : \TypeError::class);
+        $this->expectException(\TypeError::class);
         $this->expectExceptionMessage('rtrim()');
         new \Low_widont(['text']);
+    }
+
+    /**
+     * Preserve clean native Stringable text and empty template coercion.
+     *
+     * @return void
+     */
+    public function testStringableAndEmptyTemplateText(): void
+    {
+        $text = new class {
+            /**
+             * Supply text using the native string conversion contract.
+             *
+             * @return string
+             */
+            public function __toString(): string { return 'Hello world'; }
+        };
+        $this->assertSame('Hello&#160;world', (new \Low_widont($text))->return_data);
+        Environment::$ee->TMPL->tagdata = null;
+        $this->assertSame('', (new \Low_widont())->return_data);
     }
 }

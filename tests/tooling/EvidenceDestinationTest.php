@@ -33,6 +33,7 @@ final class EvidenceDestinationTest extends \PHPUnit\Framework\TestCase
      */
     public function testDestinationBoundary($entry, $kind): void
     {
+        Diagnostics::setCase(static::class . '::' . $this->getName());
         $root = dirname(__DIR__);
         $directory = sys_get_temp_dir() . '/low-widont-output-boundary-' . bin2hex(random_bytes(8));
         foreach (['tests/tools', 'tests/support', 'tests/.phpunit', 'low_widont', 'reports', 'outside'] as $folder) {
@@ -65,20 +66,18 @@ final class EvidenceDestinationTest extends \PHPUnit\Framework\TestCase
                 $path = $directory . '/reports/source-alias/new-report.json';
             }
             $before = $this->snapshot($directory);
-            $command = [PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=1', '-d', 'log_errors=0'];
+            $command = [PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=stderr', '-d', 'display_startup_errors=1', '-d', 'log_errors=0'];
             if ($entry === 'publisher') {
-                $code = 'error_reporting(E_ALL);set_error_handler(static function ($s,$m,$f,$l) {throw new ErrorException($m,0,$s,$f,$l);},E_ALL);'
+                $code = 'require ' . var_export($root . '/support/Diagnostics.php', true) . ';'
                     . 'require $argv[1];LowWidontTests\\Evidence::write($argv[2],["probe"=>true]);';
                 $command = array_merge($command, ['-r', $code, $directory . '/tests/support/Evidence.php', $path]);
             }
             if ($entry === 'collector') {
                 $command = array_merge($command, [$directory . '/tests/tools/raw-coverage.php', $path]);
             }
-            $process = proc_open($command, [1 => ['pipe', 'w'], 2 => ['redirect', 1]], $pipes, $directory);
-            $this->assertIsResource($process);
-            $output = stream_get_contents($pipes[1]);
-            fclose($pipes[1]);
-            $exit = proc_close($process);
+            $native = NativeProcess::runCommand($command, $directory);
+            $output = $native[1] . $native[2];
+            $exit = $native[0];
             if ($kind === 'fresh') {
                 $this->assertSame(0, $exit, $output);
                 $this->assertSame('', $output);
@@ -99,6 +98,7 @@ final class EvidenceDestinationTest extends \PHPUnit\Framework\TestCase
                 $file->isLink() || !$file->isDir() ? unlink($file->getPathname()) : rmdir($file->getPathname());
             }
             rmdir($directory);
+            Diagnostics::setCase(null);
         }
     }
 

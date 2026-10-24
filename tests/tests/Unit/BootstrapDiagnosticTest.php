@@ -81,14 +81,12 @@ final class BootstrapDiagnosticTest extends TestCase
             $arguments = array_map(static function ($argument) use ($context) {
                 return str_replace('{context}', $context, $argument);
             }, $arguments);
-            $command = array_merge([PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=1', '-d', 'log_errors=0', $directory . '/' . $entry], $arguments);
+            $command = array_merge([PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=stderr', '-d', 'log_errors=0', $directory . '/' . $entry], $arguments);
             $environment = getenv();
             $environment['TMPDIR'] = $context;
-            $process = proc_open($command, [1 => ['pipe', 'w'], 2 => ['redirect', 1]], $pipes, $directory, $environment);
-            $this->assertIsResource($process);
-            $output = stream_get_contents($pipes[1]);
-            fclose($pipes[1]);
-            $this->assertNotSame(0, proc_close($process), $output);
+            $native = NativeProcess::runCommand($command, $directory, $environment);
+            $output = $native[1] . $native[2];
+            $this->assertNotSame(0, $native[0], $output);
             $this->assertStringContainsString('ErrorException: entry bootstrap sentinel', $output);
             $this->assertStringContainsString($dependency, $output);
             $this->assertFileDoesNotExist($context . '/main.json');

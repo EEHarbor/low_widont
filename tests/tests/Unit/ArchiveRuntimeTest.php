@@ -34,7 +34,7 @@ final class ArchiveRuntimeTest extends TestCase
             $manifest = fread($stream, $length);
             $info = \Extract_low_widont::_unpack($manifest);
             $this->assertArrayHasKey($name, $info['m']);
-            $this->assertCount(22, $info['m']);
+            $this->assertCount(23, $info['m']);
             $entry = $info['m'][$name];
             fseek($stream, \Extract_low_widont::LEN + 4 + $length + $entry[7]);
             $actual = \Extract_low_widont::extractFile($name, $entry, $stream);
@@ -196,12 +196,10 @@ final class ArchiveRuntimeTest extends TestCase
      */
     private function probeCorruptEntry($mode, $expected)
     {
-        $command = [PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=1', '-d', 'log_errors=0', dirname(__DIR__, 2) . '/tools/archive-probe.php', $mode];
-        $process = proc_open($command, [1 => ['pipe', 'w'], 2 => ['redirect', 1]], $pipes);
-        $this->assertIsResource($process);
-        $output = stream_get_contents($pipes[1]);
-        fclose($pipes[1]);
-        $exit = proc_close($process);
+        $command = [PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=stderr', '-d', 'log_errors=0', dirname(__DIR__, 2) . '/tools/archive-probe.php', $mode];
+        $native = NativeProcess::runCommand($command);
+        $output = $native[1] . $native[2];
+        $exit = $native[0];
         $this->assertSame(0, $exit, $output);
         $this->assertStringContainsString($expected, $output);
         $this->assertDoesNotMatchRegularExpression('/(?:Warning|Notice|Deprecated|Fatal error):/', $output);

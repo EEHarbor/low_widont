@@ -45,6 +45,41 @@ final class BridgeNavigationTest extends TestCase
     }
 
     /**
+     * Preserve root active-map targets and zero-valued page titles.
+     *
+     * @dataProvider rootContexts
+     * @param string $version
+     * @param string $mode
+     * @return void
+     */
+    public function testRootAndZeroTitles($version, $mode): void
+    {
+        $this->last = $mode === 'zero' ? 'low_widont' : 'detail';
+        $title = $mode === 'root' ? 'Home' : '0';
+        $this->bridge($version)->getNav(['/' => $title], [], $mode === 'zero' ? [] : ['detail' => '/']);
+        $this->assertSame($title, Environment::$ee->view->cp_page_title);
+        $this->assertCount(1, $this->sidebar->headers);
+        $this->assertTrue($this->sidebar->headers[0]->active);
+        $this->assertCount(1, $this->breadcrumbs);
+    }
+
+    /**
+     * Include each independently shipped modern bridge and inherited EE6.
+     *
+     * @return array
+     */
+    public function rootContexts(): array
+    {
+        $cases = [];
+        foreach ($this->bridges() as $bridge) {
+            foreach (['root', 'zero', 'mapped-zero'] as $mode) {
+                $cases[] = [$bridge[0], $mode];
+            }
+        }
+        return $cases;
+    }
+
+    /**
      * Instantiate an immutable bridge with the actual addon identity.
      *
      * @param string $version

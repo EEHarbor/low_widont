@@ -11,7 +11,7 @@ final class SourceWarningObservation
     private $diagnostics = [];
 
     /**
-     * Limit recoverable observation to one verified immutable source file.
+     * Verify the observed source while retaining strict diagnostic rejection.
      *
      * @param string $source
      * @param string $sha256
@@ -28,7 +28,7 @@ final class SourceWarningObservation
     }
 
     /**
-     * Emit every source diagnostic immediately and retain PHP's native continuation.
+     * Retain and reject diagnostics before their exceptions can be caught.
      *
      * @param int $severity
      * @param string $message
@@ -40,21 +40,11 @@ final class SourceWarningObservation
      */
     public function __invoke($severity, $message, $file, $line)
     {
-        if ($file !== $this->source || hash_file('sha256', $file) !== $this->sha256) {
-            throw new \ErrorException($message, 0, $severity, $file, $line);
-        }
-        $diagnostic = ['severity' => $severity, 'message' => $message, 'file' => $file, 'line' => $line,
-            'source_sha256' => $this->sha256, 'masked_by_source' => ($severity & error_reporting()) === 0];
-        $this->diagnostics[] = $diagnostic;
-        $emitted = json_encode(['source_diagnostic' => $diagnostic], JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . PHP_EOL;
-        if (fwrite(STDERR, $emitted) !== strlen($emitted)) {
-            throw new \RuntimeException('Cannot emit the observed source diagnostic.');
-        }
-        return false;
+        return call_user_func_array(Diagnostics::handler(), func_get_args());
     }
 
     /**
-     * Return the complete ordered diagnostic list for an explicitly red observation.
+     * Return the retained legacy observation field; strict diagnostics throw first.
      *
      * @return array
      */

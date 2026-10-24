@@ -84,7 +84,7 @@ final class WarningContinuationTest extends TestCase
                     }
                 }
                 ksort($members);
-                $this->assertCount(22, $members);
+                $this->assertCount(23, $members);
                 $this->assertSame($members, $record['members']);
                 $this->assertSame($members, $record['extracted']);
                 $this->assertSame($members, $record['reused']);
@@ -115,18 +115,17 @@ final class WarningContinuationTest extends TestCase
         $directory = ($reportRoot ?: sys_get_temp_dir()) . '/' . $context . '-' . bin2hex(random_bytes(8));
         mkdir($directory, 0700);
         $directory = realpath($directory);
-        $command = array_merge([PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=1', '-d', 'log_errors=0',
+        $command = array_merge([PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=stderr', '-d', 'log_errors=0',
             dirname(__DIR__, 2) . '/tools/' . $script], $arguments, [$directory]);
         $environment = getenv();
         $environment['TMPDIR'] = $directory;
         $environment['TMP'] = $directory;
         $environment['TEMP'] = $directory;
         try {
-            $process = proc_open($command, [1 => ['pipe', 'w'], 2 => ['file', $directory . '/stderr.log', 'w']], $pipes, null, $environment);
-            $this->assertIsResource($process);
-            $stdout = stream_get_contents($pipes[1]);
-            fclose($pipes[1]);
-            $exit = proc_close($process);
+            $native = NativeProcess::runCommand($command, null, $environment);
+            $stdout = $native[1];
+            file_put_contents($directory . '/stderr.log', $native[2]);
+            $exit = $native[0];
             if (file_put_contents($directory . '/stdout.log', $stdout) !== strlen($stdout)
                 || file_put_contents($directory . '/exit-status.txt', (string) $exit) !== strlen((string) $exit)) {
                 throw new \RuntimeException('Cannot retain complete observation process evidence.');
@@ -314,15 +313,13 @@ final class WarningContinuationTest extends TestCase
             }
             $report = realpath($directory . '/report');
             $arguments = $script === 'cache-warning-observation.php' ? ['base', 'get', $report] : ['cold', $report];
-            $command = array_merge([PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=1', '-d', 'log_errors=0',
+            $command = array_merge([PHP_BINARY, '-d', 'error_reporting=-1', '-d', 'display_errors=stderr', '-d', 'log_errors=0',
                 $directory . '/tests/tools/' . $script], $arguments);
             $environment = getenv();
             $environment['TMPDIR'] = $report;
-            $process = proc_open($command, [1 => ['pipe', 'w'], 2 => ['redirect', 1]], $pipes, null, $environment);
-            $this->assertIsResource($process);
-            $output = stream_get_contents($pipes[1]);
-            fclose($pipes[1]);
-            $exit = proc_close($process);
+            $native = NativeProcess::runCommand($command, null, $environment);
+            $output = $native[1] . $native[2];
+            $exit = $native[0];
             $published = file_exists($report . '/observation.json');
             $this->assertSame($inventory['archive_sha256'], hash_file('sha256', $root . '/low_widont/low_widont.phar'));
             $reportRoot = getenv('LOW_WIDONT_WARNING_OBSERVATIONS_DIR');

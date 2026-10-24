@@ -110,10 +110,37 @@ final class StaticCacheTest extends TestCase
      */
     public function testZeroKeyComponentDoesNotCollide(): void
     {
-        StaticCache::put(['entry', 0, 'site'], ['value' => 'zero']);
-        StaticCache::put(['entry', 'site'], ['value' => 'ordinary']);
-        $this->assertSame(['value' => 'zero'], StaticCache::get(['entry', 0, 'site']));
-        $this->assertCount(2, StaticCache::all());
+        foreach ([0, '0'] as $zero) {
+            StaticCache::clear();
+            StaticCache::put(['entry', $zero, 'site'], ['value' => 'zero']);
+            StaticCache::put(['entry', 'site'], ['value' => 'ordinary']);
+            $this->assertSame(['value' => 'zero'], StaticCache::get(['entry', $zero, 'site']));
+            $this->assertCount(2, StaticCache::all());
+        }
+    }
+
+    /**
+     * Retain native omission of optional falsey components except meaningful zero.
+     *
+     * @dataProvider omittedKeyComponents
+     * @param mixed $part
+     * @return void
+     */
+    public function testOptionalKeyComponentsKeepNativeOmission($part): void
+    {
+        StaticCache::put(['entry', $part], ['value' => 'retained']);
+        self::assertSame(['value' => 'retained'], StaticCache::get('entry'));
+        self::assertSame([sha1('entry')], array_keys(StaticCache::all()));
+    }
+
+    /**
+     * Include every original falsey component apart from integer and string zero.
+     *
+     * @return array
+     */
+    public function omittedKeyComponents(): array
+    {
+        return [[[]], [null], [false], [''], [0.0]];
     }
 
 }

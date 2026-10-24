@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-error_reporting(E_ALL);
-set_error_handler(static function ($severity, $message, $file, $line) {
-    throw new ErrorException($message, 0, $severity, $file, $line);
-}, E_ALL);
+if (!class_exists('LowWidontTests\\Diagnostics', false)) {
+    require_once dirname(__DIR__) . '/support/Diagnostics.php';
+}
+error_reporting(-1);
+set_error_handler(\LowWidontTests\Diagnostics::handler(), E_ALL);
 
 $root = dirname(__DIR__, 2);
 $mode = $argv[1];
@@ -14,7 +15,7 @@ require $root . '/tests/support/Evidence.php';
 LowWidontTests\Evidence::nativeChild($root, 'autoload-' . $mode . '-opcache' . (int) ini_get('opcache.enable_cli'));
 require $root . '/tests/support/Environment.php';
 set_error_handler(['LowWidontTests\\Environment', 'diagnostic']);
-error_reporting(E_ALL);
+error_reporting(-1);
 define('PATH_THIRD', $mode === 'missing-archive' ? $temporaryRoot . '/' : $root . '/');
 if ($mode === 'direct-access') {
     require $root . '/low_widont/pi.low_widont.php';

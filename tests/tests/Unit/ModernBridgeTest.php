@@ -426,7 +426,7 @@ final class ModernBridgeTest extends TestCase
         $bridge = $this->bridge($version);
         $facade = $this->getMockBuilder(\stdClass::class)->addMethods(['set', 'remove'])->getMock();
         $facade->expects($this->once())->method('set')->with('service', ['id' => 1]);
-        $facade->expects($this->once())->method('remove')->with('service');
+        $facade->expects($this->exactly(2))->method('remove')->with('service');
         $facade->legacy_api = $this->getMockBuilder(\stdClass::class)->addMethods(['instantiate'])->getMock();
         $facade->legacy_api->expects($this->once())->method('instantiate')->with('channel_fields');
         $facade->addons_model = $this->getMockBuilder(\stdClass::class)->addMethods(['module_installed'])->getMock();

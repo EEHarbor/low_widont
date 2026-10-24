@@ -19,9 +19,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        Diagnostics::setCase(static::class . '::' . $this->getName());
         $this->includePath = get_include_path();
         $this->autoloaders = spl_autoload_functions();
-        $this->errorLevel = error_reporting(E_ALL);
+        $this->errorLevel = error_reporting(-1);
         set_error_handler([Environment::class, 'diagnostic']);
         Environment::$ee = (object) ['TMPL' => (object) ['tagdata' => 'Template final words']];
         Environment::$services = [];
@@ -48,6 +49,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         set_include_path($this->includePath);
         restore_error_handler();
         error_reporting($this->errorLevel);
+        Diagnostics::setCase(null);
         parent::tearDown();
     }
 
