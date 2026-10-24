@@ -1,6 +1,6 @@
 {
     "baseline": "3a38b1fb9146daa87ed9f1a83699521ea03091da",
-    "archive_sha256": "afd06a489dc1c3d13d34d36ba8fe25de6ca3f9aa9cab85c3e6e73c14d5985d25",
+    "archive_sha256": "a24110437592ad3daa4d78d72ed378177e68c1c56a0ca8db0eab07920fde2903",
     "files": {
         "low_widont/addon.setup.php": {
             "sha256": "0c46da23291d38d46e682c3da4eec3ac6f3b774bbaa383929f0f5e52ca1f32e0",
@@ -1495,8 +1495,8 @@
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/FluxCapacitor/Conduit/PersistentCache.php": {
-            "sha256": "343d0ae69dddb3e2c5beb1d26d2a8e880f64a086239477f4cf31786df6654201",
-            "bytes": 9701,
+            "sha256": "7103bb1b8b98b51631a650d05e17d3818715f2f1ff71187446a9de85d38304ef",
+            "bytes": 9708,
             "lines": 280,
             "functions_including_magic_and_closures": [
                 {
@@ -1581,32 +1581,32 @@
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/FluxCapacitor/Conduit/SerializedValue.php": {
-            "sha256": "444f20daa133ab0f7ec582cda25b91b39798352761fb71456d89da536d9db007",
-            "bytes": 6619,
-            "lines": 176,
+            "sha256": "abf357191c3b4450138f897b44275f256bda64f52cc69ec49eba906a7c342c57",
+            "bytes": 6774,
+            "lines": 177,
             "functions_including_magic_and_closures": [
                 {
                     "name": "decode",
-                    "line": 15,
-                    "end_line": 42,
+                    "line": 16,
+                    "end_line": 43,
                     "abstract_declaration": false
                 },
                 {
-                    "name": "{closure@23}",
-                    "line": 23,
-                    "end_line": 33,
+                    "name": "{closure@24}",
+                    "line": 24,
+                    "end_line": 34,
                     "abstract_declaration": false
                 },
                 {
                     "name": "normalizeEscapedStrings",
-                    "line": 50,
-                    "end_line": 155,
+                    "line": 51,
+                    "end_line": 156,
                     "abstract_declaration": false
                 },
                 {
                     "name": "fitsLength",
-                    "line": 164,
-                    "end_line": 174,
+                    "line": 165,
+                    "end_line": 175,
                     "abstract_declaration": false
                 }
             ],

@@ -58,6 +58,24 @@ final class PersistentCacheTest extends TestCase
     }
 
     /**
+     * Retain diagnostic-free raw cache values at both native integer boundaries.
+     *
+     * @return void
+     */
+    public function testRawIntegerBoundaries(): void
+    {
+        foreach ([PHP_INT_MAX, PHP_INT_MIN] as $value) {
+            PersistentCache::set('native-boundary', []);
+            $file = $this->root . '/low_widont/' . sha1('native-boundary');
+            $stored = 'i:' . $value . ';';
+            file_put_contents($file, $stored);
+            StaticCache::clear();
+            self::assertSame($value, PersistentCache::get('native-boundary'));
+            self::assertSame($stored, file_get_contents($file));
+        }
+    }
+
+    /**
      * Round-trip nested values using the shipped serialized on-disk format.
      *
      * @group regression
