@@ -1,6 +1,6 @@
 {
     "baseline": "3a38b1fb9146daa87ed9f1a83699521ea03091da",
-    "archive_sha256": "da4de7784a65955015cf6e12b9d35bd5a37f52313267c56cc96f86aa93fe24b1",
+    "archive_sha256": "f6ec1b0b182495b59c73df7d57bea84ffed2822b0b75fb1b89c0013bf78ce2e1",
     "files": {
         "low_widont/addon.setup.php": {
             "sha256": "0c46da23291d38d46e682c3da4eec3ac6f3b774bbaa383929f0f5e52ca1f32e0",
@@ -606,9 +606,9 @@
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE2.php": {
-            "sha256": "d61449736c0558c10d8c3093822b670f65aa5eabde596042527f7f773fc619f2",
-            "bytes": 17603,
-            "lines": 562,
+            "sha256": "96fa81fb8a0e9894292cdda1cc39d6441bc037d90419656bd0028f5a44c07aee",
+            "bytes": 18917,
+            "lines": 587,
             "functions_including_magic_and_closures": [
                 {
                     "name": "__construct",
@@ -757,40 +757,46 @@
                 {
                     "name": "initiateSettings",
                     "line": 460,
-                    "end_line": 517,
+                    "end_line": 542,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "{closure@516}",
+                    "line": 516,
+                    "end_line": 522,
                     "abstract_declaration": false
                 },
                 {
                     "name": "javascript_to_page",
-                    "line": 522,
-                    "end_line": 525,
-                    "abstract_declaration": false
-                },
-                {
-                    "name": "module_installed",
-                    "line": 533,
-                    "end_line": 545,
-                    "abstract_declaration": false
-                },
-                {
-                    "name": "assign_parameters",
                     "line": 547,
                     "end_line": 550,
                     "abstract_declaration": false
                 },
                 {
+                    "name": "module_installed",
+                    "line": 558,
+                    "end_line": 570,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "assign_parameters",
+                    "line": 572,
+                    "end_line": 575,
+                    "abstract_declaration": false
+                },
+                {
                     "name": "assign_variables",
-                    "line": 557,
-                    "end_line": 560,
+                    "line": 582,
+                    "end_line": 585,
                     "abstract_declaration": false
                 }
             ],
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE3.php": {
-            "sha256": "d0af81f6425885a4e4916f964be6d1e51bcf695cc5e00d13523d407c277c8650",
-            "bytes": 17350,
-            "lines": 550,
+            "sha256": "24d028e3a68cb8242c36d39811beea76f6eb3c547bb954934ec870fa5d5ad309",
+            "bytes": 18662,
+            "lines": 575,
             "functions_including_magic_and_closures": [
                 {
                     "name": "__construct",
@@ -951,34 +957,40 @@
                 {
                     "name": "initiateSettings",
                     "line": 474,
-                    "end_line": 530,
+                    "end_line": 555,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "{closure@529}",
+                    "line": 529,
+                    "end_line": 535,
                     "abstract_declaration": false
                 },
                 {
                     "name": "javascript_to_page",
-                    "line": 535,
-                    "end_line": 538,
+                    "line": 560,
+                    "end_line": 563,
                     "abstract_declaration": false
                 },
                 {
                     "name": "module_installed",
-                    "line": 540,
-                    "end_line": 543,
+                    "line": 565,
+                    "end_line": 568,
                     "abstract_declaration": false
                 },
                 {
                     "name": "assign_parameters",
-                    "line": 545,
-                    "end_line": 548,
+                    "line": 570,
+                    "end_line": 573,
                     "abstract_declaration": false
                 }
             ],
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE4.php": {
-            "sha256": "fff168a1486f0a0c2b5df2c2fd491b57e98024666e5d7122084c1a532e2a7b00",
-            "bytes": 17434,
-            "lines": 550,
+            "sha256": "56e784a680d68e6642871f883089bcdca1053f12e6d96279ca783cc04630e04a",
+            "bytes": 18746,
+            "lines": 575,
             "functions_including_magic_and_closures": [
                 {
                     "name": "__construct",
@@ -1139,34 +1151,40 @@
                 {
                     "name": "initiateSettings",
                     "line": 474,
-                    "end_line": 530,
+                    "end_line": 555,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "{closure@529}",
+                    "line": 529,
+                    "end_line": 535,
                     "abstract_declaration": false
                 },
                 {
                     "name": "javascript_to_page",
-                    "line": 535,
-                    "end_line": 538,
+                    "line": 560,
+                    "end_line": 563,
                     "abstract_declaration": false
                 },
                 {
                     "name": "module_installed",
-                    "line": 540,
-                    "end_line": 543,
+                    "line": 565,
+                    "end_line": 568,
                     "abstract_declaration": false
                 },
                 {
                     "name": "assign_parameters",
-                    "line": 545,
-                    "end_line": 548,
+                    "line": 570,
+                    "end_line": 573,
                     "abstract_declaration": false
                 }
             ],
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE5.php": {
-            "sha256": "2018bd5176e4906e3fe2303be1c6e9c3fd0406b526b0968199348544f46c1260",
-            "bytes": 17434,
-            "lines": 550,
+            "sha256": "9a82439e65ec4511f3a1062767cca04888ac92d0894f47bb6fc175ce66505daf",
+            "bytes": 18746,
+            "lines": 575,
             "functions_including_magic_and_closures": [
                 {
                     "name": "__construct",
@@ -1327,25 +1345,31 @@
                 {
                     "name": "initiateSettings",
                     "line": 474,
-                    "end_line": 530,
+                    "end_line": 555,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "{closure@529}",
+                    "line": 529,
+                    "end_line": 535,
                     "abstract_declaration": false
                 },
                 {
                     "name": "javascript_to_page",
-                    "line": 535,
-                    "end_line": 538,
+                    "line": 560,
+                    "end_line": 563,
                     "abstract_declaration": false
                 },
                 {
                     "name": "module_installed",
-                    "line": 540,
-                    "end_line": 543,
+                    "line": 565,
+                    "end_line": 568,
                     "abstract_declaration": false
                 },
                 {
                     "name": "assign_parameters",
-                    "line": 545,
-                    "end_line": 548,
+                    "line": 570,
+                    "end_line": 573,
                     "abstract_declaration": false
                 }
             ],
@@ -1359,9 +1383,9 @@
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/FluxCapacitor/Conduit/GlobalFieldSettings.php": {
-            "sha256": "51697a5df3d90b59d30dbdaa1e21d7b26ef10bc4d8b404930e0a8799ff7c1be5",
-            "bytes": 5115,
-            "lines": 149,
+            "sha256": "34bb6c2cf808b3cb00b37e462393db42c5309c2ed2fdbc52a4d407df3ec939b5",
+            "bytes": 6009,
+            "lines": 164,
             "functions_including_magic_and_closures": [
                 {
                     "name": "__construct",
@@ -1378,13 +1402,19 @@
                 {
                     "name": "getSettings",
                     "line": 62,
-                    "end_line": 92,
+                    "end_line": 104,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "{closure@85}",
+                    "line": 85,
+                    "end_line": 91,
                     "abstract_declaration": false
                 },
                 {
                     "name": "updateSetting",
-                    "line": 102,
-                    "end_line": 146,
+                    "line": 114,
+                    "end_line": 161,
                     "abstract_declaration": false
                 }
             ],
@@ -1495,9 +1525,9 @@
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/FluxCapacitor/Conduit/PersistentCache.php": {
-            "sha256": "e2d140fb547db7cca71399fdee5797b5349828a4e39feaac3baa58dbeaa06433",
-            "bytes": 10029,
-            "lines": 274,
+            "sha256": "289807a817a6f06ce1304c5f2aa085ca35d540f1bc8b89dcc91b7472be665b72",
+            "bytes": 11055,
+            "lines": 299,
             "functions_including_magic_and_closures": [
                 {
                     "name": "get",
@@ -1550,69 +1580,63 @@
                 {
                     "name": "serveCacheData",
                     "line": 178,
-                    "end_line": 189,
+                    "end_line": 190,
                     "abstract_declaration": false
                 },
                 {
                     "name": "checkPath",
-                    "line": 198,
-                    "end_line": 272,
+                    "line": 199,
+                    "end_line": 297,
                     "abstract_declaration": false
                 },
                 {
-                    "name": "{closure@200}",
-                    "line": 200,
-                    "end_line": 202,
-                    "abstract_declaration": false
-                },
-                {
-                    "name": "{closure@203}",
-                    "line": 203,
-                    "end_line": 227,
+                    "name": "{closure@201}",
+                    "line": 201,
+                    "end_line": 203,
                     "abstract_declaration": false
                 },
                 {
                     "name": "{closure@212}",
                     "line": 212,
-                    "end_line": 218,
+                    "end_line": 236,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "{closure@221}",
+                    "line": 221,
+                    "end_line": 227,
                     "abstract_declaration": false
                 }
             ],
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/FluxCapacitor/Conduit/SerializedValue.php": {
-            "sha256": "251851bd6ccf787ea636ca4b38ee829731e367afa5d3dcd734656ea8e42ec8e4",
-            "bytes": 7368,
-            "lines": 194,
+            "sha256": "28b2277962ee9d1f8e812ec046bdc1dc80d9ae7d47b0496761427d3555ce99bb",
+            "bytes": 7131,
+            "lines": 182,
             "functions_including_magic_and_closures": [
                 {
-                    "name": "bindCaller",
-                    "line": 17,
-                    "end_line": 23,
-                    "abstract_declaration": false
-                },
-                {
                     "name": "decode",
-                    "line": 33,
-                    "end_line": 60,
+                    "line": 16,
+                    "end_line": 48,
                     "abstract_declaration": false
                 },
                 {
-                    "name": "{closure@41}",
-                    "line": 41,
-                    "end_line": 51,
+                    "name": "{closure@29}",
+                    "line": 29,
+                    "end_line": 39,
                     "abstract_declaration": false
                 },
                 {
                     "name": "normalizeEscapedStrings",
-                    "line": 68,
-                    "end_line": 173,
+                    "line": 56,
+                    "end_line": 161,
                     "abstract_declaration": false
                 },
                 {
                     "name": "fitsLength",
-                    "line": 182,
-                    "end_line": 192,
+                    "line": 170,
+                    "end_line": 180,
                     "abstract_declaration": false
                 }
             ],

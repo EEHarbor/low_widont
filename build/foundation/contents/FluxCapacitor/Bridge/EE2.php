@@ -312,12 +312,12 @@ class EE2 extends AbstractBridge
             case 'delete':
             case 'clear':
                 if ($key) {
-                    if ($persistent && version_compare(APP_VER, '2.8.0', '>=')) {
+                    if ($persistent && \version_compare(APP_VER, '2.8.0', '>=')) {
                         ee()->cache->delete('/' . $this->module . '/' . $key);
                     }
                     unset(ee()->session->cache[$this->module][$key]);
                 } else {
-                    if ($persistent && version_compare(APP_VER, '2.8.0', '>=')) {
+                    if ($persistent && \version_compare(APP_VER, '2.8.0', '>=')) {
                         ee()->cache->delete('/' . $this->module . '/');
                     }
                     unset(ee()->session->cache[$this->module]);
@@ -497,10 +497,35 @@ class EE2 extends AbstractBridge
             ->get('fieldtypes');
 
         if ((bool) $ftSettingsQuery->num_rows()) {
-            $ftSettings = \Low\Widont\FluxCapacitor\Conduit\SerializedValue::decode(base64_decode((string) $ftSettingsQuery->row('settings')));
+            // Uninitialized typed flags survive restoration of unrelated static state.
+            $callees = new class {
+                public static bool $parser;
+                public static bool $carrier;
+            };
+            if (!isset($callees::$parser)) {
+                $callees::$parser = \function_exists(__NAMESPACE__ . '\\unserialize');
+                $callees::$carrier = \function_exists(__NAMESPACE__ . '\\base64_decode');
+            }
+            /**
+             * Transfer temporary operands to native base64 conversion without retaining them.
+             *
+             * @param mixed $carrier Original stored row value.
+             * @return string|false
+             * @throws \Throwable When a native conversion callback fails.
+             */
+            $nativeCarrier = static function ($carrier) {
+                if ($carrier === null || (\is_float($carrier) && \is_nan($carrier))) {
+                    $carrier = $carrier === null ? '' : 'NAN';
+                }
+                $carrier = array($carrier);
+                return \base64_decode(\array_pop($carrier));
+            };
+            $parser = $callees::$parser ? __NAMESPACE__ . '\\unserialize' : array(\@@@ADDON_NAMESPACE@@@\FluxCapacitor\Conduit\SerializedValue::class, 'decode');
+            $carrier = $callees::$carrier ? __NAMESPACE__ . '\\base64_decode' : $nativeCarrier;
+            $ftSettings = @$parser(@$carrier($ftSettingsQuery->row('settings')));
 
             // It is possible there is actually nothing in the FT settings. So if not, just return an empty array
-            if (!is_array($ftSettings)) {
+            if (!\is_array($ftSettings)) {
                 $ftSettings = array();
             }
         } else {

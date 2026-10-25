@@ -81,6 +81,7 @@ final class FoundationBoundaryTest extends TestCase
         foreach (array('settings', 'cache') as $route) {
             $rows[] = array($route, 'array', serialize(array('keep' => 7)));
             $rows[] = array($route, 'legacy-S', serialize('abc'));
+            $rows[] = array($route, 'prefix', serialize(array('keep' => 7)));
             $rows[] = array($route, 'object', serialize((object) array('value' => 'native')));
             $rows[] = array($route, 'throw', null);
         }

@@ -177,15 +177,16 @@ class PersistentCache
      */
     private static function serveCacheData($value)
     {
-        $hooks = array(\function_exists(__NAMESPACE__ . '\\unserialize'));
-        $hooks = SerializedValue::bindCaller(__METHOD__, $hooks);
-        if ($hooks[0]) {
+        $callee = new class {
+            public static bool $parser;
+        };
+        if (!isset($callee::$parser)) {
+            $callee::$parser = \function_exists(__NAMESPACE__ . '\\unserialize');
+        }
+        if ($callee::$parser) {
             return unserialize($value);
         }
-        if (\is_object($value) && \method_exists($value, '__toString')) {
-            $value = (string) $value;
-        }
-        return \is_string($value) ? SerializedValue::decode($value, false) : \unserialize($value);
+        return SerializedValue::decode($value, false);
     }
 
     /**
@@ -200,7 +201,15 @@ class PersistentCache
         $isWritableDirectory = static function ($path) {
             return \is_writable($path) && (\DIRECTORY_SEPARATOR === '\\' || \is_executable($path));
         };
-        $createDirectory = static function ($path) use ($isWritableDirectory) {
+        /**
+         * Create a native directory after preserving its original caller binding.
+         *
+         * @param string $path
+         * @param int $mode
+         * @return bool
+         * @throws \Throwable When an unrelated native callback fails.
+         */
+        $createDirectory = static function ($path, $mode) use ($isWritableDirectory) {
             $directory = \rtrim($path, \DIRECTORY_SEPARATOR === '\\' ? '/\\' : '/');
             $parent = \dirname($directory);
             if (!\is_dir($parent) || !$isWritableDirectory($parent)) {
@@ -220,7 +229,7 @@ class PersistentCache
             try {
                 // Keep native alias spelling and its trailing separator intact.
                 $mkdir_line = __LINE__ + 1;
-                return mkdir($path, DIR_WRITE_MODE);
+                return \mkdir($path, $mode);
             } finally {
                 \restore_error_handler();
             }
@@ -231,7 +240,15 @@ class PersistentCache
 
         // If the generic cache folder doesn't exist, try to create it.
         if (! @is_dir(self::$cache_path)) {
-            if (!$createDirectory(self::$cache_path)) {
+            // Each original mkdir opcode keeps an independent first-call binding.
+            $genericMkdir = new class {
+                public static bool $hook;
+            };
+            if (!isset($genericMkdir::$hook)) {
+                $genericMkdir::$hook = \function_exists(__NAMESPACE__ . '\\mkdir');
+            }
+            $mkdir = $genericMkdir::$hook ? __NAMESPACE__ . '\\mkdir' : $createDirectory;
+            if (!@$mkdir(self::$cache_path, DIR_WRITE_MODE)) {
                 ee()->load->library('logger');
                 ee()->logger->developer('@@@MODULE_NAME@@@: Write Cache enabled but could not create cache folder: ' . self::$cache_path);
                 return false;
@@ -250,7 +267,15 @@ class PersistentCache
 
         // If the module-specific cache folder doesn't exist, try to create it.
         if (!@is_dir(self::$module_cache_path)) {
-            if (!$createDirectory(self::$module_cache_path)) {
+            // Each original mkdir opcode keeps an independent first-call binding.
+            $moduleMkdir = new class {
+                public static bool $hook;
+            };
+            if (!isset($moduleMkdir::$hook)) {
+                $moduleMkdir::$hook = \function_exists(__NAMESPACE__ . '\\mkdir');
+            }
+            $mkdir = $moduleMkdir::$hook ? __NAMESPACE__ . '\\mkdir' : $createDirectory;
+            if (!@$mkdir(self::$module_cache_path, DIR_WRITE_MODE)) {
                 ee()->load->library('logger');
                 ee()->logger->developer('@@@MODULE_NAME@@@: Write Cache enabled but could not create module cache folder: ' . self::$module_cache_path);
                 return false;
