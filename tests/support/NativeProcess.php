@@ -21,6 +21,10 @@ final class NativeProcess
         }
         $options = self::commandOptions($command);
         foreach ($options['inline'] as $operand) {
+            // Native begin code precedes line/end programs regardless of argument order.
+            if ($options['begin'] !== null && $operand['index'] !== $options['begin']) {
+                continue;
+            }
             $index = $operand['index'];
             $offset = $operand['offset'];
             $command[$index] = \substr($command[$index], 0, $offset)
@@ -123,6 +127,7 @@ final class NativeProcess
         $lint = false;
         $execute = false;
         $inline = array();
+        $begin = null;
         $settings = array();
         $longValues = array('--php-ini', '--define', '--zend-extension', '--file', '--run',
             '--process-begin', '--process-code', '--process-file', '--process-end', '--docroot',
@@ -161,6 +166,9 @@ final class NativeProcess
                     $execute = true;
                     $inline[] = array('index' => $argumentIndex, 'offset' => $valueOffset);
                 }
+                if ($name === '--process-begin') {
+                    $begin = $argumentIndex;
+                }
                 if ($name === '--process-file') {
                     $execute = true;
                 }
@@ -195,6 +203,9 @@ final class NativeProcess
                     $execute = true;
                     $inline[] = array('index' => $argumentIndex, 'offset' => $valueOffset);
                 }
+                if ($flag === 'B') {
+                    $begin = $argumentIndex;
+                }
                 if ($flag === 'F') {
                     $execute = true;
                 }
@@ -202,7 +213,7 @@ final class NativeProcess
             }
         }
         return array('boundary' => $boundary, 'compile_only' => $lint && !$execute,
-            'inline' => $inline, 'settings' => $settings);
+            'inline' => $inline, 'begin' => $begin, 'settings' => $settings);
     }
 
     /**

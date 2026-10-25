@@ -353,4 +353,41 @@ CODE
     {
         return array('one body' => array(false), 'later global ticks' => array(true));
     }
+
+    /**
+     * Establish authority in begin code without adding tick work to the end program.
+     *
+     * @dataProvider beginEndForms
+     * @param bool $long Whether the native options use their long names.
+     * @param bool $reversed Whether the end option appears before begin in argv.
+     * @return void
+     */
+    public function testBeginProgramKeepsEndTickCount($long, $reversed): void
+    {
+        $begin = '$observed=0; $record=static function()use(&$observed){$observed++;}; register_tick_function($record);';
+        $archive = dirname(__DIR__, 3) . '/low_widont/low_widont.phar';
+        $end = 'declare(ticks=1); $work=7; unregister_tick_function($record); require '
+            . var_export('phar://' . $archive . '/FluxCapacitor/Conduit/StaticCache.php', true)
+            . ';\\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::set("program-ticks", $observed);'
+            . 'echo \\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::get("program-ticks");';
+        $first = array($long ? '--process-begin' : '-B', $begin);
+        $last = array($long ? '--process-end' : '-E', $end);
+        $command = array_merge(array(PHP_BINARY, '-n', '-d', 'pcre.jit=0'),
+            $reversed ? array_merge($last, $first) : array_merge($first, $last));
+        $result = NativeProcess::runCommand($command);
+        self::assertSame(0, $result[0], $result[2]);
+        self::assertSame('', $result[2]);
+        self::assertSame('2', $result[1]);
+    }
+
+    /**
+     * Retain native execution order for the known short and long begin/end forms.
+     *
+     * @return array
+     */
+    public function beginEndForms(): array
+    {
+        return array('short' => array(false, false), 'long' => array(true, false),
+            'short reversed' => array(false, true), 'long reversed' => array(true, true));
+    }
 }
