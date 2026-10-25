@@ -320,4 +320,37 @@ CODE
     {
         return array(array('{'), array('}'));
     }
+
+    /**
+     * Preserve native tick callbacks after the first unconditional authority import.
+     *
+     * @dataProvider tickScopes
+     * @param bool $laterHeader Whether a following declaration enables global ticks.
+     * @return void
+     */
+    public function testTickCallbacksKeepTheirNativeCount($laterHeader): void
+    {
+        $register = '$observed=0; $record=static function()use(&$observed){$observed++;}; register_tick_function($record);';
+        $work = '$work=7; unregister_tick_function($record);';
+        $code = $laterHeader ? 'declare(ticks=1){' . $register . '}declare(ticks=1);' . $work
+            : 'declare(ticks=1){' . $register . $work . '}';
+        $archive = dirname(__DIR__, 3) . '/low_widont/low_widont.phar';
+        $code .= 'require ' . var_export('phar://' . $archive . '/FluxCapacitor/Conduit/StaticCache.php', true)
+            . ';\\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::set("native-tick-count", $observed);'
+            . 'echo \\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::get("native-tick-count");';
+        $result = NativeProcess::runCommand(array(PHP_BINARY, '-n', '-d', 'pcre.jit=0', '-r', $code));
+        self::assertSame(0, $result[0], $result[2]);
+        self::assertSame('', $result[2]);
+        self::assertSame('2', $result[1]);
+    }
+
+    /**
+     * Cover one body and a later native tick declaration on the same live path.
+     *
+     * @return array
+     */
+    public function tickScopes(): array
+    {
+        return array('one body' => array(false), 'later global ticks' => array(true));
+    }
 }

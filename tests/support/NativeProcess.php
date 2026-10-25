@@ -227,8 +227,9 @@ final class NativeProcess
         }
         $guard = 'require_once ' . \var_export(__DIR__ . '/Diagnostics.php', true) . ';';
         $insertions = array();
+        $hasGuard = false;
         $scan = null;
-        $scan = static function ($index, $limit, $boundary, $namespace) use (&$scan, &$insertions, $significant) {
+        $scan = static function ($index, $limit, $boundary, $namespace) use (&$scan, &$insertions, &$hasGuard, $significant) {
             while ($index < $limit) {
                 $token = $significant[$index];
                 if ($token['text'] === ';') {
@@ -244,6 +245,9 @@ final class NativeProcess
                     if ($declaration['body'] !== null) {
                         $scan($declaration['body'], $declaration['close'],
                             $significant[$declaration['body'] - 1]['end'], false);
+                        if ($hasGuard) {
+                            return;
+                        }
                     }
                     $boundary = $significant[$declaration['end']]['end'];
                     $index = $declaration['end'] + 1;
@@ -264,6 +268,7 @@ final class NativeProcess
             if ($index >= $limit) {
                 if ($namespace) {
                     $insertions[] = $boundary;
+                    $hasGuard = true;
                 }
                 return;
             }
@@ -271,9 +276,11 @@ final class NativeProcess
                 && isset($significant[$index + 1], $significant[$index + 2])
                 && $significant[$index + 1]['text'] === \var_export(__DIR__ . '/Diagnostics.php', true)
                 && $significant[$index + 2]['text'] === ';') {
+                $hasGuard = true;
                 return;
             }
             $insertions[] = $boundary;
+            $hasGuard = true;
         };
         $scan(0, \count($significant), 0, true);
         $insertions = \array_unique($insertions);
