@@ -30,6 +30,47 @@ def synthetic_controls(records, document, root, leader):
         return (0 < record['line'] <= len(lines) and lines[record['line'] - 1].strip() == statement.encode()
                 and base64.b64decode(record['statement_base64']) == lines[record['line'] - 1])
 
+    def owned_attempt(case):
+        """Join the original fault child after exactly one healthy native INI read."""
+        attempts = [record for record in starts if record.get('case') == case]
+        if len(attempts) == 1:
+            return attempts[0]
+        if len(attempts) != 2:
+            raise RuntimeError('Authored native case has an unexpected attempt count: ' + case)
+        discovery, attempt = attempts
+        command = discovery['command']
+        code = "require_once '" + str(root / 'tests/support/Diagnostics.php') + "';echo base64_encode(ini_get(\"auto_prepend_file\"));"
+        if '-r' not in command or command[command.index('-r') + 1] != code:
+            raise RuntimeError('Authored native configuration program differs: ' + case)
+        boundary = command.index('-r')
+        options = command[1:boundary]
+        index = 0
+        while index < len(options):
+            option = options[index]
+            if option == '-n':
+                index += 1
+                continue
+            if option not in ('-c', '-d', '-z', '--php-ini', '--define', '--zend-extension') or index + 1 == len(options):
+                raise RuntimeError('Authored native configuration options differ: ' + case)
+            index += 2
+        if command[boundary + 2:] != ['-d', 'error_reporting=-1', '-d', 'display_errors=stderr',
+                                       '-d', 'display_startup_errors=1', '-d', 'log_errors=0', '-d', 'html_errors=0']:
+            raise RuntimeError('Authored configuration startup settings differ: ' + case)
+        pid = spawns[discovery['id']]['pid']
+        startup = startups[pid]
+        end = ends[discovery['id']]
+        encoded = base64.b64decode(end['stdout_base64'], validate=True)
+        try:
+            value = base64.b64decode(encoded, validate=True)
+        except ValueError as error:
+            raise RuntimeError('Authored configuration output differs: ' + case) from error
+        if (startup['script'] != '' or discovery.get('compile_only') or end['exit'] != 0
+                or end['stderr_base64'] != '' or base64.b64encode(value) != encoded
+                or discovery.get('cwd') != attempt.get('cwd')
+                or any(record['pid'] == pid for _, record in diagnostics)):
+            raise RuntimeError('Authored native configuration receipt differs: ' + case)
+        return attempt
+
     main = [
         ('PackagingTest::testDiagnosticHandlerSeesSuppressedDeprecations', 16384, 'suppressed diagnostic fixture',
          "@trigger_error('suppressed diagnostic fixture', E_USER_DEPRECATED);", 'PackagingTest.php'),
@@ -77,10 +118,7 @@ def synthetic_controls(records, document, root, leader):
     for case, profile in profiles.items():
         if case not in passed:
             continue
-        attempts = [record for record in starts if record.get('case') == case]
-        if len(attempts) != 1:
-            raise RuntimeError('Authored native case has an unexpected attempt count: ' + case)
-        attempt = attempts[0]
+        attempt = owned_attempt(case)
         pid = spawns[attempt['id']]['pid']
         startup = startups[pid]
         script = Path(startup['script'])
@@ -125,10 +163,7 @@ def synthetic_controls(records, document, root, leader):
         case = 'LowWidontTests\\EvidenceDestinationTest::testDestinationBoundary with data set #' + str(index)
         if case not in passed:
             continue
-        attempts = [record for record in starts if record.get('case') == case]
-        if len(attempts) != 1:
-            raise RuntimeError('Output-boundary control attempt differs: ' + case)
-        attempt = attempts[0]
+        attempt = owned_attempt(case)
         pid = spawns[attempt['id']]['pid']
         command = attempt['command']
         collector = index >= 5
