@@ -33,3 +33,9 @@ Nonstring parser arguments remain delegated to native conversion in its original
 
 
 All four EE2–5 Bridge field-setting expressions receive the same independently bound original host hooks and temporary operand transfer. Their own positive contracts include untouched object carriers, one native-frame conversion, original reporting scopes and actual pinned PHPUnit restoration. The original release-specific sources and unrelated cache zero-key behavior remain retained.
+
+The POSIX search-permission check applies to plain filesystem paths and `file://` paths. Other native stream wrappers retain the original writability decision and can create/write storage without POSIX execute bits. Actual virtual-stream writes and plain/file-URI mode0200 failures are covered separately.
+
+Opaque cache-directory operands changed by a legal by-reference mkdir hook retain their original native conversions. The added host-search predicate inspects only actual strings and does not coerce an object path.
+
+PHP native stream prefixes accept at least two ASCII letters, digits or `+.-` characters. A one-letter `a://` spelling remains a local filesystem path and retains the search check; a native `1x://` virtual stream retains its original writable-storage semantics.

@@ -198,8 +198,19 @@ class PersistentCache
      */
     private static function checkPath()
     {
-        $isWritableDirectory = static function ($path) {
-            return \is_writable($path) && (\DIRECTORY_SEPARATOR === '\\' || \is_executable($path));
+        /**
+         * Apply POSIX search permissions only to explicit filesystem path strings.
+         * Native stream schemes have at least two ASCII alphanumeric or +.- characters.
+         *
+         * @param mixed $path
+         * @return bool
+         */
+        $hasSearchAccess = static function ($path) {
+            if (!\is_string($path) || \DIRECTORY_SEPARATOR === '\\'
+                || (\preg_match('~^[a-z0-9+.-]{2,}://~i', $path) && \strncasecmp($path, 'file://', 7) !== 0)) {
+                return true;
+            }
+            return \is_executable($path);
         };
         /**
          * Create a native directory after preserving its original caller binding.
@@ -209,13 +220,7 @@ class PersistentCache
          * @return bool
          * @throws \Throwable When an unrelated native callback fails.
          */
-        $createDirectory = static function ($path, $mode) use ($isWritableDirectory) {
-            $directory = \rtrim($path, \DIRECTORY_SEPARATOR === '\\' ? '/\\' : '/');
-            $parent = \dirname($directory);
-            if (!\is_dir($parent) || !$isWritableDirectory($parent)) {
-                return false;
-            }
-
+        $createDirectory = static function ($path, $mode) {
             $mkdir_line = 0;
             $previous = null;
             $previous = \set_error_handler(static function ($severity, $message, $file, $line) use (&$mkdir_line, &$previous) {
@@ -259,7 +264,7 @@ class PersistentCache
         }
 
         // Make sure the generic cache folder is writable.
-        if (!is_writable(self::$cache_path) || (\DIRECTORY_SEPARATOR !== '\\' && !\is_executable(self::$cache_path))) {
+        if (!is_writable(self::$cache_path) || !$hasSearchAccess(self::$cache_path)) {
             ee()->load->library('logger');
             ee()->logger->developer('@@@MODULE_NAME@@@: Write Cache enabled but cache path not writable: ' . self::$cache_path);
             return false;
@@ -286,7 +291,7 @@ class PersistentCache
         }
 
         // Make sure the module-specific cache folder is writable.
-        if (!is_writable(self::$module_cache_path) || (\DIRECTORY_SEPARATOR !== '\\' && !\is_executable(self::$module_cache_path))) {
+        if (!is_writable(self::$module_cache_path) || !$hasSearchAccess(self::$module_cache_path)) {
             // If the path is wrong we'll turn off caching
             ee()->load->library('logger');
             ee()->logger->developer('@@@MODULE_NAME@@@: Write Cache enabled but module cache path not writable: ' . self::$module_cache_path);

@@ -1,6 +1,6 @@
 {
     "baseline": "3a38b1fb9146daa87ed9f1a83699521ea03091da",
-    "archive_sha256": "f6ec1b0b182495b59c73df7d57bea84ffed2822b0b75fb1b89c0013bf78ce2e1",
+    "archive_sha256": "f139fdfd7916f5a6cc4ad3a54fc34b59c8472d75d824ca1284fc67e19a29f4df",
     "files": {
         "low_widont/addon.setup.php": {
             "sha256": "0c46da23291d38d46e682c3da4eec3ac6f3b774bbaa383929f0f5e52ca1f32e0",
@@ -1525,9 +1525,9 @@
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/FluxCapacitor/Conduit/PersistentCache.php": {
-            "sha256": "289807a817a6f06ce1304c5f2aa085ca35d540f1bc8b89dcc91b7472be665b72",
-            "bytes": 11055,
-            "lines": 299,
+            "sha256": "28be3b3317fc7974976fcc9cd307d648e2f125d902970a9e9166c849785ba3ec",
+            "bytes": 11140,
+            "lines": 304,
             "functions_including_magic_and_closures": [
                 {
                     "name": "get",
@@ -1586,25 +1586,25 @@
                 {
                     "name": "checkPath",
                     "line": 199,
-                    "end_line": 297,
+                    "end_line": 302,
                     "abstract_declaration": false
                 },
                 {
-                    "name": "{closure@201}",
-                    "line": 201,
-                    "end_line": 203,
+                    "name": "{closure@208}",
+                    "line": 208,
+                    "end_line": 214,
                     "abstract_declaration": false
                 },
                 {
-                    "name": "{closure@212}",
-                    "line": 212,
-                    "end_line": 236,
+                    "name": "{closure@223}",
+                    "line": 223,
+                    "end_line": 241,
                     "abstract_declaration": false
                 },
                 {
-                    "name": "{closure@221}",
-                    "line": 221,
-                    "end_line": 227,
+                    "name": "{closure@226}",
+                    "line": 226,
+                    "end_line": 232,
                     "abstract_declaration": false
                 }
             ],

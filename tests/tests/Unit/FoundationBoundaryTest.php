@@ -563,7 +563,7 @@ final class FoundationBoundaryTest extends TestCase
      */
     public function cacheSearchPaths(): array
     {
-        return [['base'], ['module'], ['existing-module']];
+        return [['base'], ['module'], ['existing-module'], ['file-base'], ['file-module'], ['file-existing-module'], ['letter-existing-module']];
     }
 
     /**

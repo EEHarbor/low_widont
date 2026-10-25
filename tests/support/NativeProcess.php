@@ -21,12 +21,13 @@ final class NativeProcess
         }
         $temporary = sys_get_temp_dir() . '/low-widont-process-' . bin2hex(random_bytes(8));
         mkdir($temporary, 0700);
-        array_splice($command, 1, 0, array('-d', 'error_reporting=-1', '-d', 'display_errors=stderr',
-            '-d', 'display_startup_errors=1', '-d', 'log_errors=0', '-d', 'html_errors=0',
-            '-d', 'auto_prepend_file=' . __DIR__ . '/Diagnostics.php'));
+        $options = self::commandOptions($command);
+        array_splice($command, $options['boundary'], 0, array('-d', 'error_reporting=-1', '-d', 'display_errors=stderr',
+            '-d', 'display_startup_errors=1', '-d', 'log_errors=0', '-d', 'html_errors=0'));
+        array_splice($command, 1, 0, array('-d', 'auto_prepend_file=' . __DIR__ . '/Diagnostics.php'));
         $id = bin2hex(random_bytes(8));
         Diagnostics::record(array('kind' => 'native-start', 'id' => $id, 'command' => $command, 'temporary' => $temporary,
-            'cwd' => $directory, 'case' => Diagnostics::currentCase(), 'compile_only' => in_array('-l', $command, true)));
+            'cwd' => $directory, 'case' => Diagnostics::currentCase(), 'compile_only' => $options['compile_only']));
         $environment = $environment === null ? getenv() : $environment;
         $environment['LOW_WIDONT_TEST_CASE'] = Diagnostics::currentCase() ?: '';
         $process = null;
@@ -76,5 +77,56 @@ final class NativeProcess
             Diagnostics::record(array('kind' => 'native-cleanup', 'id' => $id, 'completed' => $completed,
                 'removed' => !file_exists($temporary)));
         }
+    }
+    /**
+     * Find PHP options without interpreting operands or literal script arguments.
+     *
+     * @param array $command Selected binary followed by native CLI arguments.
+     * @return array Option boundary and whether PHP will lint the selected file.
+     */
+    private static function commandOptions(array $command): array
+    {
+        $boundary = \count($command);
+        $compileOnly = false;
+        $longValues = array('--php-ini', '--define', '--zend-extension', '--file', '--run',
+            '--process-begin', '--process-code', '--process-file', '--process-end', '--docroot',
+            '--server', '--repeat', '--rf', '--rc', '--re', '--rz', '--ri');
+        for ($index = 1; $index < \count($command); $index++) {
+            $option = $command[$index];
+            if ($option === '--' || $option === '' || $option === '-' || $option[0] !== '-') {
+                $boundary = $index;
+                break;
+            }
+            if (\substr($option, 0, 2) === '--') {
+                if ($option === '--syntax-check') {
+                    $compileOnly = true;
+                }
+                if (\in_array($option, $longValues, true)) {
+                    if ($index + 1 === \count($command)) {
+                        $boundary = $index;
+                        break;
+                    }
+                    $index++;
+                }
+                continue;
+            }
+            for ($offset = 1; $offset < \strlen($option); $offset++) {
+                $flag = $option[$offset];
+                if ($flag === 'l') {
+                    $compileOnly = true;
+                }
+                if (\strpos('cdzfrBRFEtS', $flag) !== false) {
+                    if ($offset === \strlen($option) - 1) {
+                        if ($index + 1 === \count($command)) {
+                            $boundary = $index;
+                            break 2;
+                        }
+                        $index++;
+                    }
+                    break;
+                }
+            }
+        }
+        return array('boundary' => $boundary, 'compile_only' => $compileOnly);
     }
 }
