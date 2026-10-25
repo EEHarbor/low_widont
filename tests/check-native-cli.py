@@ -27,7 +27,7 @@ def main():
     output.mkdir(mode=0o700)
     rows = []
     fixture = ROOT / 'tests/fixtures/NativeCliDiagnosticControlTest.php'
-    for mode in ('short', 'long', 'namespace', 'brace', 'prelude-caught', 'prelude-healthy'):
+    for mode in ('short', 'long', 'namespace', 'brace', 'declare-brace', 'declare-colon', 'prelude-caught', 'prelude-healthy'):
         if shutil.disk_usage(output).free < 2 * 1024**3:
             raise RuntimeError('Native CLI controls require2GiB free before each invocation.')
         directory = output / mode

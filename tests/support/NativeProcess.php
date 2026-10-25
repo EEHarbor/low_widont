@@ -47,7 +47,7 @@ final class NativeProcess
         if ($callerPrelude !== '' && \strcasecmp($callerPrelude, 'none') !== 0) {
             $prepend = $temporary . '/caller-prepend.php';
             $preludeCode = '<?php require_once ' . \var_export(__DIR__ . '/Diagnostics.php', true)
-                . '; require ' . \var_export($callerPrelude, true) . ';';
+                . '; require_once ' . \var_export($callerPrelude, true) . ';';
         }
         $strict = array('-d', 'error_reporting=-1', '-d', 'display_errors=stderr',
             '-d', 'display_startup_errors=1', '-d', 'log_errors=0', '-d', 'html_errors=0');
@@ -206,7 +206,7 @@ final class NativeProcess
     }
 
     /**
-     * Start authority before inline statements while retaining native header syntax.
+     * Start authority before live inline statements while retaining declaration and namespace syntax.
      *
      * @param string $code Original native inline program.
      * @return string Program with the owned guard after legal leading declarations.
@@ -225,51 +225,120 @@ final class NativeProcess
             }
             $significant[] = array('id' => $id, 'text' => $text, 'end' => $position);
         }
-        $index = 0;
-        $boundary = 0;
-        while (isset($significant[$index]) && $significant[$index]['id'] === \T_DECLARE) {
-            $cursor = $index + 1;
-            $depth = 0;
-            for (; isset($significant[$cursor]); $cursor++) {
-                $text = $significant[$cursor]['text'];
-                if ($text === '(') {
-                    $depth++;
+        $guard = 'require_once ' . \var_export(__DIR__ . '/Diagnostics.php', true) . ';';
+        $insertions = array();
+        $scan = null;
+        $scan = static function ($index, $limit, $boundary, $namespace) use (&$scan, &$insertions, $significant) {
+            while ($index < $limit) {
+                $token = $significant[$index];
+                if ($token['text'] === ';') {
+                    $boundary = $token['end'];
+                    $index++;
+                    continue;
                 }
-                if ($text === ')') {
-                    $depth--;
+                if ($token['id'] === \T_DECLARE) {
+                    $declaration = self::declaration($significant, $index, $limit);
+                    if ($declaration === null) {
+                        break;
+                    }
+                    if ($declaration['body'] !== null) {
+                        $scan($declaration['body'], $declaration['close'],
+                            $significant[$declaration['body'] - 1]['end'], false);
+                    }
+                    $boundary = $significant[$declaration['end']]['end'];
+                    $index = $declaration['end'] + 1;
+                    continue;
                 }
-                if ($depth === 0 && ($text === ';' || $text === '{')) {
-                    break;
+                if ($namespace && $token['id'] === \T_NAMESPACE
+                    && isset($significant[$index + 1]) && $significant[$index + 1]['text'] !== '\\') {
+                    for ($cursor = $index + 1; $cursor < $limit; $cursor++) {
+                        if ($significant[$cursor]['text'] === ';' || $significant[$cursor]['text'] === '{') {
+                            $boundary = $significant[$cursor]['end'];
+                            $index = $cursor + 1;
+                            break 2;
+                        }
+                    }
                 }
-            }
-            if (!isset($significant[$cursor]) || $significant[$cursor]['text'] !== ';') {
                 break;
             }
-            $boundary = $significant[$cursor]['end'];
-            $index = $cursor + 1;
-        }
-        if (isset($significant[$index]) && $significant[$index]['id'] === \T_NAMESPACE
-            && isset($significant[$index + 1]) && $significant[$index + 1]['text'] !== '\\') {
-            for ($cursor = $index + 1; isset($significant[$cursor]); $cursor++) {
-                if ($significant[$cursor]['text'] === ';' || $significant[$cursor]['text'] === '{') {
-                    $boundary = $significant[$cursor]['end'];
-                    break;
+            if ($index >= $limit) {
+                if ($namespace) {
+                    $insertions[] = $boundary;
                 }
+                return;
             }
-        }
-        foreach ($significant as $index => $token) {
-            if ($token['end'] <= $boundary) {
-                continue;
-            }
-            if (\in_array($token['id'], array(\T_REQUIRE, \T_REQUIRE_ONCE), true)
+            if (\in_array($significant[$index]['id'], array(\T_REQUIRE, \T_REQUIRE_ONCE), true)
                 && isset($significant[$index + 1], $significant[$index + 2])
                 && $significant[$index + 1]['text'] === \var_export(__DIR__ . '/Diagnostics.php', true)
                 && $significant[$index + 2]['text'] === ';') {
-                return $code;
+                return;
             }
-            break;
+            $insertions[] = $boundary;
+        };
+        $scan(0, \count($significant), 0, true);
+        $insertions = \array_unique($insertions);
+        \rsort($insertions);
+        foreach ($insertions as $boundary) {
+            $code = \substr($code, 0, $boundary) . $guard . \substr($code, $boundary);
         }
-        return \substr($code, 0, $boundary) . 'require_once '
-            . \var_export(__DIR__ . '/Diagnostics.php', true) . ';' . \substr($code, $boundary);
+        return $code;
+    }
+
+    /**
+     * Find a leading declaration body without moving executable statements before it.
+     *
+     * @param array $tokens Significant native inline tokens with original byte offsets.
+     * @param int $index Declaration keyword offset in the token array.
+     * @param int $limit Exclusive enclosing declaration-body boundary.
+     * @return array|null Body bounds and final token, or null for incomplete syntax.
+     */
+    private static function declaration(array $tokens, $index, $limit)
+    {
+        $depth = 0;
+        for ($cursor = $index + 1; $cursor < $limit; $cursor++) {
+            $text = $tokens[$cursor]['text'];
+            if ($text === '(') {
+                $depth++;
+            }
+            if ($text === ')') {
+                $depth--;
+            }
+            if ($depth === 0 && \in_array($text, array(';', '{', ':'), true)) {
+                break;
+            }
+        }
+        if ($cursor === $limit) {
+            return null;
+        }
+        if ($tokens[$cursor]['text'] === ';') {
+            return array('body' => null, 'close' => null, 'end' => $cursor);
+        }
+        $body = $cursor + 1;
+        $braced = $tokens[$cursor]['text'] === '{';
+        $depth = 1;
+        for ($cursor = $body; $cursor < $limit; $cursor++) {
+            $token = $tokens[$cursor];
+            if (!$braced && $token['id'] === \T_DECLARE) {
+                $nested = self::declaration($tokens, $cursor, $limit);
+                if ($nested === null) {
+                    return null;
+                }
+                $cursor = $nested['end'];
+                continue;
+            }
+            if ($braced && (($token['id'] === null && $token['text'] === '{')
+                || \in_array($token['id'], array(\T_CURLY_OPEN, \T_DOLLAR_OPEN_CURLY_BRACES), true))) {
+                $depth++;
+            }
+            if (($braced && $token['id'] === null && $token['text'] === '}') || (!$braced && $token['id'] === \T_ENDDECLARE)) {
+                $depth--;
+                if ($depth === 0) {
+                    $end = !$braced && isset($tokens[$cursor + 1]) && $tokens[$cursor + 1]['text'] === ';'
+                        ? $cursor + 1 : $cursor;
+                    return array('body' => $body, 'close' => $cursor, 'end' => $end);
+                }
+            }
+        }
+        return null;
     }
 }

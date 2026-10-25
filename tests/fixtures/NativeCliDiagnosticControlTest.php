@@ -19,13 +19,20 @@ final class NativeCliDiagnosticControlTest extends TestCase
         $load = 'require ' . var_export('phar://' . $archive . '/FluxCapacitor/Conduit/StaticCache.php', true)
             . ';\\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::set("owned-cli-control", "native");';
         $fault = 'try { @trigger_error("owned native CLI caught diagnostic", E_USER_DEPRECATED); } catch (\\Throwable $error) {}';
-        if (in_array($mode, array('short', 'long', 'namespace', 'brace'), true)) {
+        if (in_array($mode, array('short', 'long', 'namespace', 'brace', 'declare-brace', 'declare-colon'), true)) {
             $code = $load . $fault;
             if ($mode === 'namespace') {
                 $code = 'declare(strict_types=1); namespace OwnedCliControl;' . $code;
             }
             if ($mode === 'brace') {
                 $code = 'namespace OwnedCliControl {' . $code . '}';
+            }
+            if ($mode === 'declare-brace' || $mode === 'declare-colon') {
+                $code = $mode === 'declare-brace' ? 'declare(ticks=1) {' . $code . '}'
+                    : 'declare(ticks=1):' . $code . 'enddeclare;';
+                if (PHP_VERSION_ID >= 80000) {
+                    $code .= 'namespace OwnedCliControl;';
+                }
             }
             $command = array(PHP_BINARY, '-n', '-d', 'pcre.jit=0');
             if ($mode === 'long') {

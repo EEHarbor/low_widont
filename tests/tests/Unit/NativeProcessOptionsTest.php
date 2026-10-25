@@ -132,7 +132,13 @@ CODE
      */
     public function inlinePrograms(): array
     {
-        return array(
+        $programs = array(
+            'empty braced declaration' => array('declare(ticks=1) {} namespace OwnedInline;', '', '-r', false),
+            'empty nested declaration' => array('declare(ticks=1) { declare(ticks=1) {} } namespace OwnedInline;', '', '-r', false),
+            'empty semicolon body' => array('declare(ticks=1) { ; } namespace OwnedInline;', '', '-r', false),
+            'empty colon declaration' => array('declare(ticks=1): enddeclare; namespace OwnedInline;', '', '-r', false),
+            'live braced body' => array('declare(ticks=1) { echo ""; }', '', '-r', false),
+            'live colon body' => array('declare(ticks=1): echo ""; enddeclare;', '', '-r', false),
             'short separated' => array('', '', '-r', false),
             'long separated' => array('', '', '--run', false),
             'short attached' => array('', '', 'attached-short', false),
@@ -143,6 +149,11 @@ CODE
             'declare before namespace' => array('/* prefix */ declare(strict_types=1); declare(ticks=0); namespace OwnedNativeInline;', '', '-r', false),
             'literal argument boundary' => array('', '', '-r', true)
         );
+        if (PHP_VERSION_ID >= 80000) {
+            $programs['live braced declaration before namespace'] = array('declare(ticks=1) { echo ""; } namespace OwnedInline;', '', '-r', false);
+            $programs['live colon declaration before namespace'] = array('declare(ticks=1): echo ""; enddeclare; namespace OwnedInline;', '', '-r', false);
+        }
+        return $programs;
     }
 
     /**
@@ -214,5 +225,99 @@ CODE
     public function iniSelections(): array
     {
         return array(array('file'), array('long attached'), array('directory'), array('default'), array('scanned directory'));
+    }
+
+    /**
+     * Keep an already selected authority file single-loaded by native file identity.
+     *
+     * @dataProvider authorityPreludes
+     * @param bool $alias Whether the selected path includes a normalized directory alias.
+     * @return void
+     */
+    public function testSelectedAuthorityPrelude($alias): void
+    {
+        $authority = dirname(__DIR__, 2) . '/support/' . ($alias ? '../support/' : '') . 'Diagnostics.php';
+        $program = sys_get_temp_dir() . '/native-authority-main-' . bin2hex(random_bytes(8)) . '.php';
+        $archive = dirname(__DIR__, 3) . '/low_widont/low_widont.phar';
+        file_put_contents($program, '<?php require ' . var_export('phar://' . $archive . '/FluxCapacitor/Conduit/StaticCache.php', true)
+            . ';\\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::set("authority-prelude", "native");'
+            . 'echo \\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::get("authority-prelude");');
+        try {
+            $result = NativeProcess::runCommand(array(PHP_BINARY, '-n', '-d', 'pcre.jit=0',
+                '-d', 'auto_prepend_file=' . $authority, $program));
+            self::assertSame(0, $result[0], $result[2]);
+            self::assertSame('', $result[2]);
+            self::assertSame('native', $result[1]);
+        } finally {
+            unlink($program);
+        }
+    }
+
+    /**
+     * Cover direct and equivalent native authority paths.
+     *
+     * @return array
+     */
+    public function authorityPreludes(): array
+    {
+        return array('exact' => array(false), 'normalized alias' => array(true));
+    }
+
+    /**
+     * Retain owned startup for valid inline programs without live statements.
+     *
+     * @dataProvider emptyInlinePrograms
+     * @param string $code Native empty program or legal declaration-only header.
+     * @return void
+     */
+    public function testEmptyInlineProgram($code): void
+    {
+        $result = NativeProcess::runCommand(array(PHP_BINARY, '-n', '-d', 'pcre.jit=0', '-r', $code));
+        self::assertSame(0, $result[0], $result[2]);
+        self::assertSame('', $result[1]);
+        self::assertSame('', $result[2]);
+    }
+
+    /**
+     * Cover empty native input and headers with no later executable statement.
+     *
+     * @return array
+     */
+    public function emptyInlinePrograms(): array
+    {
+        return array(array(''), array('declare(ticks=1) {}'), array('namespace OwnedEmpty;'));
+    }
+
+    /**
+     * Preserve interpolated text while guarding the surrounding declaration body.
+     *
+     * @dataProvider interpolatedDeclarationTexts
+     * @param string $tail Literal brace text after the interpolated native value.
+     * @return void
+     */
+    public function testInterpolatedDeclarationText($tail): void
+    {
+        $code = 'declare(ticks=1) { $number = 1; $stored = "{$number}' . $tail . '"; }';
+        if (PHP_VERSION_ID >= 80000) {
+            $code .= 'namespace OwnedInterpolated;';
+        }
+        $archive = dirname(__DIR__, 3) . '/low_widont/low_widont.phar';
+        $code .= 'require ' . var_export('phar://' . $archive . '/FluxCapacitor/Conduit/StaticCache.php', true)
+            . ';\\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::set("declaration-text", $stored);'
+            . 'echo \\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::get("declaration-text");';
+        $result = NativeProcess::runCommand(array(PHP_BINARY, '-n', '-d', 'pcre.jit=0', '-r', $code));
+        self::assertSame(0, $result[0], $result[2]);
+        self::assertSame('', $result[2]);
+        self::assertSame('1' . $tail, $result[1]);
+    }
+
+    /**
+     * Keep interpolated text tokens distinct from opening and closing punctuation.
+     *
+     * @return array
+     */
+    public function interpolatedDeclarationTexts(): array
+    {
+        return array(array('{'), array('}'));
     }
 }
