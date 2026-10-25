@@ -4,7 +4,6 @@ import hashlib
 import json
 import os
 from pathlib import Path
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -13,12 +12,22 @@ import xml.etree.ElementTree as ET
 
 from process_support import run_suite
 from authored_controls import synthetic_controls
+from path_support import destination
 
 ROOT = Path(__file__).resolve().parent.parent
 
 
 def main():
     """Execute the pinned tool and reject every unaccounted diagnostic."""
+    args = sys.argv[1:]
+    requested = None
+    for index, value in enumerate(args):
+        if value == '--log-junit':
+            if index + 1 >= len(args):
+                raise ValueError('JUnit destination is missing.')
+            requested = destination(args[index + 1])
+        if value.startswith('--log-junit='):
+            requested = destination(value.split('=', 1)[1])
     tool = ROOT / 'tests/.phpunit/phpunit-9.phar'
     if hashlib.sha256(tool.read_bytes()).hexdigest() != '6b5235f282c6ccab3674ac27c5b1ddbd1da838e74bf07002ddcfd030d31298d7':
         raise RuntimeError('Pinned PHPUnit checksum differs.')
@@ -26,11 +35,6 @@ def main():
     journal = run / 'diagnostics.jsonl'
     journal.touch(mode=0o600)
     report = run / 'suite.xml'
-    args = sys.argv[1:]
-    requested = None
-    for index, value in enumerate(args):
-        if value == '--log-junit':
-            requested = Path(args[index + 1])
     binary = os.environ.get('PHP_BINARY', '/Users/tomjaeger/Library/Application Support/Herd/bin/php74')
     command = [binary, '-d', 'error_reporting=-1', '-d', 'display_errors=stderr', '-d', 'display_startup_errors=1',
                '-d', 'log_errors=0', '-d', 'html_errors=0', '-d', 'auto_prepend_file=' + str(ROOT / 'tests/Support/Diagnostics.php'),
@@ -75,9 +79,9 @@ def main():
         if not counts['tests'] or counts['tests'] != len(list(document.iter('testcase'))):
             issues.append('Configured case counts are empty or inconsistent.')
         if requested:
-            if requested.exists() or requested.is_symlink():
-                raise RuntimeError('JUnit destination must be fresh.')
-            shutil.copyfile(report, requested)
+            requested = destination(requested)
+            with requested.open('xb') as output:
+                output.write(report.read_bytes())
     expected_events, expected_exits, bindings = set(), set(), []
     if report.is_file():
         try:

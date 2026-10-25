@@ -1,6 +1,6 @@
 {
     "baseline": "3a38b1fb9146daa87ed9f1a83699521ea03091da",
-    "archive_sha256": "a24110437592ad3daa4d78d72ed378177e68c1c56a0ca8db0eab07920fde2903",
+    "archive_sha256": "a1dab5ad9212683bde661416e580227e94562c6acc7807b591342748208d9ab7",
     "files": {
         "low_widont/addon.setup.php": {
             "sha256": "0c46da23291d38d46e682c3da4eec3ac6f3b774bbaa383929f0f5e52ca1f32e0",
@@ -1359,9 +1359,9 @@
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/FluxCapacitor/Conduit/GlobalFieldSettings.php": {
-            "sha256": "96ef15ce689e9ac08162a57e4dedc8fbe1a16660d2a914dadaab1e864d5ca0a8",
-            "bytes": 2313,
-            "lines": 81,
+            "sha256": "b475abb518660786f71b080a849c3d747621568056f82fa3da7a08d5188a2841",
+            "bytes": 3516,
+            "lines": 118,
             "functions_including_magic_and_closures": [
                 {
                     "name": "__construct",
@@ -1372,27 +1372,27 @@
                 {
                     "name": "getSetting",
                     "line": 24,
-                    "end_line": 42,
+                    "end_line": 54,
                     "abstract_declaration": false
                 },
                 {
                     "name": "getSettings",
-                    "line": 49,
-                    "end_line": 62,
+                    "line": 61,
+                    "end_line": 74,
                     "abstract_declaration": false
                 },
                 {
                     "name": "updateSetting",
-                    "line": 64,
-                    "end_line": 79,
+                    "line": 84,
+                    "end_line": 115,
                     "abstract_declaration": false
                 }
             ],
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/FluxCapacitor/Conduit/McpNav.php": {
-            "sha256": "7be65822d94cafc2cffa76132353eba4dee52099a8c4ea677ba28efe928b0939",
-            "bytes": 7808,
+            "sha256": "5a30543833a7bcfc319382ddedb90abf02f98c5f0ca7cd3ca635491fe4b8cfda",
+            "bytes": 7869,
             "lines": 262,
             "functions_including_magic_and_closures": [
                 {
@@ -1495,9 +1495,9 @@
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/FluxCapacitor/Conduit/PersistentCache.php": {
-            "sha256": "7103bb1b8b98b51631a650d05e17d3818715f2f1ff71187446a9de85d38304ef",
-            "bytes": 9708,
-            "lines": 280,
+            "sha256": "57c514abc3d67ebd4ad6f522bd335b23bc032fe21064d9b2bc2d478fd59f26ac",
+            "bytes": 9499,
+            "lines": 266,
             "functions_including_magic_and_closures": [
                 {
                     "name": "get",
@@ -1554,27 +1554,27 @@
                     "abstract_declaration": false
                 },
                 {
-                    "name": "createDirectory",
-                    "line": 190,
-                    "end_line": 215,
-                    "abstract_declaration": false
-                },
-                {
-                    "name": "{closure@200}",
-                    "line": 200,
-                    "end_line": 206,
-                    "abstract_declaration": false
-                },
-                {
-                    "name": "isWritableDirectory",
-                    "line": 223,
-                    "end_line": 226,
-                    "abstract_declaration": false
-                },
-                {
                     "name": "checkPath",
-                    "line": 233,
-                    "end_line": 278,
+                    "line": 190,
+                    "end_line": 264,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "{closure@192}",
+                    "line": 192,
+                    "end_line": 194,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "{closure@195}",
+                    "line": 195,
+                    "end_line": 219,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "{closure@204}",
+                    "line": 204,
+                    "end_line": 210,
                     "abstract_declaration": false
                 }
             ],
@@ -1778,9 +1778,9 @@
             "procedural_scope_included": true
         },
         "low_widont/low_widont.phar!/{stub}": {
-            "sha256": "41b14dda7d37f85605768cf97a1ffa0ae20fb2dc6edede6f2770b304b8d33e9a",
-            "bytes": 7803,
-            "lines": 331,
+            "sha256": "4395fce3fe5318936ea1fcee15581fa27fff34c74dc741c3fc66b470f2f8db87",
+            "bytes": 7838,
+            "lines": 333,
             "functions_including_magic_and_closures": [
                 {
                     "name": "go",
@@ -1809,7 +1809,7 @@
                 {
                     "name": "_removeTmpFiles",
                     "line": 304,
-                    "end_line": 326,
+                    "end_line": 328,
                     "abstract_declaration": false
                 }
             ],
