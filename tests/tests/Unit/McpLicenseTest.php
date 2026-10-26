@@ -24,7 +24,7 @@ final class McpLicenseTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        StaticCache::put(['app_settings', 'low_widont'], ['version' => '4.1.1']);
+        StaticCache::put('app_settings', ['version' => '4.1.1']);
         $database = new Database(['eeharbor_licenses' => [], 'sites' => []]);
         $database->columns['eeharbor_licenses'] = ['site_id', 'addon', 'license_key', 'ignore_site'];
         Environment::$ee->db = $database;

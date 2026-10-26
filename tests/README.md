@@ -1,10 +1,6 @@
+> Current scope (2026-10-26): Foundation is an unchanged stock dependency. The baseline notes below are historical; see [COMPATIBILITY.md](COMPATIBILITY.md) for the addon-only correction and actual validation limits.
+
 # Low Widont tests
-
-The current PHP compatibility campaign runs the distributed rebuilt archive through a checked launcher, with explicit startup settings, separate retained streams, fresh JUnit, native process ownership and a durable diagnostic journal. See [COMPATIBILITY.md](COMPATIBILITY.md) for current scope and results, and [../build/README.md](../build/README.md) for the scoped Foundation build. Run the configured suite through `tests/.phpunit/run-phpunit.sh`; direct PHPUnit commands bypass the checked receipt gate.
-
-## Historical tests-only checkpoint
-
-The following material describes the pinned `unit-tests-2026` checkpoint before compatibility source repairs. Its original-source, source-red and coverage statements apply only to that historical checkpoint. Portable baseline reports remain unchanged; they do not describe the rebuilt candidate.
 
 This tests-only checkpoint runs shipped source or the original PHAR. It does not load ExpressionEngine itself. Collaborator doubles match the legacy facade, query-builder, result-object and view-helper contracts; production code is unchanged.
 

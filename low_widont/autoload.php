@@ -16,13 +16,6 @@
  */
 
 spl_autoload_register(
-    /**
-     * Load an add-on Foundation class from the native or selected extraction path.
-     *
-     * @param string $class_name
-     * @return void|null
-     * @throws \Exception
-     */
     function ($class_name) {
         // This is the PHAR path for this addon
         $phar_path = PATH_THIRD . 'low_widont/low_widont.phar';
@@ -70,14 +63,14 @@ spl_autoload_register(
                 include_once $phar_path;
 
                 // Build the path to the file in the temp directory.
-                $class_file_path = \Extract_low_widont::$temp ?: $tmp_phar_path;
+                $class_file_path = $tmp_phar_path;
             }
 
             // Add the actual class filename to whatever path we need to use.
             $class_file = $class_file_path . '/' . $class_name . '.php';
 
             // If class file exists either in the phar or temp dir, load it.
-            if (is_file($class_file) && is_readable($class_file) && ($phar_stream === true || ($phar_stream === false && stream_resolve_include_path($class_file)) !== false)) {
+            if (file_exists($class_file) && ($phar_stream === true || ($phar_stream === false && stream_resolve_include_path($class_file)) !== false)) {
                 $opcache_config = false;
 
                 if (function_exists('opcache_get_configuration')) {

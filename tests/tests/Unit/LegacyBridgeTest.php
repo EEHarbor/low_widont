@@ -175,10 +175,10 @@ final class LegacyBridgeTest extends TestCase
         $this->assertFalse($bridge->cache('get', 'missing', false, false));
         $this->assertSame(['id' => 1], $bridge->cache('set', 'entry', ['id' => 1], false));
         $this->assertSame(['id' => 1], $bridge->cache('get', 'entry', false, false));
-        $this->assertNull($bridge->cache('delete', 'entry', false, false));
+        $this->assertNull($bridge->cache('delete', 'entry'));
         $this->assertFalse($bridge->cache('get', 'entry', false, false));
         $bridge->cache('set', 'entry', 'cached', false);
-        $this->assertNull($bridge->cache('clear', false, false, false));
+        $this->assertNull($bridge->cache('clear'));
         $this->assertArrayNotHasKey('low_widont', Environment::$ee->session->cache);
         $this->assertFalse($bridge->cache('unknown'));
     }

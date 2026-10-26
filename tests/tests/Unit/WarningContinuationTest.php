@@ -84,7 +84,7 @@ final class WarningContinuationTest extends TestCase
                     }
                 }
                 ksort($members);
-                $this->assertCount(23, $members);
+                $this->assertCount(22, $members);
                 $this->assertSame($members, $record['members']);
                 $this->assertSame($members, $record['extracted']);
                 $this->assertSame($members, $record['reused']);

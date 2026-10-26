@@ -58,7 +58,7 @@ class Low_widont extends Pi
         // Apply widon't algorithm
         // -------------------------------------------
 
-        $this->return_data = preg_replace('/\s+(\S+)$/', '&#160;$1', rtrim((string) $this->return_data));
+        $this->return_data = preg_replace('/\s+(\S+)$/', '&#160;$1', rtrim($this->return_data ?? ''));
 
         // -------------------------------------------
         // Return for good measure

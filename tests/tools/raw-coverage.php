@@ -24,8 +24,22 @@ $report = tempnam(sys_get_temp_dir(), 'low-widont-raw-junit-');
 putenv('LOW_WIDONT_CONTEXT_REPORT_DIR=' . dirname($output));
 xdebug_set_filter(XDEBUG_FILTER_CODE_COVERAGE, XDEBUG_PATH_INCLUDE, [$root . '/low_widont/', 'phar://' . $root . '/low_widont/low_widont.phar/']);
 xdebug_start_code_coverage(XDEBUG_CC_UNUSED | XDEBUG_CC_DEAD_CODE | XDEBUG_CC_BRANCH_CHECK);
+$phpunit = $root . '/tests/.phpunit/phpunit-9.phar';
+$encodedTool = get_cfg_var('low_widont.phpunit_tool');
+if (is_string($encodedTool) && $encodedTool !== '') {
+    $tool = json_decode(base64_decode($encodedTool, true), true, 512, JSON_THROW_ON_ERROR);
+    $path = is_array($tool) ? ($tool['target'] ?? '') : '';
+    $named = is_string($path) && is_file($path) && !is_link($path) ? lstat($path) : false;
+    if ($named === false || $named['dev'] !== ($tool['device'] ?? null)
+        || $named['ino'] !== ($tool['inode'] ?? null) || $named['nlink'] !== 1
+        || ($named['mode'] & 0777) !== 0600 || hash_file('sha256', $path) !== ($tool['target_sha256'] ?? null)
+        || hash_file('sha256', $root . '/tests/support/BodyOutput.php') !== ($tool['hook_sha256'] ?? null)) {
+        throw new RuntimeException('The native coverage output-capture tool changed identity.');
+    }
+    $phpunit = $path;
+}
 ob_start();
-require $root . '/tests/.phpunit/phpunit-9.phar';
+require $phpunit;
 $bootstrapOutput = ob_get_clean();
 if ($bootstrapOutput !== '' && $bootstrapOutput !== "#!/usr/bin/env php\n") {
     throw new RuntimeException('Unexpected PHPUnit bootstrap output.');

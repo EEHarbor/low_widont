@@ -17,7 +17,7 @@ final class LowWidontTest extends TestCase
     {
         parent::setUp();
         require_once dirname(__DIR__, 3) . '/low_widont/pi.low_widont.php';
-        StaticCache::put(['app_settings', 'low_widont'], ['version' => '4.1.1', 'name' => 'Low Widon’t']);
+        StaticCache::put('app_settings', ['version' => '4.1.1', 'name' => 'Low Widon’t']);
     }
 
     /**
@@ -141,4 +141,35 @@ final class LowWidontTest extends TestCase
         Environment::$ee->TMPL->tagdata = null;
         $this->assertSame('', (new \Low_widont())->return_data);
     }
+
+    /**
+     * Convert supported objects in the original native formatter frame.
+     *
+     * @return void
+     */
+    public function testStringableKeepsNativeFormatterConversion(): void
+    {
+        $text = new class {
+            public $calls = 0;
+            public $frames = [];
+
+            /**
+             * Observe the native caller while supplying its valid text value.
+             *
+             * @return string
+             */
+            public function __toString(): string
+            {
+                ++$this->calls;
+                $this->frames = array_column(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), 'function');
+
+                return in_array('rtrim', $this->frames, true) ? 'Native final words ' : 'Changed final words ';
+            }
+        };
+
+        $this->assertSame('Native final&#160;words', (new \Low_widont($text))->return_data);
+        $this->assertSame(1, $text->calls);
+        $this->assertContains('rtrim', $text->frames);
+    }
+
 }

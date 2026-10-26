@@ -20,6 +20,24 @@ final class NativeProcess
             throw new \RuntimeException('Native probes require the selected PHP binary and a positive deadline.');
         }
         $options = self::commandOptions($command);
+        $encodedTool = \get_cfg_var('low_widont.phpunit_tool');
+        $scriptIndex = $options['script']['index'] ?? null;
+        $scriptOffset = $options['script']['offset'] ?? 0;
+        if (!$options['compile_only'] && !$options['execute'] && $scriptIndex !== null && isset($command[$scriptIndex])
+            && \realpath(\substr($command[$scriptIndex], $scriptOffset))
+            === \realpath(\dirname(__DIR__) . '/.phpunit/phpunit-9.phar')) {
+            $tool = \is_string($encodedTool) ? \json_decode(\base64_decode($encodedTool, true), true, 512, \JSON_THROW_ON_ERROR) : null;
+            $path = \is_array($tool) ? ($tool['target'] ?? '') : '';
+            $named = \is_string($path) && \is_file($path) && !\is_link($path) ? \lstat($path) : false;
+            if ($named === false || $named['dev'] !== ($tool['device'] ?? null)
+                || $named['ino'] !== ($tool['inode'] ?? null) || $named['nlink'] !== 1
+                || ($named['mode'] & 0777) !== 0600 || \hash_file('sha256', $path) !== ($tool['target_sha256'] ?? null)
+                || \hash_file('sha256', __DIR__ . '/BodyOutput.php') !== ($tool['hook_sha256'] ?? null)) {
+                throw new \RuntimeException('The native PHPUnit output-capture tool changed identity.');
+            }
+            $command[$scriptIndex] = \substr($command[$scriptIndex], 0, $scriptOffset) . $path;
+        }
+
         foreach ($options['inline'] as $operand) {
             // Native begin code precedes line/end programs regardless of argument order.
             if ($options['begin'] !== null && $operand['index'] !== $options['begin']) {
@@ -46,6 +64,30 @@ final class NativeProcess
         }
         $temporary = sys_get_temp_dir() . '/low-widont-process-' . bin2hex(random_bytes(8));
         mkdir($temporary, 0700);
+        $id = bin2hex(random_bytes(8));
+        $auxiliary = array();
+        try {
+            foreach (array('engine', 'case-stdout') as $name) {
+                $handle = fopen($temporary . '/' . $name, 'x+b');
+                if (is_resource($handle)) {
+                    $auxiliary[$name] = $handle;
+                }
+                if ($handle === false || !chmod($temporary . '/' . $name, 0600)) {
+                    throw new \RuntimeException('Cannot allocate the private native engine/body capture.');
+                }
+            }
+        } catch (\Throwable $error) {
+            foreach ($auxiliary as $name => $handle) {
+                fclose($handle);
+                unlink($temporary . '/' . $name);
+            }
+            rmdir($temporary);
+            throw $error;
+        }
+        $engineIdentity = lstat($temporary . '/engine');
+        $caseIdentity = lstat($temporary . '/case-stdout');
+        $caseCapability = base64_encode(json_encode(array('path' => $temporary . '/case-stdout',
+            'device' => $caseIdentity['dev'], 'inode' => $caseIdentity['ino'], 'nonce' => $id), JSON_THROW_ON_ERROR));
         $prepend = __DIR__ . '/Diagnostics.php';
         $preludeCode = null;
         if ($callerPrelude !== '' && \strcasecmp($callerPrelude, 'none') !== 0) {
@@ -54,14 +96,16 @@ final class NativeProcess
                 . '; require_once ' . \var_export($callerPrelude, true) . ';';
         }
         $strict = array('-d', 'error_reporting=-1', '-d', 'display_errors=stderr',
-            '-d', 'display_startup_errors=1', '-d', 'log_errors=0', '-d', 'html_errors=0');
+            '-d', 'display_startup_errors=1', '-d', 'log_errors=0', '-d', 'error_log=' . $temporary . '/engine',
+            '-d', 'low_widont.case_stdout="' . $caseCapability . '"',
+            '-d', 'low_widont.phpunit_tool="' . (\is_string($encodedTool) ? $encodedTool : '') . '"', '-d', 'html_errors=0');
         if (!$options['inline']) {
             $strict = array_merge($strict, array('-d', 'auto_prepend_file=' . $prepend));
         }
         array_splice($command, $options['boundary'], 0, $strict);
-        $id = bin2hex(random_bytes(8));
         Diagnostics::record(array('kind' => 'native-start', 'id' => $id, 'command' => $command, 'temporary' => $temporary,
-            'cwd' => $directory, 'case' => Diagnostics::currentCase(), 'compile_only' => $options['compile_only']));
+            'cwd' => $directory, 'case' => Diagnostics::currentCase(), 'compile_only' => $options['compile_only'],
+            'engine_identity' => $engineIdentity, 'case_stdout_identity' => $caseIdentity));
         $environment = $environment === null ? getenv() : $environment;
         $environment['LOW_WIDONT_TEST_CASE'] = Diagnostics::currentCase() ?: '';
         $process = null;
@@ -91,8 +135,24 @@ final class NativeProcess
             $exit = $status['exitcode'] === -1 ? $closed : $status['exitcode'];
             $stdout = file_get_contents($temporary . '/stdout');
             $stderr = file_get_contents($temporary . '/stderr');
+            foreach (array('engine' => $engineIdentity, 'case-stdout' => $caseIdentity) as $name => $identity) {
+                clearstatcache(true, $temporary . '/' . $name);
+                $named = lstat($temporary . '/' . $name);
+                if ($named === false || is_link($temporary . '/' . $name) || $named['dev'] !== $identity['dev']
+                    || $named['ino'] !== $identity['ino'] || $named['nlink'] !== 1 || ($named['mode'] & 0777) !== 0600) {
+                    throw new \RuntimeException('The native engine/body capture changed identity.');
+                }
+            }
+            rewind($auxiliary['engine']);
+            rewind($auxiliary['case-stdout']);
+            $engineBytes = stream_get_contents($auxiliary['engine']);
+            $caseBytes = stream_get_contents($auxiliary['case-stdout']);
             Diagnostics::record(array('kind' => 'native-end', 'id' => $id, 'pid' => $status['pid'], 'exit' => $exit,
-                'stdout_base64' => base64_encode($stdout), 'stderr_base64' => base64_encode($stderr)));
+                'stdout_base64' => base64_encode($stdout), 'stderr_base64' => base64_encode($stderr),
+                'engine_base64' => base64_encode($engineBytes),
+                'case_stdout_base64' => base64_encode($caseBytes),
+                'engine_identity' => lstat($temporary . '/engine'),
+                'case_stdout_identity' => lstat($temporary . '/case-stdout')));
             $completed = true;
             return array($exit, $stdout, $stderr);
         } finally {
@@ -101,11 +161,20 @@ final class NativeProcess
                 proc_close($process);
             }
             if (!$completed) {
+                rewind($auxiliary['engine']);
+                rewind($auxiliary['case-stdout']);
+                $engineBytes = stream_get_contents($auxiliary['engine']);
+                $caseBytes = stream_get_contents($auxiliary['case-stdout']);
                 Diagnostics::record(array('kind' => 'native-aborted', 'id' => $id,
                     'stdout_base64' => is_file($temporary . '/stdout') ? base64_encode(file_get_contents($temporary . '/stdout')) : null,
-                    'stderr_base64' => is_file($temporary . '/stderr') ? base64_encode(file_get_contents($temporary . '/stderr')) : null));
+                    'stderr_base64' => is_file($temporary . '/stderr') ? base64_encode(file_get_contents($temporary . '/stderr')) : null,
+                    'engine_base64' => base64_encode($engineBytes),
+                    'case_stdout_base64' => base64_encode($caseBytes)));
             }
-            foreach (array('stdout', 'stderr', 'caller-prepend.php') as $stream) {
+            foreach ($auxiliary as $handle) {
+                fclose($handle);
+            }
+            foreach (array('stdout', 'stderr', 'engine', 'case-stdout', 'caller-prepend.php') as $stream) {
                 if (is_file($temporary . '/' . $stream)) {
                     unlink($temporary . '/' . $stream);
                 }
@@ -124,6 +193,7 @@ final class NativeProcess
     private static function commandOptions(array $command): array
     {
         $boundary = \count($command);
+        $script = null;
         $lint = false;
         $execute = false;
         $inline = array();
@@ -136,6 +206,9 @@ final class NativeProcess
             $option = $command[$index];
             if ($option === '--' || $option === '' || $option === '-' || $option[0] !== '-') {
                 $boundary = $index;
+                if ($script === null) {
+                    $script = array('index' => $option === '--' ? $index + 1 : $index, 'offset' => 0);
+                }
                 break;
             }
             if (\substr($option, 0, 2) === '--') {
@@ -157,6 +230,9 @@ final class NativeProcess
                     $valueOffset = 0;
                 } else {
                     $valueOffset++;
+                }
+                if ($name === '--file') {
+                    $script = array('index' => $argumentIndex, 'offset' => $valueOffset);
                 }
                 if (\in_array($name, array('--php-ini', '--define', '--zend-extension'), true)) {
                     $settings[] = $name;
@@ -195,6 +271,9 @@ final class NativeProcess
                     $argumentIndex = ++$index;
                     $valueOffset = 0;
                 }
+                if ($flag === 'f') {
+                    $script = array('index' => $argumentIndex, 'offset' => $valueOffset);
+                }
                 if (\strpos('cdz', $flag) !== false) {
                     $settings[] = '-' . $flag;
                     $settings[] = \substr($command[$argumentIndex], $valueOffset);
@@ -213,7 +292,7 @@ final class NativeProcess
             }
         }
         return array('boundary' => $boundary, 'compile_only' => $lint && !$execute,
-            'inline' => $inline, 'begin' => $begin, 'settings' => $settings);
+            'inline' => $inline, 'begin' => $begin, 'settings' => $settings, 'script' => $script, 'execute' => $execute);
     }
 
     /**

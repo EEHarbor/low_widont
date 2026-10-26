@@ -238,10 +238,7 @@ CODE
     {
         $authority = dirname(__DIR__, 2) . '/support/' . ($alias ? '../support/' : '') . 'Diagnostics.php';
         $program = sys_get_temp_dir() . '/native-authority-main-' . bin2hex(random_bytes(8)) . '.php';
-        $archive = dirname(__DIR__, 3) . '/low_widont/low_widont.phar';
-        file_put_contents($program, '<?php require ' . var_export('phar://' . $archive . '/FluxCapacitor/Conduit/StaticCache.php', true)
-            . ';\\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::set("authority-prelude", "native");'
-            . 'echo \\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::get("authority-prelude");');
+        file_put_contents($program, '<?php echo "native";');
         try {
             $result = NativeProcess::runCommand(array(PHP_BINARY, '-n', '-d', 'pcre.jit=0',
                 '-d', 'auto_prepend_file=' . $authority, $program));
@@ -301,10 +298,7 @@ CODE
         if (PHP_VERSION_ID >= 80000) {
             $code .= 'namespace OwnedInterpolated;';
         }
-        $archive = dirname(__DIR__, 3) . '/low_widont/low_widont.phar';
-        $code .= 'require ' . var_export('phar://' . $archive . '/FluxCapacitor/Conduit/StaticCache.php', true)
-            . ';\\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::set("declaration-text", $stored);'
-            . 'echo \\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::get("declaration-text");';
+        $code .= 'echo $stored;';
         $result = NativeProcess::runCommand(array(PHP_BINARY, '-n', '-d', 'pcre.jit=0', '-r', $code));
         self::assertSame(0, $result[0], $result[2]);
         self::assertSame('', $result[2]);
@@ -334,10 +328,7 @@ CODE
         $work = '$work=7; unregister_tick_function($record);';
         $code = $laterHeader ? 'declare(ticks=1){' . $register . '}declare(ticks=1);' . $work
             : 'declare(ticks=1){' . $register . $work . '}';
-        $archive = dirname(__DIR__, 3) . '/low_widont/low_widont.phar';
-        $code .= 'require ' . var_export('phar://' . $archive . '/FluxCapacitor/Conduit/StaticCache.php', true)
-            . ';\\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::set("native-tick-count", $observed);'
-            . 'echo \\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::get("native-tick-count");';
+        $code .= 'echo $observed;';
         $result = NativeProcess::runCommand(array(PHP_BINARY, '-n', '-d', 'pcre.jit=0', '-r', $code));
         self::assertSame(0, $result[0], $result[2]);
         self::assertSame('', $result[2]);
@@ -365,11 +356,7 @@ CODE
     public function testBeginProgramKeepsEndTickCount($long, $reversed): void
     {
         $begin = '$observed=0; $record=static function()use(&$observed){$observed++;}; register_tick_function($record);';
-        $archive = dirname(__DIR__, 3) . '/low_widont/low_widont.phar';
-        $end = 'declare(ticks=1); $work=7; unregister_tick_function($record); require '
-            . var_export('phar://' . $archive . '/FluxCapacitor/Conduit/StaticCache.php', true)
-            . ';\\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::set("program-ticks", $observed);'
-            . 'echo \\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::get("program-ticks");';
+        $end = 'declare(ticks=1); $work=7; unregister_tick_function($record); echo $observed;';
         $first = array($long ? '--process-begin' : '-B', $begin);
         $last = array($long ? '--process-end' : '-E', $end);
         $command = array_merge(array(PHP_BINARY, '-n', '-d', 'pcre.jit=0'),

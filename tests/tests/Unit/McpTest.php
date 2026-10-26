@@ -19,7 +19,7 @@ final class McpTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        StaticCache::put(['app_settings', 'low_widont'], ['version' => '4.1.1']);
+        StaticCache::put('app_settings', ['version' => '4.1.1']);
     }
 
     /**

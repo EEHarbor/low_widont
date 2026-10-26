@@ -20,7 +20,7 @@ final class UpdaterTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        StaticCache::put(['app_settings', 'low_widont'], ['version' => '4.1.1']);
+        StaticCache::put('app_settings', ['version' => '4.1.1']);
         $database = new Database(['eeharbor_licenses' => [], 'modules' => [], 'module_member_roles' => [], 'module_member_groups' => [], 'actions' => [], 'extensions' => [], 'menu_items' => []]);
         $database->columns['eeharbor_licenses'] = ['site_id', 'addon', 'license_key', 'ignore_site'];
         Environment::$ee->db = $database;

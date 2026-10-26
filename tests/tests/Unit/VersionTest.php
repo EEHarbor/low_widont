@@ -31,7 +31,7 @@ final class VersionTest extends TestCase
         $values = ['site_id' => 1, 'base_url' => 'https://example.test', 'site_license_key' => false];
         Environment::$ee->config = $this->getMockBuilder(\stdClass::class)->addMethods(['item'])->getMock();
         Environment::$ee->config->method('item')->willReturnCallback(static function ($key) use ($values) { return $values[$key] ?? false; });
-        StaticCache::put(['app_settings', 'low_widont'], ['version' => '4.1.1']);
+        StaticCache::put('app_settings', ['version' => '4.1.1']);
     }
 
     /**

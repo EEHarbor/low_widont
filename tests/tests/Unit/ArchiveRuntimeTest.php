@@ -34,7 +34,7 @@ final class ArchiveRuntimeTest extends TestCase
             $manifest = fread($stream, $length);
             $info = \Extract_low_widont::_unpack($manifest);
             $this->assertArrayHasKey($name, $info['m']);
-            $this->assertCount(23, $info['m']);
+            $this->assertCount(22, $info['m']);
             $entry = $info['m'][$name];
             fseek($stream, \Extract_low_widont::LEN + 4 + $length + $entry[7]);
             $actual = \Extract_low_widont::extractFile($name, $entry, $stream);

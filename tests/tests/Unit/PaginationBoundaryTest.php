@@ -56,7 +56,7 @@ final class PaginationBoundaryTest extends TestCase
      */
     private function assertPagination($inputPage, $expectedPage, $url)
     {
-        StaticCache::put(['app_settings', 'low_widont'], ['version' => '4.1.1']);
+        StaticCache::put('app_settings', ['version' => '4.1.1']);
         $input = $this->getMockBuilder(\stdClass::class)->addMethods(['get'])->getMock();
         $input->expects($this->once())->method('get')->with('p')->willReturn($inputPage);
         Environment::$ee->input = $input;

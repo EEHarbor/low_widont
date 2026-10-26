@@ -133,7 +133,7 @@ final class PackagingTest extends TestCase
                 $files[] = $target;
             }
         }
-        $this->assertCount(28, $files);
+        $this->assertCount(27, $files);
         try {
             foreach ($files as $file) {
                 $native = NativeProcess::runCommand([PHP_BINARY, '-l', $file]);

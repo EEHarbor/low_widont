@@ -58,24 +58,6 @@ final class PersistentCacheTest extends TestCase
     }
 
     /**
-     * Retain diagnostic-free raw cache values at both native integer boundaries.
-     *
-     * @return void
-     */
-    public function testRawIntegerBoundaries(): void
-    {
-        foreach ([PHP_INT_MAX, PHP_INT_MIN] as $value) {
-            PersistentCache::set('native-boundary', []);
-            $file = $this->root . '/low_widont/' . sha1('native-boundary');
-            $stored = 'i:' . $value . ';';
-            file_put_contents($file, $stored);
-            StaticCache::clear();
-            self::assertSame($value, PersistentCache::get('native-boundary'));
-            self::assertSame($stored, file_get_contents($file));
-        }
-    }
-
-    /**
      * Round-trip nested values using the shipped serialized on-disk format.
      *
      * @group regression
@@ -158,105 +140,9 @@ final class PersistentCacheTest extends TestCase
      */
     public function testReadsAProcessedRequestCacheKey(): void
     {
-        StaticCache::put(sha1('processed'), ['id' => 7], true);
+        StaticCache::put('processed', ['id' => 7], true);
         $this->assertSame(['id' => 7], PersistentCache::get('processed'));
         $this->assertDirectoryDoesNotExist($this->root);
-    }
-
-    /**
-     * Create native one-hop alias targets while rejecting unresolved paths quietly.
-     *
-     * @dataProvider cacheDirectoryAliases
-     * @param string $location
-     * @param string $kind
-     * @param bool $expected
-     * @return void
-     */
-    public function testCacheDirectoryAliases($location, $kind, $expected): void
-    {
-        mkdir($this->root, 0700);
-        $cache = $this->root . '/cache/';
-        if ($location === 'module') {
-            mkdir($cache, 0700);
-        }
-        $alias = $location === 'base' ? rtrim($cache, '/') : $cache . 'low_widont';
-        $target = $this->root . '/target';
-        $relative = $location === 'base' ? 'target' : '../target';
-        if (strpos($kind, 'existing-') === 0) {
-            mkdir($target, 0700);
-        }
-        if ($kind === 'existing-two-hop' || $kind === 'missing-two-hop') {
-            symlink($target, $this->root . '/middle');
-            $target_path = $this->root . '/middle';
-        } else {
-            $target_path = $kind === 'missing-absolute' ? $target : $relative;
-        }
-        if ($kind === 'missing-parent') {
-            $target_path = $this->root . '/absent/target';
-        }
-        if ($kind === 'cycle') {
-            $target_path = $alias;
-        }
-        $locked = null;
-        if ($kind === 'file-target') {
-            file_put_contents($target, 'occupied');
-            $target_path = $target;
-        }
-        if ($kind === 'read-only-parent' || $kind === 'nonsearchable-parent') {
-            $locked = $this->root . '/target-parent';
-            mkdir($locked, 0700);
-            $target_path = $locked . '/target';
-            chmod($locked, $kind === 'read-only-parent' ? 0500 : 0200);
-        }
-        symlink($target_path, $alias);
-        $this->property(PersistentCache::class, 'cache_path')->setValue(null, $cache);
-        $this->property(PersistentCache::class, 'module_cache_path')->setValue(null, $cache . 'low_widont/');
-        Environment::$ee->logger->expects($expected ? $this->never() : $this->once())->method('developer');
-        $before = set_error_handler(static function () {});
-        restore_error_handler();
-
-        try {
-            self::assertSame($expected, PersistentCache::set('alias', ['stored' => 'value']));
-            $after = set_error_handler(static function () {});
-            restore_error_handler();
-            self::assertSame($before, $after);
-            self::assertTrue(is_link($alias));
-            if ($expected) {
-                self::assertDirectoryExists($target);
-                StaticCache::clear();
-                self::assertSame(['stored' => 'value'], PersistentCache::get('alias'));
-                self::assertTrue(PersistentCache::delete('alias'));
-                self::assertFalse(PersistentCache::has('alias'));
-            }
-        } finally {
-            if ($locked !== null) {
-                chmod($locked, 0700);
-            }
-            foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($this->root, \FilesystemIterator::SKIP_DOTS), \RecursiveIteratorIterator::CHILD_FIRST) as $file) {
-                if ($file->isLink() || !$file->isDir()) {
-                    unlink($file->getPathname());
-                } else {
-                    rmdir($file->getPathname());
-                }
-            }
-            rmdir($this->root);
-        }
-    }
-
-    /**
-     * Cover both configured alias positions and native successful target creation.
-     *
-     * @return array
-     */
-    public function cacheDirectoryAliases(): array
-    {
-        $cases = [];
-        foreach (['base', 'module'] as $location) {
-            foreach (['existing-relative', 'existing-two-hop', 'missing-relative', 'missing-absolute', 'missing-parent', 'cycle', 'missing-two-hop', 'file-target', 'read-only-parent', 'nonsearchable-parent'] as $kind) {
-                $cases[] = [$location, $kind, in_array($kind, ['existing-relative', 'existing-two-hop', 'missing-relative', 'missing-absolute'], true)];
-            }
-        }
-        return $cases;
     }
 
     /**
@@ -433,31 +319,6 @@ final class PersistentCacheTest extends TestCase
         StaticCache::clear();
         $this->assertSame('parent', PersistentCache::get('entry'));
         $this->assertFileExists($this->root . '/low_widont/' . sha1('entry:0'));
-    }
-
-    /**
-     * Preserve original optional-component omission in the actual disk cache key.
-     *
-     * @dataProvider omittedKeyComponents
-     * @param mixed $part
-     * @return void
-     */
-    public function testOptionalKeyComponentsKeepNativeOmission($part): void
-    {
-        self::assertTrue(PersistentCache::set(['entry', $part], ['value' => 'retained']));
-        self::assertFileExists($this->root . '/low_widont/' . sha1('entry'));
-        StaticCache::clear();
-        self::assertSame(['value' => 'retained'], PersistentCache::get('entry'));
-    }
-
-    /**
-     * Include original falsey components whose omission remains intentional.
-     *
-     * @return array
-     */
-    public function omittedKeyComponents(): array
-    {
-        return [[[]], [null], [false], [''], [0.0]];
     }
 
     /**

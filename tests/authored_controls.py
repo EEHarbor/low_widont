@@ -1,6 +1,7 @@
 """Bind only the configured synthetic harness faults to their owned native receipts."""
 import base64
 import hashlib
+import json
 from pathlib import Path
 import re
 
@@ -9,7 +10,7 @@ def digest(value):
     return hashlib.sha256(value).hexdigest()
 
 
-def synthetic_controls(records, document, root, leader):
+def synthetic_controls(records, document, root, leader, prepared_tool):
     """Return precise authored fault bindings; every other event remains unexpected."""
     passed = {case.get('class') + '::' + case.get('name') for case in document.iter('testcase')
               if not any(child.tag in ('error', 'failure', 'warning', 'skipped') for child in case)}
@@ -53,8 +54,22 @@ def synthetic_controls(records, document, root, leader):
             if option not in ('-c', '-d', '-z', '--php-ini', '--define', '--zend-extension') or index + 1 == len(options):
                 raise RuntimeError('Authored native configuration options differ: ' + case)
             index += 2
-        if command[boundary + 2:] != ['-d', 'error_reporting=-1', '-d', 'display_errors=stderr',
-                                       '-d', 'display_startup_errors=1', '-d', 'log_errors=0', '-d', 'html_errors=0']:
+        strict_tail = command[boundary + 2:]
+        body_option = next((strict_tail[index + 1] for index in range(0, len(strict_tail) - 1, 2)
+                            if strict_tail[index] == '-d' and strict_tail[index + 1].startswith('low_widont.case_stdout="')), None)
+        if body_option is None or not body_option.endswith('"'):
+            raise RuntimeError('Authored body-output startup identity is missing: ' + case)
+        body_encoded = body_option[len('low_widont.case_stdout="'):-1]
+        body = json.loads(base64.b64decode(body_encoded, validate=True))
+        identity = discovery['case_stdout_identity']
+        if body != dict(path=discovery['temporary'] + '/case-stdout', device=identity['dev'],
+                        inode=identity['ino'], nonce=discovery['id']):
+            raise RuntimeError('Authored body-output startup identity differs: ' + case)
+        if strict_tail != ['-d', 'error_reporting=-1', '-d', 'display_errors=stderr',
+                           '-d', 'display_startup_errors=1', '-d', 'log_errors=0',
+                           '-d', 'error_log=' + discovery['temporary'] + '/engine', '-d', body_option,
+                           '-d', 'low_widont.phpunit_tool="' + base64.b64encode(json.dumps(prepared_tool).encode()).decode('ascii') + '"',
+                           '-d', 'html_errors=0']:
             raise RuntimeError('Authored configuration startup settings differ: ' + case)
         pid = spawns[discovery['id']]['pid']
         startup = startups[pid]

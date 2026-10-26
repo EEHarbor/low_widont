@@ -105,7 +105,7 @@ LowWidontTests\Environment::$ee = $ee;
 $urls = new LowWidontTests\UrlFactory();
 $sidebar = new LowWidontTests\Sidebar();
 LowWidontTests\Environment::$services = ['CP/Sidebar' => $sidebar, 'CP/URL' => static function ($path = null) use ($urls) { return $path === null ? $urls : $urls->make($path); }];
-Low\Widont\FluxCapacitor\Conduit\StaticCache::put(['app_settings', 'low_widont'], ['name' => 'Low Widon’t', 'description' => 'Eliminates widows', 'docs_url' => '/docs', 'version' => '4.1.1']);
+Low\Widont\FluxCapacitor\Conduit\StaticCache::put('app_settings', ['name' => 'Low Widon’t', 'description' => 'Eliminates widows', 'docs_url' => '/docs', 'version' => '4.1.1']);
 $assertions = 0;
 $failures = [];
 $cases = [];

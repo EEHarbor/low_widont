@@ -44,28 +44,6 @@ final class Database
     }
 
     /**
-     * Clear pending reads using the public legacy EE Active Record boundary.
-     *
-     * @return void
-     */
-    public function _reset_select()
-    {
-        $this->conditions = [];
-        $this->selectedTable = null;
-    }
-
-    /**
-     * Clear pending writes using the public legacy EE Active Record boundary.
-     *
-     * @return void
-     */
-    public function _reset_write()
-    {
-        $this->conditions = [];
-        $this->selectedTable = null;
-    }
-
-    /**
      * Record selected columns while retaining complete rows for this query double.
      *
      * @param string $columns

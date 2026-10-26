@@ -15,9 +15,8 @@ final class NativeCliDiagnosticControlTest extends TestCase
     public function testNativeAuthority(): void
     {
         $mode = getenv('LOW_WIDONT_NATIVE_CLI_CONTROL_MODE');
-        $archive = dirname(__DIR__, 2) . '/low_widont/low_widont.phar';
-        $load = 'require ' . var_export('phar://' . $archive . '/FluxCapacitor/Conduit/StaticCache.php', true)
-            . ';\\Low\\Widont\\FluxCapacitor\\Conduit\\StaticCache::set("owned-cli-control", "native");';
+        $source = dirname(__DIR__, 2) . '/low_widont/pi.low_widont.php';
+        $load = '$owned_cli_addon_bytes = file_get_contents(' . var_export($source, true) . ');';
         $fault = 'try { @trigger_error("owned native CLI caught diagnostic", E_USER_DEPRECATED); } catch (\\Throwable $error) {}';
         if (in_array($mode, array('short', 'long', 'namespace', 'brace', 'declare-brace', 'declare-colon'), true)) {
             $code = $load . $fault;

@@ -1,8 +1,6 @@
+> Current scope (2026-10-26): Foundation is an unchanged stock dependency. The baseline notes below are historical; see [COMPATIBILITY.md](COMPATIBILITY.md) for the addon-only correction and actual validation limits.
+
 # Low Widont PHPUnit campaign
-
-Current production compatibility work is blocked on native callback handler-state/mask preservation on `php-compat-fixes-2026`, from pinned test baseline `6a2fb11be4d7145a381bd478465b692aebb59470`. [COMPATIBILITY.md](COMPATIBILITY.md) records that separate scope. The material below is the preserved historical tests-only checkpoint and its original-source evidence, not a completion claim for the current candidate.
-
-## Historical tests-only campaign
 
 Status: **incomplete; sixth source-red checkpoint independently reviewed and published**. Production is immutable, and this checkpoint is not 100% method line/outcome coverage.
 

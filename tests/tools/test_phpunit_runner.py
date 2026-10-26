@@ -19,9 +19,9 @@ class JunitDestinationTest(unittest.TestCase):
         self.root.mkdir()
         shutil.copytree(ROOT / 'low_widont', self.root / 'low_widont')
         for relative in ('tests/phpunit_runner.py', 'tests/process_support.py',
-                         'tests/path_support.py', 'tests/authored_controls.py',
+                         'tests/path_support.py', 'tests/authored_controls.py', 'tests/engine_output.py',
                          'tests/bootstrap.php', 'tests/tests/Unit/TestCase.php',
-                         'tests/.phpunit/run-phpunit.sh'):
+                         'tests/.phpunit/run-phpunit.sh', 'tests/.phpunit/prepare-output.php'):
             target = self.root / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / relative, target)
