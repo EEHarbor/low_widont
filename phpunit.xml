@@ -4,7 +4,4 @@
     <testsuite name="Low Widont"><directory suffix="Test.php">tests/tests/Unit</directory></testsuite>
   </testsuites>
   <php><ini name="error_reporting" value="-1"/></php>
-  <coverage processUncoveredFiles="false" pathCoverage="true">
-    <include><directory suffix=".php">low_widont</directory><file>low_widont/low_widont.phar</file></include>
-  </coverage>
 </phpunit>

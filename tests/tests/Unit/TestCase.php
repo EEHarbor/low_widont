@@ -50,37 +50,4 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         error_reporting($this->errorLevel);
         parent::tearDown();
     }
-
-    /**
-     * Access a private source property without deprecated reflection calls.
-     *
-     * @param string $class
-     * @param string $name
-     * @return \ReflectionProperty
-     */
-    protected function property($class, $name)
-    {
-        $property = new \ReflectionProperty($class, $name);
-        if (PHP_VERSION_ID < 80100) {
-            $property->setAccessible(true);
-        }
-        return $property;
-    }
-    /**
-     * Invoke an inherited protected method through PHP's reflection API.
-     *
-     * @param object $object
-     * @param string $name
-     * @param array $arguments
-     * @return mixed
-     */
-    protected function invoke($object, $name, array $arguments = [])
-    {
-        $method = new \ReflectionMethod($object, $name);
-        if (PHP_VERSION_ID < 80100) {
-            $method->setAccessible(true);
-        }
-        return $method->invokeArgs($object, $arguments);
-    }
-
 }

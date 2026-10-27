@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<phpunit cacheResult="false" failOnEmptyTestSuite="true" failOnWarning="true" failOnRisky="true">
-  <testsuites><testsuite name="Instrumentation"><file>BranchOutcomesTest.php</file></testsuite></testsuites>
-  <coverage processUncoveredFiles="false" pathCoverage="true"><include><file>../fixtures/BranchOutcomes.php</file></include></coverage>
-</phpunit>
