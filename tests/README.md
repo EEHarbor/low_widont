@@ -1,5 +1,7 @@
 # Low Widont tests
 
+Current review corrections and PHP 7.4–8.5 results: [PRACTICAL_REVIEW_2026.md](PRACTICAL_REVIEW_2026.md). Earlier campaign counts are historical.
+
 The suite keeps ordinary string formatting, whitespace, markup, Unicode, template fallback and empty template behavior; shipped add-on setup metadata; and the loose license view with legacy/modern forms and escaping.
 
 Direct tests of bundled Foundation/PHAR classes, archive loading/extraction/compilation, coverage collectors and synthetic diagnostic/process controls were removed. Foundation owns its shared-code tests. Ordinary add-on code still loads its real shipped parent through the normal autoloader. Unsupported structured/scalar inputs and private-helper states that ordinary callers cannot produce were also removed.
