@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 script_dir="$(cd "$(dirname "$0")" && pwd)"
-runtime="${PHP_BINARY:-/Users/tomjaeger/Library/Application Support/Herd/bin/php82}"
+runtime="${PHP_BINARY:-php}"
 temporary=''
 trap 'if [[ -n "$temporary" ]]; then rm -f "$temporary"; fi' EXIT
 entries="$("$runtime" -r '$m=json_decode(file_get_contents($argv[1]),true,512,JSON_THROW_ON_ERROR);foreach($m as $n=>$v)echo $n,"\t",$v["url"],"\t",$v["sha256"],PHP_EOL;' "$script_dir/manifest.json")"
