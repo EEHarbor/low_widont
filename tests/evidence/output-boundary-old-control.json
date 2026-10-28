@@ -1,0 +1,34 @@
+[
+  {
+    "context": "dangling",
+    "owned_directory": "/private/tmp/low-widont-old-output-boundary-21p_1zdg",
+    "old_helper_sha256": "e3adf28e7dc9395abf94fcee929d3407c0e57baf88741c0d5c4e497c830164bf",
+    "command": [
+      "/Users/tomjaeger/Library/Application Support/Herd/bin/php83",
+      "-r",
+      "error_reporting(E_ALL);set_error_handler(static function($s,$m,$f,$l){throw new ErrorException($m,0,$s,$f,$l);},E_ALL);require $argv[1];LowWidontTests\\Evidence::write($argv[2],[\"probe\"=>true]);",
+      "/private/tmp/low-widont-old-output-boundary-21p_1zdg/tests/support/Evidence.php",
+      "/private/tmp/low-widont-old-output-boundary-21p_1zdg/reports/report.json"
+    ],
+    "exit": 0,
+    "output": "",
+    "dangling_link_replaced": true,
+    "created_under_owned_source": false
+  },
+  {
+    "context": "source-directory-alias",
+    "owned_directory": "/private/tmp/low-widont-old-output-boundary-cflr7pln",
+    "old_helper_sha256": "e3adf28e7dc9395abf94fcee929d3407c0e57baf88741c0d5c4e497c830164bf",
+    "command": [
+      "/Users/tomjaeger/Library/Application Support/Herd/bin/php83",
+      "-r",
+      "error_reporting(E_ALL);set_error_handler(static function($s,$m,$f,$l){throw new ErrorException($m,0,$s,$f,$l);},E_ALL);require $argv[1];LowWidontTests\\Evidence::write($argv[2],[\"probe\"=>true]);",
+      "/private/tmp/low-widont-old-output-boundary-cflr7pln/tests/support/Evidence.php",
+      "/private/tmp/low-widont-old-output-boundary-cflr7pln/reports/source-alias/future.json"
+    ],
+    "exit": 0,
+    "output": "",
+    "dangling_link_replaced": false,
+    "created_under_owned_source": true
+  }
+]

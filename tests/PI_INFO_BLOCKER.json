@@ -1,0 +1,24 @@
+{
+    "php": "8.2.30",
+    "source_sha256": "0e7b873e8522fb34eb298e6ff69f56b0bcf0dc77c5015fd292a6dc293657bf0a",
+    "attempts": {
+        "static": {
+            "exception": "Error",
+            "message": "Using $this when not in object context",
+            "file": "phar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Base/Pi.php",
+            "line": 30
+        },
+        "instance": {
+            "exception": "Error",
+            "message": "Using $this when not in object context",
+            "file": "phar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Base/Pi.php",
+            "line": 30
+        },
+        "reflection": {
+            "exception": "Error",
+            "message": "Using $this when not in object context",
+            "file": "phar:///Users/tomjaeger/Sites/add-ons/low_widont/low_widont/low_widont.phar/FluxCapacitor/Base/Pi.php",
+            "line": 30
+        }
+    }
+}

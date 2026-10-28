@@ -1,0 +1,1778 @@
+{
+    "baseline": "3a38b1fb9146daa87ed9f1a83699521ea03091da",
+    "archive_sha256": "7889aef835b80b783cf5585eae64c6c4ae88f739a90f141863e2c8e4ff15c986",
+    "files": {
+        "low_widont/addon.setup.php": {
+            "sha256": "0c46da23291d38d46e682c3da4eec3ac6f3b774bbaa383929f0f5e52ca1f32e0",
+            "bytes": 528,
+            "lines": 16,
+            "functions_including_magic_and_closures": [],
+            "procedural_scope_included": true
+        },
+        "low_widont/autoload.php": {
+            "sha256": "0bcd8cd93c08b20e4f0cda91f84502e5855a818eb0b43f08002b501712090c91",
+            "bytes": 4092,
+            "lines": 94,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "{closure@19}",
+                    "line": 19,
+                    "end_line": 92,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Base/Ext.php": {
+            "sha256": "fd4a41f3ade562e77edc158aef30c2d2e32a5783c75dbfff4251eeb048f7e430",
+            "bytes": 5425,
+            "lines": 202,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 29,
+                    "end_line": 36,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "activateExtension",
+                    "line": 38,
+                    "end_line": 46,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "updateExtension",
+                    "line": 48,
+                    "end_line": 53,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "disableExtension",
+                    "line": 59,
+                    "end_line": 72,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "updateVersion",
+                    "line": 74,
+                    "end_line": 87,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "registerExtension",
+                    "line": 89,
+                    "end_line": 124,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "unregisterExtension",
+                    "line": 126,
+                    "end_line": 140,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "cpCustomMenu",
+                    "line": 149,
+                    "end_line": 157,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "disable_extension",
+                    "line": 167,
+                    "end_line": 170,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "activate_extension",
+                    "line": 172,
+                    "end_line": 175,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "update_extension",
+                    "line": 177,
+                    "end_line": 180,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "update_version",
+                    "line": 182,
+                    "end_line": 185,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "register_extension",
+                    "line": 187,
+                    "end_line": 190,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "unregister_extension",
+                    "line": 192,
+                    "end_line": 195,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "cp_custom_menu",
+                    "line": 197,
+                    "end_line": 200,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Base/Ft.php": {
+            "sha256": "90f59294054046907ac581e14081dcd63fe21c87acbb02b4537fdce76a65c509",
+            "bytes": 5076,
+            "lines": 159,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 48,
+                    "end_line": 58,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "update",
+                    "line": 60,
+                    "end_line": 63,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "accepts_content_type",
+                    "line": 65,
+                    "end_line": 68,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getChannelId",
+                    "line": 70,
+                    "end_line": 100,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "displaySettingsRow",
+                    "line": 102,
+                    "end_line": 127,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "displaySettingsReturn",
+                    "line": 129,
+                    "end_line": 145,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "_display_settings_add_row",
+                    "line": 148,
+                    "end_line": 151,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "_package_display_settings",
+                    "line": 154,
+                    "end_line": 157,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Base/Mcp.php": {
+            "sha256": "c08c07ac8941d55c6d6c24a77dff4c4054b75ec762bfb28072c7354030e13553",
+            "bytes": 7334,
+            "lines": 198,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 27,
+                    "end_line": 36,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "index",
+                    "line": 38,
+                    "end_line": 41,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "license",
+                    "line": 43,
+                    "end_line": 66,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "save_license",
+                    "line": 68,
+                    "end_line": 138,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "paginateModel",
+                    "line": 140,
+                    "end_line": 175,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "canIncludeNav",
+                    "line": 183,
+                    "end_line": 196,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Base/Mod.php": {
+            "sha256": "65ba8bed4cfecca14d82907aca27392a1c30443647f04e8feba5169d4b14bbe5",
+            "bytes": 1210,
+            "lines": 51,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 21,
+                    "end_line": 25,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getParameter",
+                    "line": 35,
+                    "end_line": 49,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Base/Pi.php": {
+            "sha256": "0e7b873e8522fb34eb298e6ff69f56b0bcf0dc77c5015fd292a6dc293657bf0a",
+            "bytes": 943,
+            "lines": 38,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 21,
+                    "end_line": 25,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "info",
+                    "line": 27,
+                    "end_line": 36,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Base/Tab.php": {
+            "sha256": "03c3a24f7ca166572b98948b919bddec8d42df83309bcb139d4281579f94d921",
+            "bytes": 2036,
+            "lines": 78,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 22,
+                    "end_line": 31,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "display",
+                    "line": 34,
+                    "end_line": 37,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "publish_tabs",
+                    "line": 40,
+                    "end_line": 43,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "save",
+                    "line": 46,
+                    "end_line": 49,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "publish_data_db",
+                    "line": 52,
+                    "end_line": 55,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getEntryVariables",
+                    "line": 57,
+                    "end_line": 76,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Base/Upd.php": {
+            "sha256": "19aa0d19c73443bb47d5d7e73b67bfd13ae483f2de4486f5a89647d0ba8f6015",
+            "bytes": 3805,
+            "lines": 129,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 26,
+                    "end_line": 34,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "install",
+                    "line": 36,
+                    "end_line": 54,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "update",
+                    "line": 56,
+                    "end_line": 76,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "uninstall",
+                    "line": 78,
+                    "end_line": 127,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Bridge/AbstractBridge.php": {
+            "sha256": "c544e5ff8903ee4a6e5a7a6649e806c4c1124b7d317d8ab3278216e2d146ff5b",
+            "bytes": 3419,
+            "lines": 102,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "getEEVersion",
+                    "line": 22,
+                    "end_line": 31,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "ver_lt",
+                    "line": 34,
+                    "end_line": 37,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "ver_gt",
+                    "line": 39,
+                    "end_line": 42,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "ver_lte",
+                    "line": 44,
+                    "end_line": 47,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "ver_gte",
+                    "line": 49,
+                    "end_line": 52,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "is_ee2",
+                    "line": 54,
+                    "end_line": 57,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "is_ee3",
+                    "line": 59,
+                    "end_line": 62,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "is_ee4",
+                    "line": 64,
+                    "end_line": 67,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "is_ee5",
+                    "line": 69,
+                    "end_line": 72,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "instantiate",
+                    "line": 75,
+                    "end_line": 75,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "getBaseURL",
+                    "line": 76,
+                    "end_line": 76,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "getNav",
+                    "line": 77,
+                    "end_line": 77,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "cpURL",
+                    "line": 78,
+                    "end_line": 78,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "moduleURL",
+                    "line": 79,
+                    "end_line": 79,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "view",
+                    "line": 80,
+                    "end_line": 80,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "getCurrentPage",
+                    "line": 81,
+                    "end_line": 81,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "getStartNum",
+                    "line": 82,
+                    "end_line": 82,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "pagination",
+                    "line": 83,
+                    "end_line": 83,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "getSettings",
+                    "line": 84,
+                    "end_line": 84,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "getConfig",
+                    "line": 85,
+                    "end_line": 85,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "setConfig",
+                    "line": 86,
+                    "end_line": 86,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "cache",
+                    "line": 87,
+                    "end_line": 87,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "flashData",
+                    "line": 88,
+                    "end_line": 88,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "getAddonThemesDir",
+                    "line": 89,
+                    "end_line": 89,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "overwriteEEClass",
+                    "line": 90,
+                    "end_line": 90,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "removeEEClass",
+                    "line": 91,
+                    "end_line": 91,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "xss_clean",
+                    "line": 92,
+                    "end_line": 92,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "getCurrentUrlInfo",
+                    "line": 93,
+                    "end_line": 93,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "getCachePath",
+                    "line": 94,
+                    "end_line": 94,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "getFooter",
+                    "line": 95,
+                    "end_line": 95,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "reduce_double_slashes",
+                    "line": 96,
+                    "end_line": 96,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "javascript_to_page",
+                    "line": 97,
+                    "end_line": 97,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "module_installed",
+                    "line": 98,
+                    "end_line": 98,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "assign_parameters",
+                    "line": 99,
+                    "end_line": 99,
+                    "abstract_declaration": true
+                },
+                {
+                    "name": "assign_variables",
+                    "line": 100,
+                    "end_line": 100,
+                    "abstract_declaration": true
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE.php": {
+            "sha256": "d65aace2950c1c6b1491ef4e5c8a124ccc2842b0ded75d45b74bb8f56f1ce831",
+            "bytes": 2174,
+            "lines": 89,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "ee",
+                    "line": 18,
+                    "end_line": 21,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "__construct",
+                    "line": 42,
+                    "end_line": 45,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "__construct",
+                    "line": 50,
+                    "end_line": 53,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "__construct",
+                    "line": 58,
+                    "end_line": 61,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "__construct",
+                    "line": 66,
+                    "end_line": 69,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "__construct",
+                    "line": 74,
+                    "end_line": 77,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "__construct",
+                    "line": 82,
+                    "end_line": 85,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE2.php": {
+            "sha256": "3602ddf011d43e02a8f0bdc1c7cb72c35c8acd1f5c556674187c95f009a41ead",
+            "bytes": 16037,
+            "lines": 512,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 26,
+                    "end_line": 30,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "instantiate",
+                    "line": 32,
+                    "end_line": 35,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getBaseURL",
+                    "line": 37,
+                    "end_line": 76,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getNav",
+                    "line": 78,
+                    "end_line": 90,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "cpURL",
+                    "line": 92,
+                    "end_line": 140,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "moduleURL",
+                    "line": 142,
+                    "end_line": 155,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "view",
+                    "line": 157,
+                    "end_line": 171,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getCurrentPage",
+                    "line": 173,
+                    "end_line": 184,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getStartNum",
+                    "line": 186,
+                    "end_line": 189,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "pagination",
+                    "line": 191,
+                    "end_line": 201,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getSettings",
+                    "line": 203,
+                    "end_line": 212,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getConfig",
+                    "line": 214,
+                    "end_line": 219,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "setConfig",
+                    "line": 221,
+                    "end_line": 253,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "cache",
+                    "line": 255,
+                    "end_line": 293,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "flashData",
+                    "line": 302,
+                    "end_line": 305,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getAddonThemesDir",
+                    "line": 311,
+                    "end_line": 315,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "overwriteEEClass",
+                    "line": 324,
+                    "end_line": 327,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "removeEEClass",
+                    "line": 335,
+                    "end_line": 338,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "xss_clean",
+                    "line": 345,
+                    "end_line": 348,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "url_title",
+                    "line": 355,
+                    "end_line": 358,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getCurrentUrlInfo",
+                    "line": 365,
+                    "end_line": 380,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getCachePath",
+                    "line": 386,
+                    "end_line": 395,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getFooter",
+                    "line": 397,
+                    "end_line": 400,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "reduce_double_slashes",
+                    "line": 406,
+                    "end_line": 414,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "initiateSettings",
+                    "line": 420,
+                    "end_line": 475,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "javascript_to_page",
+                    "line": 480,
+                    "end_line": 483,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "module_installed",
+                    "line": 485,
+                    "end_line": 495,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "assign_parameters",
+                    "line": 497,
+                    "end_line": 500,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "assign_variables",
+                    "line": 507,
+                    "end_line": 510,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE3.php": {
+            "sha256": "7fad11a89fa2c81cad4e82a9b432c5a8faa197be322b8d62ca70eb92d6067762",
+            "bytes": 16932,
+            "lines": 532,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 34,
+                    "end_line": 38,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "instantiate",
+                    "line": 40,
+                    "end_line": 43,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getBaseURL",
+                    "line": 45,
+                    "end_line": 54,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getNav",
+                    "line": 62,
+                    "end_line": 104,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "cpURL",
+                    "line": 106,
+                    "end_line": 129,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "moduleURL",
+                    "line": 131,
+                    "end_line": 136,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "view",
+                    "line": 138,
+                    "end_line": 164,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getCurrentPage",
+                    "line": 166,
+                    "end_line": 176,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getStartNum",
+                    "line": 178,
+                    "end_line": 181,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "pagination",
+                    "line": 183,
+                    "end_line": 201,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getSettings",
+                    "line": 203,
+                    "end_line": 212,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getConfig",
+                    "line": 214,
+                    "end_line": 219,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "setConfig",
+                    "line": 221,
+                    "end_line": 254,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "cache",
+                    "line": 256,
+                    "end_line": 284,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "flashData",
+                    "line": 293,
+                    "end_line": 323,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getAddonThemesDir",
+                    "line": 329,
+                    "end_line": 333,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "overwriteEEClass",
+                    "line": 342,
+                    "end_line": 345,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "removeEEClass",
+                    "line": 353,
+                    "end_line": 356,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "xss_clean",
+                    "line": 363,
+                    "end_line": 366,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "url_title",
+                    "line": 373,
+                    "end_line": 376,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "assign_variables",
+                    "line": 383,
+                    "end_line": 386,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "prep_url",
+                    "line": 393,
+                    "end_line": 396,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getCurrentUrlInfo",
+                    "line": 403,
+                    "end_line": 420,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getCachePath",
+                    "line": 426,
+                    "end_line": 435,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getFooter",
+                    "line": 437,
+                    "end_line": 440,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "reduce_double_slashes",
+                    "line": 446,
+                    "end_line": 450,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "initiateSettings",
+                    "line": 456,
+                    "end_line": 512,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "javascript_to_page",
+                    "line": 517,
+                    "end_line": 520,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "module_installed",
+                    "line": 522,
+                    "end_line": 525,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "assign_parameters",
+                    "line": 527,
+                    "end_line": 530,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE4.php": {
+            "sha256": "82fcb2b7ff1536e3ebbf790c3f680e15539ebf012fdb5edff083a447ff957e66",
+            "bytes": 17016,
+            "lines": 532,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 34,
+                    "end_line": 38,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "instantiate",
+                    "line": 40,
+                    "end_line": 43,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getBaseURL",
+                    "line": 45,
+                    "end_line": 54,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getNav",
+                    "line": 62,
+                    "end_line": 104,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "cpURL",
+                    "line": 106,
+                    "end_line": 129,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "moduleURL",
+                    "line": 131,
+                    "end_line": 136,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "view",
+                    "line": 138,
+                    "end_line": 164,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getCurrentPage",
+                    "line": 166,
+                    "end_line": 176,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getStartNum",
+                    "line": 178,
+                    "end_line": 181,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "pagination",
+                    "line": 183,
+                    "end_line": 201,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getSettings",
+                    "line": 203,
+                    "end_line": 212,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getConfig",
+                    "line": 214,
+                    "end_line": 219,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "setConfig",
+                    "line": 221,
+                    "end_line": 254,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "cache",
+                    "line": 256,
+                    "end_line": 284,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "flashData",
+                    "line": 293,
+                    "end_line": 323,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getAddonThemesDir",
+                    "line": 329,
+                    "end_line": 333,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "overwriteEEClass",
+                    "line": 342,
+                    "end_line": 345,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "removeEEClass",
+                    "line": 353,
+                    "end_line": 356,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "xss_clean",
+                    "line": 363,
+                    "end_line": 366,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "url_title",
+                    "line": 373,
+                    "end_line": 376,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "assign_variables",
+                    "line": 383,
+                    "end_line": 386,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "prep_url",
+                    "line": 393,
+                    "end_line": 396,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getCurrentUrlInfo",
+                    "line": 403,
+                    "end_line": 420,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getCachePath",
+                    "line": 426,
+                    "end_line": 435,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getFooter",
+                    "line": 437,
+                    "end_line": 440,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "reduce_double_slashes",
+                    "line": 446,
+                    "end_line": 450,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "initiateSettings",
+                    "line": 456,
+                    "end_line": 512,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "javascript_to_page",
+                    "line": 517,
+                    "end_line": 520,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "module_installed",
+                    "line": 522,
+                    "end_line": 525,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "assign_parameters",
+                    "line": 527,
+                    "end_line": 530,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE5.php": {
+            "sha256": "0e5ff09c3a8dbd07221ff12a2d3dd862ee8879f724e424021a4c1fc1f7a4aea8",
+            "bytes": 17016,
+            "lines": 532,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 34,
+                    "end_line": 38,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "instantiate",
+                    "line": 40,
+                    "end_line": 43,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getBaseURL",
+                    "line": 45,
+                    "end_line": 54,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getNav",
+                    "line": 62,
+                    "end_line": 104,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "cpURL",
+                    "line": 106,
+                    "end_line": 129,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "moduleURL",
+                    "line": 131,
+                    "end_line": 136,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "view",
+                    "line": 138,
+                    "end_line": 164,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getCurrentPage",
+                    "line": 166,
+                    "end_line": 176,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getStartNum",
+                    "line": 178,
+                    "end_line": 181,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "pagination",
+                    "line": 183,
+                    "end_line": 201,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getSettings",
+                    "line": 203,
+                    "end_line": 212,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getConfig",
+                    "line": 214,
+                    "end_line": 219,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "setConfig",
+                    "line": 221,
+                    "end_line": 254,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "cache",
+                    "line": 256,
+                    "end_line": 284,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "flashData",
+                    "line": 293,
+                    "end_line": 323,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getAddonThemesDir",
+                    "line": 329,
+                    "end_line": 333,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "overwriteEEClass",
+                    "line": 342,
+                    "end_line": 345,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "removeEEClass",
+                    "line": 353,
+                    "end_line": 356,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "xss_clean",
+                    "line": 363,
+                    "end_line": 366,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "url_title",
+                    "line": 373,
+                    "end_line": 376,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "assign_variables",
+                    "line": 383,
+                    "end_line": 386,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "prep_url",
+                    "line": 393,
+                    "end_line": 396,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getCurrentUrlInfo",
+                    "line": 403,
+                    "end_line": 420,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getCachePath",
+                    "line": 426,
+                    "end_line": 435,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getFooter",
+                    "line": 437,
+                    "end_line": 440,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "reduce_double_slashes",
+                    "line": 446,
+                    "end_line": 450,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "initiateSettings",
+                    "line": 456,
+                    "end_line": 512,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "javascript_to_page",
+                    "line": 517,
+                    "end_line": 520,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "module_installed",
+                    "line": 522,
+                    "end_line": 525,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "assign_parameters",
+                    "line": 527,
+                    "end_line": 530,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Bridge/EE6.php": {
+            "sha256": "1ad6adceffd3b3ec9fbf4d6b13d47cf7753b3d9c10b4ad06895156b3ac90760f",
+            "bytes": 433,
+            "lines": 22,
+            "functions_including_magic_and_closures": [],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Conduit/GlobalFieldSettings.php": {
+            "sha256": "e831b91dff6f06bd68687f3ff9c65db69ca08612ce67c4be1d34ed2a56d6813d",
+            "bytes": 1433,
+            "lines": 58,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 11,
+                    "end_line": 15,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getSetting",
+                    "line": 17,
+                    "end_line": 24,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getSettings",
+                    "line": 26,
+                    "end_line": 39,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "updateSetting",
+                    "line": 41,
+                    "end_line": 56,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Conduit/McpNav.php": {
+            "sha256": "98faf6f015fcf4c52b1304bdcf1e4607800916e46af4754bad478062fa53a79f",
+            "bytes": 7742,
+            "lines": 260,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 31,
+                    "end_line": 58,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "generateNav",
+                    "line": 64,
+                    "end_line": 75,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "formatItems",
+                    "line": 77,
+                    "end_line": 109,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "itemsToNav",
+                    "line": 111,
+                    "end_line": 125,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "buttonsToItems",
+                    "line": 127,
+                    "end_line": 135,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "setActive",
+                    "line": 137,
+                    "end_line": 164,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "setBreadcrumb",
+                    "line": 166,
+                    "end_line": 172,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getActiveItem",
+                    "line": 174,
+                    "end_line": 177,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "deferGenerate",
+                    "line": 179,
+                    "end_line": 182,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "preGenerateNav",
+                    "line": 184,
+                    "end_line": 186,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "postGenerateNav",
+                    "line": 188,
+                    "end_line": 190,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getUrl",
+                    "line": 213,
+                    "end_line": 226,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "defaultItems",
+                    "line": 228,
+                    "end_line": 231,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "defaultButtons",
+                    "line": 233,
+                    "end_line": 236,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "defaultActiveMap",
+                    "line": 238,
+                    "end_line": 241,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "setToolbarIcon",
+                    "line": 243,
+                    "end_line": 258,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Conduit/PersistentCache.php": {
+            "sha256": "1b6a50f77c6976868643ca5c64ecaac22d49adecc5115d7cd14d15b7fb0457c2",
+            "bytes": 7998,
+            "lines": 236,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "get",
+                    "line": 18,
+                    "end_line": 48,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "set",
+                    "line": 55,
+                    "end_line": 82,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "delete",
+                    "line": 88,
+                    "end_line": 104,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "has",
+                    "line": 112,
+                    "end_line": 116,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "clear",
+                    "line": 122,
+                    "end_line": 141,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "createKey",
+                    "line": 154,
+                    "end_line": 161,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "prepCacheData",
+                    "line": 169,
+                    "end_line": 172,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "serveCacheData",
+                    "line": 179,
+                    "end_line": 182,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "checkPath",
+                    "line": 189,
+                    "end_line": 234,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Conduit/StaticCache.php": {
+            "sha256": "0605c5a0db6b88b977f369982eba87a95f0ff5fe79d7d9a7ff953dc0ac4b04da",
+            "bytes": 3820,
+            "lines": 109,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "get",
+                    "line": 14,
+                    "end_line": 19,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "set",
+                    "line": 28,
+                    "end_line": 31,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "put",
+                    "line": 40,
+                    "end_line": 43,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "delete",
+                    "line": 51,
+                    "end_line": 56,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "has",
+                    "line": 64,
+                    "end_line": 67,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "all",
+                    "line": 73,
+                    "end_line": 76,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "clear",
+                    "line": 82,
+                    "end_line": 87,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "createKey",
+                    "line": 96,
+                    "end_line": 107,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/Conduit/Version.php": {
+            "sha256": "8b05f619def2eb9c6b161862c70dbcf9f738af92fc331258080e2b35e4f24705",
+            "bytes": 24096,
+            "lines": 229,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 24,
+                    "end_line": 28,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "keyExistsForAddon",
+                    "line": 30,
+                    "end_line": 45,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "saveLicenseKey",
+                    "line": 47,
+                    "end_line": 64,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "deleteLicenseKey",
+                    "line": 66,
+                    "end_line": 71,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "verifyLicenseTable",
+                    "line": 73,
+                    "end_line": 127,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "check",
+                    "line": 129,
+                    "end_line": 183,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getLicenseKey",
+                    "line": 185,
+                    "end_line": 198,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getIgnoreSite",
+                    "line": 200,
+                    "end_line": 212,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "getOpenSSLPublicKey",
+                    "line": 214,
+                    "end_line": 217,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "spiderSafe",
+                    "line": 219,
+                    "end_line": 227,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/FluxCapacitor/FluxCapacitor.php": {
+            "sha256": "88ff8747fb5f7f47311f00a84d5e2eb7255f83b33f25dd2e5bd411cceef3810c",
+            "bytes": 549,
+            "lines": 26,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 20,
+                    "end_line": 24,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/Views/license.php": {
+            "sha256": "6a8d67a96c4a3edac3cc1ff9b9607505ff58e5a3888896a324b8e2d824a7ea46",
+            "bytes": 10730,
+            "lines": 255,
+            "functions_including_magic_and_closures": [],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/index.php": {
+            "sha256": "ab1cfde11b7e8fc159bd780a510975e12bd0dede6ca56792e523c1f2589725d7",
+            "bytes": 894,
+            "lines": 29,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "{closure@3}",
+                    "line": 3,
+                    "end_line": 28,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/low_widont.phar!/{stub}": {
+            "sha256": "a00d0ff5f2d473d1552bcd187d6ed64c6aa33faa33566cc191430462afd16b8b",
+            "bytes": 6717,
+            "lines": 293,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "go",
+                    "line": 113,
+                    "end_line": 194,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "tmpdir",
+                    "line": 196,
+                    "end_line": 211,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "_unpack",
+                    "line": 213,
+                    "end_line": 237,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "extractFile",
+                    "line": 239,
+                    "end_line": 270,
+                    "abstract_declaration": false
+                },
+                {
+                    "name": "_removeTmpFiles",
+                    "line": 272,
+                    "end_line": 288,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/pi.low_widont.php": {
+            "sha256": "c702127dc993f54073f0aef11ecb9e6c66816ac4c8c24316b836a75baca00a11",
+            "bytes": 1873,
+            "lines": 70,
+            "functions_including_magic_and_closures": [
+                {
+                    "name": "__construct",
+                    "line": 43,
+                    "end_line": 63,
+                    "abstract_declaration": false
+                }
+            ],
+            "procedural_scope_included": true
+        },
+        "low_widont/views/license.php": {
+            "sha256": "6a8d67a96c4a3edac3cc1ff9b9607505ff58e5a3888896a324b8e2d824a7ea46",
+            "bytes": 10730,
+            "lines": 255,
+            "functions_including_magic_and_closures": [],
+            "procedural_scope_included": true
+        }
+    }
+}

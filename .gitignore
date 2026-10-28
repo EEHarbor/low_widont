@@ -1,0 +1,3 @@
+/tests/reports/
+/tests/.phpunit/*.phar
+/.phpunit.result.cache
