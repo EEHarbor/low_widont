@@ -2,20 +2,40 @@
 title: Installation
 ---
 
-<h3>Compatibility</h3>
-Low Widon’t is compatible with EE3 and up. The EE1 and EE2 compatible version are no longer under development, but are still available on Github.
+<h1 id="low-widont">Low Widon’t</h1>
 
-<h3>Installation</h3>
-<li>Download and unzip Low Widon’t</li>
-<li>Copy the low_widont folder to your /system/user/addons/ directory</li>
-<li>In your Control Panel, go to the Add-on Manager and install Low Widon’t.</li>
-<li>All set!</li>
+<p>Low Widon’t keeps the final two words of a title or text together by replacing their separating whitespace with a nonbreaking space. Use it around the text you want to format.</p>
 
+<h2 id="compatibility">Compatibility</h2>
 
-<h3>Template Tags</h3>
+<p>Low Widon’t 4.1.1 uses the ExpressionEngine 3 and later add-on layout. The package metadata requires ExpressionEngine 3 or later; the release history records support through ExpressionEngine 7 and PHP 8.2. Choose a release appropriate for your installed ExpressionEngine and PHP versions. The older EE1 and EE2 versions are historical releases and are no longer under active development.</p>
 
-<pre><code>{exp:low_widont}{title}{/exp:low_widont}</code></pre>
+<h2 id="installation">Installation</h2>
 
+<ol>
+    <li>Download and extract Low Widon’t.</li>
+    <li>Copy the package’s <code>low_widont</code> folder to <code>system/user/addons/</code>, so that <code>addon.setup.php</code> is directly inside the installed <code>low_widont</code> folder.</li>
+    <li>In the ExpressionEngine control panel, open <strong>Developer → Add-Ons</strong>, find <strong>Low Widon’t</strong>, and click <strong>Install</strong>.</li>
+</ol>
 
+<p>These control-panel labels follow ExpressionEngine 7. Use your configured system directory if your site renames it. No separate theme files are supplied by this package.</p>
 
+<h2 id="template-tags">Template Tags</h2>
 
+<div class="doc-terms" role="group" aria-label="Low Widon’t template tag">
+    <div><span class="param-important">{exp:low_widont}…{/exp:low_widont}</span>: Wrap the text to format in this tag pair.</div>
+</div>
+
+<p>For example, format an entry title inside its Channel Entries loop:</p>
+
+<pre><code>{exp:channel:entries channel="news" limit="1"}
+    &lt;h1&gt;{exp:low_widont}{title}{/exp:low_widont}&lt;/h1&gt;
+{/exp:channel:entries}</code></pre>
+
+<p>Replace <code>news</code> with your channel’s short name. The closing <code>{/exp:low_widont}</code> tag is required.</p>
+
+<p>For the text <code>Lorem ipsum dolor sit amet</code>, the result contains a nonbreaking space between <code>sit</code> and <code>amet</code>. The output source uses the numeric HTML entity <code>&amp;#160;</code>:</p>
+
+<pre><code>Lorem ipsum dolor sit&amp;#160;amet</code></pre>
+
+<p>See the <a href="release_notes">release notes</a> for changes between package versions.</p>
