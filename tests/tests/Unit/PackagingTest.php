@@ -25,7 +25,7 @@ final class PackagingTest extends TestCase
     }
 
     /**
-     * Render both loose and archive license views with modern and legacy contexts.
+     * Render the add-on license view with modern and legacy contexts.
      *
      * @dataProvider viewContexts
      * @param int $version
@@ -38,20 +38,14 @@ final class PackagingTest extends TestCase
         $root = dirname(__DIR__, 3);
         Environment::$services['CP/Alert'] = $this->getMockBuilder(\stdClass::class)->addMethods(['getAllInlines'])->getMock();
         Environment::$services['CP/Alert']->method('getAllInlines')->willReturn('<div>Saved license</div>');
-        $paths = [$root . '/low_widont/views/license.php', 'phar://' . $root . '/low_widont/low_widont.phar/Views/license.php'];
-        if (getenv('LOW_WIDONT_REPORT_DIR')) {
-            $paths[1] = getenv('LOW_WIDONT_REPORT_DIR') . '/source/Views/license.php';
-        }
-        foreach ($paths as $path) {
-            $html = $this->render($path, $version, $key, $ignored);
-            $expectedKey = strpos($key, 'ignore-site-') !== false ? '' : htmlspecialchars($key, ENT_QUOTES, 'UTF-8');
-            $this->assertStringContainsString('name="license_key" value="' . $expectedKey . '"', $html);
-            $this->assertStringContainsString('class="box ee' . $version, $html);
-            $this->assertStringContainsString('<form action="save?site=1&amp;return=license"', $html);
-            $this->assertSame($version > 2, strpos($html, 'Saved license') !== false);
-            $this->assertSame($ignored, strpos($html, 'checked="checked"') !== false);
-            $this->assertStringContainsString('Save License Key', $html);
-        }
+        $html = $this->render($root . '/low_widont/views/license.php', $version, $key, $ignored);
+        $expectedKey = strpos($key, 'ignore-site-') !== false ? '' : htmlspecialchars($key, ENT_QUOTES, 'UTF-8');
+        $this->assertStringContainsString('name="license_key" value="' . $expectedKey . '"', $html);
+        $this->assertStringContainsString('class="box ee' . $version, $html);
+        $this->assertStringContainsString('<form action="save?site=1&amp;return=license"', $html);
+        $this->assertSame($version > 2, strpos($html, 'Saved license') !== false);
+        $this->assertSame($ignored, strpos($html, 'checked="checked"') !== false);
+        $this->assertStringContainsString('Save License Key', $html);
     }
 
     /**
@@ -110,7 +104,7 @@ final class PackagingTest extends TestCase
     }
 
     /**
-     * Compile every shipped PHP entry and the archive stub in the selected runtime.
+     * Compile every loose add-on PHP entry in the selected runtime.
      *
      * @return void
      */
@@ -118,36 +112,19 @@ final class PackagingTest extends TestCase
     {
         $root = dirname(__DIR__, 3);
         $files = [];
-        $temporaryRoot = sys_get_temp_dir() . '/low-widont-compile-' . bin2hex(random_bytes(8));
-        mkdir($temporaryRoot, 0700);
         foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($root . '/low_widont', \FilesystemIterator::SKIP_DOTS)) as $file) {
-            if (in_array($file->getExtension(), ['php', 'phar'], true)) {
+            if ($file->getExtension() === 'php') {
                 $files[] = $file->getPathname();
             }
         }
-        foreach (new \RecursiveIteratorIterator(new \Phar($root . '/low_widont/low_widont.phar')) as $file) {
-            if ($file->getExtension() === 'php') {
-                $target = $temporaryRoot . '/' . count($files) . '.php';
-                file_put_contents($target, $file->getContent());
-                $this->assertSame(hash('sha256', $file->getContent()), hash_file('sha256', $target));
-                $files[] = $target;
-            }
-        }
-        $this->assertCount(27, $files);
-        try {
-            foreach ($files as $file) {
-                $native = NativeProcess::runCommand([PHP_BINARY, '-l', $file]);
-                $output = $native[1] . $native[2];
-                $exit = $native[0];
-                $this->assertSame(0, $exit, $file . ': ' . $output);
-                $this->assertStringContainsString('No syntax errors detected', $output, $file);
-                $this->assertDoesNotMatchRegularExpression('/(?:Deprecated|Warning|Notice|Fatal error):/', $output, $file . ': ' . $output);
-            }
-        } finally {
-            foreach (glob($temporaryRoot . '/*.php') as $temporaryFile) {
-                unlink($temporaryFile);
-            }
-            rmdir($temporaryRoot);
+        $this->assertCount(4, $files);
+        foreach ($files as $file) {
+            $native = NativeProcess::runCommand([PHP_BINARY, '-l', $file]);
+            $output = $native[1] . $native[2];
+            $exit = $native[0];
+            $this->assertSame(0, $exit, $file . ': ' . $output);
+            $this->assertStringContainsString('No syntax errors detected', $output, $file);
+            $this->assertDoesNotMatchRegularExpression('/(?:Deprecated|Warning|Notice|Fatal error):/', $output, $file . ': ' . $output);
         }
     }
 }

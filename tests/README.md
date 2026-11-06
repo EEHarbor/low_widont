@@ -1,5 +1,9 @@
 > Current scope (2026-10-26): Foundation is an unchanged stock dependency. The baseline notes below are historical; see [COMPATIBILITY.md](COMPATIBILITY.md) for the addon-only correction and actual validation limits.
 
+## Current test scope — 2026-11-05
+
+Direct shared Foundation/PHAR tests have been removed, including synthetic fieldtype/updater/navigation wrappers, archive views and archive/member compilation. Real Low Widont formatting, loose-source compilation, normal plugin loading, source inventories and strict diagnostic/instrumentation controls remain. Earlier test counts, retained-original-test statements and Foundation coverage below describe the historical suite. This scope cleanup does not certify full PHP compatibility.
+
 # Low Widont tests
 
 This tests-only checkpoint runs shipped source or the original PHAR. It does not load ExpressionEngine itself. Collaborator doubles match the legacy facade, query-builder, result-object and view-helper contracts; production code is unchanged.

@@ -24,16 +24,6 @@ final class AutoloadTest extends TestCase
     }
 
     /**
-     * Invoke the archive's own autoloader for foreign, missing and existing class files.
-     *
-     * @return void
-     */
-    public function testArchiveLoaderPaths(): void
-    {
-        $this->testNativeLoaderPaths('archive-loader', 'archive-loader:loaded', false);
-    }
-
-    /**
      * Load the original plugin before any addon class exists in the selected child runtime.
      *
      * @return void

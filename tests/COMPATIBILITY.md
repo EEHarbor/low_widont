@@ -1,5 +1,9 @@
 # Addon-only PHP compatibility validation
 
+## Current test scope — 2026-11-05
+
+Direct shared Foundation/PHAR tests have been removed, including synthetic fieldtype/updater/navigation wrappers, archive views and archive/member compilation. Real Low Widont formatting, loose-source compilation, normal plugin loading, source inventories and strict diagnostic/instrumentation controls remain. Earlier test counts, retained-original-test statements and Foundation coverage below describe the historical suite. This scope cleanup does not certify full PHP compatibility.
+
 The 2026-10-26 correction excludes Foundation production repairs and new Foundation-only testing/build helpers. Earlier Foundation-inclusive green/blocked matrices and reviews are historical, retained in Git and external evidence; they do not approve this corrected candidate.
 
 The original tests baseline is `6a2fb11be4d7145a381bd478465b692aebb59470`; the pinned develop target is `3a38b1fb9146daa87ed9f1a83699521ea03091da`. The bundled PHAR (SHA256 `7889aef835b80b783cf5585eae64c6c4ae88f739a90f141863e2c8e4ff15c986`) and loader match actual develop bytes. The campaign-only local Foundation build/source, added Foundation probes and added Foundation behavior assertions are omitted. Every original test remains.
